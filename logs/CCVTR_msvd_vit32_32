@@ -1,0 +1,1800 @@
+/usr/bin/python: No module named torch.distributed
+07/14/2025 14:50:18 - INFO -   Effective parameters:
+07/14/2025 14:50:18 - INFO -     <<< batch_size: 32
+07/14/2025 14:50:18 - INFO -     <<< batch_size_val: 16
+07/14/2025 14:50:18 - INFO -     <<< cache_dir: 
+07/14/2025 14:50:18 - INFO -     <<< coef_lr: 0.001
+07/14/2025 14:50:18 - INFO -     <<< cross_model: cross-base
+07/14/2025 14:50:18 - INFO -     <<< cross_num_hidden_layers: 4
+07/14/2025 14:50:18 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/14/2025 14:50:18 - INFO -     <<< datatype: msvd
+07/14/2025 14:50:18 - INFO -     <<< do_eval: False
+07/14/2025 14:50:18 - INFO -     <<< do_lower_case: False
+07/14/2025 14:50:18 - INFO -     <<< do_pretrain: False
+07/14/2025 14:50:18 - INFO -     <<< do_train: True
+07/14/2025 14:50:18 - INFO -     <<< epochs: 5
+07/14/2025 14:50:18 - INFO -     <<< eval_frame_order: 0
+07/14/2025 14:50:18 - INFO -     <<< expand_msrvtt_sentences: False
+07/14/2025 14:50:18 - INFO -     <<< feature_framerate: 1
+07/14/2025 14:50:18 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc/msvd_hevc
+07/14/2025 14:50:18 - INFO -     <<< fp16: False
+07/14/2025 14:50:18 - INFO -     <<< fp16_opt_level: O1
+07/14/2025 14:50:18 - INFO -     <<< freeze_layer_num: 9
+07/14/2025 14:50:18 - INFO -     <<< gradient_accumulation_steps: 1
+07/14/2025 14:50:18 - INFO -     <<< hard_negative_rate: 0.5
+07/14/2025 14:50:18 - INFO -     <<< init_model: None
+07/14/2025 14:50:18 - INFO -     <<< linear_patch: 2d
+07/14/2025 14:50:18 - INFO -     <<< local_rank: 0
+07/14/2025 14:50:18 - INFO -     <<< loose_type: True
+07/14/2025 14:50:18 - INFO -     <<< lr: 0.0001
+07/14/2025 14:50:18 - INFO -     <<< lr_decay: 0.9
+07/14/2025 14:50:18 - INFO -     <<< margin: 0.1
+07/14/2025 14:50:18 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/msvd_hevc/videos_hevc_info
+07/14/2025 14:50:18 - INFO -     <<< max_frames: 12
+07/14/2025 14:50:18 - INFO -     <<< max_words: 32
+07/14/2025 14:50:18 - INFO -     <<< n_display: 5
+07/14/2025 14:50:18 - INFO -     <<< n_gpu: 1
+07/14/2025 14:50:18 - INFO -     <<< n_pair: 1
+07/14/2025 14:50:18 - INFO -     <<< negative_weighting: 1
+07/14/2025 14:50:18 - INFO -     <<< new_added_modules: ['Adapter']
+07/14/2025 14:50:18 - INFO -     <<< num_thread_reader: 4
+07/14/2025 14:50:18 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/14/2025 14:50:18 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/14/2025 14:50:18 - INFO -     <<< rank: 0
+07/14/2025 14:50:18 - INFO -     <<< resume_model: None
+07/14/2025 14:50:18 - INFO -     <<< sampled_use_mil: False
+07/14/2025 14:50:18 - INFO -     <<< seed: 42
+07/14/2025 14:50:18 - INFO -     <<< sim_header: meanP
+07/14/2025 14:50:18 - INFO -     <<< slice_framepos: 0
+07/14/2025 14:50:18 - INFO -     <<< task_type: retrieval
+07/14/2025 14:50:18 - INFO -     <<< text_num_hidden_layers: 12
+07/14/2025 14:50:18 - INFO -     <<< train_csv: data/.train.csv
+07/14/2025 14:50:18 - INFO -     <<< train_frame_order: 0
+07/14/2025 14:50:18 - INFO -     <<< use_mil: False
+07/14/2025 14:50:18 - INFO -     <<< val_csv: data/.val.csv
+07/14/2025 14:50:18 - INFO -     <<< video_dim: 1024
+07/14/2025 14:50:18 - INFO -     <<< visual_num_hidden_layers: 12
+07/14/2025 14:50:18 - INFO -     <<< warmup_proportion: 0.1
+07/14/2025 14:50:18 - INFO -     <<< world_size: 1
+07/14/2025 14:50:18 - INFO -   device: cuda:0 n_gpu: 1
+07/14/2025 14:50:21 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/14/2025 14:50:21 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/14/2025 14:50:21 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/14/2025 14:50:21 - WARNING -   Stage-One:True, Stage-Two:False
+07/14/2025 14:50:21 - WARNING -   Test retrieval by loose type.
+07/14/2025 14:50:21 - WARNING -   	 embed_dim: 512
+07/14/2025 14:50:21 - WARNING -   	 image_resolution: 224
+07/14/2025 14:50:21 - WARNING -   	 vision_layers: 12
+07/14/2025 14:50:21 - WARNING -   	 vision_width: 768
+07/14/2025 14:50:21 - WARNING -   	 vision_patch_size: 32
+07/14/2025 14:50:21 - WARNING -   	 context_length: 77
+07/14/2025 14:50:21 - WARNING -   	 vocab_size: 49408
+07/14/2025 14:50:21 - WARNING -   	 transformer_width: 512
+07/14/2025 14:50:21 - WARNING -   	 transformer_heads: 8
+07/14/2025 14:50:21 - WARNING -   	 transformer_layers: 12
+07/14/2025 14:50:21 - WARNING -   		 linear_patch: 2d
+07/14/2025 14:50:21 - WARNING -   	 cut_top_layer: 0
+07/14/2025 14:50:24 - WARNING -   	 sim_header: meanP
+07/14/2025 14:50:34 - INFO -   --------------------
+07/14/2025 14:50:34 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/14/2025 14:50:34 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+Traceback (most recent call last):
+  File "main_xclip.py", line 560, in <module>
+    main()
+  File "main_xclip.py", line 481, in main
+    test_dataloader, test_length = DATALOADER_DICT[args.datatype]["test"](args, tokenizer)
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/data_dataloaders.py", line 88, in dataloader_msvd_test
+    msvd_testset = MSVD_DataLoader(
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 50, in __init__
+    with open(video_id_path_dict[self.subset], 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/wa24301158/dataset/MSVD/msvd_hevc/test_list.txt'
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=0', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=32', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/msvd_hevc/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.
+07/14/2025 14:51:58 - INFO -   Effective parameters:
+07/14/2025 14:51:58 - INFO -     <<< batch_size: 32
+07/14/2025 14:51:58 - INFO -     <<< batch_size_val: 16
+07/14/2025 14:51:58 - INFO -     <<< cache_dir: 
+07/14/2025 14:51:58 - INFO -     <<< coef_lr: 0.001
+07/14/2025 14:51:58 - INFO -     <<< cross_model: cross-base
+07/14/2025 14:51:58 - INFO -     <<< cross_num_hidden_layers: 4
+07/14/2025 14:51:58 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/14/2025 14:51:58 - INFO -     <<< datatype: msvd
+07/14/2025 14:51:58 - INFO -     <<< do_eval: False
+07/14/2025 14:51:58 - INFO -     <<< do_lower_case: False
+07/14/2025 14:51:58 - INFO -     <<< do_pretrain: False
+07/14/2025 14:51:58 - INFO -     <<< do_train: True
+07/14/2025 14:51:58 - INFO -     <<< epochs: 5
+07/14/2025 14:51:58 - INFO -     <<< eval_frame_order: 0
+07/14/2025 14:51:58 - INFO -     <<< expand_msrvtt_sentences: False
+07/14/2025 14:51:58 - INFO -     <<< feature_framerate: 1
+07/14/2025 14:51:58 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/14/2025 14:51:58 - INFO -     <<< fp16: False
+07/14/2025 14:51:58 - INFO -     <<< fp16_opt_level: O1
+07/14/2025 14:51:58 - INFO -     <<< freeze_layer_num: 9
+07/14/2025 14:51:58 - INFO -     <<< gradient_accumulation_steps: 1
+07/14/2025 14:51:58 - INFO -     <<< hard_negative_rate: 0.5
+07/14/2025 14:51:58 - INFO -     <<< init_model: None
+07/14/2025 14:51:58 - INFO -     <<< linear_patch: 2d
+07/14/2025 14:51:58 - INFO -     <<< local_rank: 0
+07/14/2025 14:51:58 - INFO -     <<< loose_type: True
+07/14/2025 14:51:58 - INFO -     <<< lr: 0.0001
+07/14/2025 14:51:58 - INFO -     <<< lr_decay: 0.9
+07/14/2025 14:51:58 - INFO -     <<< margin: 0.1
+07/14/2025 14:51:58 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/14/2025 14:51:58 - INFO -     <<< max_frames: 12
+07/14/2025 14:51:58 - INFO -     <<< max_words: 32
+07/14/2025 14:51:58 - INFO -     <<< n_display: 5
+07/14/2025 14:51:58 - INFO -     <<< n_gpu: 1
+07/14/2025 14:51:58 - INFO -     <<< n_pair: 1
+07/14/2025 14:51:58 - INFO -     <<< negative_weighting: 1
+07/14/2025 14:51:58 - INFO -     <<< new_added_modules: ['Adapter']
+07/14/2025 14:51:58 - INFO -     <<< num_thread_reader: 4
+07/14/2025 14:51:58 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/14/2025 14:51:58 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/14/2025 14:51:58 - INFO -     <<< rank: 0
+07/14/2025 14:51:58 - INFO -     <<< resume_model: None
+07/14/2025 14:51:58 - INFO -     <<< sampled_use_mil: False
+07/14/2025 14:51:58 - INFO -     <<< seed: 42
+07/14/2025 14:51:58 - INFO -     <<< sim_header: meanP
+07/14/2025 14:51:58 - INFO -     <<< slice_framepos: 0
+07/14/2025 14:51:58 - INFO -     <<< task_type: retrieval
+07/14/2025 14:51:58 - INFO -     <<< text_num_hidden_layers: 12
+07/14/2025 14:51:58 - INFO -     <<< train_csv: data/.train.csv
+07/14/2025 14:51:58 - INFO -     <<< train_frame_order: 0
+07/14/2025 14:51:58 - INFO -     <<< use_mil: False
+07/14/2025 14:51:58 - INFO -     <<< val_csv: data/.val.csv
+07/14/2025 14:51:58 - INFO -     <<< video_dim: 1024
+07/14/2025 14:51:58 - INFO -     <<< visual_num_hidden_layers: 12
+07/14/2025 14:51:58 - INFO -     <<< warmup_proportion: 0.1
+07/14/2025 14:51:58 - INFO -     <<< world_size: 1
+07/14/2025 14:51:58 - INFO -   device: cuda:0 n_gpu: 1
+07/14/2025 14:51:59 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/14/2025 14:51:59 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/14/2025 14:51:59 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/14/2025 14:51:59 - WARNING -   Stage-One:True, Stage-Two:False
+07/14/2025 14:51:59 - WARNING -   Test retrieval by loose type.
+07/14/2025 14:51:59 - WARNING -   	 embed_dim: 512
+07/14/2025 14:51:59 - WARNING -   	 image_resolution: 224
+07/14/2025 14:51:59 - WARNING -   	 vision_layers: 12
+07/14/2025 14:51:59 - WARNING -   	 vision_width: 768
+07/14/2025 14:51:59 - WARNING -   	 vision_patch_size: 32
+07/14/2025 14:51:59 - WARNING -   	 context_length: 77
+07/14/2025 14:51:59 - WARNING -   	 vocab_size: 49408
+07/14/2025 14:51:59 - WARNING -   	 transformer_width: 512
+07/14/2025 14:51:59 - WARNING -   	 transformer_heads: 8
+07/14/2025 14:51:59 - WARNING -   	 transformer_layers: 12
+07/14/2025 14:51:59 - WARNING -   		 linear_patch: 2d
+07/14/2025 14:51:59 - WARNING -   	 cut_top_layer: 0
+07/14/2025 14:52:01 - WARNING -   	 sim_header: meanP
+07/14/2025 14:52:12 - INFO -   --------------------
+07/14/2025 14:52:12 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/14/2025 14:52:12 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/14/2025 14:52:13 - INFO -   ***** Running test *****
+07/14/2025 14:52:13 - INFO -     Num examples = 27763
+07/14/2025 14:52:13 - INFO -     Batch size = 16
+07/14/2025 14:52:13 - INFO -     Num steps = 1736
+07/14/2025 14:52:13 - INFO -   ***** Running val *****
+07/14/2025 14:52:13 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+07/14/2025 14:52:14 - INFO -   ***** Running training *****
+07/14/2025 14:52:14 - INFO -     Num examples = 48774
+07/14/2025 14:52:14 - INFO -     Batch size = 32
+07/14/2025 14:52:14 - INFO -     Num steps = 7620
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+Traceback (most recent call last):
+  File "main_xclip.py", line 560, in <module>
+    main()
+  File "main_xclip.py", line 532, in main
+    tr_loss, global_step = train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer,
+  File "main_xclip.py", line 266, in train_epoch
+    for step, batch in enumerate(train_dataloader):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1085, in _next_data
+    return self._process_data(data)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1111, in _process_data
+    data.reraise()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/_utils.py", line 428, in reraise
+    raise self.exc_type(msg)
+AttributeError: Caught AttributeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 198, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 187, in __getitem__
+    pairs_text, pairs_mask, pairs_segment, choice_video_ids = self._get_text(video_id, caption)
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 102, in _get_text
+    pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/numpy/__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'long'
+
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=0', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=32', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.
+07/14/2025 14:57:49 - INFO -   Effective parameters:
+07/14/2025 14:57:49 - INFO -     <<< batch_size: 32
+07/14/2025 14:57:49 - INFO -     <<< batch_size_val: 16
+07/14/2025 14:57:49 - INFO -     <<< cache_dir: 
+07/14/2025 14:57:49 - INFO -     <<< coef_lr: 0.001
+07/14/2025 14:57:49 - INFO -     <<< cross_model: cross-base
+07/14/2025 14:57:49 - INFO -     <<< cross_num_hidden_layers: 4
+07/14/2025 14:57:49 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/14/2025 14:57:49 - INFO -     <<< datatype: msvd
+07/14/2025 14:57:49 - INFO -     <<< do_eval: False
+07/14/2025 14:57:49 - INFO -     <<< do_lower_case: False
+07/14/2025 14:57:49 - INFO -     <<< do_pretrain: False
+07/14/2025 14:57:49 - INFO -     <<< do_train: True
+07/14/2025 14:57:49 - INFO -     <<< epochs: 5
+07/14/2025 14:57:49 - INFO -     <<< eval_frame_order: 0
+07/14/2025 14:57:49 - INFO -     <<< expand_msrvtt_sentences: False
+07/14/2025 14:57:49 - INFO -     <<< feature_framerate: 1
+07/14/2025 14:57:49 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/14/2025 14:57:49 - INFO -     <<< fp16: False
+07/14/2025 14:57:49 - INFO -     <<< fp16_opt_level: O1
+07/14/2025 14:57:49 - INFO -     <<< freeze_layer_num: 9
+07/14/2025 14:57:49 - INFO -     <<< gradient_accumulation_steps: 1
+07/14/2025 14:57:49 - INFO -     <<< hard_negative_rate: 0.5
+07/14/2025 14:57:49 - INFO -     <<< init_model: None
+07/14/2025 14:57:49 - INFO -     <<< linear_patch: 2d
+07/14/2025 14:57:49 - INFO -     <<< local_rank: 0
+07/14/2025 14:57:49 - INFO -     <<< loose_type: True
+07/14/2025 14:57:49 - INFO -     <<< lr: 0.0001
+07/14/2025 14:57:49 - INFO -     <<< lr_decay: 0.9
+07/14/2025 14:57:49 - INFO -     <<< margin: 0.1
+07/14/2025 14:57:49 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/14/2025 14:57:49 - INFO -     <<< max_frames: 12
+07/14/2025 14:57:49 - INFO -     <<< max_words: 32
+07/14/2025 14:57:49 - INFO -     <<< n_display: 5
+07/14/2025 14:57:49 - INFO -     <<< n_gpu: 1
+07/14/2025 14:57:49 - INFO -     <<< n_pair: 1
+07/14/2025 14:57:49 - INFO -     <<< negative_weighting: 1
+07/14/2025 14:57:49 - INFO -     <<< new_added_modules: ['Adapter']
+07/14/2025 14:57:49 - INFO -     <<< num_thread_reader: 4
+07/14/2025 14:57:49 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/14/2025 14:57:49 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/14/2025 14:57:49 - INFO -     <<< rank: 0
+07/14/2025 14:57:49 - INFO -     <<< resume_model: None
+07/14/2025 14:57:49 - INFO -     <<< sampled_use_mil: False
+07/14/2025 14:57:49 - INFO -     <<< seed: 42
+07/14/2025 14:57:49 - INFO -     <<< sim_header: meanP
+07/14/2025 14:57:49 - INFO -     <<< slice_framepos: 0
+07/14/2025 14:57:49 - INFO -     <<< task_type: retrieval
+07/14/2025 14:57:49 - INFO -     <<< text_num_hidden_layers: 12
+07/14/2025 14:57:49 - INFO -     <<< train_csv: data/.train.csv
+07/14/2025 14:57:49 - INFO -     <<< train_frame_order: 0
+07/14/2025 14:57:49 - INFO -     <<< use_mil: False
+07/14/2025 14:57:49 - INFO -     <<< val_csv: data/.val.csv
+07/14/2025 14:57:49 - INFO -     <<< video_dim: 1024
+07/14/2025 14:57:49 - INFO -     <<< visual_num_hidden_layers: 12
+07/14/2025 14:57:49 - INFO -     <<< warmup_proportion: 0.1
+07/14/2025 14:57:49 - INFO -     <<< world_size: 1
+07/14/2025 14:57:49 - INFO -   device: cuda:0 n_gpu: 1
+07/14/2025 14:57:50 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/14/2025 14:57:50 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/14/2025 14:57:50 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/14/2025 14:57:50 - WARNING -   Stage-One:True, Stage-Two:False
+07/14/2025 14:57:50 - WARNING -   Test retrieval by loose type.
+07/14/2025 14:57:50 - WARNING -   	 embed_dim: 512
+07/14/2025 14:57:50 - WARNING -   	 image_resolution: 224
+07/14/2025 14:57:50 - WARNING -   	 vision_layers: 12
+07/14/2025 14:57:50 - WARNING -   	 vision_width: 768
+07/14/2025 14:57:50 - WARNING -   	 vision_patch_size: 32
+07/14/2025 14:57:50 - WARNING -   	 context_length: 77
+07/14/2025 14:57:50 - WARNING -   	 vocab_size: 49408
+07/14/2025 14:57:50 - WARNING -   	 transformer_width: 512
+07/14/2025 14:57:50 - WARNING -   	 transformer_heads: 8
+07/14/2025 14:57:50 - WARNING -   	 transformer_layers: 12
+07/14/2025 14:57:50 - WARNING -   		 linear_patch: 2d
+07/14/2025 14:57:50 - WARNING -   	 cut_top_layer: 0
+07/14/2025 14:57:52 - WARNING -   	 sim_header: meanP
+07/14/2025 14:58:04 - INFO -   --------------------
+07/14/2025 14:58:04 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/14/2025 14:58:04 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/14/2025 14:58:04 - INFO -   ***** Running test *****
+07/14/2025 14:58:04 - INFO -     Num examples = 27763
+07/14/2025 14:58:04 - INFO -     Batch size = 16
+07/14/2025 14:58:04 - INFO -     Num steps = 1736
+07/14/2025 14:58:04 - INFO -   ***** Running val *****
+07/14/2025 14:58:04 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+07/14/2025 14:58:04 - INFO -   ***** Running training *****
+07/14/2025 14:58:04 - INFO -     Num examples = 48774
+07/14/2025 14:58:04 - INFO -     Batch size = 32
+07/14/2025 14:58:04 - INFO -     Num steps = 7620
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py:102: FutureWarning: In the future `np.long` will be defined as the corresponding NumPy scalar.
+  pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+Traceback (most recent call last):
+  File "main_xclip.py", line 560, in <module>
+    main()
+  File "main_xclip.py", line 532, in main
+    tr_loss, global_step = train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer,
+  File "main_xclip.py", line 266, in train_epoch
+    for step, batch in enumerate(train_dataloader):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1085, in _next_data
+    return self._process_data(data)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1111, in _process_data
+    data.reraise()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/_utils.py", line 428, in reraise
+    raise self.exc_type(msg)
+AttributeError: Caught AttributeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 198, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 187, in __getitem__
+    pairs_text, pairs_mask, pairs_segment, choice_video_ids = self._get_text(video_id, caption)
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 102, in _get_text
+    pairs_text = np.zeros((k, self.max_words), dtype=np.long)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/numpy/__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'long'
+
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=0', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=32', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.
+07/14/2025 14:59:17 - INFO -   Effective parameters:
+07/14/2025 14:59:17 - INFO -     <<< batch_size: 32
+07/14/2025 14:59:17 - INFO -     <<< batch_size_val: 16
+07/14/2025 14:59:17 - INFO -     <<< cache_dir: 
+07/14/2025 14:59:17 - INFO -     <<< coef_lr: 0.001
+07/14/2025 14:59:17 - INFO -     <<< cross_model: cross-base
+07/14/2025 14:59:17 - INFO -     <<< cross_num_hidden_layers: 4
+07/14/2025 14:59:17 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/14/2025 14:59:17 - INFO -     <<< datatype: msvd
+07/14/2025 14:59:17 - INFO -     <<< do_eval: False
+07/14/2025 14:59:17 - INFO -     <<< do_lower_case: False
+07/14/2025 14:59:17 - INFO -     <<< do_pretrain: False
+07/14/2025 14:59:17 - INFO -     <<< do_train: True
+07/14/2025 14:59:17 - INFO -     <<< epochs: 5
+07/14/2025 14:59:17 - INFO -     <<< eval_frame_order: 0
+07/14/2025 14:59:17 - INFO -     <<< expand_msrvtt_sentences: False
+07/14/2025 14:59:17 - INFO -     <<< feature_framerate: 1
+07/14/2025 14:59:17 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/14/2025 14:59:17 - INFO -     <<< fp16: False
+07/14/2025 14:59:17 - INFO -     <<< fp16_opt_level: O1
+07/14/2025 14:59:17 - INFO -     <<< freeze_layer_num: 9
+07/14/2025 14:59:17 - INFO -     <<< gradient_accumulation_steps: 1
+07/14/2025 14:59:17 - INFO -     <<< hard_negative_rate: 0.5
+07/14/2025 14:59:17 - INFO -     <<< init_model: None
+07/14/2025 14:59:17 - INFO -     <<< linear_patch: 2d
+07/14/2025 14:59:17 - INFO -     <<< local_rank: 0
+07/14/2025 14:59:17 - INFO -     <<< loose_type: True
+07/14/2025 14:59:17 - INFO -     <<< lr: 0.0001
+07/14/2025 14:59:17 - INFO -     <<< lr_decay: 0.9
+07/14/2025 14:59:17 - INFO -     <<< margin: 0.1
+07/14/2025 14:59:17 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/14/2025 14:59:17 - INFO -     <<< max_frames: 12
+07/14/2025 14:59:17 - INFO -     <<< max_words: 32
+07/14/2025 14:59:17 - INFO -     <<< n_display: 5
+07/14/2025 14:59:17 - INFO -     <<< n_gpu: 1
+07/14/2025 14:59:17 - INFO -     <<< n_pair: 1
+07/14/2025 14:59:17 - INFO -     <<< negative_weighting: 1
+07/14/2025 14:59:17 - INFO -     <<< new_added_modules: ['Adapter']
+07/14/2025 14:59:17 - INFO -     <<< num_thread_reader: 4
+07/14/2025 14:59:17 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/14/2025 14:59:17 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/14/2025 14:59:17 - INFO -     <<< rank: 0
+07/14/2025 14:59:17 - INFO -     <<< resume_model: None
+07/14/2025 14:59:17 - INFO -     <<< sampled_use_mil: False
+07/14/2025 14:59:17 - INFO -     <<< seed: 42
+07/14/2025 14:59:17 - INFO -     <<< sim_header: meanP
+07/14/2025 14:59:17 - INFO -     <<< slice_framepos: 0
+07/14/2025 14:59:17 - INFO -     <<< task_type: retrieval
+07/14/2025 14:59:17 - INFO -     <<< text_num_hidden_layers: 12
+07/14/2025 14:59:17 - INFO -     <<< train_csv: data/.train.csv
+07/14/2025 14:59:17 - INFO -     <<< train_frame_order: 0
+07/14/2025 14:59:17 - INFO -     <<< use_mil: False
+07/14/2025 14:59:17 - INFO -     <<< val_csv: data/.val.csv
+07/14/2025 14:59:17 - INFO -     <<< video_dim: 1024
+07/14/2025 14:59:17 - INFO -     <<< visual_num_hidden_layers: 12
+07/14/2025 14:59:17 - INFO -     <<< warmup_proportion: 0.1
+07/14/2025 14:59:17 - INFO -     <<< world_size: 1
+07/14/2025 14:59:17 - INFO -   device: cuda:0 n_gpu: 1
+07/14/2025 14:59:18 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/14/2025 14:59:18 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/14/2025 14:59:18 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/14/2025 14:59:18 - WARNING -   Stage-One:True, Stage-Two:False
+07/14/2025 14:59:18 - WARNING -   Test retrieval by loose type.
+07/14/2025 14:59:18 - WARNING -   	 embed_dim: 512
+07/14/2025 14:59:18 - WARNING -   	 image_resolution: 224
+07/14/2025 14:59:18 - WARNING -   	 vision_layers: 12
+07/14/2025 14:59:18 - WARNING -   	 vision_width: 768
+07/14/2025 14:59:18 - WARNING -   	 vision_patch_size: 32
+07/14/2025 14:59:18 - WARNING -   	 context_length: 77
+07/14/2025 14:59:18 - WARNING -   	 vocab_size: 49408
+07/14/2025 14:59:18 - WARNING -   	 transformer_width: 512
+07/14/2025 14:59:18 - WARNING -   	 transformer_heads: 8
+07/14/2025 14:59:18 - WARNING -   	 transformer_layers: 12
+07/14/2025 14:59:18 - WARNING -   		 linear_patch: 2d
+07/14/2025 14:59:18 - WARNING -   	 cut_top_layer: 0
+07/14/2025 14:59:20 - WARNING -   	 sim_header: meanP
+07/14/2025 14:59:31 - INFO -   --------------------
+07/14/2025 14:59:31 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/14/2025 14:59:31 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/14/2025 14:59:31 - INFO -   ***** Running test *****
+07/14/2025 14:59:31 - INFO -     Num examples = 27763
+07/14/2025 14:59:31 - INFO -     Batch size = 16
+07/14/2025 14:59:31 - INFO -     Num steps = 1736
+07/14/2025 14:59:31 - INFO -   ***** Running val *****
+07/14/2025 14:59:31 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+07/14/2025 14:59:32 - INFO -   ***** Running training *****
+07/14/2025 14:59:32 - INFO -     Num examples = 48774
+07/14/2025 14:59:32 - INFO -     Batch size = 32
+07/14/2025 14:59:32 - INFO -     Num steps = 7620
+Traceback (most recent call last):
+  File "main_xclip.py", line 560, in <module>
+    main()
+  File "main_xclip.py", line 532, in main
+    tr_loss, global_step = train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer,
+  File "main_xclip.py", line 266, in train_epoch
+    for step, batch in enumerate(train_dataloader):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1085, in _next_data
+    return self._process_data(data)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1111, in _process_data
+    data.reraise()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/_utils.py", line 428, in reraise
+    raise self.exc_type(msg)
+AttributeError: Caught AttributeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 198, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 188, in __getitem__
+    video, video_mask, res, mv = self._get_rawvideo(choice_video_ids)
+  File "/home/wa24301158/mywork/newX-CLIP-main/dataloaders/dataloader_msvd_retrieval.py", line 138, in _get_rawvideo
+    self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/numpy/__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'float'.
+`np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=0', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=32', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.
+07/14/2025 15:02:37 - INFO -   Effective parameters:
+07/14/2025 15:02:37 - INFO -     <<< batch_size: 32
+07/14/2025 15:02:37 - INFO -     <<< batch_size_val: 16
+07/14/2025 15:02:37 - INFO -     <<< cache_dir: 
+07/14/2025 15:02:37 - INFO -     <<< coef_lr: 0.001
+07/14/2025 15:02:37 - INFO -     <<< cross_model: cross-base
+07/14/2025 15:02:37 - INFO -     <<< cross_num_hidden_layers: 4
+07/14/2025 15:02:37 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/14/2025 15:02:37 - INFO -     <<< datatype: msvd
+07/14/2025 15:02:37 - INFO -     <<< do_eval: False
+07/14/2025 15:02:37 - INFO -     <<< do_lower_case: False
+07/14/2025 15:02:37 - INFO -     <<< do_pretrain: False
+07/14/2025 15:02:37 - INFO -     <<< do_train: True
+07/14/2025 15:02:37 - INFO -     <<< epochs: 5
+07/14/2025 15:02:37 - INFO -     <<< eval_frame_order: 0
+07/14/2025 15:02:37 - INFO -     <<< expand_msrvtt_sentences: False
+07/14/2025 15:02:37 - INFO -     <<< feature_framerate: 1
+07/14/2025 15:02:37 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/14/2025 15:02:37 - INFO -     <<< fp16: False
+07/14/2025 15:02:37 - INFO -     <<< fp16_opt_level: O1
+07/14/2025 15:02:37 - INFO -     <<< freeze_layer_num: 9
+07/14/2025 15:02:37 - INFO -     <<< gradient_accumulation_steps: 1
+07/14/2025 15:02:37 - INFO -     <<< hard_negative_rate: 0.5
+07/14/2025 15:02:37 - INFO -     <<< init_model: None
+07/14/2025 15:02:37 - INFO -     <<< linear_patch: 2d
+07/14/2025 15:02:37 - INFO -     <<< local_rank: 0
+07/14/2025 15:02:37 - INFO -     <<< loose_type: True
+07/14/2025 15:02:37 - INFO -     <<< lr: 0.0001
+07/14/2025 15:02:37 - INFO -     <<< lr_decay: 0.9
+07/14/2025 15:02:37 - INFO -     <<< margin: 0.1
+07/14/2025 15:02:37 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/14/2025 15:02:37 - INFO -     <<< max_frames: 12
+07/14/2025 15:02:37 - INFO -     <<< max_words: 32
+07/14/2025 15:02:37 - INFO -     <<< n_display: 5
+07/14/2025 15:02:37 - INFO -     <<< n_gpu: 1
+07/14/2025 15:02:37 - INFO -     <<< n_pair: 1
+07/14/2025 15:02:37 - INFO -     <<< negative_weighting: 1
+07/14/2025 15:02:37 - INFO -     <<< new_added_modules: ['Adapter']
+07/14/2025 15:02:37 - INFO -     <<< num_thread_reader: 4
+07/14/2025 15:02:37 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/14/2025 15:02:37 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/14/2025 15:02:37 - INFO -     <<< rank: 0
+07/14/2025 15:02:37 - INFO -     <<< resume_model: None
+07/14/2025 15:02:37 - INFO -     <<< sampled_use_mil: False
+07/14/2025 15:02:37 - INFO -     <<< seed: 42
+07/14/2025 15:02:37 - INFO -     <<< sim_header: meanP
+07/14/2025 15:02:37 - INFO -     <<< slice_framepos: 0
+07/14/2025 15:02:37 - INFO -     <<< task_type: retrieval
+07/14/2025 15:02:37 - INFO -     <<< text_num_hidden_layers: 12
+07/14/2025 15:02:37 - INFO -     <<< train_csv: data/.train.csv
+07/14/2025 15:02:37 - INFO -     <<< train_frame_order: 0
+07/14/2025 15:02:37 - INFO -     <<< use_mil: False
+07/14/2025 15:02:37 - INFO -     <<< val_csv: data/.val.csv
+07/14/2025 15:02:37 - INFO -     <<< video_dim: 1024
+07/14/2025 15:02:37 - INFO -     <<< visual_num_hidden_layers: 12
+07/14/2025 15:02:37 - INFO -     <<< warmup_proportion: 0.1
+07/14/2025 15:02:37 - INFO -     <<< world_size: 1
+07/14/2025 15:02:37 - INFO -   device: cuda:0 n_gpu: 1
+07/14/2025 15:02:37 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/14/2025 15:02:37 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/14/2025 15:02:37 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/14/2025 15:02:37 - WARNING -   Stage-One:True, Stage-Two:False
+07/14/2025 15:02:37 - WARNING -   Test retrieval by loose type.
+07/14/2025 15:02:37 - WARNING -   	 embed_dim: 512
+07/14/2025 15:02:37 - WARNING -   	 image_resolution: 224
+07/14/2025 15:02:37 - WARNING -   	 vision_layers: 12
+07/14/2025 15:02:37 - WARNING -   	 vision_width: 768
+07/14/2025 15:02:37 - WARNING -   	 vision_patch_size: 32
+07/14/2025 15:02:37 - WARNING -   	 context_length: 77
+07/14/2025 15:02:37 - WARNING -   	 vocab_size: 49408
+07/14/2025 15:02:37 - WARNING -   	 transformer_width: 512
+07/14/2025 15:02:37 - WARNING -   	 transformer_heads: 8
+07/14/2025 15:02:37 - WARNING -   	 transformer_layers: 12
+07/14/2025 15:02:37 - WARNING -   		 linear_patch: 2d
+07/14/2025 15:02:37 - WARNING -   	 cut_top_layer: 0
+07/14/2025 15:02:40 - WARNING -   	 sim_header: meanP
+07/14/2025 15:02:51 - INFO -   --------------------
+07/14/2025 15:02:51 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/14/2025 15:02:51 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/14/2025 15:02:51 - INFO -   ***** Running test *****
+07/14/2025 15:02:51 - INFO -     Num examples = 27763
+07/14/2025 15:02:51 - INFO -     Batch size = 16
+07/14/2025 15:02:51 - INFO -     Num steps = 1736
+07/14/2025 15:02:51 - INFO -   ***** Running val *****
+07/14/2025 15:02:51 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+07/14/2025 15:02:52 - INFO -   ***** Running training *****
+07/14/2025 15:02:52 - INFO -     Num examples = 48774
+07/14/2025 15:02:52 - INFO -     Batch size = 32
+07/14/2025 15:02:52 - INFO -     Num steps = 7620
+07/14/2025 15:04:46 - INFO -   Epoch: 1/5, Step: 5/1524, Lr: 0.000000001-0.000000656, Loss: 1.028953, Time/step: 22.773795
+07/14/2025 15:05:39 - INFO -   Epoch: 1/5, Step: 10/1524, Lr: 0.000000001-0.000001312, Loss: 1.019112, Time/step: 10.677520
+07/14/2025 15:07:04 - INFO -   Epoch: 1/5, Step: 15/1524, Lr: 0.000000002-0.000001969, Loss: 1.058456, Time/step: 16.944442
+07/14/2025 15:07:47 - INFO -   Epoch: 1/5, Step: 20/1524, Lr: 0.000000003-0.000002625, Loss: 0.834470, Time/step: 8.661158
+07/14/2025 15:08:23 - INFO -   Epoch: 1/5, Step: 25/1524, Lr: 0.000000003-0.000003281, Loss: 1.407562, Time/step: 7.168597
+07/14/2025 15:09:10 - INFO -   Epoch: 1/5, Step: 30/1524, Lr: 0.000000004-0.000003937, Loss: 1.205867, Time/step: 9.485064
+07/14/2025 15:10:08 - INFO -   Epoch: 1/5, Step: 35/1524, Lr: 0.000000005-0.000004593, Loss: 1.166896, Time/step: 11.584716
+07/14/2025 15:10:57 - INFO -   Epoch: 1/5, Step: 40/1524, Lr: 0.000000005-0.000005249, Loss: 1.005775, Time/step: 9.781456
+07/14/2025 15:11:28 - INFO -   Epoch: 1/5, Step: 45/1524, Lr: 0.000000006-0.000005906, Loss: 1.008132, Time/step: 6.261277
+07/14/2025 15:11:58 - INFO -   Epoch: 1/5, Step: 50/1524, Lr: 0.000000007-0.000006562, Loss: 0.937973, Time/step: 5.855461
+/usr/bin/python: No module named torch.distributed
+/usr/bin/python: No module named torch.distributed
+/usr/bin/python: No module named torch.distributed
+/usr/bin/python: No module named torch.distributed
+/home/wa24301158/conda_envs/temp/lib/python3.9/site-packages/torch/distributed/launch.py:183: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+07/22/2025 09:15:00 - INFO -   Effective parameters:
+07/22/2025 09:15:00 - INFO -     <<< batch_size: 32
+07/22/2025 09:15:00 - INFO -     <<< batch_size_val: 16
+07/22/2025 09:15:00 - INFO -     <<< cache_dir: 
+07/22/2025 09:15:00 - INFO -     <<< coef_lr: 0.001
+07/22/2025 09:15:00 - INFO -     <<< cross_model: cross-base
+07/22/2025 09:15:00 - INFO -     <<< cross_num_hidden_layers: 4
+07/22/2025 09:15:00 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/22/2025 09:15:00 - INFO -     <<< datatype: msvd
+07/22/2025 09:15:00 - INFO -     <<< do_eval: False
+07/22/2025 09:15:00 - INFO -     <<< do_lower_case: False
+07/22/2025 09:15:00 - INFO -     <<< do_pretrain: False
+07/22/2025 09:15:00 - INFO -     <<< do_train: True
+07/22/2025 09:15:00 - INFO -     <<< epochs: 5
+07/22/2025 09:15:00 - INFO -     <<< eval_frame_order: 0
+07/22/2025 09:15:00 - INFO -     <<< expand_msrvtt_sentences: False
+07/22/2025 09:15:00 - INFO -     <<< feature_framerate: 1
+07/22/2025 09:15:00 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/22/2025 09:15:00 - INFO -     <<< fp16: False
+07/22/2025 09:15:00 - INFO -     <<< fp16_opt_level: O1
+07/22/2025 09:15:00 - INFO -     <<< freeze_layer_num: 9
+07/22/2025 09:15:00 - INFO -     <<< gradient_accumulation_steps: 1
+07/22/2025 09:15:00 - INFO -     <<< hard_negative_rate: 0.5
+07/22/2025 09:15:00 - INFO -     <<< init_model: None
+07/22/2025 09:15:00 - INFO -     <<< linear_patch: 2d
+07/22/2025 09:15:00 - INFO -     <<< local_rank: 0
+07/22/2025 09:15:00 - INFO -     <<< loose_type: True
+07/22/2025 09:15:00 - INFO -     <<< lr: 0.0001
+07/22/2025 09:15:00 - INFO -     <<< lr_decay: 0.9
+07/22/2025 09:15:00 - INFO -     <<< margin: 0.1
+07/22/2025 09:15:00 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/22/2025 09:15:00 - INFO -     <<< max_frames: 12
+07/22/2025 09:15:00 - INFO -     <<< max_words: 32
+07/22/2025 09:15:00 - INFO -     <<< n_display: 5
+07/22/2025 09:15:00 - INFO -     <<< n_gpu: 1
+07/22/2025 09:15:00 - INFO -     <<< n_pair: 1
+07/22/2025 09:15:00 - INFO -     <<< negative_weighting: 1
+07/22/2025 09:15:00 - INFO -     <<< new_added_modules: ['Adapter']
+07/22/2025 09:15:00 - INFO -     <<< num_thread_reader: 4
+07/22/2025 09:15:00 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32
+07/22/2025 09:15:00 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/22/2025 09:15:00 - INFO -     <<< rank: 0
+07/22/2025 09:15:00 - INFO -     <<< resume_model: None
+07/22/2025 09:15:00 - INFO -     <<< sampled_use_mil: False
+07/22/2025 09:15:00 - INFO -     <<< seed: 42
+07/22/2025 09:15:00 - INFO -     <<< sim_header: meanP
+07/22/2025 09:15:00 - INFO -     <<< slice_framepos: 0
+07/22/2025 09:15:00 - INFO -     <<< task_type: retrieval
+07/22/2025 09:15:00 - INFO -     <<< text_num_hidden_layers: 12
+07/22/2025 09:15:00 - INFO -     <<< train_csv: data/.train.csv
+07/22/2025 09:15:00 - INFO -     <<< train_frame_order: 0
+07/22/2025 09:15:00 - INFO -     <<< use_mil: False
+07/22/2025 09:15:00 - INFO -     <<< val_csv: data/.val.csv
+07/22/2025 09:15:00 - INFO -     <<< video_dim: 1024
+07/22/2025 09:15:00 - INFO -     <<< visual_num_hidden_layers: 12
+07/22/2025 09:15:00 - INFO -     <<< warmup_proportion: 0.1
+07/22/2025 09:15:00 - INFO -     <<< world_size: 1
+07/22/2025 09:15:00 - INFO -   device: cuda:0 n_gpu: 1
+07/22/2025 09:15:00 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/22/2025 09:15:00 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/22/2025 09:15:00 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/22/2025 09:15:00 - WARNING -   Stage-One:True, Stage-Two:False
+07/22/2025 09:15:00 - WARNING -   Test retrieval by loose type.
+07/22/2025 09:15:00 - WARNING -   	 embed_dim: 512
+07/22/2025 09:15:00 - WARNING -   	 image_resolution: 224
+07/22/2025 09:15:00 - WARNING -   	 vision_layers: 12
+07/22/2025 09:15:00 - WARNING -   	 vision_width: 768
+07/22/2025 09:15:00 - WARNING -   	 vision_patch_size: 32
+07/22/2025 09:15:00 - WARNING -   	 context_length: 77
+07/22/2025 09:15:00 - WARNING -   	 vocab_size: 49408
+07/22/2025 09:15:00 - WARNING -   	 transformer_width: 512
+07/22/2025 09:15:00 - WARNING -   	 transformer_heads: 8
+07/22/2025 09:15:00 - WARNING -   	 transformer_layers: 12
+07/22/2025 09:15:00 - WARNING -   		 linear_patch: 2d
+07/22/2025 09:15:00 - WARNING -   	 cut_top_layer: 0
+07/22/2025 09:15:03 - WARNING -   	 sim_header: meanP
+07/22/2025 09:15:14 - INFO -   --------------------
+07/22/2025 09:15:14 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   clip.Mvisual.class_embedding
+   clip.Mvisual.positional_embedding
+   clip.Mvisual.proj
+   clip.Mvisual.conv1.weight
+   clip.Mvisual.ln_pre.weight
+   clip.Mvisual.ln_pre.bias
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_1.weight
+   clip.Mvisual.transformer.resblocks.0.ln_1.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.0.ln_2.weight
+   clip.Mvisual.transformer.resblocks.0.ln_2.bias
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_1.weight
+   clip.Mvisual.transformer.resblocks.1.ln_1.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.1.ln_2.weight
+   clip.Mvisual.transformer.resblocks.1.ln_2.bias
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Mvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Mvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_1.weight
+   clip.Mvisual.transformer.resblocks.2.ln_1.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Mvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Mvisual.transformer.resblocks.2.ln_2.weight
+   clip.Mvisual.transformer.resblocks.2.ln_2.bias
+   clip.Mvisual.ln_post.weight
+   clip.Mvisual.ln_post.bias
+   clip.Rvisual.class_embedding
+   clip.Rvisual.positional_embedding
+   clip.Rvisual.proj
+   clip.Rvisual.conv1.weight
+   clip.Rvisual.ln_pre.weight
+   clip.Rvisual.ln_pre.bias
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.0.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.0.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_1.weight
+   clip.Rvisual.transformer.resblocks.0.ln_1.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.0.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.0.ln_2.weight
+   clip.Rvisual.transformer.resblocks.0.ln_2.bias
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.1.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.1.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_1.weight
+   clip.Rvisual.transformer.resblocks.1.ln_1.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.1.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.1.ln_2.weight
+   clip.Rvisual.transformer.resblocks.1.ln_2.bias
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_weight
+   clip.Rvisual.transformer.resblocks.2.attn.in_proj_bias
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.weight
+   clip.Rvisual.transformer.resblocks.2.attn.out_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_1.weight
+   clip.Rvisual.transformer.resblocks.2.ln_1.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_fc.bias
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.weight
+   clip.Rvisual.transformer.resblocks.2.mlp.c_proj.bias
+   clip.Rvisual.transformer.resblocks.2.ln_2.weight
+   clip.Rvisual.transformer.resblocks.2.ln_2.bias
+   clip.Rvisual.ln_post.weight
+   clip.Rvisual.ln_post.bias
+   mv_module.channel_weight_predictor.0.weight
+   mv_module.channel_weight_predictor.0.bias
+   mv_module.channel_weight_predictor.2.weight
+   mv_module.channel_weight_predictor.2.bias
+   mv_module.spatial_module.conv0.0.weight
+   mv_module.spatial_module.conv0.0.bias
+   mv_module.spatial_module.conv1.0.weight
+   mv_module.spatial_module.conv1.0.bias
+   mv_module.spatial_module.conv2.0.weight
+   mv_module.spatial_module.conv2.0.bias
+   mv_module.spatial_module.conv3.0.weight
+   mv_module.spatial_module.conv3.0.bias
+   mv_module.spatial_module.conv4.0.weight
+   mv_module.spatial_module.conv4.0.bias
+   mv_module.spatial_module.predict_flow.weight
+   mv_module.spatial_module.predict_flow.bias
+   mv_module.channel_module.conv0.0.weight
+   mv_module.channel_module.conv0.0.bias
+   mv_module.channel_module.conv1.0.weight
+   mv_module.channel_module.conv1.0.bias
+   mv_module.channel_module.conv2.0.weight
+   mv_module.channel_module.conv2.0.bias
+   mv_module.channel_module.conv3.0.weight
+   mv_module.channel_module.conv3.0.bias
+   mv_module.channel_module.conv4.0.weight
+   mv_module.channel_module.conv4.0.bias
+   mv_module.channel_module.predict_flow.weight
+   mv_module.channel_module.predict_flow.bias
+   res_module.channel_weight_predictor.0.weight
+   res_module.channel_weight_predictor.0.bias
+   res_module.channel_weight_predictor.2.weight
+   res_module.channel_weight_predictor.2.bias
+   res_module.spatial_module.conv0.0.weight
+   res_module.spatial_module.conv0.0.bias
+   res_module.spatial_module.conv1.0.weight
+   res_module.spatial_module.conv1.0.bias
+   res_module.spatial_module.conv2.0.weight
+   res_module.spatial_module.conv2.0.bias
+   res_module.spatial_module.conv3.0.weight
+   res_module.spatial_module.conv3.0.bias
+   res_module.spatial_module.conv4.0.weight
+   res_module.spatial_module.conv4.0.bias
+   res_module.spatial_module.predict_flow.weight
+   res_module.spatial_module.predict_flow.bias
+   res_module.channel_module.conv0.0.weight
+   res_module.channel_module.conv0.0.bias
+   res_module.channel_module.conv1.0.weight
+   res_module.channel_module.conv1.0.bias
+   res_module.channel_module.conv2.0.weight
+   res_module.channel_module.conv2.0.bias
+   res_module.channel_module.conv3.0.weight
+   res_module.channel_module.conv3.0.bias
+   res_module.channel_module.conv4.0.weight
+   res_module.channel_module.conv4.0.bias
+   res_module.channel_module.predict_flow.weight
+   res_module.channel_module.predict_flow.bias
+07/22/2025 09:15:14 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/22/2025 09:15:14 - INFO -   ***** Running test *****
+07/22/2025 09:15:14 - INFO -     Num examples = 27763
+07/22/2025 09:15:14 - INFO -     Batch size = 16
+07/22/2025 09:15:14 - INFO -     Num steps = 1736
+07/22/2025 09:15:14 - INFO -   ***** Running val *****
+07/22/2025 09:15:14 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+07/22/2025 09:15:14 - INFO -   ***** Running training *****
+07/22/2025 09:15:14 - INFO -     Num examples = 48774
+07/22/2025 09:15:14 - INFO -     Batch size = 32
+07/22/2025 09:15:14 - INFO -     Num steps = 7620
+Traceback (most recent call last):
+  File "main_xclip.py", line 560, in <module>
+    main()
+  File "main_xclip.py", line 532, in main
+    tr_loss, global_step = train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer,
+  File "main_xclip.py", line 272, in train_epoch
+    loss = model(input_ids, segment_ids, input_mask, video, res, mv, video_mask)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 619, in forward
+    output = self.module(*inputs[0], **kwargs[0])
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/wa24301158/mywork/newX-CLIP-main/modules/modeling_xclip.py", line 251, in forward
+    Pvisual_output = self.get_pvisual_output(visual_output, video_mask, res, mv,shaped=True)
+  File "/home/wa24301158/mywork/newX-CLIP-main/modules/modeling_xclip.py", line 320, in get_pvisual_output
+    p_features = self.mv_module(i_features, mv, mv_feather)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/wa24301158/mywork/newX-CLIP-main/modules/modeling_xclip.py", line 79, in forward
+    channel_weight = self.channel_module(torch.cat([p_motions_resized, p_features, i_features], dim=1))
+RuntimeError: Sizes of tensors must match except in dimension 0. Got 384 and 768 (The offending index is 0)
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=0', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=32', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.

@@ -1,0 +1,193 @@
+07/23/2025 08:18:33 - INFO -   device: cuda:2 n_gpu: 3
+07/23/2025 08:18:33 - INFO -   Effective parameters:
+07/23/2025 08:18:33 - INFO -   device: cuda:1 n_gpu: 3
+07/23/2025 08:18:33 - INFO -     <<< batch_size: 60
+07/23/2025 08:18:33 - INFO -     <<< batch_size_val: 24
+07/23/2025 08:18:33 - INFO -     <<< cache_dir: 
+07/23/2025 08:18:33 - INFO -     <<< coef_lr: 0.001
+07/23/2025 08:18:33 - INFO -     <<< cross_model: cross-base
+07/23/2025 08:18:33 - INFO -     <<< cross_num_hidden_layers: 4
+07/23/2025 08:18:33 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/23/2025 08:18:33 - INFO -     <<< datatype: msvd
+07/23/2025 08:18:33 - INFO -     <<< do_eval: False
+07/23/2025 08:18:33 - INFO -     <<< do_lower_case: False
+07/23/2025 08:18:33 - INFO -     <<< do_pretrain: False
+07/23/2025 08:18:33 - INFO -     <<< do_train: True
+07/23/2025 08:18:33 - INFO -     <<< epochs: 1
+07/23/2025 08:18:33 - INFO -     <<< eval_frame_order: 0
+07/23/2025 08:18:33 - INFO -     <<< expand_msrvtt_sentences: False
+07/23/2025 08:18:33 - INFO -     <<< feature_framerate: 1
+07/23/2025 08:18:33 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/23/2025 08:18:33 - INFO -     <<< fp16: False
+07/23/2025 08:18:33 - INFO -     <<< fp16_opt_level: O1
+07/23/2025 08:18:33 - INFO -     <<< freeze_layer_num: 9
+07/23/2025 08:18:33 - INFO -     <<< gradient_accumulation_steps: 1
+07/23/2025 08:18:33 - INFO -     <<< hard_negative_rate: 0.5
+07/23/2025 08:18:33 - INFO -     <<< init_model: None
+07/23/2025 08:18:33 - INFO -     <<< linear_patch: 2d
+07/23/2025 08:18:33 - INFO -     <<< local_rank: 0
+07/23/2025 08:18:33 - INFO -     <<< loose_type: True
+07/23/2025 08:18:33 - INFO -     <<< lr: 0.0001
+07/23/2025 08:18:33 - INFO -     <<< lr_decay: 0.9
+07/23/2025 08:18:33 - INFO -     <<< margin: 0.1
+07/23/2025 08:18:33 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/23/2025 08:18:33 - INFO -     <<< max_frames: 12
+07/23/2025 08:18:33 - INFO -     <<< max_words: 32
+07/23/2025 08:18:33 - INFO -     <<< n_display: 5
+07/23/2025 08:18:33 - INFO -     <<< n_gpu: 1
+07/23/2025 08:18:33 - INFO -     <<< n_pair: 1
+07/23/2025 08:18:33 - INFO -     <<< negative_weighting: 1
+07/23/2025 08:18:33 - INFO -     <<< new_added_modules: ['Adapter']
+07/23/2025 08:18:33 - INFO -     <<< num_thread_reader: 4
+07/23/2025 08:18:33 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_test
+07/23/2025 08:18:33 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/23/2025 08:18:33 - INFO -     <<< rank: 0
+07/23/2025 08:18:33 - INFO -     <<< resume_model: None
+07/23/2025 08:18:33 - INFO -     <<< sampled_use_mil: False
+07/23/2025 08:18:33 - INFO -     <<< seed: 42
+07/23/2025 08:18:33 - INFO -     <<< sim_header: meanP
+07/23/2025 08:18:33 - INFO -     <<< slice_framepos: 0
+07/23/2025 08:18:33 - INFO -     <<< task_type: retrieval
+07/23/2025 08:18:33 - INFO -     <<< text_num_hidden_layers: 12
+07/23/2025 08:18:33 - INFO -     <<< train_csv: data/.train.csv
+07/23/2025 08:18:33 - INFO -     <<< train_frame_order: 0
+07/23/2025 08:18:33 - INFO -     <<< use_mil: False
+07/23/2025 08:18:33 - INFO -     <<< val_csv: data/.val.csv
+07/23/2025 08:18:33 - INFO -     <<< video_dim: 1024
+07/23/2025 08:18:33 - INFO -     <<< visual_num_hidden_layers: 12
+07/23/2025 08:18:33 - INFO -     <<< warmup_proportion: 0.1
+07/23/2025 08:18:33 - INFO -     <<< world_size: 3
+07/23/2025 08:18:33 - INFO -   device: cuda:0 n_gpu: 3
+07/23/2025 08:18:34 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/23/2025 08:18:34 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/23/2025 08:18:34 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/23/2025 08:18:34 - WARNING -   Stage-One:True, Stage-Two:False
+07/23/2025 08:18:34 - WARNING -   Test retrieval by loose type.
+07/23/2025 08:18:34 - WARNING -   	 embed_dim: 512
+07/23/2025 08:18:34 - WARNING -   	 image_resolution: 224
+07/23/2025 08:18:34 - WARNING -   	 vision_layers: 12
+07/23/2025 08:18:34 - WARNING -   	 vision_width: 768
+07/23/2025 08:18:34 - WARNING -   	 vision_patch_size: 32
+07/23/2025 08:18:34 - WARNING -   	 context_length: 77
+07/23/2025 08:18:34 - WARNING -   	 vocab_size: 49408
+07/23/2025 08:18:34 - WARNING -   	 transformer_width: 512
+07/23/2025 08:18:34 - WARNING -   	 transformer_heads: 8
+07/23/2025 08:18:34 - WARNING -   	 transformer_layers: 12
+07/23/2025 08:18:34 - WARNING -   		 linear_patch: 2d
+07/23/2025 08:18:34 - WARNING -   	 cut_top_layer: 0
+07/23/2025 08:18:35 - WARNING -   	 sim_header: meanP
+07/23/2025 08:18:44 - INFO -   --------------------
+07/23/2025 08:18:44 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   DL.motion_encoder.layer1.0.weight
+   DL.motion_encoder.layer1.1.weight
+   DL.motion_encoder.layer1.1.bias
+   DL.motion_encoder.layer1.1.running_mean
+   DL.motion_encoder.layer1.1.running_var
+   DL.motion_encoder.layer2.0.weight
+   DL.motion_encoder.layer2.1.weight
+   DL.motion_encoder.layer2.1.bias
+   DL.motion_encoder.layer2.1.running_mean
+   DL.motion_encoder.layer2.1.running_var
+   DL.motion_encoder.layer3.0.weight
+   DL.motion_encoder.layer3.1.weight
+   DL.motion_encoder.layer3.1.bias
+   DL.motion_encoder.layer3.1.running_mean
+   DL.motion_encoder.layer3.1.running_var
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.in_proj_weight
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.in_proj_bias
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.out_proj.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.out_proj.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.linear1.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.linear1.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.linear2.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.linear2.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.norm1.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.norm1.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.norm2.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.norm2.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.in_proj_weight
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.in_proj_bias
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.out_proj.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.out_proj.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.linear1.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.linear1.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.linear2.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.linear2.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.norm1.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.norm1.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.norm2.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.norm2.bias
+   DL.temporal_fusion.positional_embedding.weight
+   DL.delta_predictor.param_generator.0.weight
+   DL.delta_predictor.param_generator.0.bias
+   DL.delta_predictor.param_generator.2.weight
+   DL.delta_predictor.param_generator.2.bias
+   DL.delta_predictor.final_predictor.0.weight
+   DL.delta_predictor.final_predictor.0.bias
+   DL.delta_predictor.final_predictor.3.weight
+   DL.delta_predictor.final_predictor.3.bias
+07/23/2025 08:18:44 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/23/2025 08:18:44 - INFO -   ***** Running test *****
+07/23/2025 08:18:44 - INFO -     Num examples = 27763
+07/23/2025 08:18:44 - INFO -     Batch size = 24
+07/23/2025 08:18:44 - INFO -     Num steps = 1157
+07/23/2025 08:18:44 - INFO -   ***** Running val *****
+07/23/2025 08:18:44 - INFO -     Num examples = 4290
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+Video number: 1200
+Total Paire: 48774
+Video number: 1200
+Total Paire: 48774
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+Video number: 1200
+Total Paire: 48774
+07/23/2025 08:18:45 - INFO -   ***** Running training *****
+07/23/2025 08:18:45 - INFO -     Num examples = 48774
+07/23/2025 08:18:45 - INFO -     Batch size = 60
+07/23/2025 08:18:45 - INFO -     Num steps = 812

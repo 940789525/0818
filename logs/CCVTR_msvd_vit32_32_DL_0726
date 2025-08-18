@@ -1,0 +1,1102 @@
+07/26/2025 20:09:11 - INFO -   Effective parameters:
+07/26/2025 20:09:11 - INFO -     <<< batch_size: 48
+07/26/2025 20:09:11 - INFO -     <<< batch_size_val: 16
+07/26/2025 20:09:11 - INFO -     <<< cache_dir: 
+07/26/2025 20:09:11 - INFO -     <<< coef_lr: 0.001
+07/26/2025 20:09:11 - INFO -     <<< cross_model: cross-base
+07/26/2025 20:09:11 - INFO -     <<< cross_num_hidden_layers: 4
+07/26/2025 20:09:11 - INFO -     <<< data_path: /home/wa24301158/dataset/MSVD
+07/26/2025 20:09:11 - INFO -     <<< datatype: msvd
+07/26/2025 20:09:11 - INFO -     <<< do_eval: False
+07/26/2025 20:09:11 - INFO -     <<< do_lower_case: False
+07/26/2025 20:09:11 - INFO -     <<< do_pretrain: False
+07/26/2025 20:09:11 - INFO -     <<< do_train: True
+07/26/2025 20:09:11 - INFO -     <<< epochs: 5
+07/26/2025 20:09:11 - INFO -     <<< eval_frame_order: 0
+07/26/2025 20:09:11 - INFO -     <<< expand_msrvtt_sentences: False
+07/26/2025 20:09:11 - INFO -     <<< feature_framerate: 1
+07/26/2025 20:09:11 - INFO -     <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+07/26/2025 20:09:11 - INFO -     <<< fp16: False
+07/26/2025 20:09:11 - INFO -     <<< fp16_opt_level: O1
+07/26/2025 20:09:11 - INFO -     <<< freeze_layer_num: 9
+07/26/2025 20:09:11 - INFO -     <<< gradient_accumulation_steps: 1
+07/26/2025 20:09:11 - INFO -     <<< hard_negative_rate: 0.5
+07/26/2025 20:09:11 - INFO -     <<< init_model: None
+07/26/2025 20:09:11 - INFO -     <<< linear_patch: 2d
+07/26/2025 20:09:11 - INFO -     <<< local_rank: 0
+07/26/2025 20:09:11 - INFO -     <<< loose_type: True
+07/26/2025 20:09:11 - INFO -     <<< lr: 0.0001
+07/26/2025 20:09:11 - INFO -     <<< lr_decay: 0.9
+07/26/2025 20:09:11 - INFO -     <<< margin: 0.1
+07/26/2025 20:09:11 - INFO -     <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+07/26/2025 20:09:11 - INFO -     <<< max_frames: 12
+07/26/2025 20:09:11 - INFO -     <<< max_words: 32
+07/26/2025 20:09:11 - INFO -     <<< n_display: 5
+07/26/2025 20:09:11 - INFO -     <<< n_gpu: 1
+07/26/2025 20:09:11 - INFO -     <<< n_pair: 1
+07/26/2025 20:09:11 - INFO -     <<< negative_weighting: 1
+07/26/2025 20:09:11 - INFO -     <<< new_added_modules: ['Adapter']
+07/26/2025 20:09:11 - INFO -     <<< num_thread_reader: 4
+07/26/2025 20:09:11 - INFO -     <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0726
+07/26/2025 20:09:11 - INFO -     <<< pretrained_clip_name: ViT-B/32
+07/26/2025 20:09:11 - INFO -     <<< rank: 0
+07/26/2025 20:09:11 - INFO -     <<< resume_model: None
+07/26/2025 20:09:11 - INFO -     <<< sampled_use_mil: False
+07/26/2025 20:09:11 - INFO -     <<< seed: 42
+07/26/2025 20:09:11 - INFO -     <<< sim_header: meanP
+07/26/2025 20:09:11 - INFO -     <<< slice_framepos: 0
+07/26/2025 20:09:11 - INFO -     <<< task_type: retrieval
+07/26/2025 20:09:11 - INFO -     <<< text_num_hidden_layers: 12
+07/26/2025 20:09:11 - INFO -     <<< train_csv: data/.train.csv
+07/26/2025 20:09:11 - INFO -     <<< train_frame_order: 0
+07/26/2025 20:09:11 - INFO -     <<< use_mil: False
+07/26/2025 20:09:11 - INFO -     <<< val_csv: data/.val.csv
+07/26/2025 20:09:11 - INFO -     <<< video_dim: 1024
+07/26/2025 20:09:11 - INFO -     <<< visual_num_hidden_layers: 12
+07/26/2025 20:09:11 - INFO -     <<< warmup_proportion: 0.1
+07/26/2025 20:09:11 - INFO -     <<< world_size: 2
+07/26/2025 20:09:11 - INFO -   device: cuda:0 n_gpu: 2
+07/26/2025 20:09:11 - INFO -   device: cuda:1 n_gpu: 2
+07/26/2025 20:09:12 - INFO -   loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+07/26/2025 20:09:12 - INFO -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+07/26/2025 20:09:12 - INFO -   Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+07/26/2025 20:09:12 - WARNING -   Stage-One:True, Stage-Two:False
+07/26/2025 20:09:12 - WARNING -   Test retrieval by loose type.
+07/26/2025 20:09:12 - WARNING -   	 embed_dim: 512
+07/26/2025 20:09:12 - WARNING -   	 image_resolution: 224
+07/26/2025 20:09:12 - WARNING -   	 vision_layers: 12
+07/26/2025 20:09:12 - WARNING -   	 vision_width: 768
+07/26/2025 20:09:12 - WARNING -   	 vision_patch_size: 32
+07/26/2025 20:09:12 - WARNING -   	 context_length: 77
+07/26/2025 20:09:12 - WARNING -   	 vocab_size: 49408
+07/26/2025 20:09:12 - WARNING -   	 transformer_width: 512
+07/26/2025 20:09:12 - WARNING -   	 transformer_heads: 8
+07/26/2025 20:09:12 - WARNING -   	 transformer_layers: 12
+07/26/2025 20:09:12 - WARNING -   		 linear_patch: 2d
+07/26/2025 20:09:12 - WARNING -   	 cut_top_layer: 0
+07/26/2025 20:09:13 - WARNING -   	 sim_header: meanP
+07/26/2025 20:09:22 - INFO -   --------------------
+07/26/2025 20:09:22 - INFO -   Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   loss_fct.dcd_loss.temperature
+   DL.motion_encoder.mvcm.query_conv.weight
+   DL.motion_encoder.mvcm.query_conv.bias
+   DL.motion_encoder.mvcm.key_conv.weight
+   DL.motion_encoder.mvcm.key_conv.bias
+   DL.motion_encoder.mvcm.value_conv.weight
+   DL.motion_encoder.mvcm.value_conv.bias
+   DL.motion_encoder.mvcm.ceb.0.weight
+   DL.motion_encoder.mvcm.ceb.0.bias
+   DL.motion_encoder.mvcm.ceb.2.weight
+   DL.motion_encoder.mvcm.ceb.2.bias
+   DL.motion_encoder.mvcm.out_conv.weight
+   DL.motion_encoder.mvcm.out_conv.bias
+   DL.motion_encoder.mv_path.0.weight
+   DL.motion_encoder.mv_path.1.weight
+   DL.motion_encoder.mv_path.1.bias
+   DL.motion_encoder.mv_path.1.running_mean
+   DL.motion_encoder.mv_path.1.running_var
+   DL.motion_encoder.res_path.0.weight
+   DL.motion_encoder.res_path.1.weight
+   DL.motion_encoder.res_path.1.bias
+   DL.motion_encoder.res_path.1.running_mean
+   DL.motion_encoder.res_path.1.running_var
+   DL.motion_encoder.res_path.3.weight
+   DL.motion_encoder.res_path.4.weight
+   DL.motion_encoder.res_path.4.bias
+   DL.motion_encoder.res_path.4.running_mean
+   DL.motion_encoder.res_path.4.running_var
+   DL.motion_encoder.final_path.0.weight
+   DL.motion_encoder.final_path.1.weight
+   DL.motion_encoder.final_path.1.bias
+   DL.motion_encoder.final_path.1.running_mean
+   DL.motion_encoder.final_path.1.running_var
+   DL.motion_encoder.final_path.3.weight
+   DL.motion_encoder.final_path.4.weight
+   DL.motion_encoder.final_path.4.bias
+   DL.motion_encoder.final_path.4.running_mean
+   DL.motion_encoder.final_path.4.running_var
+   DL.residual_fuser.fusion_net.0.weight
+   DL.residual_fuser.fusion_net.1.weight
+   DL.residual_fuser.fusion_net.1.bias
+   DL.residual_fuser.fusion_net.1.running_mean
+   DL.residual_fuser.fusion_net.1.running_var
+   DL.residual_fuser.fusion_net.3.weight
+   DL.residual_fuser.fusion_net.3.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.in_proj_weight
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.in_proj_bias
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.out_proj.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.self_attn.out_proj.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.linear1.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.linear1.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.linear2.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.linear2.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.norm1.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.norm1.bias
+   DL.temporal_fusion.transformer_encoder.layers.0.norm2.weight
+   DL.temporal_fusion.transformer_encoder.layers.0.norm2.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.in_proj_weight
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.in_proj_bias
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.out_proj.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.self_attn.out_proj.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.linear1.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.linear1.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.linear2.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.linear2.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.norm1.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.norm1.bias
+   DL.temporal_fusion.transformer_encoder.layers.1.norm2.weight
+   DL.temporal_fusion.transformer_encoder.layers.1.norm2.bias
+   DL.temporal_fusion.positional_embedding.weight
+   DL.temporal_fusion.gating_module.0.weight
+   DL.temporal_fusion.gating_module.0.bias
+   DL.temporal_fusion.gating_module.2.weight
+   DL.temporal_fusion.gating_module.2.bias
+   DL.delta_predictor.param_generator.0.weight
+   DL.delta_predictor.param_generator.0.bias
+   DL.delta_predictor.param_generator.2.weight
+   DL.delta_predictor.param_generator.2.bias
+   DL.delta_predictor.final_predictor.0.weight
+   DL.delta_predictor.final_predictor.0.bias
+   DL.delta_predictor.final_predictor.3.weight
+   DL.delta_predictor.final_predictor.3.bias
+07/26/2025 20:09:22 - INFO -   Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For test, sentence number: 27763
+For test, video number: 670
+Video number: 670
+Total Paire: 27763
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+For val, sentence number: 4290
+For val, video number: 100
+Video number: 100
+Total Paire: 4290
+07/26/2025 20:09:22 - INFO -   ***** Running test *****
+07/26/2025 20:09:22 - INFO -     Num examples = 27763
+07/26/2025 20:09:22 - INFO -     Batch size = 16
+07/26/2025 20:09:22 - INFO -     Num steps = 1736
+07/26/2025 20:09:22 - INFO -   ***** Running val *****
+07/26/2025 20:09:22 - INFO -     Num examples = 4290
+Video number: 1200
+Total Paire: 48774
+Video number: 1200
+Total Paire: 48774
+07/26/2025 20:09:23 - INFO -   ***** Running training *****
+07/26/2025 20:09:23 - INFO -     Num examples = 48774
+07/26/2025 20:09:23 - INFO -     Batch size = 48
+07/26/2025 20:09:23 - INFO -     Num steps = 5080
+/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/checkpoint.py:25: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/utils/checkpoint.py:25: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+07/26/2025 20:10:00 - INFO -   Epoch: 1/5, Step: 5/1016, Lr: 0.000000001-0.000000984, Loss: 2.815844, Time/step: 7.499644
+07/26/2025 20:10:15 - INFO -   Epoch: 1/5, Step: 10/1016, Lr: 0.000000002-0.000001969, Loss: 2.722101, Time/step: 2.966937
+07/26/2025 20:10:30 - INFO -   Epoch: 1/5, Step: 15/1016, Lr: 0.000000003-0.000002953, Loss: 2.670647, Time/step: 2.937158
+07/26/2025 20:10:47 - INFO -   Epoch: 1/5, Step: 20/1016, Lr: 0.000000004-0.000003937, Loss: 2.629483, Time/step: 3.387690
+07/26/2025 20:11:12 - INFO -   Epoch: 1/5, Step: 25/1016, Lr: 0.000000005-0.000004921, Loss: 2.595011, Time/step: 5.147177
+07/26/2025 20:11:30 - INFO -   Epoch: 1/5, Step: 30/1016, Lr: 0.000000006-0.000005906, Loss: 2.488403, Time/step: 3.441115
+07/26/2025 20:11:48 - INFO -   Epoch: 1/5, Step: 35/1016, Lr: 0.000000007-0.000006890, Loss: 2.554759, Time/step: 3.706648
+07/26/2025 20:12:03 - INFO -   Epoch: 1/5, Step: 40/1016, Lr: 0.000000008-0.000007874, Loss: 2.245656, Time/step: 3.018242
+07/26/2025 20:12:27 - INFO -   Epoch: 1/5, Step: 45/1016, Lr: 0.000000009-0.000008858, Loss: 2.442272, Time/step: 4.740390
+07/26/2025 20:12:46 - INFO -   Epoch: 1/5, Step: 50/1016, Lr: 0.000000010-0.000009843, Loss: 2.196439, Time/step: 3.789995
+07/26/2025 20:12:59 - INFO -   Epoch: 1/5, Step: 55/1016, Lr: 0.000000011-0.000010827, Loss: 2.159927, Time/step: 2.626744
+07/26/2025 20:13:19 - INFO -   Epoch: 1/5, Step: 60/1016, Lr: 0.000000012-0.000011811, Loss: 2.001200, Time/step: 3.991039
+07/26/2025 20:13:40 - INFO -   Epoch: 1/5, Step: 65/1016, Lr: 0.000000013-0.000012795, Loss: 2.065974, Time/step: 4.125409
+07/26/2025 20:13:54 - INFO -   Epoch: 1/5, Step: 70/1016, Lr: 0.000000014-0.000013780, Loss: 1.860773, Time/step: 2.830800
+07/26/2025 20:14:10 - INFO -   Epoch: 1/5, Step: 75/1016, Lr: 0.000000015-0.000014764, Loss: 2.244599, Time/step: 3.285525
+07/26/2025 20:14:26 - INFO -   Epoch: 1/5, Step: 80/1016, Lr: 0.000000016-0.000015748, Loss: 1.942165, Time/step: 3.156514
+07/26/2025 20:14:47 - INFO -   Epoch: 1/5, Step: 85/1016, Lr: 0.000000017-0.000016732, Loss: 1.626647, Time/step: 4.273997
+07/26/2025 20:15:05 - INFO -   Epoch: 1/5, Step: 90/1016, Lr: 0.000000018-0.000017717, Loss: 1.447731, Time/step: 3.544089
+07/26/2025 20:15:25 - INFO -   Epoch: 1/5, Step: 95/1016, Lr: 0.000000019-0.000018701, Loss: 1.529021, Time/step: 4.014513
+07/26/2025 20:15:40 - INFO -   Epoch: 1/5, Step: 100/1016, Lr: 0.000000020-0.000019685, Loss: 1.374920, Time/step: 3.042783
+07/26/2025 20:16:00 - INFO -   Epoch: 1/5, Step: 105/1016, Lr: 0.000000021-0.000020669, Loss: 1.309833, Time/step: 3.900454
+07/26/2025 20:16:18 - INFO -   Epoch: 1/5, Step: 110/1016, Lr: 0.000000022-0.000021654, Loss: 1.476355, Time/step: 3.608955
+07/26/2025 20:16:36 - INFO -   Epoch: 1/5, Step: 115/1016, Lr: 0.000000023-0.000022638, Loss: 1.153021, Time/step: 3.683764
+07/26/2025 20:16:55 - INFO -   Epoch: 1/5, Step: 120/1016, Lr: 0.000000024-0.000023622, Loss: 1.453994, Time/step: 3.848165
+07/26/2025 20:17:14 - INFO -   Epoch: 1/5, Step: 125/1016, Lr: 0.000000025-0.000024606, Loss: 1.289298, Time/step: 3.673418
+07/26/2025 20:17:37 - INFO -   Epoch: 1/5, Step: 130/1016, Lr: 0.000000026-0.000025591, Loss: 1.144193, Time/step: 4.601005
+07/26/2025 20:17:55 - INFO -   Epoch: 1/5, Step: 135/1016, Lr: 0.000000027-0.000026575, Loss: 1.081897, Time/step: 3.549525
+07/26/2025 20:18:08 - INFO -   Epoch: 1/5, Step: 140/1016, Lr: 0.000000028-0.000027559, Loss: 0.821944, Time/step: 2.765549
+07/26/2025 20:18:26 - INFO -   Epoch: 1/5, Step: 145/1016, Lr: 0.000000029-0.000028543, Loss: 1.144373, Time/step: 3.502752
+07/26/2025 20:18:46 - INFO -   Epoch: 1/5, Step: 150/1016, Lr: 0.000000030-0.000029528, Loss: 0.936354, Time/step: 4.029297
+07/26/2025 20:19:01 - INFO -   Epoch: 1/5, Step: 155/1016, Lr: 0.000000031-0.000030512, Loss: 1.103529, Time/step: 2.920164
+07/26/2025 20:19:18 - INFO -   Epoch: 1/5, Step: 160/1016, Lr: 0.000000031-0.000031496, Loss: 0.803632, Time/step: 3.489887
+07/26/2025 20:19:37 - INFO -   Epoch: 1/5, Step: 165/1016, Lr: 0.000000032-0.000032480, Loss: 0.873550, Time/step: 3.775814
+07/26/2025 20:19:57 - INFO -   Epoch: 1/5, Step: 170/1016, Lr: 0.000000033-0.000033465, Loss: 0.871494, Time/step: 3.945051
+07/26/2025 20:20:13 - INFO -   Epoch: 1/5, Step: 175/1016, Lr: 0.000000034-0.000034449, Loss: 0.915743, Time/step: 3.290072
+07/26/2025 20:20:28 - INFO -   Epoch: 1/5, Step: 180/1016, Lr: 0.000000035-0.000035433, Loss: 0.758573, Time/step: 2.973864
+07/26/2025 20:20:45 - INFO -   Epoch: 1/5, Step: 185/1016, Lr: 0.000000036-0.000036417, Loss: 0.658615, Time/step: 3.437167
+07/26/2025 20:21:09 - INFO -   Epoch: 1/5, Step: 190/1016, Lr: 0.000000037-0.000037402, Loss: 0.877587, Time/step: 4.755908
+07/26/2025 20:21:28 - INFO -   Epoch: 1/5, Step: 195/1016, Lr: 0.000000038-0.000038386, Loss: 0.864681, Time/step: 3.776476
+07/26/2025 20:21:45 - INFO -   Epoch: 1/5, Step: 200/1016, Lr: 0.000000039-0.000039370, Loss: 1.019938, Time/step: 3.513634
+07/26/2025 20:22:03 - INFO -   Epoch: 1/5, Step: 205/1016, Lr: 0.000000040-0.000040354, Loss: 0.719876, Time/step: 3.408778
+07/26/2025 20:22:30 - INFO -   Epoch: 1/5, Step: 210/1016, Lr: 0.000000041-0.000041339, Loss: 0.754276, Time/step: 5.511130
+07/26/2025 20:22:47 - INFO -   Epoch: 1/5, Step: 215/1016, Lr: 0.000000042-0.000042323, Loss: 0.558956, Time/step: 3.399317
+07/26/2025 20:23:05 - INFO -   Epoch: 1/5, Step: 220/1016, Lr: 0.000000043-0.000043307, Loss: 0.545785, Time/step: 3.574456
+07/26/2025 20:23:19 - INFO -   Epoch: 1/5, Step: 225/1016, Lr: 0.000000044-0.000044291, Loss: 0.808005, Time/step: 2.907275
+07/26/2025 20:23:40 - INFO -   Epoch: 1/5, Step: 230/1016, Lr: 0.000000045-0.000045276, Loss: 0.687140, Time/step: 4.047110
+07/26/2025 20:23:55 - INFO -   Epoch: 1/5, Step: 235/1016, Lr: 0.000000046-0.000046260, Loss: 0.730246, Time/step: 2.974711
+07/26/2025 20:24:12 - INFO -   Epoch: 1/5, Step: 240/1016, Lr: 0.000000047-0.000047244, Loss: 0.606786, Time/step: 3.490876
+07/26/2025 20:24:28 - INFO -   Epoch: 1/5, Step: 245/1016, Lr: 0.000000048-0.000048228, Loss: 0.752768, Time/step: 3.105856
+07/26/2025 20:24:49 - INFO -   Epoch: 1/5, Step: 250/1016, Lr: 0.000000049-0.000049213, Loss: 0.756058, Time/step: 4.371015
+07/26/2025 20:25:05 - INFO -   Epoch: 1/5, Step: 255/1016, Lr: 0.000000050-0.000050197, Loss: 0.729673, Time/step: 3.205950
+07/26/2025 20:25:25 - INFO -   Epoch: 1/5, Step: 260/1016, Lr: 0.000000051-0.000051181, Loss: 0.555408, Time/step: 3.831677
+07/26/2025 20:25:42 - INFO -   Epoch: 1/5, Step: 265/1016, Lr: 0.000000052-0.000052165, Loss: 0.543924, Time/step: 3.423181
+07/26/2025 20:25:59 - INFO -   Epoch: 1/5, Step: 270/1016, Lr: 0.000000053-0.000053150, Loss: 0.377923, Time/step: 3.394289
+07/26/2025 20:26:21 - INFO -   Epoch: 1/5, Step: 275/1016, Lr: 0.000000054-0.000054134, Loss: 0.579946, Time/step: 4.372679
+07/26/2025 20:26:34 - INFO -   Epoch: 1/5, Step: 280/1016, Lr: 0.000000055-0.000055118, Loss: 0.713629, Time/step: 2.737291
+07/26/2025 20:26:51 - INFO -   Epoch: 1/5, Step: 285/1016, Lr: 0.000000056-0.000056102, Loss: 0.527437, Time/step: 3.318069
+07/26/2025 20:27:07 - INFO -   Epoch: 1/5, Step: 290/1016, Lr: 0.000000057-0.000057087, Loss: 0.611015, Time/step: 3.189968
+07/26/2025 20:27:29 - INFO -   Epoch: 1/5, Step: 295/1016, Lr: 0.000000058-0.000058071, Loss: 0.607226, Time/step: 4.523603
+07/26/2025 20:27:45 - INFO -   Epoch: 1/5, Step: 300/1016, Lr: 0.000000059-0.000059055, Loss: 0.435176, Time/step: 3.186035
+07/26/2025 20:28:03 - INFO -   Epoch: 1/5, Step: 305/1016, Lr: 0.000000060-0.000060039, Loss: 0.609659, Time/step: 3.438178
+07/26/2025 20:28:18 - INFO -   Epoch: 1/5, Step: 310/1016, Lr: 0.000000061-0.000061024, Loss: 0.523294, Time/step: 3.035201
+07/26/2025 20:28:35 - INFO -   Epoch: 1/5, Step: 315/1016, Lr: 0.000000062-0.000062008, Loss: 0.554828, Time/step: 3.449176
+07/26/2025 20:28:56 - INFO -   Epoch: 1/5, Step: 320/1016, Lr: 0.000000063-0.000062992, Loss: 0.600790, Time/step: 4.244717
+07/26/2025 20:29:11 - INFO -   Epoch: 1/5, Step: 325/1016, Lr: 0.000000064-0.000063976, Loss: 0.653038, Time/step: 3.042095
+07/26/2025 20:29:26 - INFO -   Epoch: 1/5, Step: 330/1016, Lr: 0.000000065-0.000064961, Loss: 0.609494, Time/step: 2.951711
+07/26/2025 20:29:45 - INFO -   Epoch: 1/5, Step: 335/1016, Lr: 0.000000066-0.000065945, Loss: 0.551423, Time/step: 3.766482
+07/26/2025 20:30:03 - INFO -   Epoch: 1/5, Step: 340/1016, Lr: 0.000000067-0.000066929, Loss: 0.488794, Time/step: 3.635575
+07/26/2025 20:30:21 - INFO -   Epoch: 1/5, Step: 345/1016, Lr: 0.000000068-0.000067913, Loss: 0.311591, Time/step: 3.504090
+07/26/2025 20:30:40 - INFO -   Epoch: 1/5, Step: 350/1016, Lr: 0.000000069-0.000068898, Loss: 0.629576, Time/step: 3.792362
+07/26/2025 20:30:57 - INFO -   Epoch: 1/5, Step: 355/1016, Lr: 0.000000070-0.000069882, Loss: 0.414401, Time/step: 3.433739
+07/26/2025 20:31:15 - INFO -   Epoch: 1/5, Step: 360/1016, Lr: 0.000000071-0.000070866, Loss: 0.378337, Time/step: 3.687354
+07/26/2025 20:31:36 - INFO -   Epoch: 1/5, Step: 365/1016, Lr: 0.000000072-0.000071850, Loss: 0.696989, Time/step: 4.193259
+07/26/2025 20:31:53 - INFO -   Epoch: 1/5, Step: 370/1016, Lr: 0.000000073-0.000072835, Loss: 0.486105, Time/step: 3.263747
+07/26/2025 20:32:19 - INFO -   Epoch: 1/5, Step: 375/1016, Lr: 0.000000074-0.000073819, Loss: 0.540128, Time/step: 5.200803
+07/26/2025 20:32:35 - INFO -   Epoch: 1/5, Step: 380/1016, Lr: 0.000000075-0.000074803, Loss: 0.396125, Time/step: 3.273020
+07/26/2025 20:32:53 - INFO -   Epoch: 1/5, Step: 385/1016, Lr: 0.000000076-0.000075787, Loss: 0.421812, Time/step: 3.668838
+07/26/2025 20:33:12 - INFO -   Epoch: 1/5, Step: 390/1016, Lr: 0.000000077-0.000076772, Loss: 0.457309, Time/step: 3.711195
+07/26/2025 20:33:32 - INFO -   Epoch: 1/5, Step: 395/1016, Lr: 0.000000078-0.000077756, Loss: 0.357789, Time/step: 3.976300
+07/26/2025 20:33:45 - INFO -   Epoch: 1/5, Step: 400/1016, Lr: 0.000000079-0.000078740, Loss: 0.236487, Time/step: 2.697332
+07/26/2025 20:34:03 - INFO -   Epoch: 1/5, Step: 405/1016, Lr: 0.000000080-0.000079724, Loss: 0.528082, Time/step: 3.643693
+07/26/2025 20:34:20 - INFO -   Epoch: 1/5, Step: 410/1016, Lr: 0.000000081-0.000080709, Loss: 0.428251, Time/step: 3.343034
+07/26/2025 20:34:45 - INFO -   Epoch: 1/5, Step: 415/1016, Lr: 0.000000082-0.000081693, Loss: 0.521785, Time/step: 5.061554
+07/26/2025 20:35:01 - INFO -   Epoch: 1/5, Step: 420/1016, Lr: 0.000000083-0.000082677, Loss: 1.092752, Time/step: 3.187430
+07/26/2025 20:35:17 - INFO -   Epoch: 1/5, Step: 425/1016, Lr: 0.000000084-0.000083661, Loss: 0.351081, Time/step: 3.178440
+07/26/2025 20:35:37 - INFO -   Epoch: 1/5, Step: 430/1016, Lr: 0.000000085-0.000084646, Loss: 0.296645, Time/step: 3.907212
+07/26/2025 20:36:02 - INFO -   Epoch: 1/5, Step: 435/1016, Lr: 0.000000086-0.000085630, Loss: 0.278792, Time/step: 5.109009
+07/26/2025 20:36:19 - INFO -   Epoch: 1/5, Step: 440/1016, Lr: 0.000000087-0.000086614, Loss: 0.355304, Time/step: 3.426114
+07/26/2025 20:36:39 - INFO -   Epoch: 1/5, Step: 445/1016, Lr: 0.000000088-0.000087598, Loss: 0.432106, Time/step: 3.994679
+07/26/2025 20:36:56 - INFO -   Epoch: 1/5, Step: 450/1016, Lr: 0.000000089-0.000088583, Loss: 0.399513, Time/step: 3.294573
+07/26/2025 20:37:19 - INFO -   Epoch: 1/5, Step: 455/1016, Lr: 0.000000090-0.000089567, Loss: 0.335277, Time/step: 4.666498
+07/26/2025 20:37:38 - INFO -   Epoch: 1/5, Step: 460/1016, Lr: 0.000000091-0.000090551, Loss: 1.005904, Time/step: 3.711931
+07/26/2025 20:38:00 - INFO -   Epoch: 1/5, Step: 465/1016, Lr: 0.000000092-0.000091535, Loss: 0.466028, Time/step: 4.415107
+07/26/2025 20:38:15 - INFO -   Epoch: 1/5, Step: 470/1016, Lr: 0.000000093-0.000092520, Loss: 0.415932, Time/step: 2.969842
+07/26/2025 20:38:38 - INFO -   Epoch: 1/5, Step: 475/1016, Lr: 0.000000094-0.000093504, Loss: 0.333325, Time/step: 4.608521
+07/26/2025 20:38:58 - INFO -   Epoch: 1/5, Step: 480/1016, Lr: 0.000000094-0.000094488, Loss: 0.275393, Time/step: 4.018702
+07/26/2025 20:39:13 - INFO -   Epoch: 1/5, Step: 485/1016, Lr: 0.000000095-0.000095472, Loss: 0.282195, Time/step: 3.065901
+07/26/2025 20:39:33 - INFO -   Epoch: 1/5, Step: 490/1016, Lr: 0.000000096-0.000096457, Loss: 0.541054, Time/step: 3.963361
+07/26/2025 20:39:57 - INFO -   Epoch: 1/5, Step: 495/1016, Lr: 0.000000097-0.000097441, Loss: 0.603922, Time/step: 4.889971
+07/26/2025 20:40:14 - INFO -   Epoch: 1/5, Step: 500/1016, Lr: 0.000000098-0.000098425, Loss: 0.324682, Time/step: 3.389676
+07/26/2025 20:40:29 - INFO -   Epoch: 1/5, Step: 505/1016, Lr: 0.000000099-0.000099409, Loss: 0.626922, Time/step: 2.868400
+07/26/2025 20:40:44 - INFO -   Epoch: 1/5, Step: 510/1016, Lr: 0.000000098-0.000097534, Loss: 0.496124, Time/step: 2.959296
+07/26/2025 20:41:05 - INFO -   Epoch: 1/5, Step: 515/1016, Lr: 0.000000097-0.000097485, Loss: 0.372878, Time/step: 4.193211
+07/26/2025 20:41:29 - INFO -   Epoch: 1/5, Step: 520/1016, Lr: 0.000000097-0.000097437, Loss: 0.227578, Time/step: 4.897914
+07/26/2025 20:41:47 - INFO -   Epoch: 1/5, Step: 525/1016, Lr: 0.000000097-0.000097388, Loss: 0.691697, Time/step: 3.604327
+07/26/2025 20:42:03 - INFO -   Epoch: 1/5, Step: 530/1016, Lr: 0.000000097-0.000097338, Loss: 0.198433, Time/step: 3.233167
+07/26/2025 20:42:18 - INFO -   Epoch: 1/5, Step: 535/1016, Lr: 0.000000097-0.000097288, Loss: 0.216535, Time/step: 2.995669
+07/26/2025 20:42:44 - INFO -   Epoch: 1/5, Step: 540/1016, Lr: 0.000000097-0.000097238, Loss: 0.430889, Time/step: 5.130156
+07/26/2025 20:42:59 - INFO -   Epoch: 1/5, Step: 545/1016, Lr: 0.000000097-0.000097187, Loss: 0.491632, Time/step: 3.073261
+07/26/2025 20:43:16 - INFO -   Epoch: 1/5, Step: 550/1016, Lr: 0.000000097-0.000097136, Loss: 0.749788, Time/step: 3.457804
+07/26/2025 20:43:40 - INFO -   Epoch: 1/5, Step: 555/1016, Lr: 0.000000097-0.000097084, Loss: 0.663109, Time/step: 4.671524
+07/26/2025 20:43:59 - INFO -   Epoch: 1/5, Step: 560/1016, Lr: 0.000000097-0.000097031, Loss: 0.433720, Time/step: 3.811642
+07/26/2025 20:44:14 - INFO -   Epoch: 1/5, Step: 565/1016, Lr: 0.000000097-0.000096979, Loss: 0.262347, Time/step: 3.006502
+07/26/2025 20:44:31 - INFO -   Epoch: 1/5, Step: 570/1016, Lr: 0.000000097-0.000096926, Loss: 0.606523, Time/step: 3.500865
+07/26/2025 20:44:53 - INFO -   Epoch: 1/5, Step: 575/1016, Lr: 0.000000097-0.000096872, Loss: 0.273013, Time/step: 4.358171
+07/26/2025 20:45:13 - INFO -   Epoch: 1/5, Step: 580/1016, Lr: 0.000000097-0.000096818, Loss: 0.348165, Time/step: 3.901741
+07/26/2025 20:45:30 - INFO -   Epoch: 1/5, Step: 585/1016, Lr: 0.000000097-0.000096763, Loss: 0.482218, Time/step: 3.548311
+07/26/2025 20:45:45 - INFO -   Epoch: 1/5, Step: 590/1016, Lr: 0.000000097-0.000096709, Loss: 0.152347, Time/step: 2.878975
+07/26/2025 20:46:10 - INFO -   Epoch: 1/5, Step: 595/1016, Lr: 0.000000097-0.000096653, Loss: 0.543172, Time/step: 5.065154
+07/26/2025 20:46:28 - INFO -   Epoch: 1/5, Step: 600/1016, Lr: 0.000000097-0.000096597, Loss: 0.435600, Time/step: 3.581437
+07/26/2025 20:46:46 - INFO -   Epoch: 1/5, Step: 605/1016, Lr: 0.000000097-0.000096541, Loss: 0.384469, Time/step: 3.528136
+07/26/2025 20:47:03 - INFO -   Epoch: 1/5, Step: 610/1016, Lr: 0.000000096-0.000096484, Loss: 0.234496, Time/step: 3.506047
+07/26/2025 20:47:24 - INFO -   Epoch: 1/5, Step: 615/1016, Lr: 0.000000096-0.000096427, Loss: 0.505858, Time/step: 4.062385
+07/26/2025 20:47:43 - INFO -   Epoch: 1/5, Step: 620/1016, Lr: 0.000000096-0.000096369, Loss: 0.228098, Time/step: 3.871344
+07/26/2025 20:47:58 - INFO -   Epoch: 1/5, Step: 625/1016, Lr: 0.000000096-0.000096311, Loss: 0.451559, Time/step: 3.049957
+07/26/2025 20:48:14 - INFO -   Epoch: 1/5, Step: 630/1016, Lr: 0.000000096-0.000096253, Loss: 0.233503, Time/step: 3.190543
+07/26/2025 20:48:37 - INFO -   Epoch: 1/5, Step: 635/1016, Lr: 0.000000096-0.000096194, Loss: 0.488325, Time/step: 4.613918
+07/26/2025 20:48:53 - INFO -   Epoch: 1/5, Step: 640/1016, Lr: 0.000000096-0.000096135, Loss: 0.351295, Time/step: 3.215301
+07/26/2025 20:49:12 - INFO -   Epoch: 1/5, Step: 645/1016, Lr: 0.000000096-0.000096075, Loss: 0.464445, Time/step: 3.737136
+07/26/2025 20:49:27 - INFO -   Epoch: 1/5, Step: 650/1016, Lr: 0.000000096-0.000096014, Loss: 0.348326, Time/step: 2.987592
+07/26/2025 20:49:51 - INFO -   Epoch: 1/5, Step: 655/1016, Lr: 0.000000096-0.000095954, Loss: 0.289281, Time/step: 4.724780
+07/26/2025 20:50:10 - INFO -   Epoch: 1/5, Step: 660/1016, Lr: 0.000000096-0.000095893, Loss: 0.323815, Time/step: 3.804095
+07/26/2025 20:50:27 - INFO -   Epoch: 1/5, Step: 665/1016, Lr: 0.000000096-0.000095831, Loss: 0.327779, Time/step: 3.466058
+07/26/2025 20:50:42 - INFO -   Epoch: 1/5, Step: 670/1016, Lr: 0.000000096-0.000095769, Loss: 0.537056, Time/step: 2.981509
+07/26/2025 20:51:05 - INFO -   Epoch: 1/5, Step: 675/1016, Lr: 0.000000096-0.000095707, Loss: 0.691333, Time/step: 4.724102
+07/26/2025 20:51:24 - INFO -   Epoch: 1/5, Step: 680/1016, Lr: 0.000000096-0.000095644, Loss: 0.282442, Time/step: 3.756170
+07/26/2025 20:51:41 - INFO -   Epoch: 1/5, Step: 685/1016, Lr: 0.000000096-0.000095580, Loss: 0.551800, Time/step: 3.385033
+07/26/2025 20:51:58 - INFO -   Epoch: 1/5, Step: 690/1016, Lr: 0.000000096-0.000095517, Loss: 0.279938, Time/step: 3.371328
+07/26/2025 20:52:20 - INFO -   Epoch: 1/5, Step: 695/1016, Lr: 0.000000095-0.000095452, Loss: 0.380695, Time/step: 4.326867
+07/26/2025 20:52:34 - INFO -   Epoch: 1/5, Step: 700/1016, Lr: 0.000000095-0.000095388, Loss: 0.247304, Time/step: 2.911921
+07/26/2025 20:52:52 - INFO -   Epoch: 1/5, Step: 705/1016, Lr: 0.000000095-0.000095323, Loss: 0.304767, Time/step: 3.576728
+07/26/2025 20:53:07 - INFO -   Epoch: 1/5, Step: 710/1016, Lr: 0.000000095-0.000095257, Loss: 0.268938, Time/step: 3.021641
+07/26/2025 20:53:24 - INFO -   Epoch: 1/5, Step: 715/1016, Lr: 0.000000095-0.000095191, Loss: 0.284862, Time/step: 3.463816
+07/26/2025 20:53:41 - INFO -   Epoch: 1/5, Step: 720/1016, Lr: 0.000000095-0.000095125, Loss: 0.273968, Time/step: 3.359163
+07/26/2025 20:54:01 - INFO -   Epoch: 1/5, Step: 725/1016, Lr: 0.000000095-0.000095058, Loss: 0.332414, Time/step: 3.977334
+07/26/2025 20:54:21 - INFO -   Epoch: 1/5, Step: 730/1016, Lr: 0.000000095-0.000094991, Loss: 0.113028, Time/step: 3.967413
+07/26/2025 20:54:40 - INFO -   Epoch: 1/5, Step: 735/1016, Lr: 0.000000095-0.000094923, Loss: 0.250178, Time/step: 3.824504
+07/26/2025 20:54:55 - INFO -   Epoch: 1/5, Step: 740/1016, Lr: 0.000000095-0.000094855, Loss: 0.287484, Time/step: 2.956566
+07/26/2025 20:55:12 - INFO -   Epoch: 1/5, Step: 745/1016, Lr: 0.000000095-0.000094787, Loss: 0.112368, Time/step: 3.357482
+07/26/2025 20:55:26 - INFO -   Epoch: 1/5, Step: 750/1016, Lr: 0.000000095-0.000094718, Loss: 0.265393, Time/step: 2.888002
+07/26/2025 20:55:47 - INFO -   Epoch: 1/5, Step: 755/1016, Lr: 0.000000095-0.000094648, Loss: 0.518209, Time/step: 4.242039
+07/26/2025 20:56:06 - INFO -   Epoch: 1/5, Step: 760/1016, Lr: 0.000000095-0.000094578, Loss: 0.536684, Time/step: 3.764408
+07/26/2025 20:56:21 - INFO -   Epoch: 1/5, Step: 765/1016, Lr: 0.000000095-0.000094508, Loss: 0.090491, Time/step: 3.042883
+07/26/2025 20:56:38 - INFO -   Epoch: 1/5, Step: 770/1016, Lr: 0.000000094-0.000094437, Loss: 0.376712, Time/step: 3.271000
+07/26/2025 20:56:56 - INFO -   Epoch: 1/5, Step: 775/1016, Lr: 0.000000094-0.000094366, Loss: 0.118326, Time/step: 3.561835
+07/26/2025 20:57:18 - INFO -   Epoch: 1/5, Step: 780/1016, Lr: 0.000000094-0.000094295, Loss: 0.433519, Time/step: 4.542303
+07/26/2025 20:57:34 - INFO -   Epoch: 1/5, Step: 785/1016, Lr: 0.000000094-0.000094223, Loss: 0.294726, Time/step: 3.203676
+07/26/2025 20:57:49 - INFO -   Epoch: 1/5, Step: 790/1016, Lr: 0.000000094-0.000094151, Loss: 0.326977, Time/step: 2.900065
+07/26/2025 20:58:06 - INFO -   Epoch: 1/5, Step: 795/1016, Lr: 0.000000094-0.000094078, Loss: 0.181293, Time/step: 3.352112
+07/26/2025 20:58:28 - INFO -   Epoch: 1/5, Step: 800/1016, Lr: 0.000000094-0.000094005, Loss: 0.189739, Time/step: 4.424187
+07/26/2025 20:58:46 - INFO -   Epoch: 1/5, Step: 805/1016, Lr: 0.000000094-0.000093931, Loss: 0.293839, Time/step: 3.747274
+07/26/2025 20:59:05 - INFO -   Epoch: 1/5, Step: 810/1016, Lr: 0.000000094-0.000093857, Loss: 0.542985, Time/step: 3.780561
+07/26/2025 20:59:19 - INFO -   Epoch: 1/5, Step: 815/1016, Lr: 0.000000094-0.000093783, Loss: 0.273614, Time/step: 2.726524
+07/26/2025 20:59:39 - INFO -   Epoch: 1/5, Step: 820/1016, Lr: 0.000000094-0.000093708, Loss: 0.120740, Time/step: 4.078572
+07/26/2025 20:59:55 - INFO -   Epoch: 1/5, Step: 825/1016, Lr: 0.000000094-0.000093632, Loss: 0.300703, Time/step: 3.075383
+07/26/2025 21:00:11 - INFO -   Epoch: 1/5, Step: 830/1016, Lr: 0.000000094-0.000093557, Loss: 0.190534, Time/step: 3.329937
+07/26/2025 21:00:33 - INFO -   Epoch: 1/5, Step: 835/1016, Lr: 0.000000093-0.000093481, Loss: 0.246462, Time/step: 4.274212
+07/26/2025 21:00:55 - INFO -   Epoch: 1/5, Step: 840/1016, Lr: 0.000000093-0.000093404, Loss: 0.411816, Time/step: 4.389625
+07/26/2025 21:01:12 - INFO -   Epoch: 1/5, Step: 845/1016, Lr: 0.000000093-0.000093327, Loss: 0.272821, Time/step: 3.365043
+07/26/2025 21:01:26 - INFO -   Epoch: 1/5, Step: 850/1016, Lr: 0.000000093-0.000093250, Loss: 0.284762, Time/step: 2.845233
+07/26/2025 21:01:49 - INFO -   Epoch: 1/5, Step: 855/1016, Lr: 0.000000093-0.000093172, Loss: 0.276070, Time/step: 4.632650
+07/26/2025 21:02:06 - INFO -   Epoch: 1/5, Step: 860/1016, Lr: 0.000000093-0.000093094, Loss: 0.300287, Time/step: 3.362144
+07/26/2025 21:02:20 - INFO -   Epoch: 1/5, Step: 865/1016, Lr: 0.000000093-0.000093015, Loss: 0.441968, Time/step: 2.902495
+07/26/2025 21:02:36 - INFO -   Epoch: 1/5, Step: 870/1016, Lr: 0.000000093-0.000092936, Loss: 0.347127, Time/step: 3.163693
+07/26/2025 21:03:01 - INFO -   Epoch: 1/5, Step: 875/1016, Lr: 0.000000093-0.000092857, Loss: 0.281996, Time/step: 4.948635
+07/26/2025 21:03:18 - INFO -   Epoch: 1/5, Step: 880/1016, Lr: 0.000000093-0.000092777, Loss: 0.395648, Time/step: 3.422436
+07/26/2025 21:03:37 - INFO -   Epoch: 1/5, Step: 885/1016, Lr: 0.000000093-0.000092697, Loss: 0.418595, Time/step: 3.772612
+07/26/2025 21:03:51 - INFO -   Epoch: 1/5, Step: 890/1016, Lr: 0.000000093-0.000092616, Loss: 0.154370, Time/step: 2.765397
+07/26/2025 21:04:09 - INFO -   Epoch: 1/5, Step: 895/1016, Lr: 0.000000093-0.000092535, Loss: 0.457655, Time/step: 3.736045
+07/26/2025 21:04:26 - INFO -   Epoch: 1/5, Step: 900/1016, Lr: 0.000000092-0.000092453, Loss: 0.255448, Time/step: 3.326601
+07/26/2025 21:04:42 - INFO -   Epoch: 1/5, Step: 905/1016, Lr: 0.000000092-0.000092371, Loss: 0.284969, Time/step: 3.133063
+07/26/2025 21:05:00 - INFO -   Epoch: 1/5, Step: 910/1016, Lr: 0.000000092-0.000092289, Loss: 0.284457, Time/step: 3.588067
+07/26/2025 21:05:17 - INFO -   Epoch: 1/5, Step: 915/1016, Lr: 0.000000092-0.000092206, Loss: 0.192506, Time/step: 3.551883
+07/26/2025 21:05:38 - INFO -   Epoch: 1/5, Step: 920/1016, Lr: 0.000000092-0.000092123, Loss: 0.267941, Time/step: 4.075889
+07/26/2025 21:05:53 - INFO -   Epoch: 1/5, Step: 925/1016, Lr: 0.000000092-0.000092040, Loss: 0.171812, Time/step: 3.040880
+07/26/2025 21:06:14 - INFO -   Epoch: 1/5, Step: 930/1016, Lr: 0.000000092-0.000091956, Loss: 0.245844, Time/step: 4.139201
+07/26/2025 21:06:35 - INFO -   Epoch: 1/5, Step: 935/1016, Lr: 0.000000092-0.000091872, Loss: 0.120252, Time/step: 4.291864
+07/26/2025 21:06:53 - INFO -   Epoch: 1/5, Step: 940/1016, Lr: 0.000000092-0.000091787, Loss: 0.284337, Time/step: 3.695637
+07/26/2025 21:07:16 - INFO -   Epoch: 1/5, Step: 945/1016, Lr: 0.000000092-0.000091702, Loss: 0.122558, Time/step: 4.451672
+07/26/2025 21:07:33 - INFO -   Epoch: 1/5, Step: 950/1016, Lr: 0.000000092-0.000091616, Loss: 0.661120, Time/step: 3.547642
+07/26/2025 21:07:50 - INFO -   Epoch: 1/5, Step: 955/1016, Lr: 0.000000092-0.000091530, Loss: 0.172632, Time/step: 3.271833
+07/26/2025 21:08:14 - INFO -   Epoch: 1/5, Step: 960/1016, Lr: 0.000000091-0.000091444, Loss: 0.473872, Time/step: 4.916571
+07/26/2025 21:08:36 - INFO -   Epoch: 1/5, Step: 965/1016, Lr: 0.000000091-0.000091358, Loss: 0.117393, Time/step: 4.406759
+07/26/2025 21:08:51 - INFO -   Epoch: 1/5, Step: 970/1016, Lr: 0.000000091-0.000091270, Loss: 0.145709, Time/step: 2.945159
+07/26/2025 21:09:06 - INFO -   Epoch: 1/5, Step: 975/1016, Lr: 0.000000091-0.000091183, Loss: 0.083174, Time/step: 2.938040
+07/26/2025 21:09:29 - INFO -   Epoch: 1/5, Step: 980/1016, Lr: 0.000000091-0.000091095, Loss: 0.211012, Time/step: 4.530577
+07/26/2025 21:09:48 - INFO -   Epoch: 1/5, Step: 985/1016, Lr: 0.000000091-0.000091007, Loss: 0.423678, Time/step: 3.936201
+07/26/2025 21:10:05 - INFO -   Epoch: 1/5, Step: 990/1016, Lr: 0.000000091-0.000090918, Loss: 0.219567, Time/step: 3.337716
+07/26/2025 21:10:19 - INFO -   Epoch: 1/5, Step: 995/1016, Lr: 0.000000091-0.000090829, Loss: 0.255295, Time/step: 2.851639
+07/26/2025 21:10:41 - INFO -   Epoch: 1/5, Step: 1000/1016, Lr: 0.000000091-0.000090740, Loss: 0.116116, Time/step: 4.430123
+07/26/2025 21:10:57 - INFO -   Epoch: 1/5, Step: 1005/1016, Lr: 0.000000091-0.000090650, Loss: 0.478036, Time/step: 3.057246
+07/26/2025 21:11:11 - INFO -   Epoch: 1/5, Step: 1010/1016, Lr: 0.000000091-0.000090560, Loss: 0.257833, Time/step: 2.861206
+07/26/2025 21:11:29 - INFO -   Epoch: 1/5, Step: 1015/1016, Lr: 0.000000090-0.000090469, Loss: 0.246880, Time/step: 3.617676
+07/26/2025 21:11:41 - INFO -   Epoch 1/5 Finished, Train Loss: 0.654756
+07/26/2025 21:11:42 - INFO -   Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.0
+07/26/2025 21:11:42 - INFO -   Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_opt.bin.0
+07/26/2025 21:11:42 - INFO -   Eval on val dataset
+07/26/2025 21:11:42 - WARNING -   Eval under the multi-sentence per video clip setting.
+07/26/2025 21:11:42 - WARNING -   sentence num: 4290, video num: 100
+0/2691/2692/2693/2694/2695/2696/2697/2698/2699/26910/26911/26912/26913/26914/26915/26916/26917/26918/26919/26920/26921/26922/26923/26924/26925/26926/26927/26928/26929/26930/26931/26932/26933/26934/26935/26936/26937/26938/26939/26940/26941/26942/26943/26944/26945/26946/26947/26948/26949/26950/26951/26952/26953/26954/26955/26956/26957/26958/26959/26960/26961/26962/26963/26964/26965/26966/26967/26968/26969/26970/26971/26972/26973/26974/26975/26976/26977/26978/26979/26980/26981/26982/26983/26984/26985/26986/26987/26988/26989/26990/26991/26992/26993/26994/26995/26996/26997/26998/26999/269100/269101/269102/269103/269104/269105/269106/269107/269108/269109/269110/269111/269112/269113/269114/269115/269116/269117/269118/269119/269120/269121/269122/269123/269124/269125/269126/269127/269128/269129/269130/269131/269132/269133/269134/269135/269136/269137/269138/269139/269140/269141/269142/269143/269144/269145/269146/269147/269148/269149/269150/269151/269152/269153/269154/269155/269156/269157/269158/269159/269160/269161/269162/269163/269164/269165/269166/269167/269168/269169/269170/269171/269172/269173/269174/269175/269176/269177/269178/269179/269180/269181/269182/269183/269184/269185/269186/269187/269188/269189/269190/269191/269192/269193/269194/269195/269196/269197/269198/269199/269200/269201/269202/269203/269204/269205/269206/269207/269208/269209/269210/269211/269212/269213/269214/269215/269216/269217/269218/269219/269220/269221/269222/269223/269224/269225/269226/269227/269228/269229/269230/269231/269232/269233/269234/269235/269236/269237/269238/269239/269240/269241/269242/269243/269244/269245/269246/269247/269248/269249/269250/269251/269252/269253/269254/269255/269256/269257/269258/269259/269260/269261/269262/269263/269264/269265/269266/269267/269268/26907/26/2025 21:24:17 - INFO -   before reshape, sim matrix size: 4290 x 100
+07/26/2025 21:24:17 - INFO -   after reshape, sim matrix size: 100 x 62 x 100
+07/26/2025 21:24:17 - INFO -   Text-to-Video:
+07/26/2025 21:24:17 - INFO -   	>>>  R@1: 67.9 - R@5: 91.0 - R@10: 95.7 - Median R: 1.0 - Mean R: 2.6
+07/26/2025 21:24:17 - INFO -   Video-to-Text:
+07/26/2025 21:24:17 - INFO -   	>>>  V2T$R@1: 89.0 - V2T$R@5: 98.0 - V2T$R@10: 99.0 - V2T$Median R: 1.0 - V2T$Mean R: 1.3
+07/26/2025 21:24:17 - INFO -   The best model is: ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.0, the R1 is: 67.9487
+07/26/2025 21:24:42 - INFO -   Epoch: 2/5, Step: 4/1016, Lr: 0.000000090-0.000090378, Loss: 0.311422, Time/step: 4.858155
+07/26/2025 21:25:03 - INFO -   Epoch: 2/5, Step: 9/1016, Lr: 0.000000090-0.000090287, Loss: 0.186096, Time/step: 4.265027
+07/26/2025 21:25:24 - INFO -   Epoch: 2/5, Step: 14/1016, Lr: 0.000000090-0.000090195, Loss: 0.123607, Time/step: 4.144469
+07/26/2025 21:25:40 - INFO -   Epoch: 2/5, Step: 19/1016, Lr: 0.000000090-0.000090103, Loss: 0.133871, Time/step: 3.175314
+07/26/2025 21:25:56 - INFO -   Epoch: 2/5, Step: 24/1016, Lr: 0.000000090-0.000090010, Loss: 0.363968, Time/step: 3.279227
+07/26/2025 21:26:15 - INFO -   Epoch: 2/5, Step: 29/1016, Lr: 0.000000090-0.000089917, Loss: 0.104690, Time/step: 3.847244
+07/26/2025 21:26:39 - INFO -   Epoch: 2/5, Step: 34/1016, Lr: 0.000000090-0.000089824, Loss: 0.300556, Time/step: 4.749594
+07/26/2025 21:26:58 - INFO -   Epoch: 2/5, Step: 39/1016, Lr: 0.000000090-0.000089730, Loss: 0.137342, Time/step: 3.760262
+07/26/2025 21:27:14 - INFO -   Epoch: 2/5, Step: 44/1016, Lr: 0.000000090-0.000089636, Loss: 0.242473, Time/step: 3.202312
+07/26/2025 21:27:40 - INFO -   Epoch: 2/5, Step: 49/1016, Lr: 0.000000090-0.000089542, Loss: 0.335036, Time/step: 5.140753
+07/26/2025 21:27:59 - INFO -   Epoch: 2/5, Step: 54/1016, Lr: 0.000000089-0.000089447, Loss: 0.357769, Time/step: 3.860051
+07/26/2025 21:28:15 - INFO -   Epoch: 2/5, Step: 59/1016, Lr: 0.000000089-0.000089352, Loss: 0.526331, Time/step: 3.326707
+07/26/2025 21:28:32 - INFO -   Epoch: 2/5, Step: 64/1016, Lr: 0.000000089-0.000089256, Loss: 0.436583, Time/step: 3.361158
+07/26/2025 21:28:53 - INFO -   Epoch: 2/5, Step: 69/1016, Lr: 0.000000089-0.000089160, Loss: 0.478417, Time/step: 4.199207
+07/26/2025 21:29:08 - INFO -   Epoch: 2/5, Step: 74/1016, Lr: 0.000000089-0.000089064, Loss: 0.095573, Time/step: 3.026508
+07/26/2025 21:29:25 - INFO -   Epoch: 2/5, Step: 79/1016, Lr: 0.000000089-0.000088967, Loss: 0.211301, Time/step: 3.327170
+07/26/2025 21:29:44 - INFO -   Epoch: 2/5, Step: 84/1016, Lr: 0.000000089-0.000088870, Loss: 0.311048, Time/step: 3.846764
+07/26/2025 21:30:06 - INFO -   Epoch: 2/5, Step: 89/1016, Lr: 0.000000089-0.000088773, Loss: 0.411180, Time/step: 4.432504
+07/26/2025 21:30:21 - INFO -   Epoch: 2/5, Step: 94/1016, Lr: 0.000000089-0.000088675, Loss: 0.198613, Time/step: 2.996620
+07/26/2025 21:30:38 - INFO -   Epoch: 2/5, Step: 99/1016, Lr: 0.000000089-0.000088577, Loss: 0.121420, Time/step: 3.240076
+07/26/2025 21:30:55 - INFO -   Epoch: 2/5, Step: 104/1016, Lr: 0.000000088-0.000088478, Loss: 0.220071, Time/step: 3.467088
+07/26/2025 21:31:18 - INFO -   Epoch: 2/5, Step: 109/1016, Lr: 0.000000088-0.000088379, Loss: 0.324784, Time/step: 4.574014
+07/26/2025 21:31:35 - INFO -   Epoch: 2/5, Step: 114/1016, Lr: 0.000000088-0.000088280, Loss: 0.289504, Time/step: 3.350515
+07/26/2025 21:31:49 - INFO -   Epoch: 2/5, Step: 119/1016, Lr: 0.000000088-0.000088180, Loss: 0.320633, Time/step: 2.970265
+07/26/2025 21:32:06 - INFO -   Epoch: 2/5, Step: 124/1016, Lr: 0.000000088-0.000088080, Loss: 0.127210, Time/step: 3.249727
+07/26/2025 21:32:28 - INFO -   Epoch: 2/5, Step: 129/1016, Lr: 0.000000088-0.000087980, Loss: 0.230671, Time/step: 4.515926
+07/26/2025 21:32:44 - INFO -   Epoch: 2/5, Step: 134/1016, Lr: 0.000000088-0.000087879, Loss: 0.435890, Time/step: 3.215640
+07/26/2025 21:33:03 - INFO -   Epoch: 2/5, Step: 139/1016, Lr: 0.000000088-0.000087778, Loss: 0.257230, Time/step: 3.787526
+07/26/2025 21:33:20 - INFO -   Epoch: 2/5, Step: 144/1016, Lr: 0.000000088-0.000087677, Loss: 0.288681, Time/step: 3.271042
+07/26/2025 21:33:42 - INFO -   Epoch: 2/5, Step: 149/1016, Lr: 0.000000088-0.000087575, Loss: 0.540806, Time/step: 4.430484
+07/26/2025 21:33:58 - INFO -   Epoch: 2/5, Step: 154/1016, Lr: 0.000000087-0.000087473, Loss: 0.340712, Time/step: 3.269209
+07/26/2025 21:34:14 - INFO -   Epoch: 2/5, Step: 159/1016, Lr: 0.000000087-0.000087370, Loss: 0.160996, Time/step: 3.126748
+07/26/2025 21:34:34 - INFO -   Epoch: 2/5, Step: 164/1016, Lr: 0.000000087-0.000087267, Loss: 0.327189, Time/step: 4.144158
+07/26/2025 21:34:54 - INFO -   Epoch: 2/5, Step: 169/1016, Lr: 0.000000087-0.000087164, Loss: 0.256372, Time/step: 3.987667
+07/26/2025 21:35:10 - INFO -   Epoch: 2/5, Step: 174/1016, Lr: 0.000000087-0.000087061, Loss: 0.274018, Time/step: 3.020301
+07/26/2025 21:35:23 - INFO -   Epoch: 2/5, Step: 179/1016, Lr: 0.000000087-0.000086957, Loss: 0.432807, Time/step: 2.699516
+07/26/2025 21:35:38 - INFO -   Epoch: 2/5, Step: 184/1016, Lr: 0.000000087-0.000086852, Loss: 0.289097, Time/step: 2.919400
+07/26/2025 21:35:59 - INFO -   Epoch: 2/5, Step: 189/1016, Lr: 0.000000087-0.000086748, Loss: 0.119037, Time/step: 4.213993
+07/26/2025 21:36:13 - INFO -   Epoch: 2/5, Step: 194/1016, Lr: 0.000000087-0.000086643, Loss: 0.388913, Time/step: 2.925015
+07/26/2025 21:36:30 - INFO -   Epoch: 2/5, Step: 199/1016, Lr: 0.000000087-0.000086537, Loss: 0.183411, Time/step: 3.310134
+07/26/2025 21:36:48 - INFO -   Epoch: 2/5, Step: 204/1016, Lr: 0.000000086-0.000086431, Loss: 0.419930, Time/step: 3.725246
+07/26/2025 21:37:09 - INFO -   Epoch: 2/5, Step: 209/1016, Lr: 0.000000086-0.000086325, Loss: 0.245651, Time/step: 4.135172
+07/26/2025 21:37:27 - INFO -   Epoch: 2/5, Step: 214/1016, Lr: 0.000000086-0.000086219, Loss: 0.212305, Time/step: 3.543196
+07/26/2025 21:37:44 - INFO -   Epoch: 2/5, Step: 219/1016, Lr: 0.000000086-0.000086112, Loss: 0.441960, Time/step: 3.474505
+07/26/2025 21:38:01 - INFO -   Epoch: 2/5, Step: 224/1016, Lr: 0.000000086-0.000086005, Loss: 0.268977, Time/step: 3.309189
+07/26/2025 21:38:24 - INFO -   Epoch: 2/5, Step: 229/1016, Lr: 0.000000086-0.000085898, Loss: 0.272298, Time/step: 4.610722
+07/26/2025 21:38:39 - INFO -   Epoch: 2/5, Step: 234/1016, Lr: 0.000000086-0.000085790, Loss: 0.232484, Time/step: 3.128143
+07/26/2025 21:38:54 - INFO -   Epoch: 2/5, Step: 239/1016, Lr: 0.000000086-0.000085682, Loss: 0.168768, Time/step: 2.874050
+07/26/2025 21:39:13 - INFO -   Epoch: 2/5, Step: 244/1016, Lr: 0.000000086-0.000085573, Loss: 0.088115, Time/step: 3.733736
+07/26/2025 21:39:30 - INFO -   Epoch: 2/5, Step: 249/1016, Lr: 0.000000085-0.000085464, Loss: 0.060493, Time/step: 3.436777
+07/26/2025 21:39:46 - INFO -   Epoch: 2/5, Step: 254/1016, Lr: 0.000000085-0.000085355, Loss: 0.469537, Time/step: 3.223057
+07/26/2025 21:40:03 - INFO -   Epoch: 2/5, Step: 259/1016, Lr: 0.000000085-0.000085246, Loss: 0.146097, Time/step: 3.472569
+07/26/2025 21:40:22 - INFO -   Epoch: 2/5, Step: 264/1016, Lr: 0.000000085-0.000085136, Loss: 0.190513, Time/step: 3.761961
+07/26/2025 21:40:48 - INFO -   Epoch: 2/5, Step: 269/1016, Lr: 0.000000085-0.000085026, Loss: 0.064524, Time/step: 5.146360
+07/26/2025 21:41:06 - INFO -   Epoch: 2/5, Step: 274/1016, Lr: 0.000000085-0.000084915, Loss: 0.069793, Time/step: 3.559580
+07/26/2025 21:41:24 - INFO -   Epoch: 2/5, Step: 279/1016, Lr: 0.000000085-0.000084805, Loss: 0.203427, Time/step: 3.765960
+07/26/2025 21:41:41 - INFO -   Epoch: 2/5, Step: 284/1016, Lr: 0.000000085-0.000084693, Loss: 0.305928, Time/step: 3.324846
+07/26/2025 21:42:09 - INFO -   Epoch: 2/5, Step: 289/1016, Lr: 0.000000085-0.000084582, Loss: 0.057405, Time/step: 5.684047
+07/26/2025 21:42:23 - INFO -   Epoch: 2/5, Step: 294/1016, Lr: 0.000000084-0.000084470, Loss: 0.152157, Time/step: 2.719561
+07/26/2025 21:42:40 - INFO -   Epoch: 2/5, Step: 299/1016, Lr: 0.000000084-0.000084358, Loss: 0.173677, Time/step: 3.450199
+07/26/2025 21:43:02 - INFO -   Epoch: 2/5, Step: 304/1016, Lr: 0.000000084-0.000084245, Loss: 0.054191, Time/step: 4.366361
+07/26/2025 21:43:23 - INFO -   Epoch: 2/5, Step: 309/1016, Lr: 0.000000084-0.000084133, Loss: 0.108599, Time/step: 4.211788
+07/26/2025 21:43:43 - INFO -   Epoch: 2/5, Step: 314/1016, Lr: 0.000000084-0.000084019, Loss: 0.241897, Time/step: 3.979107
+07/26/2025 21:44:04 - INFO -   Epoch: 2/5, Step: 319/1016, Lr: 0.000000084-0.000083906, Loss: 0.253060, Time/step: 4.243333
+07/26/2025 21:44:22 - INFO -   Epoch: 2/5, Step: 324/1016, Lr: 0.000000084-0.000083792, Loss: 0.072833, Time/step: 3.575090
+07/26/2025 21:44:47 - INFO -   Epoch: 2/5, Step: 329/1016, Lr: 0.000000084-0.000083678, Loss: 0.178624, Time/step: 4.899792
+07/26/2025 21:45:04 - INFO -   Epoch: 2/5, Step: 334/1016, Lr: 0.000000084-0.000083564, Loss: 0.085882, Time/step: 3.374215
+07/26/2025 21:45:16 - INFO -   Epoch: 2/5, Step: 339/1016, Lr: 0.000000083-0.000083449, Loss: 0.350580, Time/step: 2.550482
+07/26/2025 21:45:32 - INFO -   Epoch: 2/5, Step: 344/1016, Lr: 0.000000083-0.000083334, Loss: 0.109217, Time/step: 3.158868
+07/26/2025 21:45:51 - INFO -   Epoch: 2/5, Step: 349/1016, Lr: 0.000000083-0.000083218, Loss: 0.244709, Time/step: 3.794281
+07/26/2025 21:46:07 - INFO -   Epoch: 2/5, Step: 354/1016, Lr: 0.000000083-0.000083103, Loss: 0.260039, Time/step: 3.152639
+07/26/2025 21:46:23 - INFO -   Epoch: 2/5, Step: 359/1016, Lr: 0.000000083-0.000082987, Loss: 0.111681, Time/step: 3.260398
+07/26/2025 21:46:40 - INFO -   Epoch: 2/5, Step: 364/1016, Lr: 0.000000083-0.000082870, Loss: 0.154929, Time/step: 3.450597
+07/26/2025 21:46:59 - INFO -   Epoch: 2/5, Step: 369/1016, Lr: 0.000000083-0.000082754, Loss: 0.140312, Time/step: 3.706955
+07/26/2025 21:47:15 - INFO -   Epoch: 2/5, Step: 374/1016, Lr: 0.000000083-0.000082637, Loss: 0.361109, Time/step: 3.289282
+07/26/2025 21:47:31 - INFO -   Epoch: 2/5, Step: 379/1016, Lr: 0.000000083-0.000082519, Loss: 0.106663, Time/step: 3.110430
+07/26/2025 21:47:51 - INFO -   Epoch: 2/5, Step: 384/1016, Lr: 0.000000082-0.000082402, Loss: 0.203845, Time/step: 4.088526
+07/26/2025 21:48:06 - INFO -   Epoch: 2/5, Step: 389/1016, Lr: 0.000000082-0.000082284, Loss: 0.294561, Time/step: 2.928782
+07/26/2025 21:48:23 - INFO -   Epoch: 2/5, Step: 394/1016, Lr: 0.000000082-0.000082166, Loss: 0.160580, Time/step: 3.421600
+07/26/2025 21:48:46 - INFO -   Epoch: 2/5, Step: 399/1016, Lr: 0.000000082-0.000082047, Loss: 0.327526, Time/step: 4.561747
+07/26/2025 21:49:02 - INFO -   Epoch: 2/5, Step: 404/1016, Lr: 0.000000082-0.000081928, Loss: 0.410156, Time/step: 3.171318
+07/26/2025 21:49:21 - INFO -   Epoch: 2/5, Step: 409/1016, Lr: 0.000000082-0.000081809, Loss: 0.187660, Time/step: 3.890167
+07/26/2025 21:49:36 - INFO -   Epoch: 2/5, Step: 414/1016, Lr: 0.000000082-0.000081690, Loss: 0.209872, Time/step: 2.921333
+07/26/2025 21:50:00 - INFO -   Epoch: 2/5, Step: 419/1016, Lr: 0.000000082-0.000081570, Loss: 0.231664, Time/step: 4.924500
+07/26/2025 21:50:17 - INFO -   Epoch: 2/5, Step: 424/1016, Lr: 0.000000081-0.000081450, Loss: 0.317827, Time/step: 3.359766
+07/26/2025 21:50:38 - INFO -   Epoch: 2/5, Step: 429/1016, Lr: 0.000000081-0.000081330, Loss: 0.117884, Time/step: 4.151190
+07/26/2025 21:50:55 - INFO -   Epoch: 2/5, Step: 434/1016, Lr: 0.000000081-0.000081209, Loss: 0.128113, Time/step: 3.485386
+07/26/2025 21:51:22 - INFO -   Epoch: 2/5, Step: 439/1016, Lr: 0.000000081-0.000081088, Loss: 0.285938, Time/step: 5.267983
+07/26/2025 21:51:39 - INFO -   Epoch: 2/5, Step: 444/1016, Lr: 0.000000081-0.000080967, Loss: 0.199549, Time/step: 3.393283
+07/26/2025 21:51:54 - INFO -   Epoch: 2/5, Step: 449/1016, Lr: 0.000000081-0.000080845, Loss: 0.516618, Time/step: 3.142245
+07/26/2025 21:52:09 - INFO -   Epoch: 2/5, Step: 454/1016, Lr: 0.000000081-0.000080723, Loss: 0.230022, Time/step: 2.978629
+07/26/2025 21:52:32 - INFO -   Epoch: 2/5, Step: 459/1016, Lr: 0.000000081-0.000080601, Loss: 0.581542, Time/step: 4.577168
+07/26/2025 21:52:52 - INFO -   Epoch: 2/5, Step: 464/1016, Lr: 0.000000080-0.000080479, Loss: 0.149235, Time/step: 3.996125
+07/26/2025 21:53:10 - INFO -   Epoch: 2/5, Step: 469/1016, Lr: 0.000000080-0.000080356, Loss: 0.214200, Time/step: 3.494364
+07/26/2025 21:53:24 - INFO -   Epoch: 2/5, Step: 474/1016, Lr: 0.000000080-0.000080233, Loss: 0.093480, Time/step: 2.859336
+07/26/2025 21:53:48 - INFO -   Epoch: 2/5, Step: 479/1016, Lr: 0.000000080-0.000080110, Loss: 0.198198, Time/step: 4.749785
+07/26/2025 21:54:05 - INFO -   Epoch: 2/5, Step: 484/1016, Lr: 0.000000080-0.000079986, Loss: 0.113069, Time/step: 3.454620
+07/26/2025 21:54:23 - INFO -   Epoch: 2/5, Step: 489/1016, Lr: 0.000000080-0.000079863, Loss: 0.261674, Time/step: 3.622655
+07/26/2025 21:54:39 - INFO -   Epoch: 2/5, Step: 494/1016, Lr: 0.000000080-0.000079738, Loss: 0.421969, Time/step: 3.250234
+07/26/2025 21:55:01 - INFO -   Epoch: 2/5, Step: 499/1016, Lr: 0.000000080-0.000079614, Loss: 0.141874, Time/step: 4.244034
+07/26/2025 21:55:14 - INFO -   Epoch: 2/5, Step: 504/1016, Lr: 0.000000079-0.000079489, Loss: 0.110745, Time/step: 2.614999
+07/26/2025 21:55:27 - INFO -   Epoch: 2/5, Step: 509/1016, Lr: 0.000000079-0.000079364, Loss: 0.226861, Time/step: 2.765737
+07/26/2025 21:55:47 - INFO -   Epoch: 2/5, Step: 514/1016, Lr: 0.000000079-0.000079239, Loss: 0.537421, Time/step: 3.912589
+07/26/2025 21:56:07 - INFO -   Epoch: 2/5, Step: 519/1016, Lr: 0.000000079-0.000079113, Loss: 0.487767, Time/step: 4.006476
+07/26/2025 21:56:25 - INFO -   Epoch: 2/5, Step: 524/1016, Lr: 0.000000079-0.000078988, Loss: 0.275466, Time/step: 3.556808
+07/26/2025 21:56:43 - INFO -   Epoch: 2/5, Step: 529/1016, Lr: 0.000000079-0.000078861, Loss: 0.398174, Time/step: 3.550423
+07/26/2025 21:57:00 - INFO -   Epoch: 2/5, Step: 534/1016, Lr: 0.000000079-0.000078735, Loss: 0.288435, Time/step: 3.390072
+07/26/2025 21:57:20 - INFO -   Epoch: 2/5, Step: 539/1016, Lr: 0.000000079-0.000078608, Loss: 0.375356, Time/step: 4.125847
+07/26/2025 21:57:40 - INFO -   Epoch: 2/5, Step: 544/1016, Lr: 0.000000078-0.000078481, Loss: 0.134083, Time/step: 3.955951
+07/26/2025 21:57:54 - INFO -   Epoch: 2/5, Step: 549/1016, Lr: 0.000000078-0.000078354, Loss: 0.115123, Time/step: 2.712489
+07/26/2025 21:58:12 - INFO -   Epoch: 2/5, Step: 554/1016, Lr: 0.000000078-0.000078227, Loss: 0.074911, Time/step: 3.770334
+07/26/2025 21:58:34 - INFO -   Epoch: 2/5, Step: 559/1016, Lr: 0.000000078-0.000078099, Loss: 0.087774, Time/step: 4.255182
+07/26/2025 21:58:49 - INFO -   Epoch: 2/5, Step: 564/1016, Lr: 0.000000078-0.000077971, Loss: 0.093712, Time/step: 3.141443
+07/26/2025 21:59:13 - INFO -   Epoch: 2/5, Step: 569/1016, Lr: 0.000000078-0.000077843, Loss: 0.370208, Time/step: 4.656759
+07/26/2025 21:59:29 - INFO -   Epoch: 2/5, Step: 574/1016, Lr: 0.000000078-0.000077714, Loss: 0.709779, Time/step: 3.273944
+07/26/2025 21:59:56 - INFO -   Epoch: 2/5, Step: 579/1016, Lr: 0.000000078-0.000077585, Loss: 0.183121, Time/step: 5.316955
+07/26/2025 22:00:13 - INFO -   Epoch: 2/5, Step: 584/1016, Lr: 0.000000077-0.000077456, Loss: 0.268697, Time/step: 3.464189
+07/26/2025 22:00:30 - INFO -   Epoch: 2/5, Step: 589/1016, Lr: 0.000000077-0.000077327, Loss: 0.197209, Time/step: 3.424129
+07/26/2025 22:00:44 - INFO -   Epoch: 2/5, Step: 594/1016, Lr: 0.000000077-0.000077197, Loss: 0.222145, Time/step: 2.858607
+07/26/2025 22:01:08 - INFO -   Epoch: 2/5, Step: 599/1016, Lr: 0.000000077-0.000077068, Loss: 0.107032, Time/step: 4.687531
+07/26/2025 22:01:21 - INFO -   Epoch: 2/5, Step: 604/1016, Lr: 0.000000077-0.000076937, Loss: 0.221474, Time/step: 2.606235
+07/26/2025 22:01:41 - INFO -   Epoch: 2/5, Step: 609/1016, Lr: 0.000000077-0.000076807, Loss: 0.235341, Time/step: 4.137802
+07/26/2025 22:01:58 - INFO -   Epoch: 2/5, Step: 614/1016, Lr: 0.000000077-0.000076676, Loss: 0.467199, Time/step: 3.256375
+07/26/2025 22:02:23 - INFO -   Epoch: 2/5, Step: 619/1016, Lr: 0.000000077-0.000076545, Loss: 0.182373, Time/step: 5.092620
+07/26/2025 22:02:41 - INFO -   Epoch: 2/5, Step: 624/1016, Lr: 0.000000076-0.000076414, Loss: 0.102416, Time/step: 3.490287
+07/26/2025 22:02:57 - INFO -   Epoch: 2/5, Step: 629/1016, Lr: 0.000000076-0.000076283, Loss: 0.218608, Time/step: 3.208246
+07/26/2025 22:03:14 - INFO -   Epoch: 2/5, Step: 634/1016, Lr: 0.000000076-0.000076151, Loss: 0.344656, Time/step: 3.464235
+07/26/2025 22:03:35 - INFO -   Epoch: 2/5, Step: 639/1016, Lr: 0.000000076-0.000076019, Loss: 0.376329, Time/step: 4.127130
+07/26/2025 22:03:51 - INFO -   Epoch: 2/5, Step: 644/1016, Lr: 0.000000076-0.000075887, Loss: 0.176103, Time/step: 3.253459
+07/26/2025 22:04:07 - INFO -   Epoch: 2/5, Step: 649/1016, Lr: 0.000000076-0.000075755, Loss: 0.260107, Time/step: 3.114567
+07/26/2025 22:04:22 - INFO -   Epoch: 2/5, Step: 654/1016, Lr: 0.000000076-0.000075622, Loss: 0.141968, Time/step: 3.071966
+07/26/2025 22:04:45 - INFO -   Epoch: 2/5, Step: 659/1016, Lr: 0.000000075-0.000075489, Loss: 0.209186, Time/step: 4.687797
+07/26/2025 22:05:04 - INFO -   Epoch: 2/5, Step: 664/1016, Lr: 0.000000075-0.000075356, Loss: 0.162901, Time/step: 3.768562
+07/26/2025 22:05:20 - INFO -   Epoch: 2/5, Step: 669/1016, Lr: 0.000000075-0.000075223, Loss: 0.241869, Time/step: 3.228880
+07/26/2025 22:05:36 - INFO -   Epoch: 2/5, Step: 674/1016, Lr: 0.000000075-0.000075089, Loss: 0.083073, Time/step: 3.066666
+07/26/2025 22:05:56 - INFO -   Epoch: 2/5, Step: 679/1016, Lr: 0.000000075-0.000074955, Loss: 0.242362, Time/step: 3.989547
+07/26/2025 22:06:15 - INFO -   Epoch: 2/5, Step: 684/1016, Lr: 0.000000075-0.000074821, Loss: 0.105228, Time/step: 3.841511
+07/26/2025 22:06:30 - INFO -   Epoch: 2/5, Step: 689/1016, Lr: 0.000000075-0.000074687, Loss: 0.227093, Time/step: 3.061022
+07/26/2025 22:06:49 - INFO -   Epoch: 2/5, Step: 694/1016, Lr: 0.000000075-0.000074552, Loss: 0.110030, Time/step: 3.686618
+07/26/2025 22:07:03 - INFO -   Epoch: 2/5, Step: 699/1016, Lr: 0.000000074-0.000074418, Loss: 0.482928, Time/step: 2.977546
+07/26/2025 22:07:26 - INFO -   Epoch: 2/5, Step: 704/1016, Lr: 0.000000074-0.000074283, Loss: 0.243951, Time/step: 4.457498
+07/26/2025 22:07:41 - INFO -   Epoch: 2/5, Step: 709/1016, Lr: 0.000000074-0.000074147, Loss: 0.343434, Time/step: 3.054080
+07/26/2025 22:07:58 - INFO -   Epoch: 2/5, Step: 714/1016, Lr: 0.000000074-0.000074012, Loss: 0.262208, Time/step: 3.438476
+07/26/2025 22:08:17 - INFO -   Epoch: 2/5, Step: 719/1016, Lr: 0.000000074-0.000073876, Loss: 0.174800, Time/step: 3.676984
+07/26/2025 22:08:38 - INFO -   Epoch: 2/5, Step: 724/1016, Lr: 0.000000074-0.000073740, Loss: 0.408189, Time/step: 4.196048
+07/26/2025 22:08:53 - INFO -   Epoch: 2/5, Step: 729/1016, Lr: 0.000000074-0.000073604, Loss: 0.203137, Time/step: 3.171068
+07/26/2025 22:09:11 - INFO -   Epoch: 2/5, Step: 734/1016, Lr: 0.000000073-0.000073468, Loss: 0.073980, Time/step: 3.508939
+07/26/2025 22:09:30 - INFO -   Epoch: 2/5, Step: 739/1016, Lr: 0.000000073-0.000073331, Loss: 0.177701, Time/step: 3.820330
+07/26/2025 22:09:51 - INFO -   Epoch: 2/5, Step: 744/1016, Lr: 0.000000073-0.000073194, Loss: 0.366395, Time/step: 4.199961
+07/26/2025 22:10:06 - INFO -   Epoch: 2/5, Step: 749/1016, Lr: 0.000000073-0.000073057, Loss: 0.224098, Time/step: 3.066916
+07/26/2025 22:10:24 - INFO -   Epoch: 2/5, Step: 754/1016, Lr: 0.000000073-0.000072920, Loss: 0.124513, Time/step: 3.551477
+07/26/2025 22:10:42 - INFO -   Epoch: 2/5, Step: 759/1016, Lr: 0.000000073-0.000072782, Loss: 0.323599, Time/step: 3.628501
+07/26/2025 22:11:01 - INFO -   Epoch: 2/5, Step: 764/1016, Lr: 0.000000073-0.000072644, Loss: 0.168906, Time/step: 3.653788
+07/26/2025 22:11:18 - INFO -   Epoch: 2/5, Step: 769/1016, Lr: 0.000000073-0.000072506, Loss: 0.360242, Time/step: 3.499380
+07/26/2025 22:11:36 - INFO -   Epoch: 2/5, Step: 774/1016, Lr: 0.000000072-0.000072368, Loss: 0.148316, Time/step: 3.608757
+07/26/2025 22:11:50 - INFO -   Epoch: 2/5, Step: 779/1016, Lr: 0.000000072-0.000072230, Loss: 0.208764, Time/step: 2.690059
+07/26/2025 22:12:08 - INFO -   Epoch: 2/5, Step: 784/1016, Lr: 0.000000072-0.000072091, Loss: 0.272185, Time/step: 3.602163
+07/26/2025 22:12:26 - INFO -   Epoch: 2/5, Step: 789/1016, Lr: 0.000000072-0.000071953, Loss: 0.034415, Time/step: 3.631858
+07/26/2025 22:12:41 - INFO -   Epoch: 2/5, Step: 794/1016, Lr: 0.000000072-0.000071814, Loss: 0.088706, Time/step: 3.052711
+07/26/2025 22:12:56 - INFO -   Epoch: 2/5, Step: 799/1016, Lr: 0.000000072-0.000071674, Loss: 0.109345, Time/step: 3.082695
+07/26/2025 22:13:21 - INFO -   Epoch: 2/5, Step: 804/1016, Lr: 0.000000072-0.000071535, Loss: 0.077621, Time/step: 4.885266
+07/26/2025 22:13:38 - INFO -   Epoch: 2/5, Step: 809/1016, Lr: 0.000000071-0.000071395, Loss: 0.099205, Time/step: 3.474898
+07/26/2025 22:13:54 - INFO -   Epoch: 2/5, Step: 814/1016, Lr: 0.000000071-0.000071255, Loss: 0.114338, Time/step: 3.082104
+07/26/2025 22:14:11 - INFO -   Epoch: 2/5, Step: 819/1016, Lr: 0.000000071-0.000071115, Loss: 0.204044, Time/step: 3.385720
+07/26/2025 22:14:30 - INFO -   Epoch: 2/5, Step: 824/1016, Lr: 0.000000071-0.000070975, Loss: 0.303769, Time/step: 3.972715
+07/26/2025 22:14:47 - INFO -   Epoch: 2/5, Step: 829/1016, Lr: 0.000000071-0.000070835, Loss: 0.117897, Time/step: 3.264847
+07/26/2025 22:15:04 - INFO -   Epoch: 2/5, Step: 834/1016, Lr: 0.000000071-0.000070694, Loss: 0.215820, Time/step: 3.431545
+07/26/2025 22:15:26 - INFO -   Epoch: 2/5, Step: 839/1016, Lr: 0.000000071-0.000070553, Loss: 0.334994, Time/step: 4.465089
+07/26/2025 22:15:48 - INFO -   Epoch: 2/5, Step: 844/1016, Lr: 0.000000070-0.000070412, Loss: 0.231543, Time/step: 4.260299
+07/26/2025 22:16:04 - INFO -   Epoch: 2/5, Step: 849/1016, Lr: 0.000000070-0.000070271, Loss: 0.181333, Time/step: 3.301898
+07/26/2025 22:16:19 - INFO -   Epoch: 2/5, Step: 854/1016, Lr: 0.000000070-0.000070129, Loss: 0.517568, Time/step: 2.954338
+07/26/2025 22:16:42 - INFO -   Epoch: 2/5, Step: 859/1016, Lr: 0.000000070-0.000069988, Loss: 0.240273, Time/step: 4.541473
+07/26/2025 22:17:00 - INFO -   Epoch: 2/5, Step: 864/1016, Lr: 0.000000070-0.000069846, Loss: 0.160735, Time/step: 3.774774
+07/26/2025 22:17:17 - INFO -   Epoch: 2/5, Step: 869/1016, Lr: 0.000000070-0.000069704, Loss: 0.368270, Time/step: 3.375277
+07/26/2025 22:17:35 - INFO -   Epoch: 2/5, Step: 874/1016, Lr: 0.000000070-0.000069562, Loss: 0.324630, Time/step: 3.606804
+07/26/2025 22:17:57 - INFO -   Epoch: 2/5, Step: 879/1016, Lr: 0.000000069-0.000069419, Loss: 0.177009, Time/step: 4.247571
+07/26/2025 22:18:11 - INFO -   Epoch: 2/5, Step: 884/1016, Lr: 0.000000069-0.000069277, Loss: 0.214748, Time/step: 2.834525
+07/26/2025 22:18:23 - INFO -   Epoch: 2/5, Step: 889/1016, Lr: 0.000000069-0.000069134, Loss: 0.490867, Time/step: 2.461316
+07/26/2025 22:18:45 - INFO -   Epoch: 2/5, Step: 894/1016, Lr: 0.000000069-0.000068991, Loss: 0.054726, Time/step: 4.339575
+07/26/2025 22:19:02 - INFO -   Epoch: 2/5, Step: 899/1016, Lr: 0.000000069-0.000068848, Loss: 0.156863, Time/step: 3.442378
+07/26/2025 22:19:17 - INFO -   Epoch: 2/5, Step: 904/1016, Lr: 0.000000069-0.000068705, Loss: 0.189319, Time/step: 2.972317
+07/26/2025 22:19:34 - INFO -   Epoch: 2/5, Step: 909/1016, Lr: 0.000000069-0.000068561, Loss: 0.298294, Time/step: 3.453427
+07/26/2025 22:19:55 - INFO -   Epoch: 2/5, Step: 914/1016, Lr: 0.000000068-0.000068418, Loss: 0.202559, Time/step: 4.237216
+07/26/2025 22:20:12 - INFO -   Epoch: 2/5, Step: 919/1016, Lr: 0.000000068-0.000068274, Loss: 0.205035, Time/step: 3.415372
+07/26/2025 22:20:26 - INFO -   Epoch: 2/5, Step: 924/1016, Lr: 0.000000068-0.000068130, Loss: 0.214129, Time/step: 2.654240
+07/26/2025 22:20:43 - INFO -   Epoch: 2/5, Step: 929/1016, Lr: 0.000000068-0.000067986, Loss: 0.194220, Time/step: 3.416253
+07/26/2025 22:21:06 - INFO -   Epoch: 2/5, Step: 934/1016, Lr: 0.000000068-0.000067841, Loss: 0.328649, Time/step: 4.650597
+07/26/2025 22:21:21 - INFO -   Epoch: 2/5, Step: 939/1016, Lr: 0.000000068-0.000067697, Loss: 0.101525, Time/step: 2.929897
+07/26/2025 22:21:39 - INFO -   Epoch: 2/5, Step: 944/1016, Lr: 0.000000068-0.000067552, Loss: 0.156281, Time/step: 3.595440
+07/26/2025 22:21:55 - INFO -   Epoch: 2/5, Step: 949/1016, Lr: 0.000000067-0.000067407, Loss: 0.109206, Time/step: 3.236130
+07/26/2025 22:22:25 - INFO -   Epoch: 2/5, Step: 954/1016, Lr: 0.000000067-0.000067262, Loss: 0.264873, Time/step: 6.006159
+07/26/2025 22:22:39 - INFO -   Epoch: 2/5, Step: 959/1016, Lr: 0.000000067-0.000067117, Loss: 0.129355, Time/step: 2.813612
+07/26/2025 22:22:59 - INFO -   Epoch: 2/5, Step: 964/1016, Lr: 0.000000067-0.000066972, Loss: 0.451147, Time/step: 4.058775
+07/26/2025 22:23:17 - INFO -   Epoch: 2/5, Step: 969/1016, Lr: 0.000000067-0.000066826, Loss: 0.226574, Time/step: 3.490451
+07/26/2025 22:23:38 - INFO -   Epoch: 2/5, Step: 974/1016, Lr: 0.000000067-0.000066681, Loss: 0.170502, Time/step: 4.358828
+07/26/2025 22:23:53 - INFO -   Epoch: 2/5, Step: 979/1016, Lr: 0.000000067-0.000066535, Loss: 0.187571, Time/step: 2.946561
+07/26/2025 22:24:08 - INFO -   Epoch: 2/5, Step: 984/1016, Lr: 0.000000066-0.000066389, Loss: 0.147712, Time/step: 3.019728
+07/26/2025 22:24:24 - INFO -   Epoch: 2/5, Step: 989/1016, Lr: 0.000000066-0.000066243, Loss: 0.070847, Time/step: 3.132606
+07/26/2025 22:24:46 - INFO -   Epoch: 2/5, Step: 994/1016, Lr: 0.000000066-0.000066096, Loss: 0.286332, Time/step: 4.471301
+07/26/2025 22:25:03 - INFO -   Epoch: 2/5, Step: 999/1016, Lr: 0.000000066-0.000065950, Loss: 0.170165, Time/step: 3.293816
+07/26/2025 22:25:17 - INFO -   Epoch: 2/5, Step: 1004/1016, Lr: 0.000000066-0.000065803, Loss: 0.048867, Time/step: 2.796577
+07/26/2025 22:25:33 - INFO -   Epoch: 2/5, Step: 1009/1016, Lr: 0.000000066-0.000065657, Loss: 0.188413, Time/step: 3.260540
+07/26/2025 22:25:59 - INFO -   Epoch: 2/5, Step: 1014/1016, Lr: 0.000000066-0.000065510, Loss: 0.111471, Time/step: 5.247123
+07/26/2025 22:26:03 - INFO -   Epoch 2/5 Finished, Train Loss: 0.245617
+07/26/2025 22:26:05 - INFO -   Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.1
+07/26/2025 22:26:05 - INFO -   Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_opt.bin.1
+07/26/2025 22:26:05 - INFO -   Eval on val dataset
+07/26/2025 22:26:05 - WARNING -   Eval under the multi-sentence per video clip setting.
+07/26/2025 22:26:05 - WARNING -   sentence num: 4290, video num: 100
+0/2691/2692/2693/2694/2695/2696/2697/2698/2699/26910/26911/26912/26913/26914/26915/26916/26917/26918/26919/26920/26921/26922/26923/26924/26925/26926/26927/26928/26929/26930/26931/26932/26933/26934/26935/26936/26937/26938/26939/26940/26941/26942/26943/26944/26945/26946/26947/26948/26949/26950/26951/26952/26953/26954/26955/26956/26957/26958/26959/26960/26961/26962/26963/26964/26965/26966/26967/26968/26969/26970/26971/26972/26973/26974/26975/26976/26977/26978/26979/26980/26981/26982/26983/26984/26985/26986/26987/26988/26989/26990/26991/26992/26993/26994/26995/26996/26997/26998/26999/269100/269101/269102/269103/269104/269105/269106/269107/269108/269109/269110/269111/269112/269113/269114/269115/269116/269117/269118/269119/269120/269121/269122/269123/269124/269125/269126/269127/269128/269129/269130/269131/269132/269133/269134/269135/269136/269137/269138/269139/269140/269141/269142/269143/269144/269145/269146/269147/269148/269149/269150/269151/269152/269153/269154/269155/269156/269157/269158/269159/269160/269161/269162/269163/269164/269165/269166/269167/269168/269169/269170/269171/269172/269173/269174/269175/269176/269177/269178/269179/269180/269181/269182/269183/269184/269185/269186/269187/269188/269189/269190/269191/269192/269193/269194/269195/269196/269197/269198/269199/269200/269201/269202/269203/269204/269205/269206/269207/269208/269209/269210/269211/269212/269213/269214/269215/269216/269217/269218/269219/269220/269221/269222/269223/269224/269225/269226/269227/269228/269229/269230/269231/269232/269233/269234/269235/269236/269237/269238/269239/269240/269241/269242/269243/269244/269245/269246/269247/269248/269249/269250/269251/269252/269253/269254/269255/269256/269257/269258/269259/269260/269261/269262/269263/269264/269265/269266/269267/269268/26907/26/2025 22:38:33 - INFO -   before reshape, sim matrix size: 4290 x 100
+07/26/2025 22:38:33 - INFO -   after reshape, sim matrix size: 100 x 62 x 100
+07/26/2025 22:38:33 - INFO -   Text-to-Video:
+07/26/2025 22:38:33 - INFO -   	>>>  R@1: 68.0 - R@5: 91.5 - R@10: 96.0 - Median R: 1.0 - Mean R: 2.5
+07/26/2025 22:38:33 - INFO -   Video-to-Text:
+07/26/2025 22:38:33 - INFO -   	>>>  V2T$R@1: 88.1 - V2T$R@5: 98.0 - V2T$R@10: 100.0 - V2T$Median R: 1.0 - V2T$Mean R: 1.3
+07/26/2025 22:38:33 - INFO -   The best model is: ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.1, the R1 is: 68.0186
+07/26/2025 22:39:03 - INFO -   Epoch: 3/5, Step: 3/1016, Lr: 0.000000065-0.000000394-0.000065363, Loss: 0.278348, Time/step: 5.777431
+07/26/2025 22:39:26 - INFO -   Epoch: 3/5, Step: 8/1016, Lr: 0.000000065-0.000001378-0.000065215, Loss: 0.303218, Time/step: 4.586546
+07/26/2025 22:39:54 - INFO -   Epoch: 3/5, Step: 13/1016, Lr: 0.000000065-0.000002362-0.000065068, Loss: 0.265584, Time/step: 5.571432
+07/26/2025 22:40:10 - INFO -   Epoch: 3/5, Step: 18/1016, Lr: 0.000000065-0.000003346-0.000064921, Loss: 0.209580, Time/step: 3.339589
+07/26/2025 22:40:29 - INFO -   Epoch: 3/5, Step: 23/1016, Lr: 0.000000065-0.000004331-0.000064773, Loss: 0.337900, Time/step: 3.727968
+07/26/2025 22:40:50 - INFO -   Epoch: 3/5, Step: 28/1016, Lr: 0.000000065-0.000005315-0.000064625, Loss: 0.289137, Time/step: 4.269113
+07/26/2025 22:41:15 - INFO -   Epoch: 3/5, Step: 33/1016, Lr: 0.000000064-0.000006299-0.000064477, Loss: 0.522379, Time/step: 4.989390
+07/26/2025 22:41:35 - INFO -   Epoch: 3/5, Step: 38/1016, Lr: 0.000000064-0.000007283-0.000064329, Loss: 0.295558, Time/step: 3.956532
+07/26/2025 22:41:52 - INFO -   Epoch: 3/5, Step: 43/1016, Lr: 0.000000064-0.000008268-0.000064181, Loss: 0.216685, Time/step: 3.414405
+07/26/2025 22:42:09 - INFO -   Epoch: 3/5, Step: 48/1016, Lr: 0.000000064-0.000009252-0.000064033, Loss: 0.126096, Time/step: 3.428672
+07/26/2025 22:42:33 - INFO -   Epoch: 3/5, Step: 53/1016, Lr: 0.000000064-0.000010236-0.000063884, Loss: 0.198187, Time/step: 4.828338
+07/26/2025 22:42:49 - INFO -   Epoch: 3/5, Step: 58/1016, Lr: 0.000000064-0.000011220-0.000063736, Loss: 0.296499, Time/step: 3.081489
+07/26/2025 22:43:04 - INFO -   Epoch: 3/5, Step: 63/1016, Lr: 0.000000064-0.000012205-0.000063587, Loss: 0.424604, Time/step: 3.051404
+07/26/2025 22:43:20 - INFO -   Epoch: 3/5, Step: 68/1016, Lr: 0.000000063-0.000013189-0.000063438, Loss: 0.332181, Time/step: 3.111433
+07/26/2025 22:43:42 - INFO -   Epoch: 3/5, Step: 73/1016, Lr: 0.000000063-0.000014173-0.000063289, Loss: 0.192225, Time/step: 4.558834
+07/26/2025 22:44:01 - INFO -   Epoch: 3/5, Step: 78/1016, Lr: 0.000000063-0.000015157-0.000063140, Loss: 0.275545, Time/step: 3.638323
+07/26/2025 22:44:19 - INFO -   Epoch: 3/5, Step: 83/1016, Lr: 0.000000063-0.000016142-0.000062991, Loss: 0.365613, Time/step: 3.682833
+07/26/2025 22:44:39 - INFO -   Epoch: 3/5, Step: 88/1016, Lr: 0.000000063-0.000017126-0.000062841, Loss: 0.201805, Time/step: 3.921499
+07/26/2025 22:44:59 - INFO -   Epoch: 3/5, Step: 93/1016, Lr: 0.000000063-0.000018110-0.000062692, Loss: 0.369875, Time/step: 4.148602
+07/26/2025 22:45:16 - INFO -   Epoch: 3/5, Step: 98/1016, Lr: 0.000000063-0.000019094-0.000062542, Loss: 0.228005, Time/step: 3.319981
+07/26/2025 22:45:35 - INFO -   Epoch: 3/5, Step: 103/1016, Lr: 0.000000062-0.000020079-0.000062393, Loss: 0.286172, Time/step: 3.876626
+07/26/2025 22:45:57 - INFO -   Epoch: 3/5, Step: 108/1016, Lr: 0.000000062-0.000021063-0.000062243, Loss: 0.314686, Time/step: 4.407410
+07/26/2025 22:46:14 - INFO -   Epoch: 3/5, Step: 113/1016, Lr: 0.000000062-0.000022047-0.000062093, Loss: 0.368126, Time/step: 3.276450
+07/26/2025 22:46:37 - INFO -   Epoch: 3/5, Step: 118/1016, Lr: 0.000000062-0.000023031-0.000061943, Loss: 0.361540, Time/step: 4.642524
+07/26/2025 22:46:53 - INFO -   Epoch: 3/5, Step: 123/1016, Lr: 0.000000062-0.000024016-0.000061792, Loss: 0.380830, Time/step: 3.125421
+07/26/2025 22:47:15 - INFO -   Epoch: 3/5, Step: 128/1016, Lr: 0.000000062-0.000025000-0.000061642, Loss: 0.430049, Time/step: 4.479427
+07/26/2025 22:47:33 - INFO -   Epoch: 3/5, Step: 133/1016, Lr: 0.000000061-0.000025984-0.000061492, Loss: 0.539226, Time/step: 3.586075
+07/26/2025 22:47:52 - INFO -   Epoch: 3/5, Step: 138/1016, Lr: 0.000000061-0.000026969-0.000061341, Loss: 0.862055, Time/step: 3.835682
+07/26/2025 22:48:16 - INFO -   Epoch: 3/5, Step: 143/1016, Lr: 0.000000061-0.000027953-0.000061191, Loss: 1.172918, Time/step: 4.727107
+07/26/2025 22:48:36 - INFO -   Epoch: 3/5, Step: 148/1016, Lr: 0.000000061-0.000028937-0.000061040, Loss: 1.477090, Time/step: 4.116872
+07/26/2025 22:48:55 - INFO -   Epoch: 3/5, Step: 153/1016, Lr: 0.000000061-0.000029921-0.000060889, Loss: 2.016778, Time/step: 3.827830
+07/26/2025 22:49:12 - INFO -   Epoch: 3/5, Step: 158/1016, Lr: 0.000000061-0.000030906-0.000060738, Loss: 1.390306, Time/step: 3.385676
+07/26/2025 22:49:30 - INFO -   Epoch: 3/5, Step: 163/1016, Lr: 0.000000061-0.000031890-0.000060587, Loss: 1.758223, Time/step: 3.530275
+07/26/2025 22:49:49 - INFO -   Epoch: 3/5, Step: 168/1016, Lr: 0.000000060-0.000032874-0.000060436, Loss: 1.400676, Time/step: 3.749776
+07/26/2025 22:50:08 - INFO -   Epoch: 3/5, Step: 173/1016, Lr: 0.000000060-0.000033858-0.000060285, Loss: 1.006097, Time/step: 3.805299
+07/26/2025 22:50:23 - INFO -   Epoch: 3/5, Step: 178/1016, Lr: 0.000000060-0.000034843-0.000060133, Loss: 0.984880, Time/step: 3.125249
+07/26/2025 22:50:40 - INFO -   Epoch: 3/5, Step: 183/1016, Lr: 0.000000060-0.000035827-0.000059982, Loss: 1.172726, Time/step: 3.347379
+07/26/2025 22:51:06 - INFO -   Epoch: 3/5, Step: 188/1016, Lr: 0.000000060-0.000036811-0.000059830, Loss: 1.853668, Time/step: 5.151459
+07/26/2025 22:51:25 - INFO -   Epoch: 3/5, Step: 193/1016, Lr: 0.000000060-0.000037795-0.000059679, Loss: 1.034555, Time/step: 3.844280
+07/26/2025 22:51:43 - INFO -   Epoch: 3/5, Step: 198/1016, Lr: 0.000000060-0.000038780-0.000059527, Loss: 1.273003, Time/step: 3.478223
+07/26/2025 22:52:01 - INFO -   Epoch: 3/5, Step: 203/1016, Lr: 0.000000059-0.000039764-0.000059375, Loss: 0.698320, Time/step: 3.719923
+07/26/2025 22:52:20 - INFO -   Epoch: 3/5, Step: 208/1016, Lr: 0.000000059-0.000040748-0.000059223, Loss: 0.592490, Time/step: 3.868427
+07/26/2025 22:52:37 - INFO -   Epoch: 3/5, Step: 213/1016, Lr: 0.000000059-0.000041732-0.000059071, Loss: 0.633210, Time/step: 3.257296
+07/26/2025 22:52:56 - INFO -   Epoch: 3/5, Step: 218/1016, Lr: 0.000000059-0.000042717-0.000058919, Loss: 0.860284, Time/step: 3.763113
+07/26/2025 22:53:18 - INFO -   Epoch: 3/5, Step: 223/1016, Lr: 0.000000059-0.000043701-0.000058767, Loss: 0.402347, Time/step: 4.443169
+07/26/2025 22:53:37 - INFO -   Epoch: 3/5, Step: 228/1016, Lr: 0.000000059-0.000044685-0.000058615, Loss: 0.818498, Time/step: 3.861671
+07/26/2025 22:53:55 - INFO -   Epoch: 3/5, Step: 233/1016, Lr: 0.000000058-0.000045669-0.000058462, Loss: 1.491960, Time/step: 3.536700
+07/26/2025 22:54:15 - INFO -   Epoch: 3/5, Step: 238/1016, Lr: 0.000000058-0.000046654-0.000058310, Loss: 2.088273, Time/step: 3.949410
+07/26/2025 22:54:30 - INFO -   Epoch: 3/5, Step: 243/1016, Lr: 0.000000058-0.000047638-0.000058157, Loss: 2.194789, Time/step: 2.999714
+07/26/2025 22:54:53 - INFO -   Epoch: 3/5, Step: 248/1016, Lr: 0.000000058-0.000048622-0.000058005, Loss: 2.004303, Time/step: 4.656496
+07/26/2025 22:55:11 - INFO -   Epoch: 3/5, Step: 253/1016, Lr: 0.000000058-0.000049606-0.000057852, Loss: 1.747679, Time/step: 3.605196
+07/26/2025 22:55:31 - INFO -   Epoch: 3/5, Step: 258/1016, Lr: 0.000000058-0.000050591-0.000057700, Loss: 1.703075, Time/step: 3.995271
+07/26/2025 22:55:46 - INFO -   Epoch: 3/5, Step: 263/1016, Lr: 0.000000058-0.000051575-0.000057547, Loss: 1.366014, Time/step: 2.977253
+07/26/2025 22:56:11 - INFO -   Epoch: 3/5, Step: 268/1016, Lr: 0.000000057-0.000052559-0.000057394, Loss: 0.830986, Time/step: 5.052028
+07/26/2025 22:56:30 - INFO -   Epoch: 3/5, Step: 273/1016, Lr: 0.000000057-0.000053543-0.000057241, Loss: 0.907365, Time/step: 3.771375
+07/26/2025 22:56:48 - INFO -   Epoch: 3/5, Step: 278/1016, Lr: 0.000000057-0.000054528-0.000057088, Loss: 0.676636, Time/step: 3.554477
+07/26/2025 22:57:06 - INFO -   Epoch: 3/5, Step: 283/1016, Lr: 0.000000057-0.000055512-0.000056935, Loss: 0.560537, Time/step: 3.707420
+07/26/2025 22:57:33 - INFO -   Epoch: 3/5, Step: 288/1016, Lr: 0.000000057-0.000056496-0.000056782, Loss: 0.696628, Time/step: 5.309313
+07/26/2025 22:57:50 - INFO -   Epoch: 3/5, Step: 293/1016, Lr: 0.000000057-0.000056628-0.000057480, Loss: 1.405122, Time/step: 3.420190
+07/26/2025 22:58:05 - INFO -   Epoch: 3/5, Step: 298/1016, Lr: 0.000000056-0.000056475-0.000058465, Loss: 3.242180, Time/step: 3.013384
+07/26/2025 22:58:24 - INFO -   Epoch: 3/5, Step: 303/1016, Lr: 0.000000056-0.000056322-0.000059449, Loss: 3.802804, Time/step: 3.837981
+07/26/2025 22:58:51 - INFO -   Epoch: 3/5, Step: 308/1016, Lr: 0.000000056-0.000056168-0.000060433, Loss: 5.015170, Time/step: 5.315588
+07/26/2025 22:59:09 - INFO -   Epoch: 3/5, Step: 313/1016, Lr: 0.000000056-0.000056015-0.000061417, Loss: 4.666662, Time/step: 3.581483
+07/26/2025 22:59:24 - INFO -   Epoch: 3/5, Step: 318/1016, Lr: 0.000000056-0.000055862-0.000062402, Loss: 5.175389, Time/step: 3.166840
+07/26/2025 22:59:42 - INFO -   Epoch: 3/5, Step: 323/1016, Lr: 0.000000056-0.000055708-0.000063386, Loss: 5.145574, Time/step: 3.524258
+07/26/2025 23:00:06 - INFO -   Epoch: 3/5, Step: 328/1016, Lr: 0.000000056-0.000055554-0.000064370, Loss: 3.831657, Time/step: 4.808166
+07/26/2025 23:00:25 - INFO -   Epoch: 3/5, Step: 333/1016, Lr: 0.000000055-0.000055401-0.000065354, Loss: 3.392778, Time/step: 3.792923
+07/26/2025 23:00:39 - INFO -   Epoch: 3/5, Step: 338/1016, Lr: 0.000000055-0.000055247-0.000066339, Loss: 2.348591, Time/step: 2.736956
+07/26/2025 23:00:58 - INFO -   Epoch: 3/5, Step: 343/1016, Lr: 0.000000055-0.000055093-0.000067323, Loss: 2.320035, Time/step: 3.827447
+07/26/2025 23:01:20 - INFO -   Epoch: 3/5, Step: 348/1016, Lr: 0.000000055-0.000054939-0.000068307, Loss: 2.338187, Time/step: 4.504613
+07/26/2025 23:01:35 - INFO -   Epoch: 3/5, Step: 353/1016, Lr: 0.000000055-0.000054785-0.000069291, Loss: 2.118261, Time/step: 2.912188
+07/26/2025 23:01:56 - INFO -   Epoch: 3/5, Step: 358/1016, Lr: 0.000000055-0.000054632-0.000070276, Loss: 1.383953, Time/step: 4.147360
+07/26/2025 23:02:12 - INFO -   Epoch: 3/5, Step: 363/1016, Lr: 0.000000054-0.000054478-0.000071260, Loss: 1.338899, Time/step: 3.351901
+07/26/2025 23:02:36 - INFO -   Epoch: 3/5, Step: 368/1016, Lr: 0.000000054-0.000054324-0.000072244, Loss: 1.136983, Time/step: 4.718146
+07/26/2025 23:02:53 - INFO -   Epoch: 3/5, Step: 373/1016, Lr: 0.000000054-0.000054170-0.000073228, Loss: 1.028771, Time/step: 3.497797
+07/26/2025 23:03:09 - INFO -   Epoch: 3/5, Step: 378/1016, Lr: 0.000000054-0.000054015-0.000074213, Loss: 1.306206, Time/step: 3.118354
+07/26/2025 23:03:26 - INFO -   Epoch: 3/5, Step: 383/1016, Lr: 0.000000054-0.000053861-0.000075197, Loss: 1.735736, Time/step: 3.444780
+07/26/2025 23:03:50 - INFO -   Epoch: 3/5, Step: 388/1016, Lr: 0.000000054-0.000053707-0.000076181, Loss: 1.869074, Time/step: 4.659769
+07/26/2025 23:04:14 - INFO -   Epoch: 3/5, Step: 393/1016, Lr: 0.000000054-0.000053553-0.000077165, Loss: 2.342857, Time/step: 4.831799
+07/26/2025 23:04:27 - INFO -   Epoch: 3/5, Step: 398/1016, Lr: 0.000000053-0.000053399-0.000078150, Loss: 1.621422, Time/step: 2.749993
+07/26/2025 23:04:46 - INFO -   Epoch: 3/5, Step: 403/1016, Lr: 0.000000053-0.000053244-0.000079134, Loss: 1.167116, Time/step: 3.780722
+07/26/2025 23:05:13 - INFO -   Epoch: 3/5, Step: 408/1016, Lr: 0.000000053-0.000053090-0.000080118, Loss: 0.854317, Time/step: 5.322825
+07/26/2025 23:05:33 - INFO -   Epoch: 3/5, Step: 413/1016, Lr: 0.000000053-0.000052936-0.000081102, Loss: 0.696693, Time/step: 4.034284
+07/26/2025 23:05:51 - INFO -   Epoch: 3/5, Step: 418/1016, Lr: 0.000000053-0.000052781-0.000082087, Loss: 0.728523, Time/step: 3.505934
+07/26/2025 23:06:08 - INFO -   Epoch: 3/5, Step: 423/1016, Lr: 0.000000053-0.000052627-0.000083071, Loss: 0.800158, Time/step: 3.390997
+07/26/2025 23:06:28 - INFO -   Epoch: 3/5, Step: 428/1016, Lr: 0.000000052-0.000052473-0.000084055, Loss: 0.989367, Time/step: 4.130869
+07/26/2025 23:06:44 - INFO -   Epoch: 3/5, Step: 433/1016, Lr: 0.000000052-0.000052318-0.000085039, Loss: 0.932573, Time/step: 3.059005
+07/26/2025 23:07:05 - INFO -   Epoch: 3/5, Step: 438/1016, Lr: 0.000000052-0.000052164-0.000086024, Loss: 1.921940, Time/step: 4.269719
+07/26/2025 23:07:21 - INFO -   Epoch: 3/5, Step: 443/1016, Lr: 0.000000052-0.000052009-0.000087008, Loss: 3.348463, Time/step: 3.149843
+07/26/2025 23:07:42 - INFO -   Epoch: 3/5, Step: 448/1016, Lr: 0.000000052-0.000051855-0.000087992, Loss: 5.335610, Time/step: 4.308278
+07/26/2025 23:07:59 - INFO -   Epoch: 3/5, Step: 453/1016, Lr: 0.000000052-0.000051700-0.000088976, Loss: 5.819442, Time/step: 3.354773
+07/26/2025 23:08:17 - INFO -   Epoch: 3/5, Step: 458/1016, Lr: 0.000000052-0.000051546-0.000089961, Loss: 6.972102, Time/step: 3.561269
+07/26/2025 23:08:33 - INFO -   Epoch: 3/5, Step: 463/1016, Lr: 0.000000051-0.000051391-0.000090945, Loss: 7.753484, Time/step: 3.144960
+07/26/2025 23:08:54 - INFO -   Epoch: 3/5, Step: 468/1016, Lr: 0.000000051-0.000051237-0.000091929, Loss: 5.948207, Time/step: 4.299858
+07/26/2025 23:09:09 - INFO -   Epoch: 3/5, Step: 473/1016, Lr: 0.000000051-0.000051082-0.000092913, Loss: 3.223846, Time/step: 3.045877
+07/26/2025 23:09:25 - INFO -   Epoch: 3/5, Step: 478/1016, Lr: 0.000000051-0.000050928-0.000093898, Loss: 6.337175, Time/step: 3.114510
+07/26/2025 23:09:44 - INFO -   Epoch: 3/5, Step: 483/1016, Lr: 0.000000051-0.000050773-0.000094882, Loss: 4.936666, Time/step: 3.730016
+07/26/2025 23:10:05 - INFO -   Epoch: 3/5, Step: 488/1016, Lr: 0.000000051-0.000050618-0.000095866, Loss: 2.869393, Time/step: 4.287683
+07/26/2025 23:10:23 - INFO -   Epoch: 3/5, Step: 493/1016, Lr: 0.000000050-0.000050464-0.000096850, Loss: 2.579932, Time/step: 3.635976
+07/26/2025 23:10:39 - INFO -   Epoch: 3/5, Step: 498/1016, Lr: 0.000000050-0.000050309-0.000097835, Loss: 2.729672, Time/step: 3.252608
+07/26/2025 23:10:57 - INFO -   Epoch: 3/5, Step: 503/1016, Lr: 0.000000050-0.000050155-0.000098819, Loss: 2.059528, Time/step: 3.441011
+07/26/2025 23:11:20 - INFO -   Epoch: 3/5, Step: 508/1016, Lr: 0.000000050-0.000050000-0.000099803, Loss: 2.442288, Time/step: 4.625518
+07/26/2025 23:11:36 - INFO -   Epoch: 3/5, Step: 513/1016, Lr: 0.000000050-0.000049845-0.000097514, Loss: 2.720792, Time/step: 3.326982
+07/26/2025 23:11:54 - INFO -   Epoch: 3/5, Step: 518/1016, Lr: 0.000000050-0.000049691-0.000097466, Loss: 2.911877, Time/step: 3.461660
+07/26/2025 23:12:10 - INFO -   Epoch: 3/5, Step: 523/1016, Lr: 0.000000050-0.000049536-0.000097417, Loss: 2.304954, Time/step: 3.320474
+07/26/2025 23:12:31 - INFO -   Epoch: 3/5, Step: 528/1016, Lr: 0.000000049-0.000049382-0.000097368, Loss: 1.579181, Time/step: 4.194573
+07/26/2025 23:12:49 - INFO -   Epoch: 3/5, Step: 533/1016, Lr: 0.000000049-0.000049227-0.000097318, Loss: 1.083000, Time/step: 3.531956
+07/26/2025 23:13:06 - INFO -   Epoch: 3/5, Step: 538/1016, Lr: 0.000000049-0.000049072-0.000097268, Loss: 1.137827, Time/step: 3.505759
+07/26/2025 23:13:25 - INFO -   Epoch: 3/5, Step: 543/1016, Lr: 0.000000049-0.000048918-0.000097217, Loss: 0.957237, Time/step: 3.754452
+07/26/2025 23:13:42 - INFO -   Epoch: 3/5, Step: 548/1016, Lr: 0.000000049-0.000048763-0.000097166, Loss: 1.805114, Time/step: 3.282185
+07/26/2025 23:14:03 - INFO -   Epoch: 3/5, Step: 553/1016, Lr: 0.000000049-0.000048609-0.000097115, Loss: 1.792310, Time/step: 4.299568
+07/26/2025 23:14:19 - INFO -   Epoch: 3/5, Step: 558/1016, Lr: 0.000000048-0.000048454-0.000097063, Loss: 2.380970, Time/step: 3.270672
+07/26/2025 23:14:36 - INFO -   Epoch: 3/5, Step: 563/1016, Lr: 0.000000048-0.000048300-0.000097010, Loss: 2.913473, Time/step: 3.377031
+07/26/2025 23:14:55 - INFO -   Epoch: 3/5, Step: 568/1016, Lr: 0.000000048-0.000048145-0.000096958, Loss: 2.710630, Time/step: 3.792706
+07/26/2025 23:15:14 - INFO -   Epoch: 3/5, Step: 573/1016, Lr: 0.000000048-0.000047991-0.000096904, Loss: 3.383589, Time/step: 3.640670
+07/26/2025 23:15:31 - INFO -   Epoch: 3/5, Step: 578/1016, Lr: 0.000000048-0.000047836-0.000096850, Loss: 2.029809, Time/step: 3.562153
+07/26/2025 23:15:50 - INFO -   Epoch: 3/5, Step: 583/1016, Lr: 0.000000048-0.000047682-0.000096796, Loss: 1.395953, Time/step: 3.830572
+07/26/2025 23:16:08 - INFO -   Epoch: 3/5, Step: 588/1016, Lr: 0.000000048-0.000047527-0.000096742, Loss: 1.272957, Time/step: 3.413407
+07/26/2025 23:16:28 - INFO -   Epoch: 3/5, Step: 593/1016, Lr: 0.000000047-0.000047373-0.000096686, Loss: 1.420076, Time/step: 4.015095
+07/26/2025 23:16:42 - INFO -   Epoch: 3/5, Step: 598/1016, Lr: 0.000000047-0.000047219-0.000096631, Loss: 1.157222, Time/step: 2.937688
+07/26/2025 23:17:01 - INFO -   Epoch: 3/5, Step: 603/1016, Lr: 0.000000047-0.000047064-0.000096575, Loss: 2.409065, Time/step: 3.657404
+07/26/2025 23:17:20 - INFO -   Epoch: 3/5, Step: 608/1016, Lr: 0.000000047-0.000046910-0.000096518, Loss: 2.208868, Time/step: 3.918472
+07/26/2025 23:17:38 - INFO -   Epoch: 3/5, Step: 613/1016, Lr: 0.000000047-0.000046756-0.000096461, Loss: 5.143245, Time/step: 3.584438
+07/26/2025 23:17:55 - INFO -   Epoch: 3/5, Step: 618/1016, Lr: 0.000000047-0.000046601-0.000096404, Loss: 6.203094, Time/step: 3.332913
+07/26/2025 23:18:13 - INFO -   Epoch: 3/5, Step: 623/1016, Lr: 0.000000046-0.000046447-0.000096346, Loss: 9.258225, Time/step: 3.577510
+07/26/2025 23:18:39 - INFO -   Epoch: 3/5, Step: 628/1016, Lr: 0.000000046-0.000046293-0.000096288, Loss: 10.848749, Time/step: 5.216496
+07/26/2025 23:18:56 - INFO -   Epoch: 3/5, Step: 633/1016, Lr: 0.000000046-0.000046139-0.000096229, Loss: 6.578520, Time/step: 3.459280
+07/26/2025 23:19:10 - INFO -   Epoch: 3/5, Step: 638/1016, Lr: 0.000000046-0.000045985-0.000096170, Loss: 10.919227, Time/step: 2.781511
+07/26/2025 23:19:30 - INFO -   Epoch: 3/5, Step: 643/1016, Lr: 0.000000046-0.000045830-0.000096111, Loss: 7.021671, Time/step: 3.939936
+07/26/2025 23:19:52 - INFO -   Epoch: 3/5, Step: 648/1016, Lr: 0.000000046-0.000045676-0.000096051, Loss: 10.782107, Time/step: 4.426243
+07/26/2025 23:20:09 - INFO -   Epoch: 3/5, Step: 653/1016, Lr: 0.000000046-0.000045522-0.000095990, Loss: 9.256144, Time/step: 3.437870
+07/26/2025 23:20:26 - INFO -   Epoch: 3/5, Step: 658/1016, Lr: 0.000000045-0.000045368-0.000095929, Loss: 5.123579, Time/step: 3.458730
+07/26/2025 23:20:42 - INFO -   Epoch: 3/5, Step: 663/1016, Lr: 0.000000045-0.000045215-0.000095868, Loss: 7.124085, Time/step: 3.210888
+07/26/2025 23:21:04 - INFO -   Epoch: 3/5, Step: 668/1016, Lr: 0.000000045-0.000045061-0.000095806, Loss: 7.388612, Time/step: 4.385684
+07/26/2025 23:21:21 - INFO -   Epoch: 3/5, Step: 673/1016, Lr: 0.000000045-0.000044907-0.000095744, Loss: 4.741363, Time/step: 3.406650
+07/26/2025 23:21:40 - INFO -   Epoch: 3/5, Step: 678/1016, Lr: 0.000000045-0.000044753-0.000095681, Loss: 3.646001, Time/step: 3.722297
+07/26/2025 23:21:56 - INFO -   Epoch: 3/5, Step: 683/1016, Lr: 0.000000045-0.000044599-0.000095618, Loss: 4.837780, Time/step: 3.148922
+07/26/2025 23:22:12 - INFO -   Epoch: 3/5, Step: 688/1016, Lr: 0.000000044-0.000044446-0.000095555, Loss: 5.282594, Time/step: 3.339367
+07/26/2025 23:22:34 - INFO -   Epoch: 3/5, Step: 693/1016, Lr: 0.000000044-0.000044292-0.000095491, Loss: 4.217214, Time/step: 4.365362
+07/26/2025 23:22:55 - INFO -   Epoch: 3/5, Step: 698/1016, Lr: 0.000000044-0.000044138-0.000095427, Loss: 2.876243, Time/step: 4.156052
+07/26/2025 23:23:12 - INFO -   Epoch: 3/5, Step: 703/1016, Lr: 0.000000044-0.000043985-0.000095362, Loss: 3.960809, Time/step: 3.462767
+07/26/2025 23:23:30 - INFO -   Epoch: 3/5, Step: 708/1016, Lr: 0.000000044-0.000043832-0.000095296, Loss: 8.001452, Time/step: 3.605840
+07/26/2025 23:23:50 - INFO -   Epoch: 3/5, Step: 713/1016, Lr: 0.000000044-0.000043678-0.000095231, Loss: 5.817536, Time/step: 3.997148
+07/26/2025 23:24:11 - INFO -   Epoch: 3/5, Step: 718/1016, Lr: 0.000000044-0.000043525-0.000095165, Loss: 4.664710, Time/step: 4.082078
+07/26/2025 23:24:29 - INFO -   Epoch: 3/5, Step: 723/1016, Lr: 0.000000043-0.000043372-0.000095098, Loss: 5.135095, Time/step: 3.758044
+07/26/2025 23:24:46 - INFO -   Epoch: 3/5, Step: 728/1016, Lr: 0.000000043-0.000043218-0.000095031, Loss: 6.590152, Time/step: 3.252283
+07/26/2025 23:25:04 - INFO -   Epoch: 3/5, Step: 733/1016, Lr: 0.000000043-0.000043065-0.000094964, Loss: 3.765252, Time/step: 3.549407
+07/26/2025 23:25:21 - INFO -   Epoch: 3/5, Step: 738/1016, Lr: 0.000000043-0.000042912-0.000094896, Loss: 5.149334, Time/step: 3.554783
+07/26/2025 23:25:45 - INFO -   Epoch: 3/5, Step: 743/1016, Lr: 0.000000043-0.000042759-0.000094828, Loss: 12.443997, Time/step: 4.753906
+07/26/2025 23:26:03 - INFO -   Epoch: 3/5, Step: 748/1016, Lr: 0.000000043-0.000042606-0.000094759, Loss: 3.212864, Time/step: 3.646534
+07/26/2025 23:26:19 - INFO -   Epoch: 3/5, Step: 753/1016, Lr: 0.000000042-0.000042453-0.000094690, Loss: 4.913781, Time/step: 3.220208
+07/26/2025 23:26:36 - INFO -   Epoch: 3/5, Step: 758/1016, Lr: 0.000000042-0.000042300-0.000094620, Loss: 3.256126, Time/step: 3.226532
+07/26/2025 23:26:53 - INFO -   Epoch: 3/5, Step: 763/1016, Lr: 0.000000042-0.000042148-0.000094550, Loss: 3.409294, Time/step: 3.589253
+07/26/2025 23:27:09 - INFO -   Epoch: 3/5, Step: 768/1016, Lr: 0.000000042-0.000041995-0.000094480, Loss: 3.436268, Time/step: 3.205070
+07/26/2025 23:27:36 - INFO -   Epoch: 3/5, Step: 773/1016, Lr: 0.000000042-0.000041843-0.000094409, Loss: 3.070937, Time/step: 5.301789
+07/26/2025 23:27:53 - INFO -   Epoch: 3/5, Step: 778/1016, Lr: 0.000000042-0.000041690-0.000094338, Loss: 2.589633, Time/step: 3.410515
+07/26/2025 23:28:07 - INFO -   Epoch: 3/5, Step: 783/1016, Lr: 0.000000042-0.000041538-0.000094266, Loss: 2.944855, Time/step: 2.854370
+07/26/2025 23:28:26 - INFO -   Epoch: 3/5, Step: 788/1016, Lr: 0.000000041-0.000041385-0.000094194, Loss: 6.499276, Time/step: 3.783124
+07/26/2025 23:28:49 - INFO -   Epoch: 3/5, Step: 793/1016, Lr: 0.000000041-0.000041233-0.000094122, Loss: 3.982157, Time/step: 4.628305
+07/26/2025 23:29:04 - INFO -   Epoch: 3/5, Step: 798/1016, Lr: 0.000000041-0.000041081-0.000094049, Loss: 3.378058, Time/step: 2.890680
+07/26/2025 23:29:27 - INFO -   Epoch: 3/5, Step: 803/1016, Lr: 0.000000041-0.000040929-0.000093975, Loss: 7.354937, Time/step: 4.612213
+07/26/2025 23:29:45 - INFO -   Epoch: 3/5, Step: 808/1016, Lr: 0.000000041-0.000040777-0.000093901, Loss: 11.821803, Time/step: 3.641775
+07/26/2025 23:30:02 - INFO -   Epoch: 3/5, Step: 813/1016, Lr: 0.000000041-0.000040625-0.000093827, Loss: 4.506117, Time/step: 3.280314
+07/26/2025 23:30:16 - INFO -   Epoch: 3/5, Step: 818/1016, Lr: 0.000000040-0.000040473-0.000093753, Loss: 4.510964, Time/step: 2.970795
+07/26/2025 23:30:39 - INFO -   Epoch: 3/5, Step: 823/1016, Lr: 0.000000040-0.000040321-0.000093678, Loss: 5.004034, Time/step: 4.567329
+07/26/2025 23:30:54 - INFO -   Epoch: 3/5, Step: 828/1016, Lr: 0.000000040-0.000040170-0.000093602, Loss: 5.412611, Time/step: 2.971108
+07/26/2025 23:31:16 - INFO -   Epoch: 3/5, Step: 833/1016, Lr: 0.000000040-0.000040018-0.000093526, Loss: 8.339645, Time/step: 4.348623
+07/26/2025 23:31:29 - INFO -   Epoch: 3/5, Step: 838/1016, Lr: 0.000000040-0.000039867-0.000093450, Loss: 4.809624, Time/step: 2.603451
+07/26/2025 23:31:48 - INFO -   Epoch: 3/5, Step: 843/1016, Lr: 0.000000040-0.000039715-0.000093373, Loss: 4.421339, Time/step: 3.897437
+07/26/2025 23:32:04 - INFO -   Epoch: 3/5, Step: 848/1016, Lr: 0.000000040-0.000039564-0.000093296, Loss: 5.259832, Time/step: 3.206550
+07/26/2025 23:32:28 - INFO -   Epoch: 3/5, Step: 853/1016, Lr: 0.000000039-0.000039413-0.000093219, Loss: 4.468020, Time/step: 4.743054
+07/26/2025 23:32:41 - INFO -   Epoch: 3/5, Step: 858/1016, Lr: 0.000000039-0.000039262-0.000093141, Loss: 4.521735, Time/step: 2.583504
+07/26/2025 23:33:03 - INFO -   Epoch: 3/5, Step: 863/1016, Lr: 0.000000039-0.000039111-0.000093062, Loss: 4.702172, Time/step: 4.386641
+07/26/2025 23:33:17 - INFO -   Epoch: 3/5, Step: 868/1016, Lr: 0.000000039-0.000038960-0.000092983, Loss: 5.421851, Time/step: 2.870482
+07/26/2025 23:33:38 - INFO -   Epoch: 3/5, Step: 873/1016, Lr: 0.000000039-0.000038809-0.000092904, Loss: 6.341296, Time/step: 4.122104
+07/26/2025 23:33:56 - INFO -   Epoch: 3/5, Step: 878/1016, Lr: 0.000000039-0.000038659-0.000092825, Loss: 3.739521, Time/step: 3.591536
+07/26/2025 23:34:16 - INFO -   Epoch: 3/5, Step: 883/1016, Lr: 0.000000039-0.000038508-0.000092745, Loss: 3.285541, Time/step: 3.967525
+07/26/2025 23:34:33 - INFO -   Epoch: 3/5, Step: 888/1016, Lr: 0.000000038-0.000038358-0.000092664, Loss: 5.097298, Time/step: 3.531947
+07/26/2025 23:34:54 - INFO -   Epoch: 3/5, Step: 893/1016, Lr: 0.000000038-0.000038208-0.000092583, Loss: 5.710051, Time/step: 4.084243
+07/26/2025 23:35:09 - INFO -   Epoch: 3/5, Step: 898/1016, Lr: 0.000000038-0.000038057-0.000092502, Loss: 4.125860, Time/step: 3.094581
+07/26/2025 23:35:29 - INFO -   Epoch: 3/5, Step: 903/1016, Lr: 0.000000038-0.000037907-0.000092421, Loss: 3.790028, Time/step: 3.920839
+07/26/2025 23:35:53 - INFO -   Epoch: 3/5, Step: 908/1016, Lr: 0.000000038-0.000037757-0.000092339, Loss: 2.940408, Time/step: 4.827546
+07/26/2025 23:36:10 - INFO -   Epoch: 3/5, Step: 913/1016, Lr: 0.000000038-0.000037607-0.000092256, Loss: 4.916036, Time/step: 3.385480
+07/26/2025 23:36:29 - INFO -   Epoch: 3/5, Step: 918/1016, Lr: 0.000000037-0.000037458-0.000092173, Loss: 4.466864, Time/step: 3.796315
+07/26/2025 23:36:54 - INFO -   Epoch: 3/5, Step: 923/1016, Lr: 0.000000037-0.000037308-0.000092090, Loss: 7.236576, Time/step: 5.101207
+07/26/2025 23:37:12 - INFO -   Epoch: 3/5, Step: 928/1016, Lr: 0.000000037-0.000037159-0.000092006, Loss: 5.352651, Time/step: 3.503961
+07/26/2025 23:37:28 - INFO -   Epoch: 3/5, Step: 933/1016, Lr: 0.000000037-0.000037009-0.000091922, Loss: 5.244303, Time/step: 3.163834
+07/26/2025 23:37:46 - INFO -   Epoch: 3/5, Step: 938/1016, Lr: 0.000000037-0.000036860-0.000091838, Loss: 4.329240, Time/step: 3.575301
+07/26/2025 23:38:11 - INFO -   Epoch: 3/5, Step: 943/1016, Lr: 0.000000037-0.000036711-0.000091753, Loss: 5.737717, Time/step: 5.171417
+07/26/2025 23:38:27 - INFO -   Epoch: 3/5, Step: 948/1016, Lr: 0.000000037-0.000036562-0.000091668, Loss: 5.794950, Time/step: 3.084775
+07/26/2025 23:38:43 - INFO -   Epoch: 3/5, Step: 953/1016, Lr: 0.000000036-0.000036413-0.000091582, Loss: 4.721750, Time/step: 3.169721
+07/26/2025 23:39:02 - INFO -   Epoch: 3/5, Step: 958/1016, Lr: 0.000000036-0.000036264-0.000091496, Loss: 4.109617, Time/step: 3.929432
+07/26/2025 23:39:20 - INFO -   Epoch: 3/5, Step: 963/1016, Lr: 0.000000036-0.000036116-0.000091410, Loss: 3.837625, Time/step: 3.616772
+07/26/2025 23:39:40 - INFO -   Epoch: 3/5, Step: 968/1016, Lr: 0.000000036-0.000035967-0.000091323, Loss: 3.982981, Time/step: 3.857102
+07/26/2025 23:40:01 - INFO -   Epoch: 3/5, Step: 973/1016, Lr: 0.000000036-0.000035819-0.000091235, Loss: 3.384686, Time/step: 4.232194
+07/26/2025 23:40:18 - INFO -   Epoch: 3/5, Step: 978/1016, Lr: 0.000000036-0.000035671-0.000091148, Loss: 7.161452, Time/step: 3.480483
+07/26/2025 23:40:35 - INFO -   Epoch: 3/5, Step: 983/1016, Lr: 0.000000036-0.000035523-0.000091060, Loss: 12.285864, Time/step: 3.248404
+07/26/2025 23:40:53 - INFO -   Epoch: 3/5, Step: 988/1016, Lr: 0.000000035-0.000035375-0.000090971, Loss: 6.572493, Time/step: 3.724129
+07/26/2025 23:41:12 - INFO -   Epoch: 3/5, Step: 993/1016, Lr: 0.000000035-0.000035227-0.000090883, Loss: 5.737855, Time/step: 3.823158
+07/26/2025 23:41:27 - INFO -   Epoch: 3/5, Step: 998/1016, Lr: 0.000000035-0.000035079-0.000090793, Loss: 6.552913, Time/step: 2.933851
+07/26/2025 23:41:45 - INFO -   Epoch: 3/5, Step: 1003/1016, Lr: 0.000000035-0.000034932-0.000090704, Loss: 5.843849, Time/step: 3.625407
+07/26/2025 23:42:09 - INFO -   Epoch: 3/5, Step: 1008/1016, Lr: 0.000000035-0.000034785-0.000090614, Loss: 4.555079, Time/step: 4.721069
+07/26/2025 23:42:25 - INFO -   Epoch: 3/5, Step: 1013/1016, Lr: 0.000000035-0.000034637-0.000090523, Loss: 6.287941, Time/step: 3.317714
+07/26/2025 23:42:39 - INFO -   Epoch 3/5 Finished, Train Loss: 3.312338
+07/26/2025 23:42:40 - INFO -   Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.2
+07/26/2025 23:42:40 - INFO -   Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_opt.bin.2
+07/26/2025 23:42:40 - INFO -   Eval on val dataset
+07/26/2025 23:42:40 - WARNING -   Eval under the multi-sentence per video clip setting.
+07/26/2025 23:42:40 - WARNING -   sentence num: 4290, video num: 100
+0/2691/2692/2693/2694/2695/2696/2697/2698/2699/26910/26911/26912/26913/26914/26915/26916/26917/26918/26919/26920/26921/26922/26923/26924/26925/26926/26927/26928/26929/26930/26931/26932/26933/26934/26935/26936/26937/26938/26939/26940/26941/26942/26943/26944/26945/26946/26947/26948/26949/26950/26951/26952/26953/26954/26955/26956/26957/26958/26959/26960/26961/26962/26963/26964/26965/26966/26967/26968/26969/26970/26971/26972/26973/26974/26975/26976/26977/26978/26979/26980/26981/26982/26983/26984/26985/26986/26987/26988/26989/26990/26991/26992/26993/26994/26995/26996/26997/26998/26999/269100/269101/269102/269103/269104/269105/269106/269107/269108/269109/269110/269111/269112/269113/269114/269115/269116/269117/269118/269119/269120/269121/269122/269123/269124/269125/269126/269127/269128/269129/269130/269131/269132/269133/269134/269135/269136/269137/269138/269139/269140/269141/269142/269143/269144/269145/269146/269147/269148/269149/269150/269151/269152/269153/269154/269155/269156/269157/269158/269159/269160/269161/269162/269163/269164/269165/269166/269167/269168/269169/269170/269171/269172/269173/269174/269175/269176/269177/269178/269179/269180/269181/269182/269183/269184/269185/269186/269187/269188/269189/269190/269191/269192/269193/269194/269195/269196/269197/269198/269199/269200/269201/269202/269203/269204/269205/269206/269207/269208/269209/269210/269211/269212/269213/269214/269215/269216/269217/269218/269219/269220/269221/269222/269223/269224/269225/269226/269227/269228/269229/269230/269231/269232/269233/269234/269235/269236/269237/269238/269239/269240/269241/269242/269243/269244/269245/269246/269247/269248/269249/269250/269251/269252/269253/269254/269255/269256/269257/269258/269259/269260/269261/269262/269263/269264/269265/269266/269267/269268/26907/26/2025 23:55:11 - INFO -   before reshape, sim matrix size: 4290 x 100
+07/26/2025 23:55:11 - INFO -   after reshape, sim matrix size: 100 x 62 x 100
+07/26/2025 23:55:11 - INFO -   Text-to-Video:
+07/26/2025 23:55:11 - INFO -   	>>>  R@1: 45.4 - R@5: 76.3 - R@10: 85.4 - Median R: 2.0 - Mean R: 5.1
+07/26/2025 23:55:11 - INFO -   Video-to-Text:
+07/26/2025 23:55:11 - INFO -   	>>>  V2T$R@1: 34.3 - V2T$R@5: 58.8 - V2T$R@10: 69.6 - V2T$Median R: 3.0 - V2T$Mean R: 10.3
+07/26/2025 23:55:11 - INFO -   The best model is: ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.1, the R1 is: 68.0186
+07/26/2025 23:55:36 - INFO -   Epoch: 4/5, Step: 2/1016, Lr: 0.000000034-0.000034490-0.000090433, Loss: 8.775822, Time/step: 4.843404
+07/26/2025 23:55:51 - INFO -   Epoch: 4/5, Step: 7/1016, Lr: 0.000000034-0.000034343-0.000090342, Loss: 8.610018, Time/step: 3.172721
+07/26/2025 23:56:07 - INFO -   Epoch: 4/5, Step: 12/1016, Lr: 0.000000034-0.000034197-0.000090250, Loss: 8.112641, Time/step: 3.079556
+07/26/2025 23:56:30 - INFO -   Epoch: 4/5, Step: 17/1016, Lr: 0.000000034-0.000034050-0.000090158, Loss: 5.499320, Time/step: 4.672798
+07/26/2025 23:56:49 - INFO -   Epoch: 4/5, Step: 22/1016, Lr: 0.000000034-0.000033904-0.000090066, Loss: 12.103251, Time/step: 3.838947
+07/26/2025 23:57:07 - INFO -   Epoch: 4/5, Step: 27/1016, Lr: 0.000000034-0.000033757-0.000089973, Loss: 5.353502, Time/step: 3.579440
+07/26/2025 23:57:25 - INFO -   Epoch: 4/5, Step: 32/1016, Lr: 0.000000034-0.000033611-0.000089880, Loss: 13.948940, Time/step: 3.479428
+07/26/2025 23:57:44 - INFO -   Epoch: 4/5, Step: 37/1016, Lr: 0.000000033-0.000033465-0.000089787, Loss: 9.145614, Time/step: 3.857731
+07/26/2025 23:58:01 - INFO -   Epoch: 4/5, Step: 42/1016, Lr: 0.000000033-0.000033319-0.000089693, Loss: 8.723181, Time/step: 3.492895
+07/26/2025 23:58:28 - INFO -   Epoch: 4/5, Step: 47/1016, Lr: 0.000000033-0.000033174-0.000089599, Loss: 4.429215, Time/step: 5.239532
+07/26/2025 23:58:47 - INFO -   Epoch: 4/5, Step: 52/1016, Lr: 0.000000033-0.000033028-0.000089504, Loss: 5.750341, Time/step: 3.946652
+07/26/2025 23:59:07 - INFO -   Epoch: 4/5, Step: 57/1016, Lr: 0.000000033-0.000032883-0.000089409, Loss: 9.552452, Time/step: 3.932165
+07/26/2025 23:59:25 - INFO -   Epoch: 4/5, Step: 62/1016, Lr: 0.000000033-0.000032738-0.000089314, Loss: 4.390329, Time/step: 3.549393
+07/26/2025 23:59:48 - INFO -   Epoch: 4/5, Step: 67/1016, Lr: 0.000000033-0.000032593-0.000089218, Loss: 3.790750, Time/step: 4.652769
+07/27/2025 00:00:08 - INFO -   Epoch: 4/5, Step: 72/1016, Lr: 0.000000032-0.000032448-0.000089122, Loss: 6.216027, Time/step: 4.073511
+07/27/2025 00:00:27 - INFO -   Epoch: 4/5, Step: 77/1016, Lr: 0.000000032-0.000032303-0.000089025, Loss: 19.779644, Time/step: 3.760738
+07/27/2025 00:00:42 - INFO -   Epoch: 4/5, Step: 82/1016, Lr: 0.000000032-0.000032159-0.000088929, Loss: 10.042864, Time/step: 2.903397
+07/27/2025 00:01:02 - INFO -   Epoch: 4/5, Step: 87/1016, Lr: 0.000000032-0.000032014-0.000088831, Loss: 7.096292, Time/step: 3.995093
+07/27/2025 00:01:21 - INFO -   Epoch: 4/5, Step: 92/1016, Lr: 0.000000032-0.000031870-0.000088734, Loss: 4.544066, Time/step: 3.834072
+07/27/2025 00:01:37 - INFO -   Epoch: 4/5, Step: 97/1016, Lr: 0.000000032-0.000031726-0.000088636, Loss: 4.622327, Time/step: 3.320314
+07/27/2025 00:01:56 - INFO -   Epoch: 4/5, Step: 102/1016, Lr: 0.000000032-0.000031582-0.000088537, Loss: 6.341847, Time/step: 3.619291
+07/27/2025 00:02:19 - INFO -   Epoch: 4/5, Step: 107/1016, Lr: 0.000000031-0.000031439-0.000088439, Loss: 3.772051, Time/step: 4.632751
+07/27/2025 00:02:36 - INFO -   Epoch: 4/5, Step: 112/1016, Lr: 0.000000031-0.000031295-0.000088340, Loss: 3.267615, Time/step: 3.377779
+07/27/2025 00:02:53 - INFO -   Epoch: 4/5, Step: 117/1016, Lr: 0.000000031-0.000031152-0.000088240, Loss: 4.898589, Time/step: 3.441337
+07/27/2025 00:03:10 - INFO -   Epoch: 4/5, Step: 122/1016, Lr: 0.000000031-0.000031009-0.000088141, Loss: 4.152292, Time/step: 3.470742
+07/27/2025 00:03:32 - INFO -   Epoch: 4/5, Step: 127/1016, Lr: 0.000000031-0.000030866-0.000088040, Loss: 4.247281, Time/step: 4.313440
+07/27/2025 00:03:49 - INFO -   Epoch: 4/5, Step: 132/1016, Lr: 0.000000031-0.000030723-0.000087940, Loss: 3.792381, Time/step: 3.503301
+07/27/2025 00:04:06 - INFO -   Epoch: 4/5, Step: 137/1016, Lr: 0.000000031-0.000030581-0.000087839, Loss: 3.492165, Time/step: 3.436274
+07/27/2025 00:04:24 - INFO -   Epoch: 4/5, Step: 142/1016, Lr: 0.000000030-0.000030438-0.000087738, Loss: 4.176838, Time/step: 3.512406
+07/27/2025 00:04:48 - INFO -   Epoch: 4/5, Step: 147/1016, Lr: 0.000000030-0.000030296-0.000087636, Loss: 2.413158, Time/step: 4.861088
+07/27/2025 00:05:06 - INFO -   Epoch: 4/5, Step: 152/1016, Lr: 0.000000030-0.000030154-0.000087534, Loss: 8.795129, Time/step: 3.641574
+07/27/2025 00:05:25 - INFO -   Epoch: 4/5, Step: 157/1016, Lr: 0.000000030-0.000030012-0.000087432, Loss: 10.180022, Time/step: 3.626280
+07/27/2025 00:05:42 - INFO -   Epoch: 4/5, Step: 162/1016, Lr: 0.000000030-0.000029871-0.000087329, Loss: 9.976701, Time/step: 3.557664
+07/27/2025 00:06:07 - INFO -   Epoch: 4/5, Step: 167/1016, Lr: 0.000000030-0.000029729-0.000087226, Loss: 7.580813, Time/step: 4.993694
+07/27/2025 00:06:28 - INFO -   Epoch: 4/5, Step: 172/1016, Lr: 0.000000030-0.000029588-0.000087123, Loss: 17.634422, Time/step: 4.213535
+07/27/2025 00:06:45 - INFO -   Epoch: 4/5, Step: 177/1016, Lr: 0.000000029-0.000029447-0.000087019, Loss: 13.520338, Time/step: 3.337450
+07/27/2025 00:07:03 - INFO -   Epoch: 4/5, Step: 182/1016, Lr: 0.000000029-0.000029306-0.000086915, Loss: 6.818913, Time/step: 3.561391
+07/27/2025 00:07:29 - INFO -   Epoch: 4/5, Step: 187/1016, Lr: 0.000000029-0.000029165-0.000086810, Loss: 14.116878, Time/step: 5.198195
+07/27/2025 00:07:48 - INFO -   Epoch: 4/5, Step: 192/1016, Lr: 0.000000029-0.000029025-0.000086706, Loss: 7.197016, Time/step: 3.825637
+07/27/2025 00:08:08 - INFO -   Epoch: 4/5, Step: 197/1016, Lr: 0.000000029-0.000028885-0.000086600, Loss: 11.513808, Time/step: 4.076591
+07/27/2025 00:08:23 - INFO -   Epoch: 4/5, Step: 202/1016, Lr: 0.000000029-0.000028745-0.000086495, Loss: 12.128862, Time/step: 2.898320
+07/27/2025 00:08:48 - INFO -   Epoch: 4/5, Step: 207/1016, Lr: 0.000000029-0.000028605-0.000086389, Loss: 8.282948, Time/step: 4.958069
+07/27/2025 00:09:09 - INFO -   Epoch: 4/5, Step: 212/1016, Lr: 0.000000028-0.000028465-0.000086283, Loss: 7.415130, Time/step: 4.186673
+07/27/2025 00:09:24 - INFO -   Epoch: 4/5, Step: 217/1016, Lr: 0.000000028-0.000028326-0.000086176, Loss: 5.272655, Time/step: 2.991953
+07/27/2025 00:09:40 - INFO -   Epoch: 4/5, Step: 222/1016, Lr: 0.000000028-0.000028186-0.000086069, Loss: 81.143372, Time/step: 3.269923
+07/27/2025 00:10:04 - INFO -   Epoch: 4/5, Step: 227/1016, Lr: 0.000000028-0.000028047-0.000085962, Loss: 41.517380, Time/step: 4.892309
+07/27/2025 00:10:19 - INFO -   Epoch: 4/5, Step: 232/1016, Lr: 0.000000028-0.000027909-0.000085855, Loss: 53.942085, Time/step: 2.989087
+07/27/2025 00:10:35 - INFO -   Epoch: 4/5, Step: 237/1016, Lr: 0.000000028-0.000027770-0.000085747, Loss: 15.499203, Time/step: 3.138037
+07/27/2025 00:10:53 - INFO -   Epoch: 4/5, Step: 242/1016, Lr: 0.000000028-0.000027632-0.000085638, Loss: 19.577745, Time/step: 3.611946
+07/27/2025 00:11:21 - INFO -   Epoch: 4/5, Step: 247/1016, Lr: 0.000000027-0.000027494-0.000085530, Loss: 13.280317, Time/step: 5.601071
+07/27/2025 00:11:36 - INFO -   Epoch: 4/5, Step: 252/1016, Lr: 0.000000027-0.000027356-0.000085421, Loss: 16.789886, Time/step: 3.021846
+07/27/2025 00:11:53 - INFO -   Epoch: 4/5, Step: 257/1016, Lr: 0.000000027-0.000027218-0.000085312, Loss: 30.974146, Time/step: 3.350712
+07/27/2025 00:12:08 - INFO -   Epoch: 4/5, Step: 262/1016, Lr: 0.000000027-0.000027080-0.000085202, Loss: 6.964395, Time/step: 3.031715
+07/27/2025 00:12:32 - INFO -   Epoch: 4/5, Step: 267/1016, Lr: 0.000000027-0.000026943-0.000085092, Loss: 5.209383, Time/step: 4.783660
+07/27/2025 00:12:49 - INFO -   Epoch: 4/5, Step: 272/1016, Lr: 0.000000027-0.000026806-0.000084982, Loss: 4.463787, Time/step: 3.374049
+07/27/2025 00:13:07 - INFO -   Epoch: 4/5, Step: 277/1016, Lr: 0.000000027-0.000026669-0.000084871, Loss: 14.434895, Time/step: 3.548250
+07/27/2025 00:13:24 - INFO -   Epoch: 4/5, Step: 282/1016, Lr: 0.000000027-0.000026532-0.000084760, Loss: 7.672981, Time/step: 3.378495
+07/27/2025 00:13:45 - INFO -   Epoch: 4/5, Step: 287/1016, Lr: 0.000000026-0.000026396-0.000084649, Loss: 9.321062, Time/step: 4.245538
+07/27/2025 00:13:59 - INFO -   Epoch: 4/5, Step: 292/1016, Lr: 0.000000026-0.000026260-0.000084537, Loss: 5.367554, Time/step: 2.868544
+07/27/2025 00:14:21 - INFO -   Epoch: 4/5, Step: 297/1016, Lr: 0.000000026-0.000026124-0.000084425, Loss: 4.977277, Time/step: 4.463050
+07/27/2025 00:14:35 - INFO -   Epoch: 4/5, Step: 302/1016, Lr: 0.000000026-0.000025988-0.000084313, Loss: 6.677497, Time/step: 2.806982
+07/27/2025 00:14:54 - INFO -   Epoch: 4/5, Step: 307/1016, Lr: 0.000000026-0.000025853-0.000084200, Loss: 19.112957, Time/step: 3.768786
+07/27/2025 00:15:10 - INFO -   Epoch: 4/5, Step: 312/1016, Lr: 0.000000026-0.000025717-0.000084087, Loss: 9.342616, Time/step: 3.155344
+07/27/2025 00:15:32 - INFO -   Epoch: 4/5, Step: 317/1016, Lr: 0.000000026-0.000025582-0.000083974, Loss: 8.886037, Time/step: 4.338419
+07/27/2025 00:15:48 - INFO -   Epoch: 4/5, Step: 322/1016, Lr: 0.000000025-0.000025448-0.000083860, Loss: 4.307562, Time/step: 3.292336
+07/27/2025 00:16:08 - INFO -   Epoch: 4/5, Step: 327/1016, Lr: 0.000000025-0.000025313-0.000083747, Loss: 5.206401, Time/step: 3.893336
+07/27/2025 00:16:25 - INFO -   Epoch: 4/5, Step: 332/1016, Lr: 0.000000025-0.000025179-0.000083632, Loss: 4.634000, Time/step: 3.440510
+07/27/2025 00:16:44 - INFO -   Epoch: 4/5, Step: 337/1016, Lr: 0.000000025-0.000025045-0.000083518, Loss: 23.306810, Time/step: 3.745432
+07/27/2025 00:17:04 - INFO -   Epoch: 4/5, Step: 342/1016, Lr: 0.000000025-0.000024911-0.000083403, Loss: 10.553039, Time/step: 4.152207
+07/27/2025 00:17:22 - INFO -   Epoch: 4/5, Step: 347/1016, Lr: 0.000000025-0.000024777-0.000083288, Loss: 12.498398, Time/step: 3.450090
+07/27/2025 00:17:40 - INFO -   Epoch: 4/5, Step: 352/1016, Lr: 0.000000025-0.000024644-0.000083172, Loss: 6.604974, Time/step: 3.618469
+07/27/2025 00:17:59 - INFO -   Epoch: 4/5, Step: 357/1016, Lr: 0.000000025-0.000024511-0.000083056, Loss: 30.714497, Time/step: 3.769430
+07/27/2025 00:18:18 - INFO -   Epoch: 4/5, Step: 362/1016, Lr: 0.000000024-0.000024378-0.000082940, Loss: 15.998106, Time/step: 3.856659
+07/27/2025 00:18:35 - INFO -   Epoch: 4/5, Step: 367/1016, Lr: 0.000000024-0.000024245-0.000082824, Loss: 7.651384, Time/step: 3.402180
+07/27/2025 00:18:52 - INFO -   Epoch: 4/5, Step: 372/1016, Lr: 0.000000024-0.000024113-0.000082707, Loss: 6.894400, Time/step: 3.463542
+07/27/2025 00:19:15 - INFO -   Epoch: 4/5, Step: 377/1016, Lr: 0.000000024-0.000023981-0.000082590, Loss: 10.319422, Time/step: 4.491309
+07/27/2025 00:19:32 - INFO -   Epoch: 4/5, Step: 382/1016, Lr: 0.000000024-0.000023849-0.000082472, Loss: 89.278725, Time/step: 3.370482
+07/27/2025 00:19:48 - INFO -   Epoch: 4/5, Step: 387/1016, Lr: 0.000000024-0.000023717-0.000082355, Loss: 3.712190, Time/step: 3.271336
+07/27/2025 00:20:06 - INFO -   Epoch: 4/5, Step: 392/1016, Lr: 0.000000024-0.000023586-0.000082237, Loss: 4.670699, Time/step: 3.666601
+07/27/2025 00:20:29 - INFO -   Epoch: 4/5, Step: 397/1016, Lr: 0.000000023-0.000023455-0.000082118, Loss: 4.294595, Time/step: 4.601179
+07/27/2025 00:20:50 - INFO -   Epoch: 4/5, Step: 402/1016, Lr: 0.000000023-0.000023324-0.000082000, Loss: 14.463978, Time/step: 4.085973
+07/27/2025 00:21:12 - INFO -   Epoch: 4/5, Step: 407/1016, Lr: 0.000000023-0.000023193-0.000081881, Loss: 7.348191, Time/step: 4.372232
+07/27/2025 00:21:33 - INFO -   Epoch: 4/5, Step: 412/1016, Lr: 0.000000023-0.000023063-0.000081761, Loss: 4.243004, Time/step: 4.194045
+07/27/2025 00:21:46 - INFO -   Epoch: 4/5, Step: 417/1016, Lr: 0.000000023-0.000022932-0.000081642, Loss: 7.225071, Time/step: 2.782226
+07/27/2025 00:22:07 - INFO -   Epoch: 4/5, Step: 422/1016, Lr: 0.000000023-0.000022803-0.000081522, Loss: 13.558675, Time/step: 4.174530
+07/27/2025 00:22:24 - INFO -   Epoch: 4/5, Step: 427/1016, Lr: 0.000000023-0.000022673-0.000081402, Loss: 13.176610, Time/step: 3.367881
+07/27/2025 00:22:39 - INFO -   Epoch: 4/5, Step: 432/1016, Lr: 0.000000023-0.000022544-0.000081281, Loss: 16.202475, Time/step: 3.002302
+07/27/2025 00:22:58 - INFO -   Epoch: 4/5, Step: 437/1016, Lr: 0.000000022-0.000022415-0.000081161, Loss: 5.010540, Time/step: 3.705303
+07/27/2025 00:23:21 - INFO -   Epoch: 4/5, Step: 442/1016, Lr: 0.000000022-0.000022286-0.000081040, Loss: 10.248967, Time/step: 4.616907
+07/27/2025 00:23:36 - INFO -   Epoch: 4/5, Step: 447/1016, Lr: 0.000000022-0.000022157-0.000080918, Loss: 4.280947, Time/step: 3.054685
+07/27/2025 00:23:53 - INFO -   Epoch: 4/5, Step: 452/1016, Lr: 0.000000022-0.000022029-0.000080797, Loss: 194.449341, Time/step: 3.407210
+07/27/2025 00:24:09 - INFO -   Epoch: 4/5, Step: 457/1016, Lr: 0.000000022-0.000021901-0.000080675, Loss: 16.030523, Time/step: 3.251166
+07/27/2025 00:24:34 - INFO -   Epoch: 4/5, Step: 462/1016, Lr: 0.000000022-0.000021773-0.000080552, Loss: 79.064751, Time/step: 4.922246
+07/27/2025 00:24:50 - INFO -   Epoch: 4/5, Step: 467/1016, Lr: 0.000000022-0.000021646-0.000080430, Loss: 456.042297, Time/step: 3.293598
+07/27/2025 00:25:12 - INFO -   Epoch: 4/5, Step: 472/1016, Lr: 0.000000022-0.000021519-0.000080307, Loss: 6.282346, Time/step: 4.410067
+07/27/2025 00:25:28 - INFO -   Epoch: 4/5, Step: 477/1016, Lr: 0.000000021-0.000021392-0.000080184, Loss: 7.023493, Time/step: 3.052668
+07/27/2025 00:25:48 - INFO -   Epoch: 4/5, Step: 482/1016, Lr: 0.000000021-0.000021265-0.000080061, Loss: 429.268768, Time/step: 3.994291
+07/27/2025 00:26:10 - INFO -   Epoch: 4/5, Step: 487/1016, Lr: 0.000000021-0.000021139-0.000079937, Loss: 637.111023, Time/step: 4.416605
+07/27/2025 00:26:27 - INFO -   Epoch: 4/5, Step: 492/1016, Lr: 0.000000021-0.000021012-0.000079813, Loss: 316.523041, Time/step: 3.511982
+07/27/2025 00:26:46 - INFO -   Epoch: 4/5, Step: 497/1016, Lr: 0.000000021-0.000020887-0.000079689, Loss: 17.684784, Time/step: 3.785095
+07/27/2025 00:27:10 - INFO -   Epoch: 4/5, Step: 502/1016, Lr: 0.000000021-0.000020761-0.000079564, Loss: 10.702836, Time/step: 4.725226
+07/27/2025 00:27:26 - INFO -   Epoch: 4/5, Step: 507/1016, Lr: 0.000000021-0.000020636-0.000079439, Loss: 218.579926, Time/step: 3.245242
+07/27/2025 00:27:45 - INFO -   Epoch: 4/5, Step: 512/1016, Lr: 0.000000021-0.000020511-0.000079314, Loss: 2428.061035, Time/step: 3.701005
+07/27/2025 00:28:01 - INFO -   Epoch: 4/5, Step: 517/1016, Lr: 0.000000020-0.000020386-0.000079189, Loss: 78.649513, Time/step: 3.336497
+07/27/2025 00:28:28 - INFO -   Epoch: 4/5, Step: 522/1016, Lr: 0.000000020-0.000020262-0.000079063, Loss: 1361.992432, Time/step: 5.276092
+07/27/2025 00:28:44 - INFO -   Epoch: 4/5, Step: 527/1016, Lr: 0.000000020-0.000020137-0.000078937, Loss: 74.794785, Time/step: 3.297013
+07/27/2025 00:29:02 - INFO -   Epoch: 4/5, Step: 532/1016, Lr: 0.000000020-0.000020014-0.000078811, Loss: 48.674049, Time/step: 3.525933
+07/27/2025 00:29:17 - INFO -   Epoch: 4/5, Step: 537/1016, Lr: 0.000000020-0.000019890-0.000078684, Loss: 52.353573, Time/step: 2.968934
+07/27/2025 00:29:38 - INFO -   Epoch: 4/5, Step: 542/1016, Lr: 0.000000020-0.000019767-0.000078558, Loss: 1270.514282, Time/step: 4.256490
+07/27/2025 00:29:55 - INFO -   Epoch: 4/5, Step: 547/1016, Lr: 0.000000020-0.000019644-0.000078431, Loss: nan, Time/step: 3.330986
+07/27/2025 00:30:13 - INFO -   Epoch: 4/5, Step: 552/1016, Lr: 0.000000020-0.000019521-0.000078303, Loss: nan, Time/step: 3.738255
+07/27/2025 00:30:32 - INFO -   Epoch: 4/5, Step: 557/1016, Lr: 0.000000019-0.000019399-0.000078176, Loss: nan, Time/step: 3.762867
+07/27/2025 00:30:50 - INFO -   Epoch: 4/5, Step: 562/1016, Lr: 0.000000019-0.000019277-0.000078048, Loss: nan, Time/step: 3.606536
+07/27/2025 00:31:13 - INFO -   Epoch: 4/5, Step: 567/1016, Lr: 0.000000019-0.000019155-0.000077920, Loss: nan, Time/step: 4.597734
+07/27/2025 00:31:25 - INFO -   Epoch: 4/5, Step: 572/1016, Lr: 0.000000019-0.000019033-0.000077791, Loss: nan, Time/step: 2.445433
+07/27/2025 00:31:46 - INFO -   Epoch: 4/5, Step: 577/1016, Lr: 0.000000019-0.000018912-0.000077663, Loss: nan, Time/step: 4.120969
+07/27/2025 00:32:07 - INFO -   Epoch: 4/5, Step: 582/1016, Lr: 0.000000019-0.000018791-0.000077534, Loss: nan, Time/step: 4.151371
+07/27/2025 00:32:24 - INFO -   Epoch: 4/5, Step: 587/1016, Lr: 0.000000019-0.000018670-0.000077405, Loss: nan, Time/step: 3.392919
+07/27/2025 00:32:42 - INFO -   Epoch: 4/5, Step: 592/1016, Lr: 0.000000019-0.000018550-0.000077275, Loss: nan, Time/step: 3.733278
+07/27/2025 00:33:03 - INFO -   Epoch: 4/5, Step: 597/1016, Lr: 0.000000018-0.000018430-0.000077145, Loss: nan, Time/step: 4.217735
+07/27/2025 00:33:24 - INFO -   Epoch: 4/5, Step: 602/1016, Lr: 0.000000018-0.000018310-0.000077015, Loss: nan, Time/step: 4.164662
+07/27/2025 00:33:48 - INFO -   Epoch: 4/5, Step: 607/1016, Lr: 0.000000018-0.000018191-0.000076885, Loss: nan, Time/step: 4.669695
+07/27/2025 00:34:04 - INFO -   Epoch: 4/5, Step: 612/1016, Lr: 0.000000018-0.000018072-0.000076755, Loss: nan, Time/step: 3.210266
+07/27/2025 00:34:20 - INFO -   Epoch: 4/5, Step: 617/1016, Lr: 0.000000018-0.000017953-0.000076624, Loss: nan, Time/step: 3.202189
+07/27/2025 00:34:39 - INFO -   Epoch: 4/5, Step: 622/1016, Lr: 0.000000018-0.000017834-0.000076493, Loss: nan, Time/step: 3.816897
+07/27/2025 00:34:59 - INFO -   Epoch: 4/5, Step: 627/1016, Lr: 0.000000018-0.000017716-0.000076362, Loss: nan, Time/step: 4.097069
+07/27/2025 00:35:18 - INFO -   Epoch: 4/5, Step: 632/1016, Lr: 0.000000018-0.000017598-0.000076230, Loss: nan, Time/step: 3.754656
+07/27/2025 00:35:34 - INFO -   Epoch: 4/5, Step: 637/1016, Lr: 0.000000017-0.000017481-0.000076099, Loss: nan, Time/step: 3.243868
+07/27/2025 00:35:53 - INFO -   Epoch: 4/5, Step: 642/1016, Lr: 0.000000017-0.000017363-0.000075967, Loss: nan, Time/step: 3.679295
+07/27/2025 00:36:15 - INFO -   Epoch: 4/5, Step: 647/1016, Lr: 0.000000017-0.000017246-0.000075834, Loss: nan, Time/step: 4.463600
+07/27/2025 00:36:32 - INFO -   Epoch: 4/5, Step: 652/1016, Lr: 0.000000017-0.000017130-0.000075702, Loss: nan, Time/step: 3.375963
+07/27/2025 00:36:49 - INFO -   Epoch: 4/5, Step: 657/1016, Lr: 0.000000017-0.000017013-0.000075569, Loss: nan, Time/step: 3.528948
+07/27/2025 00:37:09 - INFO -   Epoch: 4/5, Step: 662/1016, Lr: 0.000000017-0.000016897-0.000075436, Loss: nan, Time/step: 3.845389
+07/27/2025 00:37:32 - INFO -   Epoch: 4/5, Step: 667/1016, Lr: 0.000000017-0.000016782-0.000075303, Loss: nan, Time/step: 4.752301
+07/27/2025 00:37:51 - INFO -   Epoch: 4/5, Step: 672/1016, Lr: 0.000000017-0.000016666-0.000075169, Loss: nan, Time/step: 3.679878
+07/27/2025 00:38:15 - INFO -   Epoch: 4/5, Step: 677/1016, Lr: 0.000000017-0.000016551-0.000075036, Loss: nan, Time/step: 4.846427
+07/27/2025 00:38:33 - INFO -   Epoch: 4/5, Step: 682/1016, Lr: 0.000000016-0.000016436-0.000074902, Loss: nan, Time/step: 3.646865
+07/27/2025 00:38:58 - INFO -   Epoch: 4/5, Step: 687/1016, Lr: 0.000000016-0.000016322-0.000074768, Loss: nan, Time/step: 4.992891
+07/27/2025 00:39:18 - INFO -   Epoch: 4/5, Step: 692/1016, Lr: 0.000000016-0.000016208-0.000074633, Loss: nan, Time/step: 3.850037
+07/27/2025 00:39:36 - INFO -   Epoch: 4/5, Step: 697/1016, Lr: 0.000000016-0.000016094-0.000074498, Loss: nan, Time/step: 3.609209
+07/27/2025 00:39:54 - INFO -   Epoch: 4/5, Step: 702/1016, Lr: 0.000000016-0.000015981-0.000074364, Loss: nan, Time/step: 3.602480
+07/27/2025 00:40:18 - INFO -   Epoch: 4/5, Step: 707/1016, Lr: 0.000000016-0.000015867-0.000074228, Loss: nan, Time/step: 4.910693
+07/27/2025 00:40:35 - INFO -   Epoch: 4/5, Step: 712/1016, Lr: 0.000000016-0.000015755-0.000074093, Loss: nan, Time/step: 3.451027
+07/27/2025 00:40:53 - INFO -   Epoch: 4/5, Step: 717/1016, Lr: 0.000000016-0.000015642-0.000073958, Loss: nan, Time/step: 3.423376
+07/27/2025 00:41:12 - INFO -   Epoch: 4/5, Step: 722/1016, Lr: 0.000000016-0.000015530-0.000073822, Loss: nan, Time/step: 3.801903
+07/27/2025 00:41:35 - INFO -   Epoch: 4/5, Step: 727/1016, Lr: 0.000000015-0.000015418-0.000073686, Loss: nan, Time/step: 4.767446
+07/27/2025 00:41:57 - INFO -   Epoch: 4/5, Step: 732/1016, Lr: 0.000000015-0.000015307-0.000073549, Loss: nan, Time/step: 4.385636
+07/27/2025 00:42:12 - INFO -   Epoch: 4/5, Step: 737/1016, Lr: 0.000000015-0.000015195-0.000073413, Loss: nan, Time/step: 2.890972
+07/27/2025 00:42:29 - INFO -   Epoch: 4/5, Step: 742/1016, Lr: 0.000000015-0.000015085-0.000073276, Loss: nan, Time/step: 3.528641
+07/27/2025 00:42:57 - INFO -   Epoch: 4/5, Step: 747/1016, Lr: 0.000000015-0.000014974-0.000073139, Loss: nan, Time/step: 5.498238
+07/27/2025 00:43:13 - INFO -   Epoch: 4/5, Step: 752/1016, Lr: 0.000000015-0.000014864-0.000073002, Loss: nan, Time/step: 3.214400
+07/27/2025 00:43:28 - INFO -   Epoch: 4/5, Step: 757/1016, Lr: 0.000000015-0.000014754-0.000072865, Loss: nan, Time/step: 3.074680
+07/27/2025 00:43:47 - INFO -   Epoch: 4/5, Step: 762/1016, Lr: 0.000000015-0.000014645-0.000072727, Loss: nan, Time/step: 3.637554
+07/27/2025 00:44:10 - INFO -   Epoch: 4/5, Step: 767/1016, Lr: 0.000000015-0.000014536-0.000072589, Loss: nan, Time/step: 4.723668
+07/27/2025 00:44:29 - INFO -   Epoch: 4/5, Step: 772/1016, Lr: 0.000000014-0.000014427-0.000072451, Loss: nan, Time/step: 3.735603
+07/27/2025 00:44:49 - INFO -   Epoch: 4/5, Step: 777/1016, Lr: 0.000000014-0.000014318-0.000072313, Loss: nan, Time/step: 3.980791
+07/27/2025 00:45:07 - INFO -   Epoch: 4/5, Step: 782/1016, Lr: 0.000000014-0.000014210-0.000072175, Loss: nan, Time/step: 3.671545
+07/27/2025 00:45:33 - INFO -   Epoch: 4/5, Step: 787/1016, Lr: 0.000000014-0.000014102-0.000072036, Loss: nan, Time/step: 5.240440
+07/27/2025 00:45:49 - INFO -   Epoch: 4/5, Step: 792/1016, Lr: 0.000000014-0.000013995-0.000071897, Loss: nan, Time/step: 3.166884
+07/27/2025 00:46:07 - INFO -   Epoch: 4/5, Step: 797/1016, Lr: 0.000000014-0.000013888-0.000071758, Loss: nan, Time/step: 3.513208
+07/27/2025 00:46:21 - INFO -   Epoch: 4/5, Step: 802/1016, Lr: 0.000000014-0.000013781-0.000071619, Loss: nan, Time/step: 2.791277
+07/27/2025 00:46:51 - INFO -   Epoch: 4/5, Step: 807/1016, Lr: 0.000000014-0.000013675-0.000071479, Loss: nan, Time/step: 6.045938
+07/27/2025 00:47:09 - INFO -   Epoch: 4/5, Step: 812/1016, Lr: 0.000000014-0.000013569-0.000071339, Loss: nan, Time/step: 3.719847
+07/27/2025 00:47:26 - INFO -   Epoch: 4/5, Step: 817/1016, Lr: 0.000000013-0.000013463-0.000071199, Loss: nan, Time/step: 3.221996
+07/27/2025 00:47:44 - INFO -   Epoch: 4/5, Step: 822/1016, Lr: 0.000000013-0.000013357-0.000071059, Loss: nan, Time/step: 3.709001
+07/27/2025 00:48:10 - INFO -   Epoch: 4/5, Step: 827/1016, Lr: 0.000000013-0.000013252-0.000070919, Loss: nan, Time/step: 5.239488
+07/27/2025 00:48:30 - INFO -   Epoch: 4/5, Step: 832/1016, Lr: 0.000000013-0.000013148-0.000070778, Loss: nan, Time/step: 4.004281
+07/27/2025 00:48:44 - INFO -   Epoch: 4/5, Step: 837/1016, Lr: 0.000000013-0.000013043-0.000070638, Loss: nan, Time/step: 2.666605
+07/27/2025 00:49:04 - INFO -   Epoch: 4/5, Step: 842/1016, Lr: 0.000000013-0.000012939-0.000070497, Loss: nan, Time/step: 4.069730
+07/27/2025 00:49:27 - INFO -   Epoch: 4/5, Step: 847/1016, Lr: 0.000000013-0.000012836-0.000070356, Loss: nan, Time/step: 4.619997
+07/27/2025 00:49:44 - INFO -   Epoch: 4/5, Step: 852/1016, Lr: 0.000000013-0.000012733-0.000070214, Loss: nan, Time/step: 3.369886
+07/27/2025 00:50:03 - INFO -   Epoch: 4/5, Step: 857/1016, Lr: 0.000000013-0.000012630-0.000070073, Loss: nan, Time/step: 3.767718
+07/27/2025 00:50:19 - INFO -   Epoch: 4/5, Step: 862/1016, Lr: 0.000000013-0.000012527-0.000069931, Loss: nan, Time/step: 3.193501
+07/27/2025 00:50:44 - INFO -   Epoch: 4/5, Step: 867/1016, Lr: 0.000000012-0.000012425-0.000069789, Loss: nan, Time/step: 4.986627
+07/27/2025 00:50:59 - INFO -   Epoch: 4/5, Step: 872/1016, Lr: 0.000000012-0.000012323-0.000069647, Loss: nan, Time/step: 3.151536
+07/27/2025 00:51:17 - INFO -   Epoch: 4/5, Step: 877/1016, Lr: 0.000000012-0.000012222-0.000069505, Loss: nan, Time/step: 3.587953
+07/27/2025 00:51:34 - INFO -   Epoch: 4/5, Step: 882/1016, Lr: 0.000000012-0.000012121-0.000069362, Loss: nan, Time/step: 3.236335
+07/27/2025 00:51:57 - INFO -   Epoch: 4/5, Step: 887/1016, Lr: 0.000000012-0.000012020-0.000069220, Loss: nan, Time/step: 4.670698
+07/27/2025 00:52:16 - INFO -   Epoch: 4/5, Step: 892/1016, Lr: 0.000000012-0.000011920-0.000069077, Loss: nan, Time/step: 3.802957
+07/27/2025 00:52:34 - INFO -   Epoch: 4/5, Step: 897/1016, Lr: 0.000000012-0.000011820-0.000068934, Loss: nan, Time/step: 3.618535
+07/27/2025 00:52:53 - INFO -   Epoch: 4/5, Step: 902/1016, Lr: 0.000000012-0.000011720-0.000068791, Loss: nan, Time/step: 3.713308
+07/27/2025 00:53:15 - INFO -   Epoch: 4/5, Step: 907/1016, Lr: 0.000000012-0.000011621-0.000068647, Loss: nan, Time/step: 4.439209
+07/27/2025 00:53:34 - INFO -   Epoch: 4/5, Step: 912/1016, Lr: 0.000000012-0.000011522-0.000068504, Loss: nan, Time/step: 3.814763
+07/27/2025 00:53:48 - INFO -   Epoch: 4/5, Step: 917/1016, Lr: 0.000000011-0.000011423-0.000068360, Loss: nan, Time/step: 2.820744
+07/27/2025 00:54:05 - INFO -   Epoch: 4/5, Step: 922/1016, Lr: 0.000000011-0.000011325-0.000068216, Loss: nan, Time/step: 3.344838
+07/27/2025 00:54:29 - INFO -   Epoch: 4/5, Step: 927/1016, Lr: 0.000000011-0.000011227-0.000068072, Loss: nan, Time/step: 4.859542
+07/27/2025 00:54:47 - INFO -   Epoch: 4/5, Step: 932/1016, Lr: 0.000000011-0.000011130-0.000067928, Loss: nan, Time/step: 3.542291
+07/27/2025 00:55:04 - INFO -   Epoch: 4/5, Step: 937/1016, Lr: 0.000000011-0.000011033-0.000067784, Loss: nan, Time/step: 3.389460
+07/27/2025 00:55:20 - INFO -   Epoch: 4/5, Step: 942/1016, Lr: 0.000000011-0.000010936-0.000067639, Loss: nan, Time/step: 3.202783
+07/27/2025 00:55:45 - INFO -   Epoch: 4/5, Step: 947/1016, Lr: 0.000000011-0.000010840-0.000067494, Loss: nan, Time/step: 5.001660
+07/27/2025 00:56:03 - INFO -   Epoch: 4/5, Step: 952/1016, Lr: 0.000000011-0.000010744-0.000067349, Loss: nan, Time/step: 3.629113
+07/27/2025 00:56:20 - INFO -   Epoch: 4/5, Step: 957/1016, Lr: 0.000000011-0.000010648-0.000067204, Loss: nan, Time/step: 3.460531
+07/27/2025 00:56:42 - INFO -   Epoch: 4/5, Step: 962/1016, Lr: 0.000000011-0.000010553-0.000067059, Loss: nan, Time/step: 4.272512
+07/27/2025 00:57:03 - INFO -   Epoch: 4/5, Step: 967/1016, Lr: 0.000000010-0.000010458-0.000066914, Loss: nan, Time/step: 4.338548
+07/27/2025 00:57:23 - INFO -   Epoch: 4/5, Step: 972/1016, Lr: 0.000000010-0.000010364-0.000066768, Loss: nan, Time/step: 3.887990
+07/27/2025 00:57:38 - INFO -   Epoch: 4/5, Step: 977/1016, Lr: 0.000000010-0.000010270-0.000066622, Loss: nan, Time/step: 3.049281
+07/27/2025 00:57:54 - INFO -   Epoch: 4/5, Step: 982/1016, Lr: 0.000000010-0.000010176-0.000066476, Loss: nan, Time/step: 3.303452
+07/27/2025 00:58:19 - INFO -   Epoch: 4/5, Step: 987/1016, Lr: 0.000000010-0.000010083-0.000066330, Loss: nan, Time/step: 5.010789
+07/27/2025 00:58:36 - INFO -   Epoch: 4/5, Step: 992/1016, Lr: 0.000000010-0.000009990-0.000066184, Loss: nan, Time/step: 3.207914
+07/27/2025 00:58:53 - INFO -   Epoch: 4/5, Step: 997/1016, Lr: 0.000000010-0.000009897-0.000066038, Loss: nan, Time/step: 3.573826
+07/27/2025 00:59:08 - INFO -   Epoch: 4/5, Step: 1002/1016, Lr: 0.000000010-0.000009805-0.000065891, Loss: nan, Time/step: 2.916649
+07/27/2025 00:59:36 - INFO -   Epoch: 4/5, Step: 1007/1016, Lr: 0.000000010-0.000009713-0.000065745, Loss: nan, Time/step: 5.537978
+07/27/2025 00:59:53 - INFO -   Epoch: 4/5, Step: 1012/1016, Lr: 0.000000010-0.000009622-0.000065598, Loss: nan, Time/step: 3.474752
+07/27/2025 01:00:09 - INFO -   Epoch 4/5 Finished, Train Loss: nan
+07/27/2025 01:00:10 - INFO -   Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_model.bin.3
+07/27/2025 01:00:10 - INFO -   Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0726/pytorch_opt.bin.3
+07/27/2025 01:00:10 - INFO -   Eval on val dataset
+07/27/2025 01:00:10 - WARNING -   Eval under the multi-sentence per video clip setting.
+07/27/2025 01:00:10 - WARNING -   sentence num: 4290, video num: 100
+0/2691/2692/2693/2694/2695/2696/2697/2698/2699/26910/26911/26912/26913/26914/26915/26916/26917/26918/26919/26920/26921/26922/26923/26924/26925/26926/26927/26928/26929/26930/26931/26932/26933/26934/26935/26936/26937/26938/26939/26940/26941/26942/26943/26944/26945/26946/26947/26948/26949/26950/26951/26952/26953/26954/26955/26956/26957/26958/26959/26960/26961/26962/26963/26964/26965/26966/26967/26968/26969/26970/26971/26972/26973/26974/26975/26976/26977/26978/26979/26980/26981/26982/26983/26984/26985/26986/26987/26988/26989/26990/26991/26992/26993/26994/26995/26996/26997/26998/26999/269100/269101/269102/269103/269104/269105/269106/269107/269108/269109/269110/269111/269112/269113/269114/269115/269116/269117/269118/269119/269120/269121/269122/269123/269124/269125/269126/269127/269128/269129/269130/269131/269132/269133/269134/269135/269136/269137/269138/269139/269140/269141/269142/269143/269144/269145/269146/269147/269148/269149/269150/269151/269152/269153/269154/269155/269156/269157/269158/269159/269160/269161/269162/269163/269164/269165/269166/269167/269168/269169/269170/269171/269172/269173/269174/269175/269176/269177/269178/269179/269180/269181/269182/269183/269184/269185/269186/269187/269188/269189/269190/269191/269192/269193/269194/269195/269196/269197/269198/269199/269200/269201/269202/269203/269204/269205/269206/269207/269208/269209/269210/269211/269212/269213/269214/269215/269216/269217/269218/269219/269220/269221/269222/269223/269224/269225/269226/269227/269228/269229/269230/269231/269232/269233/269234/269235/269236/269237/269238/269239/269240/269241/269242/269243/269244/269245/269246/269247/269248/269249/269250/269251/269252/269253/269254/269255/269256/269257/269258/269259/269260/269261/269262/269263/269264/269265/269266/269267/269268/26907/27/2025 01:12:22 - INFO -   before reshape, sim matrix size: 4290 x 100
+07/27/2025 01:12:22 - INFO -   after reshape, sim matrix size: 100 x 62 x 100
+Traceback (most recent call last):
+  File "main_xclip.py", line 660, in <module>
+    main()
+  File "main_xclip.py", line 641, in main
+    R1 = eval_epoch(args, model, val_dataloader, device, n_gpu)
+  File "main_xclip.py", line 520, in eval_epoch
+    tv_metrics = tensor_text_to_video_metrics(sim_matrix)
+  File "/home/wa24301158/mywork/newX-CLIP-main/metrics.py", line 57, in tensor_text_to_video_metrics
+    results["MedianR"] = float(torch.median(valid_ranks + 1))
+RuntimeError: median cannot be called with empty tensor
+Traceback (most recent call last):
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 260, in <module>
+    main()
+  File "/home/wa24301158/conda_envs/clip4clip/lib/python3.8/site-packages/torch/distributed/launch.py", line 255, in main
+    raise subprocess.CalledProcessError(returncode=process.returncode,
+subprocess.CalledProcessError: Command '['/home/wa24301158/conda_envs/clip4clip/bin/python', '-u', 'main_xclip.py', '--local_rank=1', '--do_train', '--num_thread_reader=4', '--epochs=5', '--batch_size=48', '--n_display=5', '--data_path', '/home/wa24301158/dataset/MSVD', '--features_path', '/home/wa24301158/dataset/MSVD/msvd_hevc', '--mask_path', '/home/wa24301158/dataset/MSVD/videos_hevc_info', '--output_dir', 'ckpts3/CCVTR_msvd_vit32_32_DL_0726', '--lr', '1e-4', '--max_words', '32', '--max_frames', '12', '--batch_size_val', '16', '--datatype', 'msvd', '--feature_framerate', '1', '--coef_lr', '1e-3', '--freeze_layer_num', '9', '--slice_framepos', '0', '--loose_type', '--linear_patch', '2d', '--sim_header', 'meanP', '--pretrained_clip_name', 'ViT-B/32']' returned non-zero exit status 1.
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
