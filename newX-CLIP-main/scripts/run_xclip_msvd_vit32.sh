@@ -1,9 +1,9 @@
 # ViT-B/32
-job_name="CCVTR_msvd_vit32_32_DL_0816_teacher_1"
+job_name="CCVTR_msvd_vit32_32_DL_0820_teacher_1"
 DATA_PATH="/home/wa24301158/dataset/MSVD"
 
 # 设置环境变量，指定使用 GPU 3
-CUDA_VISIBLE_DEVICES=2,3 python -m torch.distributed.launch --nproc_per_node=2 \
+CUDA_VISIBLE_DEVICES=2,3 torchrun --nproc_per_node=2 \
     main_xclip.py --do_train --num_thread_reader=4 \
     --epochs=1 --batch_size=96 --n_display=5 \
     --data_path ${DATA_PATH} \

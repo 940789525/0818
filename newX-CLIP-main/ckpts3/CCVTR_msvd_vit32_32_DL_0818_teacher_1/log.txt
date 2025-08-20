@@ -1,0 +1,2647 @@
+2025-08-18 10:16:51,771:INFO: Effective parameters:
+2025-08-18 10:16:51,771:INFO:   <<< batch_size: 96
+2025-08-18 10:16:51,771:INFO:   <<< batch_size_val: 32
+2025-08-18 10:16:51,771:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:16:51,771:INFO:   <<< cache_dir: 
+2025-08-18 10:16:51,771:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:16:51,771:INFO:   <<< cross_model: cross-base
+2025-08-18 10:16:51,772:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:16:51,772:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:16:51,772:INFO:   <<< datatype: msvd
+2025-08-18 10:16:51,772:INFO:   <<< do_eval: False
+2025-08-18 10:16:51,772:INFO:   <<< do_lower_case: False
+2025-08-18 10:16:51,772:INFO:   <<< do_pretrain: False
+2025-08-18 10:16:51,772:INFO:   <<< do_train: True
+2025-08-18 10:16:51,772:INFO:   <<< epochs: 1
+2025-08-18 10:16:51,772:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:16:51,772:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:16:51,772:INFO:   <<< feature_framerate: 1
+2025-08-18 10:16:51,773:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:16:51,773:INFO:   <<< fp16: False
+2025-08-18 10:16:51,773:INFO:   <<< fp16_opt_level: O1
+2025-08-18 10:16:51,773:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:16:51,773:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:16:51,773:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:16:51,773:INFO:   <<< init_model: None
+2025-08-18 10:16:51,773:INFO:   <<< linear_patch: 2d
+2025-08-18 10:16:51,773:INFO:   <<< local_rank: 0
+2025-08-18 10:16:51,773:INFO:   <<< loose_type: True
+2025-08-18 10:16:51,774:INFO:   <<< lr: 0.0001
+2025-08-18 10:16:51,774:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:16:51,774:INFO:   <<< margin: 0.1
+2025-08-18 10:16:51,774:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:16:51,774:INFO:   <<< max_frames: 12
+2025-08-18 10:16:51,774:INFO:   <<< max_words: 32
+2025-08-18 10:16:51,774:INFO:   <<< n_display: 5
+2025-08-18 10:16:51,774:INFO:   <<< n_gpu: 1
+2025-08-18 10:16:51,774:INFO:   <<< n_pair: 1
+2025-08-18 10:16:51,774:INFO:   <<< negative_weighting: 1
+2025-08-18 10:16:51,774:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:16:51,775:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:16:51,775:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:16:51,775:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:16:51,775:INFO:   <<< rank: 0
+2025-08-18 10:16:51,775:INFO:   <<< resume_model: None
+2025-08-18 10:16:51,775:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:16:51,775:INFO:   <<< seed: 42
+2025-08-18 10:16:51,775:INFO:   <<< sim_header: meanP
+2025-08-18 10:16:51,775:INFO:   <<< slice_framepos: 0
+2025-08-18 10:16:51,775:INFO:   <<< task_type: retrieval
+2025-08-18 10:16:51,775:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:16:51,776:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:16:51,776:INFO:   <<< train_frame_order: 0
+2025-08-18 10:16:51,776:INFO:   <<< use_mil: False
+2025-08-18 10:16:51,776:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:16:51,776:INFO:   <<< video_dim: 1024
+2025-08-18 10:16:51,776:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:16:51,776:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:16:51,776:INFO:   <<< world_size: 2
+2025-08-18 10:16:51,777:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:16:52,723:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:16:52,723:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:16:52,723:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:16:52,724:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:16:52,724:WARNING: Test retrieval by loose type.
+2025-08-18 10:16:52,724:WARNING: 	 embed_dim: 512
+2025-08-18 10:16:52,724:WARNING: 	 image_resolution: 224
+2025-08-18 10:16:52,724:WARNING: 	 vision_layers: 12
+2025-08-18 10:16:52,724:WARNING: 	 vision_width: 768
+2025-08-18 10:16:52,724:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:16:52,724:WARNING: 	 context_length: 77
+2025-08-18 10:16:52,724:WARNING: 	 vocab_size: 49408
+2025-08-18 10:16:52,724:WARNING: 	 transformer_width: 512
+2025-08-18 10:16:52,724:WARNING: 	 transformer_heads: 8
+2025-08-18 10:16:52,724:WARNING: 	 transformer_layers: 12
+2025-08-18 10:16:52,724:WARNING: 		 linear_patch: 2d
+2025-08-18 10:16:52,724:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:16:54,400:WARNING: 	 sim_header: meanP
+2025-08-18 10:16:59,012:INFO: --------------------
+2025-08-18 10:16:59,012:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 10:16:59,012:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 10:17:00,206:INFO: ***** Running test *****
+2025-08-18 10:17:00,207:INFO:   Num examples = 27763
+2025-08-18 10:17:00,207:INFO:   Batch size = 32
+2025-08-18 10:17:00,207:INFO:   Num steps = 868
+2025-08-18 10:17:00,207:INFO: ***** Running val *****
+2025-08-18 10:17:00,207:INFO:   Num examples = 4290
+2025-08-18 10:17:00,887:INFO: ***** Running training *****
+2025-08-18 10:17:00,887:INFO:   Num examples = 48774
+2025-08-18 10:17:00,887:INFO:   Batch size = 96
+2025-08-18 10:17:00,887:INFO:   Num steps = 508
+2025-08-18 10:19:17,790:INFO: Epoch: 1/1, Step: 5/508, Lr: , Loss: 3.148196, Time/step: 27.375520
+2025-08-18 10:20:16,400:INFO: Epoch: 1/1, Step: 10/508, Lr: , Loss: 3.029150, Time/step: 11.719399
+2025-08-18 10:21:13,430:INFO: Epoch: 1/1, Step: 15/508, Lr: , Loss: 2.846721, Time/step: 11.405780
+2025-08-18 10:22:01,300:INFO: Epoch: 1/1, Step: 20/508, Lr: , Loss: 2.532522, Time/step: 9.573916
+2025-08-18 10:22:56,810:INFO: Epoch: 1/1, Step: 25/508, Lr: , Loss: 2.522690, Time/step: 11.101846
+2025-08-18 10:23:33,889:INFO: Epoch: 1/1, Step: 30/508, Lr: , Loss: 2.342144, Time/step: 7.415767
+2025-08-18 10:24:13,158:INFO: Epoch: 1/1, Step: 35/508, Lr: , Loss: 2.031947, Time/step: 7.853507
+2025-08-18 10:24:45,944:INFO: Epoch: 1/1, Step: 40/508, Lr: , Loss: 1.934312, Time/step: 6.557067
+2025-08-18 10:25:35,857:INFO: Epoch: 1/1, Step: 45/508, Lr: , Loss: 1.567915, Time/step: 9.982471
+2025-08-18 10:26:09,033:INFO: Epoch: 1/1, Step: 50/508, Lr: , Loss: 1.603093, Time/step: 6.635142
+2025-08-18 10:26:52,894:INFO: Epoch: 1/1, Step: 55/508, Lr: , Loss: 1.312273, Time/step: 8.772007
+2025-08-18 10:27:24,841:INFO: Epoch: 1/1, Step: 60/508, Lr: , Loss: 1.226677, Time/step: 6.389405
+2025-08-18 10:28:05,001:INFO: Epoch: 1/1, Step: 65/508, Lr: , Loss: 0.921959, Time/step: 8.031839
+2025-08-18 10:28:53,414:INFO: Epoch: 1/1, Step: 70/508, Lr: , Loss: 0.859378, Time/step: 9.682492
+2025-08-18 10:29:21,991:INFO: Epoch: 1/1, Step: 75/508, Lr: , Loss: 0.921617, Time/step: 5.715254
+2025-08-18 10:29:56,050:INFO: Epoch: 1/1, Step: 80/508, Lr: , Loss: 0.668513, Time/step: 6.811773
+2025-08-18 10:30:44,688:INFO: Epoch: 1/1, Step: 85/508, Lr: , Loss: 0.862821, Time/step: 9.727447
+2025-08-18 10:31:23,213:INFO: Epoch: 1/1, Step: 90/508, Lr: , Loss: 0.786323, Time/step: 7.704763
+2025-08-18 10:31:57,455:INFO: Epoch: 1/1, Step: 95/508, Lr: , Loss: 0.938177, Time/step: 6.848244
+2025-08-18 10:32:31,224:INFO: Epoch: 1/1, Step: 100/508, Lr: , Loss: 0.885353, Time/step: 6.753670
+2025-08-18 10:33:22,823:INFO: Epoch: 1/1, Step: 105/508, Lr: , Loss: 0.573392, Time/step: 10.319683
+2025-08-18 10:34:00,757:INFO: Epoch: 1/1, Step: 110/508, Lr: , Loss: 0.731305, Time/step: 7.586804
+2025-08-18 10:34:30,624:INFO: Epoch: 1/1, Step: 115/508, Lr: , Loss: 0.760481, Time/step: 5.973219
+2025-08-18 10:35:04,616:INFO: Epoch: 1/1, Step: 120/508, Lr: , Loss: 0.655350, Time/step: 6.798212
+2025-08-18 10:35:59,723:INFO: Epoch: 1/1, Step: 125/508, Lr: , Loss: 0.733902, Time/step: 11.021339
+2025-08-18 10:36:36,014:INFO: Epoch: 1/1, Step: 130/508, Lr: , Loss: 0.825370, Time/step: 7.257968
+2025-08-18 10:37:35,918:INFO: Effective parameters:
+2025-08-18 10:37:35,918:INFO:   <<< amp: True
+2025-08-18 10:37:35,918:INFO:   <<< batch_size: 96
+2025-08-18 10:37:35,918:INFO:   <<< batch_size_val: 32
+2025-08-18 10:37:35,918:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:37:35,918:INFO:   <<< cache_dir: 
+2025-08-18 10:37:35,918:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:37:35,918:INFO:   <<< cross_model: cross-base
+2025-08-18 10:37:35,919:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:37:35,919:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:37:35,919:INFO:   <<< datatype: msvd
+2025-08-18 10:37:35,919:INFO:   <<< do_eval: False
+2025-08-18 10:37:35,919:INFO:   <<< do_lower_case: False
+2025-08-18 10:37:35,919:INFO:   <<< do_pretrain: False
+2025-08-18 10:37:35,919:INFO:   <<< do_train: True
+2025-08-18 10:37:35,919:INFO:   <<< epochs: 1
+2025-08-18 10:37:35,919:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:37:35,919:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:37:35,919:INFO:   <<< feature_framerate: 1
+2025-08-18 10:37:35,920:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:37:35,920:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:37:35,920:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:37:35,920:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:37:35,920:INFO:   <<< init_model: None
+2025-08-18 10:37:35,920:INFO:   <<< linear_patch: 2d
+2025-08-18 10:37:35,920:INFO:   <<< local_rank: 0
+2025-08-18 10:37:35,920:INFO:   <<< loose_type: True
+2025-08-18 10:37:35,920:INFO:   <<< lr: 0.0001
+2025-08-18 10:37:35,920:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:37:35,921:INFO:   <<< margin: 0.1
+2025-08-18 10:37:35,921:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:37:35,921:INFO:   <<< max_frames: 12
+2025-08-18 10:37:35,921:INFO:   <<< max_words: 32
+2025-08-18 10:37:35,921:INFO:   <<< n_display: 5
+2025-08-18 10:37:35,921:INFO:   <<< n_gpu: 1
+2025-08-18 10:37:35,921:INFO:   <<< n_pair: 1
+2025-08-18 10:37:35,921:INFO:   <<< negative_weighting: 1
+2025-08-18 10:37:35,921:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:37:35,921:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:37:35,921:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:37:35,922:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:37:35,922:INFO:   <<< rank: 0
+2025-08-18 10:37:35,922:INFO:   <<< resume_model: None
+2025-08-18 10:37:35,922:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:37:35,922:INFO:   <<< seed: 42
+2025-08-18 10:37:35,922:INFO:   <<< sim_header: meanP
+2025-08-18 10:37:35,922:INFO:   <<< slice_framepos: 0
+2025-08-18 10:37:35,922:INFO:   <<< task_type: retrieval
+2025-08-18 10:37:35,922:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:37:35,922:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:37:35,923:INFO:   <<< train_frame_order: 0
+2025-08-18 10:37:35,923:INFO:   <<< use_mil: False
+2025-08-18 10:37:35,923:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:37:35,923:INFO:   <<< video_dim: 1024
+2025-08-18 10:37:35,923:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:37:35,923:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:37:35,923:INFO:   <<< world_size: 2
+2025-08-18 10:37:35,924:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:37:41,488:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:37:41,488:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:37:41,488:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:37:41,488:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:37:41,489:WARNING: Test retrieval by loose type.
+2025-08-18 10:37:41,514:WARNING: 	 embed_dim: 512
+2025-08-18 10:37:41,514:WARNING: 	 image_resolution: 224
+2025-08-18 10:37:41,514:WARNING: 	 vision_layers: 12
+2025-08-18 10:37:41,514:WARNING: 	 vision_width: 768
+2025-08-18 10:37:41,514:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:37:41,514:WARNING: 	 context_length: 77
+2025-08-18 10:37:41,514:WARNING: 	 vocab_size: 49408
+2025-08-18 10:37:41,514:WARNING: 	 transformer_width: 512
+2025-08-18 10:37:41,514:WARNING: 	 transformer_heads: 8
+2025-08-18 10:37:41,515:WARNING: 	 transformer_layers: 12
+2025-08-18 10:37:41,515:WARNING: 		 linear_patch: 2d
+2025-08-18 10:37:41,515:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:37:43,478:WARNING: 	 sim_header: meanP
+2025-08-18 10:37:48,441:INFO: --------------------
+2025-08-18 10:37:48,441:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 10:37:48,441:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 10:37:49,533:INFO: ***** Running test *****
+2025-08-18 10:37:49,533:INFO:   Num examples = 27763
+2025-08-18 10:37:49,533:INFO:   Batch size = 32
+2025-08-18 10:37:49,533:INFO:   Num steps = 868
+2025-08-18 10:37:49,533:INFO: ***** Running val *****
+2025-08-18 10:37:49,533:INFO:   Num examples = 4290
+2025-08-18 10:37:50,849:INFO: ***** Running training *****
+2025-08-18 10:37:50,849:INFO:   Num examples = 48774
+2025-08-18 10:37:50,850:INFO:   Batch size = 96
+2025-08-18 10:37:50,850:INFO:   Num steps = 508
+2025-08-18 10:45:50,001:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:45:50,005:INFO: Effective parameters:
+2025-08-18 10:45:50,005:INFO:   <<< amp: True
+2025-08-18 10:45:50,006:INFO:   <<< batch_size: 96
+2025-08-18 10:45:50,006:INFO:   <<< batch_size_val: 32
+2025-08-18 10:45:50,006:INFO:   <<< cache_dir: 
+2025-08-18 10:45:50,006:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:45:50,006:INFO:   <<< cross_model: cross-base
+2025-08-18 10:45:50,006:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:45:50,006:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:45:50,006:INFO:   <<< datatype: msvd
+2025-08-18 10:45:50,006:INFO:   <<< do_eval: False
+2025-08-18 10:45:50,006:INFO:   <<< do_lower_case: False
+2025-08-18 10:45:50,007:INFO:   <<< do_pretrain: False
+2025-08-18 10:45:50,007:INFO:   <<< do_train: True
+2025-08-18 10:45:50,007:INFO:   <<< epochs: 1
+2025-08-18 10:45:50,007:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:45:50,007:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:45:50,007:INFO:   <<< feature_framerate: 1
+2025-08-18 10:45:50,007:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:45:50,007:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:45:50,007:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:45:50,007:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:45:50,008:INFO:   <<< init_model: None
+2025-08-18 10:45:50,008:INFO:   <<< linear_patch: 2d
+2025-08-18 10:45:50,008:INFO:   <<< local_rank: 0
+2025-08-18 10:45:50,008:INFO:   <<< loose_type: True
+2025-08-18 10:45:50,008:INFO:   <<< lr: 0.0001
+2025-08-18 10:45:50,008:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:45:50,008:INFO:   <<< margin: 0.1
+2025-08-18 10:45:50,008:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:45:50,008:INFO:   <<< max_frames: 12
+2025-08-18 10:45:50,008:INFO:   <<< max_words: 32
+2025-08-18 10:45:50,009:INFO:   <<< n_display: 5
+2025-08-18 10:45:50,009:INFO:   <<< n_gpu: 1
+2025-08-18 10:45:50,009:INFO:   <<< n_pair: 1
+2025-08-18 10:45:50,009:INFO:   <<< negative_weighting: 1
+2025-08-18 10:45:50,009:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:45:50,009:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:45:50,009:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:45:50,009:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:45:50,009:INFO:   <<< rank: 0
+2025-08-18 10:45:50,009:INFO:   <<< resume_model: None
+2025-08-18 10:45:50,010:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:45:50,010:INFO:   <<< seed: 42
+2025-08-18 10:45:50,010:INFO:   <<< sim_header: meanP
+2025-08-18 10:45:50,010:INFO:   <<< slice_framepos: 0
+2025-08-18 10:45:50,010:INFO:   <<< task_type: retrieval
+2025-08-18 10:45:50,010:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:45:50,010:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:45:50,010:INFO:   <<< train_frame_order: 0
+2025-08-18 10:45:50,010:INFO:   <<< use_mil: False
+2025-08-18 10:45:50,010:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:45:50,011:INFO:   <<< video_dim: 1024
+2025-08-18 10:45:50,011:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:45:50,011:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:45:50,011:INFO:   <<< world_size: 2
+2025-08-18 10:45:50,011:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:45:50,910:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:45:50,910:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:45:50,910:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:45:50,910:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:45:50,910:WARNING: Test retrieval by loose type.
+2025-08-18 10:45:50,911:WARNING: 	 embed_dim: 512
+2025-08-18 10:45:50,911:WARNING: 	 image_resolution: 224
+2025-08-18 10:45:50,911:WARNING: 	 vision_layers: 12
+2025-08-18 10:45:50,911:WARNING: 	 vision_width: 768
+2025-08-18 10:45:50,911:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:45:50,911:WARNING: 	 context_length: 77
+2025-08-18 10:45:50,911:WARNING: 	 vocab_size: 49408
+2025-08-18 10:45:50,911:WARNING: 	 transformer_width: 512
+2025-08-18 10:45:50,911:WARNING: 	 transformer_heads: 8
+2025-08-18 10:45:50,911:WARNING: 	 transformer_layers: 12
+2025-08-18 10:45:50,911:WARNING: 		 linear_patch: 2d
+2025-08-18 10:45:50,911:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:45:52,666:WARNING: 	 sim_header: meanP
+2025-08-18 10:45:57,312:INFO: --------------------
+2025-08-18 10:45:57,312:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 10:45:57,312:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 10:45:58,172:INFO: ***** Running test *****
+2025-08-18 10:45:58,172:INFO:   Num examples = 27763
+2025-08-18 10:45:58,172:INFO:   Batch size = 32
+2025-08-18 10:45:58,172:INFO:   Num steps = 868
+2025-08-18 10:45:58,172:INFO: ***** Running val *****
+2025-08-18 10:45:58,172:INFO:   Num examples = 4290
+2025-08-18 10:45:59,042:INFO: ***** Running training *****
+2025-08-18 10:45:59,042:INFO:   Num examples = 48774
+2025-08-18 10:45:59,042:INFO:   Batch size = 96
+2025-08-18 10:45:59,042:INFO:   Num steps = 508
+2025-08-18 10:51:44,757:INFO: Effective parameters:
+2025-08-18 10:51:44,757:INFO:   <<< amp: True
+2025-08-18 10:51:44,757:INFO:   <<< batch_size: 96
+2025-08-18 10:51:44,757:INFO:   <<< batch_size_val: 32
+2025-08-18 10:51:44,758:INFO:   <<< cache_dir: 
+2025-08-18 10:51:44,758:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:51:44,758:INFO:   <<< cross_model: cross-base
+2025-08-18 10:51:44,758:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:51:44,758:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:51:44,758:INFO:   <<< datatype: msvd
+2025-08-18 10:51:44,758:INFO:   <<< do_eval: False
+2025-08-18 10:51:44,758:INFO:   <<< do_lower_case: False
+2025-08-18 10:51:44,758:INFO:   <<< do_pretrain: False
+2025-08-18 10:51:44,758:INFO:   <<< do_train: True
+2025-08-18 10:51:44,758:INFO:   <<< epochs: 1
+2025-08-18 10:51:44,758:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:51:44,758:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:51:44,759:INFO:   <<< feature_framerate: 1
+2025-08-18 10:51:44,759:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:51:44,759:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:51:44,759:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:51:44,759:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:51:44,759:INFO:   <<< init_model: None
+2025-08-18 10:51:44,759:INFO:   <<< linear_patch: 2d
+2025-08-18 10:51:44,759:INFO:   <<< local_rank: 0
+2025-08-18 10:51:44,759:INFO:   <<< loose_type: True
+2025-08-18 10:51:44,759:INFO:   <<< lr: 0.0001
+2025-08-18 10:51:44,759:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:51:44,759:INFO:   <<< margin: 0.1
+2025-08-18 10:51:44,759:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:51:44,760:INFO:   <<< max_frames: 12
+2025-08-18 10:51:44,760:INFO:   <<< max_words: 32
+2025-08-18 10:51:44,760:INFO:   <<< n_display: 5
+2025-08-18 10:51:44,760:INFO:   <<< n_gpu: 1
+2025-08-18 10:51:44,760:INFO:   <<< n_pair: 1
+2025-08-18 10:51:44,760:INFO:   <<< negative_weighting: 1
+2025-08-18 10:51:44,760:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:51:44,760:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:51:44,760:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:51:44,760:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:51:44,760:INFO:   <<< rank: 0
+2025-08-18 10:51:44,760:INFO:   <<< resume_model: None
+2025-08-18 10:51:44,760:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:51:44,761:INFO:   <<< seed: 42
+2025-08-18 10:51:44,761:INFO:   <<< sim_header: meanP
+2025-08-18 10:51:44,761:INFO:   <<< slice_framepos: 0
+2025-08-18 10:51:44,761:INFO:   <<< task_type: retrieval
+2025-08-18 10:51:44,761:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:51:44,761:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:51:44,761:INFO:   <<< train_frame_order: 0
+2025-08-18 10:51:44,761:INFO:   <<< use_mil: False
+2025-08-18 10:51:44,761:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:51:44,761:INFO:   <<< video_dim: 1024
+2025-08-18 10:51:44,761:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:51:44,761:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:51:44,761:INFO:   <<< world_size: 2
+2025-08-18 10:51:44,762:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:51:44,770:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:51:45,649:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:51:45,649:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:51:45,649:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:51:45,649:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:51:45,649:WARNING: Test retrieval by loose type.
+2025-08-18 10:51:45,649:WARNING: 	 embed_dim: 512
+2025-08-18 10:51:45,649:WARNING: 	 image_resolution: 224
+2025-08-18 10:51:45,649:WARNING: 	 vision_layers: 12
+2025-08-18 10:51:45,650:WARNING: 	 vision_width: 768
+2025-08-18 10:51:45,650:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:51:45,650:WARNING: 	 context_length: 77
+2025-08-18 10:51:45,650:WARNING: 	 vocab_size: 49408
+2025-08-18 10:51:45,650:WARNING: 	 transformer_width: 512
+2025-08-18 10:51:45,650:WARNING: 	 transformer_heads: 8
+2025-08-18 10:51:45,650:WARNING: 	 transformer_layers: 12
+2025-08-18 10:51:45,650:WARNING: 		 linear_patch: 2d
+2025-08-18 10:51:45,650:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:51:57,388:INFO: Effective parameters:
+2025-08-18 10:51:57,389:INFO:   <<< amp: True
+2025-08-18 10:51:57,389:INFO:   <<< batch_size: 96
+2025-08-18 10:51:57,389:INFO:   <<< batch_size_val: 32
+2025-08-18 10:51:57,389:INFO:   <<< cache_dir: 
+2025-08-18 10:51:57,389:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:51:57,389:INFO:   <<< cross_model: cross-base
+2025-08-18 10:51:57,389:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:51:57,389:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:51:57,389:INFO:   <<< datatype: msvd
+2025-08-18 10:51:57,389:INFO:   <<< do_eval: False
+2025-08-18 10:51:57,390:INFO:   <<< do_lower_case: False
+2025-08-18 10:51:57,390:INFO:   <<< do_pretrain: False
+2025-08-18 10:51:57,390:INFO:   <<< do_train: True
+2025-08-18 10:51:57,390:INFO:   <<< epochs: 1
+2025-08-18 10:51:57,390:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:51:57,390:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:51:57,390:INFO:   <<< feature_framerate: 1
+2025-08-18 10:51:57,390:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:51:57,390:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:51:57,390:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:51:57,390:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:51:57,390:INFO:   <<< init_model: None
+2025-08-18 10:51:57,390:INFO:   <<< linear_patch: 2d
+2025-08-18 10:51:57,391:INFO:   <<< local_rank: 0
+2025-08-18 10:51:57,391:INFO:   <<< loose_type: True
+2025-08-18 10:51:57,391:INFO:   <<< lr: 0.0001
+2025-08-18 10:51:57,391:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:51:57,391:INFO:   <<< margin: 0.1
+2025-08-18 10:51:57,391:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:51:57,391:INFO:   <<< max_frames: 12
+2025-08-18 10:51:57,391:INFO:   <<< max_words: 32
+2025-08-18 10:51:57,391:INFO:   <<< n_display: 5
+2025-08-18 10:51:57,391:INFO:   <<< n_gpu: 1
+2025-08-18 10:51:57,391:INFO:   <<< n_pair: 1
+2025-08-18 10:51:57,391:INFO:   <<< negative_weighting: 1
+2025-08-18 10:51:57,392:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:51:57,392:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:51:57,392:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:51:57,392:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:51:57,392:INFO:   <<< rank: 0
+2025-08-18 10:51:57,392:INFO:   <<< resume_model: None
+2025-08-18 10:51:57,392:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:51:57,392:INFO:   <<< seed: 42
+2025-08-18 10:51:57,392:INFO:   <<< sim_header: meanP
+2025-08-18 10:51:57,392:INFO:   <<< slice_framepos: 0
+2025-08-18 10:51:57,392:INFO:   <<< task_type: retrieval
+2025-08-18 10:51:57,392:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:51:57,392:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:51:57,393:INFO:   <<< train_frame_order: 0
+2025-08-18 10:51:57,393:INFO:   <<< use_mil: False
+2025-08-18 10:51:57,393:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:51:57,393:INFO:   <<< video_dim: 1024
+2025-08-18 10:51:57,393:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:51:57,393:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:51:57,393:INFO:   <<< world_size: 2
+2025-08-18 10:51:57,394:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:51:57,419:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:51:58,319:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:51:58,320:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:51:58,320:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:51:58,320:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:51:58,320:WARNING: Test retrieval by loose type.
+2025-08-18 10:51:58,320:WARNING: 	 embed_dim: 512
+2025-08-18 10:51:58,320:WARNING: 	 image_resolution: 224
+2025-08-18 10:51:58,320:WARNING: 	 vision_layers: 12
+2025-08-18 10:51:58,321:WARNING: 	 vision_width: 768
+2025-08-18 10:51:58,321:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:51:58,321:WARNING: 	 context_length: 77
+2025-08-18 10:51:58,321:WARNING: 	 vocab_size: 49408
+2025-08-18 10:51:58,321:WARNING: 	 transformer_width: 512
+2025-08-18 10:51:58,321:WARNING: 	 transformer_heads: 8
+2025-08-18 10:51:58,321:WARNING: 	 transformer_layers: 12
+2025-08-18 10:51:58,321:WARNING: 		 linear_patch: 2d
+2025-08-18 10:51:58,321:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:52:00,085:WARNING: 	 sim_header: meanP
+2025-08-18 10:52:04,945:INFO: --------------------
+2025-08-18 10:52:04,946:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 10:52:04,946:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 10:52:05,904:INFO: ***** Running test *****
+2025-08-18 10:52:05,904:INFO:   Num examples = 27763
+2025-08-18 10:52:05,904:INFO:   Batch size = 32
+2025-08-18 10:52:05,904:INFO:   Num steps = 868
+2025-08-18 10:52:05,904:INFO: ***** Running val *****
+2025-08-18 10:52:05,905:INFO:   Num examples = 4290
+2025-08-18 10:52:06,422:INFO: ***** Running training *****
+2025-08-18 10:52:06,423:INFO:   Num examples = 48774
+2025-08-18 10:52:06,423:INFO:   Batch size = 96
+2025-08-18 10:52:06,423:INFO:   Num steps = 508
+2025-08-18 10:56:16,175:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 10:56:16,180:INFO: Effective parameters:
+2025-08-18 10:56:16,180:INFO:   <<< amp: True
+2025-08-18 10:56:16,180:INFO:   <<< batch_size: 96
+2025-08-18 10:56:16,180:INFO:   <<< batch_size_val: 32
+2025-08-18 10:56:16,181:INFO:   <<< cache_dir: 
+2025-08-18 10:56:16,181:INFO:   <<< coef_lr: 0.001
+2025-08-18 10:56:16,181:INFO:   <<< cross_model: cross-base
+2025-08-18 10:56:16,181:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 10:56:16,181:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 10:56:16,181:INFO:   <<< datatype: msvd
+2025-08-18 10:56:16,181:INFO:   <<< do_eval: False
+2025-08-18 10:56:16,181:INFO:   <<< do_lower_case: False
+2025-08-18 10:56:16,181:INFO:   <<< do_pretrain: False
+2025-08-18 10:56:16,181:INFO:   <<< do_train: True
+2025-08-18 10:56:16,182:INFO:   <<< epochs: 1
+2025-08-18 10:56:16,182:INFO:   <<< eval_frame_order: 0
+2025-08-18 10:56:16,182:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 10:56:16,182:INFO:   <<< feature_framerate: 1
+2025-08-18 10:56:16,182:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 10:56:16,182:INFO:   <<< freeze_layer_num: 9
+2025-08-18 10:56:16,182:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 10:56:16,182:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 10:56:16,182:INFO:   <<< init_model: None
+2025-08-18 10:56:16,182:INFO:   <<< linear_patch: 2d
+2025-08-18 10:56:16,183:INFO:   <<< local_rank: 0
+2025-08-18 10:56:16,183:INFO:   <<< loose_type: True
+2025-08-18 10:56:16,183:INFO:   <<< lr: 0.0001
+2025-08-18 10:56:16,183:INFO:   <<< lr_decay: 0.9
+2025-08-18 10:56:16,183:INFO:   <<< margin: 0.1
+2025-08-18 10:56:16,183:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 10:56:16,183:INFO:   <<< max_frames: 12
+2025-08-18 10:56:16,183:INFO:   <<< max_words: 32
+2025-08-18 10:56:16,183:INFO:   <<< n_display: 5
+2025-08-18 10:56:16,183:INFO:   <<< n_gpu: 1
+2025-08-18 10:56:16,184:INFO:   <<< n_pair: 1
+2025-08-18 10:56:16,184:INFO:   <<< negative_weighting: 1
+2025-08-18 10:56:16,184:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 10:56:16,184:INFO:   <<< num_thread_reader: 4
+2025-08-18 10:56:16,184:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 10:56:16,184:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 10:56:16,184:INFO:   <<< rank: 0
+2025-08-18 10:56:16,184:INFO:   <<< resume_model: None
+2025-08-18 10:56:16,184:INFO:   <<< sampled_use_mil: False
+2025-08-18 10:56:16,184:INFO:   <<< seed: 42
+2025-08-18 10:56:16,185:INFO:   <<< sim_header: meanP
+2025-08-18 10:56:16,185:INFO:   <<< slice_framepos: 0
+2025-08-18 10:56:16,185:INFO:   <<< task_type: retrieval
+2025-08-18 10:56:16,185:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 10:56:16,185:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 10:56:16,185:INFO:   <<< train_frame_order: 0
+2025-08-18 10:56:16,185:INFO:   <<< use_mil: False
+2025-08-18 10:56:16,185:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 10:56:16,185:INFO:   <<< video_dim: 1024
+2025-08-18 10:56:16,185:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 10:56:16,186:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 10:56:16,186:INFO:   <<< world_size: 2
+2025-08-18 10:56:16,186:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 10:56:17,050:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 10:56:17,051:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 10:56:17,051:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 10:56:17,051:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 10:56:17,051:WARNING: Test retrieval by loose type.
+2025-08-18 10:56:17,051:WARNING: 	 embed_dim: 512
+2025-08-18 10:56:17,051:WARNING: 	 image_resolution: 224
+2025-08-18 10:56:17,051:WARNING: 	 vision_layers: 12
+2025-08-18 10:56:17,051:WARNING: 	 vision_width: 768
+2025-08-18 10:56:17,051:WARNING: 	 vision_patch_size: 32
+2025-08-18 10:56:17,051:WARNING: 	 context_length: 77
+2025-08-18 10:56:17,051:WARNING: 	 vocab_size: 49408
+2025-08-18 10:56:17,052:WARNING: 	 transformer_width: 512
+2025-08-18 10:56:17,052:WARNING: 	 transformer_heads: 8
+2025-08-18 10:56:17,052:WARNING: 	 transformer_layers: 12
+2025-08-18 10:56:17,052:WARNING: 		 linear_patch: 2d
+2025-08-18 10:56:17,052:WARNING: 	 cut_top_layer: 0
+2025-08-18 10:56:18,756:WARNING: 	 sim_header: meanP
+2025-08-18 10:56:23,232:INFO: --------------------
+2025-08-18 10:56:23,232:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 10:56:23,233:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 10:56:24,105:INFO: ***** Running test *****
+2025-08-18 10:56:24,106:INFO:   Num examples = 27763
+2025-08-18 10:56:24,106:INFO:   Batch size = 32
+2025-08-18 10:56:24,106:INFO:   Num steps = 868
+2025-08-18 10:56:24,106:INFO: ***** Running val *****
+2025-08-18 10:56:24,106:INFO:   Num examples = 4290
+2025-08-18 10:56:24,938:INFO: ***** Running training *****
+2025-08-18 10:56:24,939:INFO:   Num examples = 48774
+2025-08-18 10:56:24,939:INFO:   Batch size = 96
+2025-08-18 10:56:24,939:INFO:   Num steps = 508
+2025-08-18 11:01:22,352:INFO: Effective parameters:
+2025-08-18 11:01:22,352:INFO:   <<< amp: True
+2025-08-18 11:01:22,352:INFO:   <<< batch_size: 96
+2025-08-18 11:01:22,352:INFO:   <<< batch_size_val: 32
+2025-08-18 11:01:22,352:INFO:   <<< cache_dir: 
+2025-08-18 11:01:22,353:INFO:   <<< coef_lr: 0.001
+2025-08-18 11:01:22,353:INFO:   <<< cross_model: cross-base
+2025-08-18 11:01:22,353:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 11:01:22,353:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 11:01:22,353:INFO:   <<< datatype: msvd
+2025-08-18 11:01:22,353:INFO:   <<< do_eval: False
+2025-08-18 11:01:22,353:INFO:   <<< do_lower_case: False
+2025-08-18 11:01:22,353:INFO:   <<< do_pretrain: False
+2025-08-18 11:01:22,353:INFO:   <<< do_train: True
+2025-08-18 11:01:22,353:INFO:   <<< epochs: 1
+2025-08-18 11:01:22,353:INFO:   <<< eval_frame_order: 0
+2025-08-18 11:01:22,353:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 11:01:22,353:INFO:   <<< feature_framerate: 1
+2025-08-18 11:01:22,354:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 11:01:22,354:INFO:   <<< freeze_layer_num: 9
+2025-08-18 11:01:22,354:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 11:01:22,354:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 11:01:22,354:INFO:   <<< init_model: None
+2025-08-18 11:01:22,354:INFO:   <<< linear_patch: 2d
+2025-08-18 11:01:22,354:INFO:   <<< local_rank: 0
+2025-08-18 11:01:22,354:INFO:   <<< loose_type: True
+2025-08-18 11:01:22,354:INFO:   <<< lr: 0.0001
+2025-08-18 11:01:22,354:INFO:   <<< lr_decay: 0.9
+2025-08-18 11:01:22,354:INFO:   <<< margin: 0.1
+2025-08-18 11:01:22,354:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 11:01:22,354:INFO:   <<< max_frames: 12
+2025-08-18 11:01:22,355:INFO:   <<< max_words: 32
+2025-08-18 11:01:22,355:INFO:   <<< n_display: 5
+2025-08-18 11:01:22,355:INFO:   <<< n_gpu: 1
+2025-08-18 11:01:22,355:INFO:   <<< n_pair: 1
+2025-08-18 11:01:22,355:INFO:   <<< negative_weighting: 1
+2025-08-18 11:01:22,355:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 11:01:22,355:INFO:   <<< num_thread_reader: 4
+2025-08-18 11:01:22,355:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 11:01:22,355:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 11:01:22,355:INFO:   <<< rank: 0
+2025-08-18 11:01:22,355:INFO:   <<< resume_model: None
+2025-08-18 11:01:22,355:INFO:   <<< sampled_use_mil: False
+2025-08-18 11:01:22,355:INFO:   <<< seed: 42
+2025-08-18 11:01:22,355:INFO:   <<< sim_header: meanP
+2025-08-18 11:01:22,356:INFO:   <<< slice_framepos: 0
+2025-08-18 11:01:22,356:INFO:   <<< task_type: retrieval
+2025-08-18 11:01:22,356:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 11:01:22,356:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 11:01:22,356:INFO:   <<< train_frame_order: 0
+2025-08-18 11:01:22,356:INFO:   <<< use_mil: False
+2025-08-18 11:01:22,356:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 11:01:22,356:INFO:   <<< video_dim: 1024
+2025-08-18 11:01:22,356:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 11:01:22,356:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 11:01:22,356:INFO:   <<< world_size: 2
+2025-08-18 11:01:22,357:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 11:01:22,559:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 11:01:23,247:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 11:01:23,247:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 11:01:23,247:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 11:01:23,247:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 11:01:23,247:WARNING: Test retrieval by loose type.
+2025-08-18 11:01:23,248:WARNING: 	 embed_dim: 512
+2025-08-18 11:01:23,248:WARNING: 	 image_resolution: 224
+2025-08-18 11:01:23,248:WARNING: 	 vision_layers: 12
+2025-08-18 11:01:23,248:WARNING: 	 vision_width: 768
+2025-08-18 11:01:23,248:WARNING: 	 vision_patch_size: 32
+2025-08-18 11:01:23,248:WARNING: 	 context_length: 77
+2025-08-18 11:01:23,248:WARNING: 	 vocab_size: 49408
+2025-08-18 11:01:23,248:WARNING: 	 transformer_width: 512
+2025-08-18 11:01:23,248:WARNING: 	 transformer_heads: 8
+2025-08-18 11:01:23,248:WARNING: 	 transformer_layers: 12
+2025-08-18 11:01:23,248:WARNING: 		 linear_patch: 2d
+2025-08-18 11:01:23,248:WARNING: 	 cut_top_layer: 0
+2025-08-18 11:01:24,949:WARNING: 	 sim_header: meanP
+2025-08-18 11:01:29,422:INFO: --------------------
+2025-08-18 11:01:29,422:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 11:01:29,422:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 11:01:30,286:INFO: ***** Running test *****
+2025-08-18 11:01:30,287:INFO:   Num examples = 27763
+2025-08-18 11:01:30,287:INFO:   Batch size = 32
+2025-08-18 11:01:30,287:INFO:   Num steps = 868
+2025-08-18 11:01:30,287:INFO: ***** Running val *****
+2025-08-18 11:01:30,287:INFO:   Num examples = 4290
+2025-08-18 11:01:31,017:INFO: ***** Running training *****
+2025-08-18 11:01:31,017:INFO:   Num examples = 48774
+2025-08-18 11:01:31,017:INFO:   Batch size = 96
+2025-08-18 11:01:31,017:INFO:   Num steps = 508
+2025-08-18 11:02:37,314:INFO: Epoch: 1/1, Step: 5/508, Lr: 0.000000010-0.000000010-0.000010000-0.000010000-0.000010000, Loss: 3.152710, Time/step: 13.246220
+2025-08-18 11:03:12,513:INFO: Epoch: 1/1, Step: 10/508, Lr: 0.000000020-0.000000020-0.000020000-0.000020000-0.000020000, Loss: 3.065287, Time/step: 7.039721
+2025-08-18 11:04:08,758:INFO: Epoch: 1/1, Step: 15/508, Lr: 0.000000030-0.000000030-0.000030000-0.000030000-0.000030000, Loss: 2.914307, Time/step: 11.248927
+2025-08-18 11:04:44,203:INFO: Epoch: 1/1, Step: 20/508, Lr: 0.000000040-0.000000040-0.000040000-0.000040000-0.000040000, Loss: 2.669373, Time/step: 7.088899
+2025-08-18 11:05:49,966:INFO: Epoch: 1/1, Step: 25/508, Lr: 0.000000050-0.000000050-0.000050000-0.000050000-0.000050000, Loss: 2.622538, Time/step: 13.152436
+2025-08-18 11:06:25,687:INFO: Epoch: 1/1, Step: 30/508, Lr: 0.000000060-0.000000060-0.000060000-0.000060000-0.000060000, Loss: 2.471415, Time/step: 7.144079
+2025-08-18 11:06:59,253:INFO: Epoch: 1/1, Step: 35/508, Lr: 0.000000070-0.000000070-0.000070000-0.000070000-0.000070000, Loss: 2.205312, Time/step: 6.713182
+2025-08-18 11:07:29,151:INFO: Epoch: 1/1, Step: 40/508, Lr: 0.000000080-0.000000080-0.000080000-0.000080000-0.000080000, Loss: 2.179423, Time/step: 5.979340
+2025-08-18 11:08:26,732:INFO: Epoch: 1/1, Step: 45/508, Lr: 0.000000090-0.000000090-0.000090000-0.000090000-0.000090000, Loss: 1.936025, Time/step: 11.516303
+2025-08-18 11:08:58,763:INFO: Epoch: 1/1, Step: 50/508, Lr: 0.000000100-0.000000100-0.000100000-0.000100000-0.000100000, Loss: 2.002813, Time/step: 6.406088
+2025-08-18 11:09:32,884:INFO: Epoch: 1/1, Step: 55/508, Lr: 0.000000099-0.000000099-0.000098908-0.000098908-0.000098908, Loss: 1.926921, Time/step: 6.823973
+2025-08-18 11:10:07,741:INFO: Epoch: 1/1, Step: 60/508, Lr: 0.000000098-0.000000098-0.000097817-0.000097817-0.000097817, Loss: 1.835632, Time/step: 6.971324
+2025-08-18 11:10:50,986:INFO: Epoch: 1/1, Step: 65/508, Lr: 0.000000097-0.000000097-0.000096725-0.000096725-0.000096725, Loss: 1.578547, Time/step: 8.648864
+2025-08-18 11:11:34,568:INFO: Epoch: 1/1, Step: 70/508, Lr: 0.000000096-0.000000096-0.000095633-0.000095633-0.000095633, Loss: 1.582344, Time/step: 8.716370
+2025-08-18 11:12:09,701:INFO: Epoch: 1/1, Step: 75/508, Lr: 0.000000095-0.000000095-0.000094541-0.000094541-0.000094541, Loss: 1.621259, Time/step: 7.026486
+2025-08-18 11:12:44,950:INFO: Epoch: 1/1, Step: 80/508, Lr: 0.000000093-0.000000093-0.000093450-0.000093450-0.000093450, Loss: 1.421249, Time/step: 7.049694
+2025-08-18 11:13:28,901:INFO: Epoch: 1/1, Step: 85/508, Lr: 0.000000092-0.000000092-0.000092358-0.000092358-0.000092358, Loss: 1.490898, Time/step: 8.790043
+2025-08-18 11:14:06,079:INFO: Epoch: 1/1, Step: 90/508, Lr: 0.000000091-0.000000091-0.000091266-0.000091266-0.000091266, Loss: 1.530978, Time/step: 7.435513
+2025-08-18 11:14:46,287:INFO: Epoch: 1/1, Step: 95/508, Lr: 0.000000090-0.000000090-0.000090175-0.000090175-0.000090175, Loss: 1.569486, Time/step: 8.041524
+2025-08-18 11:15:17,053:INFO: Epoch: 1/1, Step: 100/508, Lr: 0.000000089-0.000000089-0.000089083-0.000089083-0.000089083, Loss: 1.558609, Time/step: 6.153230
+2025-08-18 11:16:08,938:INFO: Epoch: 1/1, Step: 105/508, Lr: 0.000000088-0.000000088-0.000087991-0.000087991-0.000087991, Loss: 1.189178, Time/step: 10.376804
+2025-08-18 11:16:40,243:INFO: Epoch: 1/1, Step: 110/508, Lr: 0.000000087-0.000000087-0.000086900-0.000086900-0.000086900, Loss: 1.314407, Time/step: 6.260927
+2025-08-18 11:17:26,043:INFO: Epoch: 1/1, Step: 115/508, Lr: 0.000000086-0.000000086-0.000085808-0.000085808-0.000085808, Loss: 1.311300, Time/step: 9.159909
+2025-08-18 11:17:57,230:INFO: Epoch: 1/1, Step: 120/508, Lr: 0.000000085-0.000000085-0.000084716-0.000084716-0.000084716, Loss: 1.210230, Time/step: 6.237241
+2025-08-18 11:18:46,987:INFO: Epoch: 1/1, Step: 125/508, Lr: 0.000000084-0.000000084-0.000083624-0.000083624-0.000083624, Loss: 1.373611, Time/step: 9.951311
+2025-08-18 11:19:18,663:INFO: Epoch: 1/1, Step: 130/508, Lr: 0.000000083-0.000000083-0.000082533-0.000082533-0.000082533, Loss: 1.428422, Time/step: 6.335219
+2025-08-18 11:20:03,125:INFO: Epoch: 1/1, Step: 135/508, Lr: 0.000000081-0.000000081-0.000081441-0.000081441-0.000081441, Loss: 0.939012, Time/step: 8.892228
+2025-08-18 11:20:36,929:INFO: Epoch: 1/1, Step: 140/508, Lr: 0.000000080-0.000000080-0.000080349-0.000080349-0.000080349, Loss: 1.172887, Time/step: 6.760678
+2025-08-18 11:21:24,893:INFO: Epoch: 1/1, Step: 145/508, Lr: 0.000000079-0.000000079-0.000079258-0.000079258-0.000079258, Loss: 1.275953, Time/step: 9.592662
+2025-08-18 11:21:59,543:INFO: Epoch: 1/1, Step: 150/508, Lr: 0.000000078-0.000000078-0.000078166-0.000078166-0.000078166, Loss: 1.138589, Time/step: 6.930022
+2025-08-18 11:22:36,051:INFO: Epoch: 1/1, Step: 155/508, Lr: 0.000000077-0.000000077-0.000077074-0.000077074-0.000077074, Loss: 1.130051, Time/step: 7.301350
+2025-08-18 11:23:06,209:INFO: Epoch: 1/1, Step: 160/508, Lr: 0.000000076-0.000000076-0.000075983-0.000075983-0.000075983, Loss: 1.174344, Time/step: 6.031504
+2025-08-18 11:24:00,672:INFO: Epoch: 1/1, Step: 165/508, Lr: 0.000000075-0.000000075-0.000074891-0.000074891-0.000074891, Loss: 1.155670, Time/step: 10.892543
+2025-08-18 11:24:42,261:INFO: Epoch: 1/1, Step: 170/508, Lr: 0.000000074-0.000000074-0.000073799-0.000073799-0.000073799, Loss: 1.102910, Time/step: 8.317753
+2025-08-18 11:25:19,125:INFO: Epoch: 1/1, Step: 175/508, Lr: 0.000000073-0.000000073-0.000072707-0.000072707-0.000072707, Loss: 1.106280, Time/step: 7.372710
+2025-08-18 11:25:57,734:INFO: Epoch: 1/1, Step: 180/508, Lr: 0.000000072-0.000000072-0.000071616-0.000071616-0.000071616, Loss: 1.167361, Time/step: 7.721727
+2025-08-18 11:26:57,538:INFO: Epoch: 1/1, Step: 185/508, Lr: 0.000000071-0.000000071-0.000070524-0.000070524-0.000070524, Loss: 1.175439, Time/step: 11.960748
+2025-08-18 11:27:31,366:INFO: Epoch: 1/1, Step: 190/508, Lr: 0.000000069-0.000000069-0.000069432-0.000069432-0.000069432, Loss: 1.016805, Time/step: 6.765365
+2025-08-18 11:28:14,773:INFO: Epoch: 1/1, Step: 195/508, Lr: 0.000000068-0.000000068-0.000068341-0.000068341-0.000068341, Loss: 1.045537, Time/step: 8.681361
+2025-08-18 11:28:50,271:INFO: Epoch: 1/1, Step: 200/508, Lr: 0.000000067-0.000000067-0.000067249-0.000067249-0.000067249, Loss: 0.948939, Time/step: 7.099414
+2025-08-18 11:29:53,130:INFO: Epoch: 1/1, Step: 205/508, Lr: 0.000000066-0.000000066-0.000066157-0.000066157-0.000066157, Loss: 1.007664, Time/step: 12.571749
+2025-08-18 11:30:22,938:INFO: Epoch: 1/1, Step: 210/508, Lr: 0.000000065-0.000000065-0.000065066-0.000065066-0.000065066, Loss: 1.239702, Time/step: 5.961541
+2025-08-18 11:30:57,749:INFO: Epoch: 1/1, Step: 215/508, Lr: 0.000000064-0.000000064-0.000063974-0.000063974-0.000063974, Loss: 0.832368, Time/step: 6.961922
+2025-08-18 11:31:31,640:INFO: Epoch: 1/1, Step: 220/508, Lr: 0.000000063-0.000000063-0.000062882-0.000062882-0.000062882, Loss: 0.872514, Time/step: 6.778145
+2025-08-18 11:32:29,290:INFO: Epoch: 1/1, Step: 225/508, Lr: 0.000000062-0.000000062-0.000061790-0.000061790-0.000061790, Loss: 0.887121, Time/step: 11.530009
+2025-08-18 11:33:01,519:INFO: Epoch: 1/1, Step: 230/508, Lr: 0.000000061-0.000000061-0.000060699-0.000060699-0.000060699, Loss: 1.256607, Time/step: 6.445615
+2025-08-18 11:33:31,552:INFO: Epoch: 1/1, Step: 235/508, Lr: 0.000000060-0.000000060-0.000059607-0.000059607-0.000059607, Loss: 0.886856, Time/step: 6.006429
+2025-08-18 11:34:05,583:INFO: Epoch: 1/1, Step: 240/508, Lr: 0.000000059-0.000000059-0.000058515-0.000058515-0.000058515, Loss: 0.919863, Time/step: 6.806155
+2025-08-18 11:34:54,152:INFO: Epoch: 1/1, Step: 245/508, Lr: 0.000000057-0.000000057-0.000057424-0.000057424-0.000057424, Loss: 1.152664, Time/step: 9.713710
+2025-08-18 11:35:30,379:INFO: Epoch: 1/1, Step: 250/508, Lr: 0.000000056-0.000000056-0.000056332-0.000056332-0.000056332, Loss: 0.960964, Time/step: 7.245160
+2025-08-18 11:36:05,643:INFO: Epoch: 1/1, Step: 255/508, Lr: 0.000000055-0.000000055-0.000055240-0.000055240-0.000055240, Loss: 0.981953, Time/step: 7.048552
+2025-08-18 11:36:48,849:INFO: Epoch: 1/1, Step: 260/508, Lr: 0.000000054-0.000000054-0.000054148-0.000054148-0.000054148, Loss: 0.880779, Time/step: 8.641165
+2025-08-18 11:37:29,946:INFO: Epoch: 1/1, Step: 265/508, Lr: 0.000000053-0.000000053-0.000053057-0.000053057-0.000053057, Loss: 0.872111, Time/step: 8.219343
+2025-08-18 11:38:11,930:INFO: Epoch: 1/1, Step: 270/508, Lr: 0.000000052-0.000000052-0.000051965-0.000051965-0.000051965, Loss: 0.978912, Time/step: 8.396630
+2025-08-18 11:38:45,603:INFO: Epoch: 1/1, Step: 275/508, Lr: 0.000000051-0.000000051-0.000050873-0.000050873-0.000050873, Loss: 1.055183, Time/step: 6.734541
+2025-08-18 11:39:37,075:INFO: Epoch: 1/1, Step: 280/508, Lr: 0.000000050-0.000000050-0.000049782-0.000049782-0.000049782, Loss: 0.776578, Time/step: 10.294326
+2025-08-18 11:40:11,770:INFO: Epoch: 1/1, Step: 285/508, Lr: 0.000000049-0.000000049-0.000048690-0.000048690-0.000048690, Loss: 0.957383, Time/step: 6.938995
+2025-08-18 11:40:56,689:INFO: Epoch: 1/1, Step: 290/508, Lr: 0.000000048-0.000000048-0.000047598-0.000047598-0.000047598, Loss: 0.882355, Time/step: 8.983563
+2025-08-18 11:41:27,172:INFO: Epoch: 1/1, Step: 295/508, Lr: 0.000000047-0.000000047-0.000046507-0.000046507-0.000046507, Loss: 0.859070, Time/step: 6.096456
+2025-08-18 11:42:17,458:INFO: Epoch: 1/1, Step: 300/508, Lr: 0.000000045-0.000000045-0.000045415-0.000045415-0.000045415, Loss: 0.726470, Time/step: 10.057160
+2025-08-18 11:42:54,652:INFO: Epoch: 1/1, Step: 305/508, Lr: 0.000000044-0.000000044-0.000044323-0.000044323-0.000044323, Loss: 0.746627, Time/step: 7.438572
+2025-08-18 11:43:35,877:INFO: Epoch: 1/1, Step: 310/508, Lr: 0.000000043-0.000000043-0.000043231-0.000043231-0.000043231, Loss: 0.694647, Time/step: 8.245069
+2025-08-18 11:44:06,949:INFO: Epoch: 1/1, Step: 315/508, Lr: 0.000000042-0.000000042-0.000042140-0.000042140-0.000042140, Loss: 0.772807, Time/step: 6.214232
+2025-08-18 11:44:59,580:INFO: Epoch: 1/1, Step: 320/508, Lr: 0.000000041-0.000000041-0.000041048-0.000041048-0.000041048, Loss: 1.076700, Time/step: 10.526103
+2025-08-18 11:45:30,418:INFO: Epoch: 1/1, Step: 325/508, Lr: 0.000000040-0.000000040-0.000039956-0.000039956-0.000039956, Loss: 0.781384, Time/step: 6.167435
+2025-08-18 11:46:18,329:INFO: Epoch: 1/1, Step: 330/508, Lr: 0.000000039-0.000000039-0.000038865-0.000038865-0.000038865, Loss: 0.976301, Time/step: 9.582141
+2025-08-18 11:46:49,561:INFO: Epoch: 1/1, Step: 335/508, Lr: 0.000000038-0.000000038-0.000037773-0.000037773-0.000037773, Loss: 0.966661, Time/step: 6.246315
+2025-08-18 11:47:37,786:INFO: Epoch: 1/1, Step: 340/508, Lr: 0.000000037-0.000000037-0.000036681-0.000036681-0.000036681, Loss: 0.868646, Time/step: 9.644702
+2025-08-18 11:48:10,621:INFO: Epoch: 1/1, Step: 345/508, Lr: 0.000000036-0.000000036-0.000035590-0.000035590-0.000035590, Loss: 0.897120, Time/step: 6.566967
+2025-08-18 11:48:52,079:INFO: Epoch: 1/1, Step: 350/508, Lr: 0.000000034-0.000000034-0.000034498-0.000034498-0.000034498, Loss: 0.889089, Time/step: 8.291450
+2025-08-18 11:49:21,734:INFO: Epoch: 1/1, Step: 355/508, Lr: 0.000000033-0.000000033-0.000033406-0.000033406-0.000033406, Loss: 0.708901, Time/step: 5.930972
+2025-08-18 11:50:16,616:INFO: Epoch: 1/1, Step: 360/508, Lr: 0.000000032-0.000000032-0.000032314-0.000032314-0.000032314, Loss: 0.588569, Time/step: 10.976209
+2025-08-18 11:50:55,021:INFO: Epoch: 1/1, Step: 365/508, Lr: 0.000000031-0.000000031-0.000031223-0.000031223-0.000031223, Loss: 0.853631, Time/step: 7.680900
+2025-08-18 11:51:30,313:INFO: Epoch: 1/1, Step: 370/508, Lr: 0.000000030-0.000000030-0.000030131-0.000030131-0.000030131, Loss: 0.904786, Time/step: 7.058363
+2025-08-18 11:52:02,251:INFO: Epoch: 1/1, Step: 375/508, Lr: 0.000000029-0.000000029-0.000029039-0.000029039-0.000029039, Loss: 0.963020, Time/step: 6.387457
+2025-08-18 11:52:58,395:INFO: Epoch: 1/1, Step: 380/508, Lr: 0.000000028-0.000000028-0.000027948-0.000027948-0.000027948, Loss: 1.003626, Time/step: 11.228790
+2025-08-18 11:53:31,121:INFO: Epoch: 1/1, Step: 385/508, Lr: 0.000000027-0.000000027-0.000026856-0.000026856-0.000026856, Loss: 0.938646, Time/step: 6.541640
+2025-08-18 11:54:03,742:INFO: Epoch: 1/1, Step: 390/508, Lr: 0.000000026-0.000000026-0.000025764-0.000025764-0.000025764, Loss: 1.003126, Time/step: 6.524011
+2025-08-18 11:54:36,245:INFO: Epoch: 1/1, Step: 395/508, Lr: 0.000000025-0.000000025-0.000024672-0.000024672-0.000024672, Loss: 0.657307, Time/step: 6.494651
+2025-08-18 11:55:32,309:INFO: Epoch: 1/1, Step: 400/508, Lr: 0.000000024-0.000000024-0.000023581-0.000023581-0.000023581, Loss: 0.769480, Time/step: 11.212761
+2025-08-18 11:56:06,112:INFO: Epoch: 1/1, Step: 405/508, Lr: 0.000000022-0.000000022-0.000022489-0.000022489-0.000022489, Loss: 0.868990, Time/step: 6.760495
+2025-08-18 11:56:37,970:INFO: Epoch: 1/1, Step: 410/508, Lr: 0.000000021-0.000000021-0.000021397-0.000021397-0.000021397, Loss: 0.825002, Time/step: 6.371495
+2025-08-18 11:57:09,971:INFO: Epoch: 1/1, Step: 415/508, Lr: 0.000000020-0.000000020-0.000020306-0.000020306-0.000020306, Loss: 0.820271, Time/step: 6.399943
+2025-08-18 11:58:07,669:INFO: Epoch: 1/1, Step: 420/508, Lr: 0.000000019-0.000000019-0.000019214-0.000019214-0.000019214, Loss: 1.071070, Time/step: 11.539568
+2025-08-18 11:58:39,083:INFO: Epoch: 1/1, Step: 425/508, Lr: 0.000000018-0.000000018-0.000018122-0.000018122-0.000018122, Loss: 0.861311, Time/step: 6.282672
+2025-08-18 11:59:17,850:INFO: Epoch: 1/1, Step: 430/508, Lr: 0.000000017-0.000000017-0.000017031-0.000017031-0.000017031, Loss: 1.094770, Time/step: 7.753269
+2025-08-18 11:59:53,107:INFO: Epoch: 1/1, Step: 435/508, Lr: 0.000000016-0.000000016-0.000015939-0.000015939-0.000015939, Loss: 0.863345, Time/step: 7.051278
+2025-08-18 12:00:44,208:INFO: Epoch: 1/1, Step: 440/508, Lr: 0.000000015-0.000000015-0.000014847-0.000014847-0.000014847, Loss: 1.143546, Time/step: 10.220194
+2025-08-18 12:01:21,265:INFO: Epoch: 1/1, Step: 445/508, Lr: 0.000000014-0.000000014-0.000013755-0.000013755-0.000013755, Loss: 0.872078, Time/step: 7.411329
+2025-08-18 12:01:54,835:INFO: Epoch: 1/1, Step: 450/508, Lr: 0.000000013-0.000000013-0.000012664-0.000012664-0.000012664, Loss: 0.793118, Time/step: 6.713805
+2025-08-18 12:02:33,378:INFO: Epoch: 1/1, Step: 455/508, Lr: 0.000000012-0.000000012-0.000011572-0.000011572-0.000011572, Loss: 0.755699, Time/step: 7.708566
+2025-08-18 12:03:16,191:INFO: Epoch: 1/1, Step: 460/508, Lr: 0.000000010-0.000000010-0.000010480-0.000010480-0.000010480, Loss: 0.679306, Time/step: 8.562503
+2025-08-18 12:03:49,681:INFO: Epoch: 1/1, Step: 465/508, Lr: 0.000000009-0.000000009-0.000009389-0.000009389-0.000009389, Loss: 0.814559, Time/step: 6.697904
+2025-08-18 12:04:37,717:INFO: Epoch: 1/1, Step: 470/508, Lr: 0.000000008-0.000000008-0.000008297-0.000008297-0.000008297, Loss: 0.909599, Time/step: 9.607026
+2025-08-18 12:05:12,856:INFO: Epoch: 1/1, Step: 475/508, Lr: 0.000000007-0.000000007-0.000007205-0.000007205-0.000007205, Loss: 1.100141, Time/step: 7.027620
+2025-08-18 12:06:16,828:INFO: Epoch: 1/1, Step: 480/508, Lr: 0.000000006-0.000000006-0.000006114-0.000006114-0.000006114, Loss: 0.822013, Time/step: 12.794426
+2025-08-18 12:06:47,847:INFO: Epoch: 1/1, Step: 485/508, Lr: 0.000000005-0.000000005-0.000005022-0.000005022-0.000005022, Loss: 0.783311, Time/step: 6.203620
+2025-08-18 12:07:23,997:INFO: Epoch: 1/1, Step: 490/508, Lr: 0.000000004-0.000000004-0.000003930-0.000003930-0.000003930, Loss: 0.737414, Time/step: 7.229828
+2025-08-18 12:08:01,819:INFO: Epoch: 1/1, Step: 495/508, Lr: 0.000000003-0.000000003-0.000002838-0.000002838-0.000002838, Loss: 0.853031, Time/step: 7.564286
+2025-08-18 12:09:00,555:INFO: Epoch: 1/1, Step: 500/508, Lr: 0.000000002-0.000000002-0.000001747-0.000001747-0.000001747, Loss: 0.828831, Time/step: 11.747141
+2025-08-18 12:09:33,748:INFO: Epoch: 1/1, Step: 505/508, Lr: 0.000000001-0.000000001-0.000000655-0.000000655-0.000000655, Loss: 0.816431, Time/step: 6.638536
+2025-08-18 12:10:08,998:INFO: Epoch 1/1 Finished, Train Loss: 1.200620
+2025-08-18 12:10:14,621:INFO: Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0
+2025-08-18 12:10:14,622:INFO: Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_opt.bin.0
+2025-08-18 12:10:14,622:INFO: Eval on val dataset
+2025-08-18 12:10:15,197:WARNING: Eval under the multi-sentence per video clip setting.
+2025-08-18 12:10:15,197:WARNING: sentence num: 4290, video num: 100
+2025-08-18 12:24:17,728:INFO: before reshape, sim matrix size: 4290 x 100
+2025-08-18 12:24:17,734:INFO: after reshape, sim matrix size: 100 x 62 x 100
+2025-08-18 12:24:18,279:INFO: Text-to-Video:
+2025-08-18 12:24:18,280:INFO: 	>>>  R@1: 59.3 - R@5: 86.7 - R@10: 92.1 - Median R: 1.0 - Mean R: 3.9
+2025-08-18 12:24:18,280:INFO: Video-to-Text:
+2025-08-18 12:24:18,280:INFO: 	>>>  V2T$R@1: 76.5 - V2T$R@5: 97.1 - V2T$R@10: 99.0 - V2T$Median R: 1.0 - V2T$Mean R: 1.6
+2025-08-18 12:24:18,284:INFO: The best model is: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0, the R1 is: 59.3240
+2025-08-18 12:24:18,816:INFO: Model loaded from ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0
+2025-08-18 12:24:22,699:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 12:24:22,700:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 12:24:22,700:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 12:24:22,700:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 12:24:22,700:WARNING: Test retrieval by loose type.
+2025-08-18 12:24:22,700:WARNING: 	 embed_dim: 512
+2025-08-18 12:24:22,700:WARNING: 	 image_resolution: 224
+2025-08-18 12:24:22,700:WARNING: 	 vision_layers: 12
+2025-08-18 12:24:22,700:WARNING: 	 vision_width: 768
+2025-08-18 12:24:22,700:WARNING: 	 vision_patch_size: 32
+2025-08-18 12:24:22,700:WARNING: 	 context_length: 77
+2025-08-18 12:24:22,700:WARNING: 	 vocab_size: 49408
+2025-08-18 12:24:22,700:WARNING: 	 transformer_width: 512
+2025-08-18 12:24:22,700:WARNING: 	 transformer_heads: 8
+2025-08-18 12:24:22,700:WARNING: 	 transformer_layers: 12
+2025-08-18 12:24:22,700:WARNING: 		 linear_patch: 2d
+2025-08-18 12:24:22,701:WARNING: 	 cut_top_layer: 0
+2025-08-18 12:24:24,539:WARNING: 	 sim_header: meanP
+2025-08-18 12:24:29,569:INFO: --------------------
+2025-08-18 12:24:29,569:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 12:24:29,717:WARNING: Eval under the multi-sentence per video clip setting.
+2025-08-18 12:24:29,717:WARNING: sentence num: 27763, video num: 670
+2025-08-18 13:55:11,799:INFO: before reshape, sim matrix size: 27763 x 670
+2025-08-18 13:55:12,158:INFO: after reshape, sim matrix size: 670 x 81 x 670
+2025-08-18 13:55:16,303:INFO: Text-to-Video:
+2025-08-18 13:55:16,304:INFO: 	>>>  R@1: 29.5 - R@5: 59.5 - R@10: 71.6 - Median R: 4.0 - Mean R: 21.4
+2025-08-18 13:55:16,304:INFO: Video-to-Text:
+2025-08-18 13:55:16,304:INFO: 	>>>  V2T$R@1: 41.5 - V2T$R@5: 73.4 - V2T$R@10: 83.7 - V2T$Median R: 2.0 - V2T$Mean R: 9.2
+2025-08-18 15:23:57,300:INFO: Effective parameters:
+2025-08-18 15:23:57,301:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 15:23:57,318:INFO:   <<< batch_size: 96
+2025-08-18 15:23:57,318:INFO:   <<< batch_size_val: 32
+2025-08-18 15:23:57,318:INFO:   <<< cache_dir: 
+2025-08-18 15:23:57,319:INFO:   <<< coef_lr: 0.001
+2025-08-18 15:23:57,319:INFO:   <<< cross_model: cross-base
+2025-08-18 15:23:57,319:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 15:23:57,319:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 15:23:57,319:INFO:   <<< datatype: msvd
+2025-08-18 15:23:57,319:INFO:   <<< do_eval: False
+2025-08-18 15:23:57,319:INFO:   <<< do_lower_case: False
+2025-08-18 15:23:57,319:INFO:   <<< do_pretrain: False
+2025-08-18 15:23:57,319:INFO:   <<< do_train: True
+2025-08-18 15:23:57,319:INFO:   <<< epochs: 1
+2025-08-18 15:23:57,319:INFO:   <<< eval_frame_order: 0
+2025-08-18 15:23:57,320:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 15:23:57,320:INFO:   <<< feature_framerate: 1
+2025-08-18 15:23:57,320:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 15:23:57,320:INFO:   <<< fp16: False
+2025-08-18 15:23:57,320:INFO:   <<< fp16_opt_level: O1
+2025-08-18 15:23:57,320:INFO:   <<< freeze_layer_num: 9
+2025-08-18 15:23:57,320:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 15:23:57,320:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 15:23:57,320:INFO:   <<< init_model: None
+2025-08-18 15:23:57,320:INFO:   <<< linear_patch: 2d
+2025-08-18 15:23:57,321:INFO:   <<< local_rank: 0
+2025-08-18 15:23:57,321:INFO:   <<< loose_type: True
+2025-08-18 15:23:57,321:INFO:   <<< lr: 0.0001
+2025-08-18 15:23:57,321:INFO:   <<< lr_decay: 0.9
+2025-08-18 15:23:57,321:INFO:   <<< margin: 0.1
+2025-08-18 15:23:57,321:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 15:23:57,321:INFO:   <<< max_frames: 12
+2025-08-18 15:23:57,321:INFO:   <<< max_words: 32
+2025-08-18 15:23:57,321:INFO:   <<< n_display: 5
+2025-08-18 15:23:57,321:INFO:   <<< n_gpu: 1
+2025-08-18 15:23:57,321:INFO:   <<< n_pair: 1
+2025-08-18 15:23:57,322:INFO:   <<< negative_weighting: 1
+2025-08-18 15:23:57,322:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 15:23:57,322:INFO:   <<< num_thread_reader: 4
+2025-08-18 15:23:57,322:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 15:23:57,322:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 15:23:57,322:INFO:   <<< rank: 0
+2025-08-18 15:23:57,322:INFO:   <<< resume_model: None
+2025-08-18 15:23:57,322:INFO:   <<< sampled_use_mil: False
+2025-08-18 15:23:57,322:INFO:   <<< seed: 42
+2025-08-18 15:23:57,322:INFO:   <<< sim_header: meanP
+2025-08-18 15:23:57,322:INFO:   <<< slice_framepos: 0
+2025-08-18 15:23:57,323:INFO:   <<< task_type: retrieval
+2025-08-18 15:23:57,323:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 15:23:57,323:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 15:23:57,323:INFO:   <<< train_frame_order: 0
+2025-08-18 15:23:57,323:INFO:   <<< use_mil: False
+2025-08-18 15:23:57,323:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 15:23:57,323:INFO:   <<< video_dim: 1024
+2025-08-18 15:23:57,323:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 15:23:57,323:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 15:23:57,323:INFO:   <<< world_size: 2
+2025-08-18 15:23:57,324:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 15:24:35,609:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 15:24:35,610:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 15:24:35,610:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 15:24:35,610:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 15:24:35,610:WARNING: Test retrieval by loose type.
+2025-08-18 15:24:35,610:WARNING: 	 embed_dim: 512
+2025-08-18 15:24:35,611:WARNING: 	 image_resolution: 224
+2025-08-18 15:24:35,611:WARNING: 	 vision_layers: 12
+2025-08-18 15:24:35,611:WARNING: 	 vision_width: 768
+2025-08-18 15:24:35,611:WARNING: 	 vision_patch_size: 32
+2025-08-18 15:24:35,611:WARNING: 	 context_length: 77
+2025-08-18 15:24:35,611:WARNING: 	 vocab_size: 49408
+2025-08-18 15:24:35,611:WARNING: 	 transformer_width: 512
+2025-08-18 15:24:35,611:WARNING: 	 transformer_heads: 8
+2025-08-18 15:24:35,611:WARNING: 	 transformer_layers: 12
+2025-08-18 15:24:35,611:WARNING: 		 linear_patch: 2d
+2025-08-18 15:24:35,611:WARNING: 	 cut_top_layer: 0
+2025-08-18 15:24:38,641:WARNING: 	 sim_header: meanP
+2025-08-18 15:24:45,188:INFO: --------------------
+2025-08-18 15:24:45,188:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 15:24:45,189:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 15:24:46,666:INFO: ***** Running test *****
+2025-08-18 15:24:46,666:INFO:   Num examples = 27763
+2025-08-18 15:24:46,666:INFO:   Batch size = 32
+2025-08-18 15:24:46,666:INFO:   Num steps = 868
+2025-08-18 15:24:46,667:INFO: ***** Running val *****
+2025-08-18 15:24:46,667:INFO:   Num examples = 4290
+2025-08-18 15:24:49,633:INFO: ***** Running training *****
+2025-08-18 15:24:49,633:INFO:   Num examples = 48774
+2025-08-18 15:24:49,633:INFO:   Batch size = 96
+2025-08-18 15:24:49,633:INFO:   Num steps = 508
+2025-08-18 15:28:19,584:INFO: Epoch: 1/1, Step: 5/508, Lr: , Loss: 3.148196, Time/step: 41.983546
+2025-08-18 15:29:40,910:INFO: Epoch: 1/1, Step: 10/508, Lr: , Loss: 3.029150, Time/step: 16.265100
+2025-08-18 15:30:41,580:INFO: Epoch: 1/1, Step: 15/508, Lr: , Loss: 2.846721, Time/step: 12.133887
+2025-08-18 15:31:17,121:INFO: Epoch: 1/1, Step: 20/508, Lr: , Loss: 2.532522, Time/step: 7.108163
+2025-08-18 15:32:19,785:INFO: Epoch: 1/1, Step: 25/508, Lr: , Loss: 2.522690, Time/step: 12.532584
+2025-08-18 15:32:57,976:INFO: Epoch: 1/1, Step: 30/508, Lr: , Loss: 2.342144, Time/step: 7.638184
+2025-08-18 15:33:24,535:INFO: Epoch: 1/1, Step: 35/508, Lr: , Loss: 2.031947, Time/step: 5.311534
+2025-08-18 15:34:00,521:INFO: Epoch: 1/1, Step: 40/508, Lr: , Loss: 1.934312, Time/step: 7.197199
+2025-08-18 15:34:59,440:INFO: Epoch: 1/1, Step: 45/508, Lr: , Loss: 1.567915, Time/step: 11.783598
+2025-08-18 15:35:32,562:INFO: Epoch: 1/1, Step: 50/508, Lr: , Loss: 1.603093, Time/step: 6.624231
+2025-08-18 15:36:09,545:INFO: Epoch: 1/1, Step: 55/508, Lr: , Loss: 1.312273, Time/step: 7.396612
+2025-08-18 15:36:52,039:INFO: Epoch: 1/1, Step: 60/508, Lr: , Loss: 1.226677, Time/step: 8.498573
+2025-08-18 15:37:52,356:INFO: Epoch: 1/1, Step: 65/508, Lr: , Loss: 0.921959, Time/step: 12.063239
+2025-08-18 15:38:31,131:INFO: Epoch: 1/1, Step: 70/508, Lr: , Loss: 0.859378, Time/step: 7.755061
+2025-08-18 15:39:16,479:INFO: Epoch: 1/1, Step: 75/508, Lr: , Loss: 0.921617, Time/step: 9.069428
+2025-08-18 15:39:52,570:INFO: Epoch: 1/1, Step: 80/508, Lr: , Loss: 0.668513, Time/step: 7.218000
+2025-08-18 15:40:36,684:INFO: Epoch: 1/1, Step: 85/508, Lr: , Loss: 0.862821, Time/step: 8.822678
+2025-08-18 15:41:14,222:INFO: Epoch: 1/1, Step: 90/508, Lr: , Loss: 0.786323, Time/step: 7.507651
+2025-08-18 15:41:59,709:INFO: Epoch: 1/1, Step: 95/508, Lr: , Loss: 0.938177, Time/step: 9.097248
+2025-08-18 15:42:32,501:INFO: Epoch: 1/1, Step: 100/508, Lr: , Loss: 0.885353, Time/step: 6.558213
+2025-08-18 15:43:20,946:INFO: Epoch: 1/1, Step: 105/508, Lr: , Loss: 0.573392, Time/step: 9.688838
+2025-08-18 15:43:55,372:INFO: Epoch: 1/1, Step: 110/508, Lr: , Loss: 0.731305, Time/step: 6.885058
+2025-08-18 15:44:39,067:INFO: Epoch: 1/1, Step: 115/508, Lr: , Loss: 0.760481, Time/step: 8.739034
+2025-08-18 15:45:09,682:INFO: Epoch: 1/1, Step: 120/508, Lr: , Loss: 0.655350, Time/step: 6.122901
+2025-08-18 15:49:10,896:INFO: Effective parameters:
+2025-08-18 15:49:10,896:INFO:   <<< amp: True
+2025-08-18 15:49:10,896:INFO:   <<< batch_size: 96
+2025-08-18 15:49:10,896:INFO:   <<< batch_size_val: 32
+2025-08-18 15:49:10,896:INFO:   <<< cache_dir: 
+2025-08-18 15:49:10,897:INFO:   <<< coef_lr: 0.001
+2025-08-18 15:49:10,897:INFO:   <<< cross_model: cross-base
+2025-08-18 15:49:10,897:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-18 15:49:10,897:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-18 15:49:10,897:INFO:   <<< datatype: msvd
+2025-08-18 15:49:10,897:INFO:   <<< do_eval: False
+2025-08-18 15:49:10,897:INFO:   <<< do_lower_case: False
+2025-08-18 15:49:10,897:INFO:   <<< do_pretrain: False
+2025-08-18 15:49:10,897:INFO:   <<< do_train: True
+2025-08-18 15:49:10,897:INFO:   <<< epochs: 1
+2025-08-18 15:49:10,898:INFO:   <<< eval_frame_order: 0
+2025-08-18 15:49:10,898:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-18 15:49:10,898:INFO:   <<< feature_framerate: 1
+2025-08-18 15:49:10,898:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-18 15:49:10,898:INFO:   <<< freeze_layer_num: 9
+2025-08-18 15:49:10,898:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-18 15:49:10,898:INFO:   <<< hard_negative_rate: 0.5
+2025-08-18 15:49:10,898:INFO:   <<< init_model: None
+2025-08-18 15:49:10,898:INFO:   <<< linear_patch: 2d
+2025-08-18 15:49:10,898:INFO:   <<< local_rank: 0
+2025-08-18 15:49:10,899:INFO:   <<< loose_type: True
+2025-08-18 15:49:10,899:INFO:   <<< lr: 0.0001
+2025-08-18 15:49:10,899:INFO:   <<< lr_decay: 0.9
+2025-08-18 15:49:10,899:INFO:   <<< margin: 0.1
+2025-08-18 15:49:10,899:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-18 15:49:10,899:INFO:   <<< max_frames: 12
+2025-08-18 15:49:10,899:INFO:   <<< max_words: 32
+2025-08-18 15:49:10,899:INFO:   <<< n_display: 5
+2025-08-18 15:49:10,899:INFO:   <<< n_gpu: 1
+2025-08-18 15:49:10,899:INFO:   <<< n_pair: 1
+2025-08-18 15:49:10,899:INFO:   <<< negative_weighting: 1
+2025-08-18 15:49:10,900:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-18 15:49:10,900:INFO:   <<< num_thread_reader: 4
+2025-08-18 15:49:10,900:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-18 15:49:10,900:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-18 15:49:10,900:INFO:   <<< rank: 0
+2025-08-18 15:49:10,900:INFO:   <<< resume_model: None
+2025-08-18 15:49:10,900:INFO:   <<< sampled_use_mil: False
+2025-08-18 15:49:10,900:INFO:   <<< seed: 42
+2025-08-18 15:49:10,900:INFO:   <<< sim_header: meanP
+2025-08-18 15:49:10,900:INFO:   <<< slice_framepos: 0
+2025-08-18 15:49:10,901:INFO:   <<< task_type: retrieval
+2025-08-18 15:49:10,901:INFO:   <<< text_num_hidden_layers: 12
+2025-08-18 15:49:10,901:INFO:   <<< train_csv: data/.train.csv
+2025-08-18 15:49:10,901:INFO:   <<< train_frame_order: 0
+2025-08-18 15:49:10,901:INFO:   <<< use_mil: False
+2025-08-18 15:49:10,901:INFO:   <<< val_csv: data/.val.csv
+2025-08-18 15:49:10,901:INFO:   <<< video_dim: 1024
+2025-08-18 15:49:10,901:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-18 15:49:10,901:INFO:   <<< warmup_proportion: 0.1
+2025-08-18 15:49:10,901:INFO:   <<< world_size: 2
+2025-08-18 15:49:10,902:INFO: device: cuda:0 n_gpu: 2
+2025-08-18 15:49:10,903:INFO: device: cuda:1 n_gpu: 2
+2025-08-18 15:49:17,586:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 15:49:17,586:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 15:49:17,586:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 15:49:17,587:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 15:49:17,587:WARNING: Test retrieval by loose type.
+2025-08-18 15:49:17,587:WARNING: 	 embed_dim: 512
+2025-08-18 15:49:17,587:WARNING: 	 image_resolution: 224
+2025-08-18 15:49:17,587:WARNING: 	 vision_layers: 12
+2025-08-18 15:49:17,587:WARNING: 	 vision_width: 768
+2025-08-18 15:49:17,587:WARNING: 	 vision_patch_size: 32
+2025-08-18 15:49:17,587:WARNING: 	 context_length: 77
+2025-08-18 15:49:17,587:WARNING: 	 vocab_size: 49408
+2025-08-18 15:49:17,587:WARNING: 	 transformer_width: 512
+2025-08-18 15:49:17,587:WARNING: 	 transformer_heads: 8
+2025-08-18 15:49:17,587:WARNING: 	 transformer_layers: 12
+2025-08-18 15:49:17,587:WARNING: 		 linear_patch: 2d
+2025-08-18 15:49:17,587:WARNING: 	 cut_top_layer: 0
+2025-08-18 15:49:19,532:WARNING: 	 sim_header: meanP
+2025-08-18 15:49:24,259:INFO: --------------------
+2025-08-18 15:49:24,259:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-18 15:49:24,259:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 15:49:24,719:WARNING: GPU with CUDA Capability 6.0 is too old for torch.compile with triton backend. Required is >= 7.0. Skipping compilation.
+2025-08-18 15:49:25,359:INFO: ***** Running test *****
+2025-08-18 15:49:25,359:INFO:   Num examples = 27763
+2025-08-18 15:49:25,359:INFO:   Batch size = 32
+2025-08-18 15:49:25,359:INFO:   Num steps = 868
+2025-08-18 15:49:25,359:INFO: ***** Running val *****
+2025-08-18 15:49:25,359:INFO:   Num examples = 4290
+2025-08-18 15:49:25,888:INFO: ***** Running training *****
+2025-08-18 15:49:25,888:INFO:   Num examples = 48774
+2025-08-18 15:49:25,888:INFO:   Batch size = 96
+2025-08-18 15:49:25,888:INFO:   Num steps = 508
+2025-08-18 15:50:39,626:INFO: Epoch: 1/1, Step: 5/508, Lr: , Loss: 3.161296, Time/step: 14.734303
+2025-08-18 15:51:07,750:INFO: Epoch: 1/1, Step: 10/508, Lr: , Loss: 3.082540, Time/step: 5.624541
+2025-08-18 15:51:45,815:INFO: Epoch: 1/1, Step: 15/508, Lr: , Loss: 2.929565, Time/step: 7.612914
+2025-08-18 15:52:23,915:INFO: Epoch: 1/1, Step: 20/508, Lr: , Loss: 2.625264, Time/step: 7.619840
+2025-08-18 15:53:23,193:INFO: Epoch: 1/1, Step: 25/508, Lr: , Loss: 2.635376, Time/step: 11.855392
+2025-08-18 15:54:01,365:INFO: Epoch: 1/1, Step: 30/508, Lr: , Loss: 2.479228, Time/step: 7.634237
+2025-08-18 15:54:37,183:INFO: Epoch: 1/1, Step: 35/508, Lr: , Loss: 2.242137, Time/step: 7.163515
+2025-08-18 15:55:09,593:INFO: Epoch: 1/1, Step: 40/508, Lr: , Loss: 2.220784, Time/step: 6.481897
+2025-08-18 15:56:11,460:INFO: Epoch: 1/1, Step: 45/508, Lr: , Loss: 1.984467, Time/step: 12.373189
+2025-08-18 15:56:40,813:INFO: Epoch: 1/1, Step: 50/508, Lr: , Loss: 2.039062, Time/step: 5.870484
+2025-08-18 15:57:14,771:INFO: Epoch: 1/1, Step: 55/508, Lr: , Loss: 1.928345, Time/step: 6.791457
+2025-08-18 15:57:49,180:INFO: Epoch: 1/1, Step: 60/508, Lr: , Loss: 1.857717, Time/step: 6.881735
+2025-08-18 15:58:49,629:INFO: Epoch: 1/1, Step: 65/508, Lr: , Loss: 1.617147, Time/step: 12.089793
+2025-08-18 15:59:22,984:INFO: Epoch: 1/1, Step: 70/508, Lr: , Loss: 1.572039, Time/step: 6.670845
+2025-08-18 16:00:00,909:INFO: Epoch: 1/1, Step: 75/508, Lr: , Loss: 1.643481, Time/step: 7.584756
+2025-08-18 16:00:38,492:INFO: Epoch: 1/1, Step: 80/508, Lr: , Loss: 1.415243, Time/step: 7.516461
+2025-08-18 16:01:38,039:INFO: Epoch: 1/1, Step: 85/508, Lr: , Loss: 1.488297, Time/step: 11.909255
+2025-08-18 16:02:18,436:INFO: Epoch: 1/1, Step: 90/508, Lr: , Loss: 1.509903, Time/step: 8.079270
+2025-08-18 16:02:51,319:INFO: Epoch: 1/1, Step: 95/508, Lr: , Loss: 1.559367, Time/step: 6.576564
+2025-08-18 16:03:27,971:INFO: Epoch: 1/1, Step: 100/508, Lr: , Loss: 1.554247, Time/step: 7.330278
+2025-08-18 16:04:31,684:INFO: Epoch: 1/1, Step: 105/508, Lr: , Loss: 1.191676, Time/step: 12.742496
+2025-08-18 16:05:05,451:INFO: Epoch: 1/1, Step: 110/508, Lr: , Loss: 1.323306, Time/step: 6.753156
+2025-08-18 16:05:39,623:INFO: Epoch: 1/1, Step: 115/508, Lr: , Loss: 1.301656, Time/step: 6.834237
+2025-08-18 16:06:19,046:INFO: Epoch: 1/1, Step: 120/508, Lr: , Loss: 1.213931, Time/step: 7.884535
+2025-08-18 16:07:25,712:INFO: Epoch: 1/1, Step: 125/508, Lr: , Loss: 1.359456, Time/step: 13.332971
+2025-08-18 16:08:00,203:INFO: Epoch: 1/1, Step: 130/508, Lr: , Loss: 1.447248, Time/step: 6.898051
+2025-08-18 16:08:41,362:INFO: Epoch: 1/1, Step: 135/508, Lr: , Loss: 0.937022, Time/step: 8.231794
+2025-08-18 16:09:16,153:INFO: Epoch: 1/1, Step: 140/508, Lr: , Loss: 1.194656, Time/step: 6.958037
+2025-08-18 16:10:37,102:INFO: Epoch: 1/1, Step: 145/508, Lr: , Loss: 1.285940, Time/step: 16.189644
+2025-08-18 16:11:13,323:INFO: Epoch: 1/1, Step: 150/508, Lr: , Loss: 1.123048, Time/step: 7.244070
+2025-08-18 16:12:15,260:INFO: Epoch: 1/1, Step: 155/508, Lr: , Loss: 1.135038, Time/step: 12.380581
+2025-08-18 16:13:13,374:INFO: Epoch: 1/1, Step: 160/508, Lr: , Loss: 1.177839, Time/step: 11.622806
+2025-08-18 16:14:39,791:INFO: Epoch: 1/1, Step: 165/508, Lr: , Loss: 1.158091, Time/step: 17.283304
+2025-08-18 16:15:32,383:INFO: Epoch: 1/1, Step: 170/508, Lr: , Loss: 1.115031, Time/step: 10.518164
+2025-08-18 16:16:52,811:INFO: Epoch: 1/1, Step: 175/508, Lr: , Loss: 1.108800, Time/step: 16.085583
+2025-08-18 16:17:33,988:INFO: Epoch: 1/1, Step: 180/508, Lr: , Loss: 1.152897, Time/step: 8.028612
+2025-08-18 16:19:19,774:INFO: Epoch: 1/1, Step: 185/508, Lr: , Loss: 1.192948, Time/step: 21.156892
+2025-08-18 16:20:08,254:INFO: Epoch: 1/1, Step: 190/508, Lr: , Loss: 1.026159, Time/step: 9.687581
+2025-08-18 16:21:15,096:INFO: Epoch: 1/1, Step: 195/508, Lr: , Loss: 1.046593, Time/step: 13.368271
+2025-08-18 16:21:56,582:INFO: Epoch: 1/1, Step: 200/508, Lr: , Loss: 0.965902, Time/step: 8.297012
+2025-08-18 16:23:22,835:INFO: Epoch: 1/1, Step: 205/508, Lr: , Loss: 1.009337, Time/step: 17.248528
+2025-08-18 16:24:08,917:INFO: Epoch: 1/1, Step: 210/508, Lr: , Loss: 1.237711, Time/step: 9.198287
+2025-08-18 16:24:51,229:INFO: Epoch: 1/1, Step: 215/508, Lr: , Loss: 0.835739, Time/step: 8.462134
+2025-08-18 16:26:02,603:INFO: Epoch: 1/1, Step: 220/508, Lr: , Loss: 0.868544, Time/step: 14.274684
+2025-08-18 16:27:14,194:INFO: Epoch: 1/1, Step: 225/508, Lr: , Loss: 0.894588, Time/step: 14.318230
+2025-08-18 16:27:44,731:INFO: Epoch: 1/1, Step: 230/508, Lr: , Loss: 1.260493, Time/step: 6.107132
+2025-08-18 16:28:20,638:INFO: Epoch: 1/1, Step: 235/508, Lr: , Loss: 0.887641, Time/step: 7.181333
+2025-08-18 16:28:59,460:INFO: Epoch: 1/1, Step: 240/508, Lr: , Loss: 0.934614, Time/step: 7.764345
+2025-08-18 16:30:09,222:INFO: Epoch: 1/1, Step: 245/508, Lr: , Loss: 1.175524, Time/step: 13.952201
+2025-08-18 16:30:59,336:INFO: Epoch: 1/1, Step: 250/508, Lr: , Loss: 0.983095, Time/step: 10.022588
+2025-08-18 16:31:38,548:INFO: Epoch: 1/1, Step: 255/508, Lr: , Loss: 0.998955, Time/step: 7.842333
+2025-08-18 16:32:43,540:INFO: Epoch: 1/1, Step: 260/508, Lr: , Loss: 0.899659, Time/step: 12.998223
+2025-08-18 16:33:07,968:INFO: Epoch: 1/1, Step: 265/508, Lr: , Loss: 0.890780, Time/step: 4.885516
+2025-08-18 16:34:12,183:INFO: Epoch: 1/1, Step: 270/508, Lr: , Loss: 0.993796, Time/step: 12.842804
+2025-08-18 16:35:00,616:INFO: Epoch: 1/1, Step: 275/508, Lr: , Loss: 1.080081, Time/step: 9.686527
+2025-08-18 16:35:38,888:INFO: Epoch: 1/1, Step: 280/508, Lr: , Loss: 0.797993, Time/step: 7.654254
+2025-08-18 16:36:16,647:INFO: Epoch: 1/1, Step: 285/508, Lr: , Loss: 0.970538, Time/step: 7.551676
+2025-08-18 16:37:28,187:INFO: Epoch: 1/1, Step: 290/508, Lr: , Loss: 0.900870, Time/step: 14.307963
+2025-08-18 16:38:02,762:INFO: Epoch: 1/1, Step: 295/508, Lr: , Loss: 0.879392, Time/step: 6.914828
+2025-08-18 16:38:42,560:INFO: Epoch: 1/1, Step: 300/508, Lr: , Loss: 0.747445, Time/step: 7.959415
+2025-08-18 16:39:38,878:INFO: Epoch: 1/1, Step: 305/508, Lr: , Loss: 0.770832, Time/step: 11.263449
+2025-08-18 16:40:40,723:INFO: Epoch: 1/1, Step: 310/508, Lr: , Loss: 0.716923, Time/step: 12.368832
+2025-08-18 16:41:13,908:INFO: Epoch: 1/1, Step: 315/508, Lr: , Loss: 0.807159, Time/step: 6.636907
+2025-08-18 16:41:47,916:INFO: Epoch: 1/1, Step: 320/508, Lr: , Loss: 1.108919, Time/step: 6.801481
+2025-08-18 16:42:38,380:INFO: Epoch: 1/1, Step: 325/508, Lr: , Loss: 0.813686, Time/step: 10.092655
+2025-08-18 16:43:43,091:INFO: Epoch: 1/1, Step: 330/508, Lr: , Loss: 1.005765, Time/step: 12.941993
+2025-08-18 16:44:18,877:INFO: Epoch: 1/1, Step: 335/508, Lr: , Loss: 0.985402, Time/step: 7.157106
+2025-08-18 16:44:58,661:INFO: Epoch: 1/1, Step: 340/508, Lr: , Loss: 0.896863, Time/step: 7.956689
+2025-08-18 16:45:40,830:INFO: Epoch: 1/1, Step: 345/508, Lr: , Loss: 0.933975, Time/step: 8.433771
+2025-08-18 16:46:32,436:INFO: Epoch: 1/1, Step: 350/508, Lr: , Loss: 0.913721, Time/step: 10.320879
+2025-08-18 16:47:09,916:INFO: Epoch: 1/1, Step: 355/508, Lr: , Loss: 0.734031, Time/step: 7.496032
+2025-08-18 16:47:49,759:INFO: Epoch: 1/1, Step: 360/508, Lr: , Loss: 0.616416, Time/step: 7.968366
+2025-08-18 16:48:37,747:INFO: Epoch: 1/1, Step: 365/508, Lr: , Loss: 0.891900, Time/step: 9.597493
+2025-08-18 16:49:27,824:INFO: Epoch: 1/1, Step: 370/508, Lr: , Loss: 0.948648, Time/step: 10.015306
+2025-08-18 16:50:02,222:INFO: Epoch: 1/1, Step: 375/508, Lr: , Loss: 1.000873, Time/step: 6.878575
+2025-08-18 16:50:49,409:INFO: Epoch: 1/1, Step: 380/508, Lr: , Loss: 1.033465, Time/step: 9.437341
+2025-08-18 16:51:39,660:INFO: Epoch: 1/1, Step: 385/508, Lr: , Loss: 0.975889, Time/step: 10.050116
+2025-08-18 16:52:24,268:INFO: Epoch: 1/1, Step: 390/508, Lr: , Loss: 1.018377, Time/step: 8.921432
+2025-08-18 16:52:58,312:INFO: Epoch: 1/1, Step: 395/508, Lr: , Loss: 0.700123, Time/step: 6.808684
+2025-08-18 16:53:42,898:INFO: Epoch: 1/1, Step: 400/508, Lr: , Loss: 0.813596, Time/step: 8.916985
+2025-08-18 16:54:59,651:INFO: Epoch: 1/1, Step: 405/508, Lr: , Loss: 0.907262, Time/step: 15.350400
+2025-08-18 16:55:22,646:INFO: Epoch: 1/1, Step: 410/508, Lr: , Loss: 0.872037, Time/step: 4.598830
+2025-08-18 16:56:03,326:INFO: Epoch: 1/1, Step: 415/508, Lr: , Loss: 0.864839, Time/step: 8.135791
+2025-08-18 16:56:43,932:INFO: Epoch: 1/1, Step: 420/508, Lr: , Loss: 1.106328, Time/step: 8.121195
+2025-08-18 16:57:38,559:INFO: Epoch: 1/1, Step: 425/508, Lr: , Loss: 0.903260, Time/step: 10.925215
+2025-08-18 16:58:29,134:INFO: Epoch: 1/1, Step: 430/508, Lr: , Loss: 1.147863, Time/step: 10.114933
+2025-08-18 16:59:08,081:INFO: Epoch: 1/1, Step: 435/508, Lr: , Loss: 0.917610, Time/step: 7.789293
+2025-08-18 16:59:47,177:INFO: Epoch: 1/1, Step: 440/508, Lr: , Loss: 1.197439, Time/step: 7.818933
+2025-08-18 17:00:28,435:INFO: Epoch: 1/1, Step: 445/508, Lr: , Loss: 0.928324, Time/step: 8.251609
+2025-08-18 17:01:17,616:INFO: Epoch: 1/1, Step: 450/508, Lr: , Loss: 0.853982, Time/step: 9.836006
+2025-08-18 17:02:00,387:INFO: Epoch: 1/1, Step: 455/508, Lr: , Loss: 0.801849, Time/step: 8.554073
+2025-08-18 17:02:33,966:INFO: Epoch: 1/1, Step: 460/508, Lr: , Loss: 0.738677, Time/step: 6.715594
+2025-08-18 17:03:16,299:INFO: Epoch: 1/1, Step: 465/508, Lr: , Loss: 0.860306, Time/step: 8.466506
+2025-08-18 17:04:09,293:INFO: Epoch: 1/1, Step: 470/508, Lr: , Loss: 0.952627, Time/step: 10.598613
+2025-08-18 17:04:46,218:INFO: Epoch: 1/1, Step: 475/508, Lr: , Loss: 1.137571, Time/step: 7.384922
+2025-08-18 17:05:34,379:INFO: Epoch: 1/1, Step: 480/508, Lr: , Loss: 0.892742, Time/step: 9.632056
+2025-08-18 17:06:45,827:INFO: Epoch: 1/1, Step: 485/508, Lr: , Loss: 0.857919, Time/step: 14.289471
+2025-08-18 17:07:41,695:INFO: Epoch: 1/1, Step: 490/508, Lr: , Loss: 0.812034, Time/step: 11.173456
+2025-08-18 17:08:26,968:INFO: Epoch: 1/1, Step: 495/508, Lr: , Loss: 0.908324, Time/step: 9.054442
+2025-08-18 17:09:13,981:INFO: Epoch: 1/1, Step: 500/508, Lr: , Loss: 0.892845, Time/step: 9.402389
+2025-08-18 17:10:01,502:INFO: Epoch: 1/1, Step: 505/508, Lr: , Loss: 0.867793, Time/step: 9.504185
+2025-08-18 17:10:33,608:INFO: Epoch 1/1 Finished, Train Loss: 1.220704
+2025-08-18 17:10:43,650:INFO: Model saved to ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0
+2025-08-18 17:10:43,840:INFO: Optimizer saved to ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_opt.bin.0
+2025-08-18 17:10:43,840:INFO: Eval on val dataset
+2025-08-18 17:10:44,402:WARNING: Eval under the multi-sentence per video clip setting.
+2025-08-18 17:10:44,402:WARNING: sentence num: 4290, video num: 100
+2025-08-18 17:25:09,687:INFO: before reshape, sim matrix size: 4290 x 100
+2025-08-18 17:25:09,750:INFO: after reshape, sim matrix size: 100 x 62 x 100
+2025-08-18 17:25:10,551:INFO: Text-to-Video:
+2025-08-18 17:25:10,551:INFO: 	>>>  R@1: 59.0 - R@5: 87.2 - R@10: 92.8 - Median R: 1.0 - Mean R: 3.7
+2025-08-18 17:25:10,551:INFO: Video-to-Text:
+2025-08-18 17:25:10,552:INFO: 	>>>  V2T$R@1: 78.6 - V2T$R@5: 97.1 - V2T$R@10: 99.0 - V2T$Median R: 1.0 - V2T$Mean R: 1.6
+2025-08-18 17:25:10,556:INFO: The best model is: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0, the R1 is: 58.9977
+2025-08-18 17:25:13,030:INFO: Model loaded from ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1/pytorch_model.bin.0
+2025-08-18 17:25:19,046:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-18 17:25:19,115:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-18 17:25:19,123:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-18 17:25:19,149:WARNING: Stage-One:True, Stage-Two:False
+2025-08-18 17:25:19,155:WARNING: Test retrieval by loose type.
+2025-08-18 17:25:19,172:WARNING: 	 embed_dim: 512
+2025-08-18 17:25:19,172:WARNING: 	 image_resolution: 224
+2025-08-18 17:25:19,172:WARNING: 	 vision_layers: 12
+2025-08-18 17:25:19,172:WARNING: 	 vision_width: 768
+2025-08-18 17:25:19,172:WARNING: 	 vision_patch_size: 32
+2025-08-18 17:25:19,172:WARNING: 	 context_length: 77
+2025-08-18 17:25:19,172:WARNING: 	 vocab_size: 49408
+2025-08-18 17:25:19,172:WARNING: 	 transformer_width: 512
+2025-08-18 17:25:19,173:WARNING: 	 transformer_heads: 8
+2025-08-18 17:25:19,173:WARNING: 	 transformer_layers: 12
+2025-08-18 17:25:19,173:WARNING: 		 linear_patch: 2d
+2025-08-18 17:25:19,173:WARNING: 	 cut_top_layer: 0
+2025-08-18 17:25:21,395:WARNING: 	 sim_header: meanP
+2025-08-18 17:25:26,476:INFO: --------------------
+2025-08-18 17:25:26,476:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-18 17:25:26,710:WARNING: Eval under the multi-sentence per video clip setting.
+2025-08-18 17:25:26,710:WARNING: sentence num: 27763, video num: 670
+2025-08-19 08:24:30,641:INFO: device: cuda:1 n_gpu: 2
+2025-08-19 08:24:30,650:INFO: Effective parameters:
+2025-08-19 08:24:30,651:INFO:   <<< batch_size: 96
+2025-08-19 08:24:30,651:INFO:   <<< batch_size_val: 32
+2025-08-19 08:24:30,651:INFO:   <<< cache_dir: 
+2025-08-19 08:24:30,651:INFO:   <<< coef_lr: 0.001
+2025-08-19 08:24:30,651:INFO:   <<< cross_model: cross-base
+2025-08-19 08:24:30,651:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-19 08:24:30,651:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-19 08:24:30,651:INFO:   <<< datatype: msvd
+2025-08-19 08:24:30,652:INFO:   <<< do_eval: False
+2025-08-19 08:24:30,652:INFO:   <<< do_lower_case: False
+2025-08-19 08:24:30,652:INFO:   <<< do_pretrain: False
+2025-08-19 08:24:30,652:INFO:   <<< do_train: True
+2025-08-19 08:24:30,652:INFO:   <<< epochs: 1
+2025-08-19 08:24:30,652:INFO:   <<< eval_frame_order: 0
+2025-08-19 08:24:30,652:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-19 08:24:30,652:INFO:   <<< feature_framerate: 1
+2025-08-19 08:24:30,652:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-19 08:24:30,652:INFO:   <<< freeze_layer_num: 9
+2025-08-19 08:24:30,653:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-19 08:24:30,653:INFO:   <<< hard_negative_rate: 0.5
+2025-08-19 08:24:30,653:INFO:   <<< init_model: None
+2025-08-19 08:24:30,653:INFO:   <<< linear_patch: 2d
+2025-08-19 08:24:30,653:INFO:   <<< local_rank: 0
+2025-08-19 08:24:30,653:INFO:   <<< loose_type: True
+2025-08-19 08:24:30,653:INFO:   <<< lr: 0.0001
+2025-08-19 08:24:30,653:INFO:   <<< lr_decay: 0.9
+2025-08-19 08:24:30,653:INFO:   <<< margin: 0.1
+2025-08-19 08:24:30,653:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-19 08:24:30,653:INFO:   <<< max_frames: 12
+2025-08-19 08:24:30,654:INFO:   <<< max_words: 32
+2025-08-19 08:24:30,654:INFO:   <<< n_display: 5
+2025-08-19 08:24:30,654:INFO:   <<< n_gpu: 1
+2025-08-19 08:24:30,654:INFO:   <<< n_pair: 1
+2025-08-19 08:24:30,654:INFO:   <<< negative_weighting: 1
+2025-08-19 08:24:30,654:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-19 08:24:30,654:INFO:   <<< num_thread_reader: 4
+2025-08-19 08:24:30,654:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-19 08:24:30,654:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-19 08:24:30,654:INFO:   <<< rank: 0
+2025-08-19 08:24:30,655:INFO:   <<< resume_model: None
+2025-08-19 08:24:30,655:INFO:   <<< sampled_use_mil: False
+2025-08-19 08:24:30,687:INFO:   <<< seed: 42
+2025-08-19 08:24:30,687:INFO:   <<< sim_header: meanP
+2025-08-19 08:24:30,687:INFO:   <<< slice_framepos: 0
+2025-08-19 08:24:30,687:INFO:   <<< task_type: retrieval
+2025-08-19 08:24:30,688:INFO:   <<< text_num_hidden_layers: 12
+2025-08-19 08:24:30,688:INFO:   <<< train_csv: data/.train.csv
+2025-08-19 08:24:30,688:INFO:   <<< train_frame_order: 0
+2025-08-19 08:24:30,688:INFO:   <<< use_mil: False
+2025-08-19 08:24:30,688:INFO:   <<< val_csv: data/.val.csv
+2025-08-19 08:24:30,688:INFO:   <<< video_dim: 1024
+2025-08-19 08:24:30,688:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-19 08:24:30,688:INFO:   <<< warmup_proportion: 0.1
+2025-08-19 08:24:30,688:INFO:   <<< world_size: 2
+2025-08-19 08:24:30,689:INFO: device: cuda:0 n_gpu: 2
+2025-08-19 08:24:33,884:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-19 08:24:33,885:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-19 08:24:33,885:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-19 08:24:33,885:WARNING: Stage-One:True, Stage-Two:False
+2025-08-19 08:24:33,885:WARNING: Test retrieval by loose type.
+2025-08-19 08:24:33,885:WARNING: 	 embed_dim: 512
+2025-08-19 08:24:33,885:WARNING: 	 image_resolution: 224
+2025-08-19 08:24:33,885:WARNING: 	 vision_layers: 12
+2025-08-19 08:24:33,885:WARNING: 	 vision_width: 768
+2025-08-19 08:24:33,885:WARNING: 	 vision_patch_size: 32
+2025-08-19 08:24:33,885:WARNING: 	 context_length: 77
+2025-08-19 08:24:33,885:WARNING: 	 vocab_size: 49408
+2025-08-19 08:24:33,885:WARNING: 	 transformer_width: 512
+2025-08-19 08:24:33,886:WARNING: 	 transformer_heads: 8
+2025-08-19 08:24:33,886:WARNING: 	 transformer_layers: 12
+2025-08-19 08:24:33,886:WARNING: 		 linear_patch: 2d
+2025-08-19 08:24:33,886:WARNING: 	 cut_top_layer: 0
+2025-08-19 08:24:35,631:WARNING: 	 sim_header: meanP
+2025-08-19 08:24:40,224:INFO: --------------------
+2025-08-19 08:24:40,225:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-19 08:24:40,225:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-19 08:24:40,638:WARNING: GPU with CUDA Capability 6.0 is too old for torch.compile with triton backend. Required is >= 7.0. Skipping compilation.
+2025-08-19 08:24:41,234:INFO: ***** Running test *****
+2025-08-19 08:24:41,234:INFO:   Num examples = 27763
+2025-08-19 08:24:41,234:INFO:   Batch size = 32
+2025-08-19 08:24:41,234:INFO:   Num steps = 868
+2025-08-19 08:24:41,234:INFO: ***** Running val *****
+2025-08-19 08:24:41,234:INFO:   Num examples = 4290
+2025-08-19 08:24:41,769:INFO: ***** Running training *****
+2025-08-19 08:24:41,769:INFO:   Num examples = 48774
+2025-08-19 08:24:41,769:INFO:   Batch size = 96
+2025-08-19 08:24:41,770:INFO:   Num steps = 508
+2025-08-19 08:29:36,151:INFO: device: cuda:1 n_gpu: 2
+2025-08-19 08:29:36,164:INFO: Effective parameters:
+2025-08-19 08:29:36,164:INFO:   <<< batch_size: 96
+2025-08-19 08:29:36,164:INFO:   <<< batch_size_val: 32
+2025-08-19 08:29:36,164:INFO:   <<< cache_dir: 
+2025-08-19 08:29:36,164:INFO:   <<< coef_lr: 0.001
+2025-08-19 08:29:36,164:INFO:   <<< cross_model: cross-base
+2025-08-19 08:29:36,165:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-19 08:29:36,165:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-19 08:29:36,165:INFO:   <<< datatype: msvd
+2025-08-19 08:29:36,165:INFO:   <<< do_eval: False
+2025-08-19 08:29:36,165:INFO:   <<< do_lower_case: False
+2025-08-19 08:29:36,165:INFO:   <<< do_pretrain: False
+2025-08-19 08:29:36,165:INFO:   <<< do_train: True
+2025-08-19 08:29:36,165:INFO:   <<< epochs: 1
+2025-08-19 08:29:36,165:INFO:   <<< eval_frame_order: 0
+2025-08-19 08:29:36,165:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-19 08:29:36,166:INFO:   <<< feature_framerate: 1
+2025-08-19 08:29:36,166:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-19 08:29:36,166:INFO:   <<< freeze_layer_num: 9
+2025-08-19 08:29:36,166:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-19 08:29:36,166:INFO:   <<< hard_negative_rate: 0.5
+2025-08-19 08:29:36,166:INFO:   <<< init_model: None
+2025-08-19 08:29:36,166:INFO:   <<< linear_patch: 2d
+2025-08-19 08:29:36,166:INFO:   <<< local_rank: 0
+2025-08-19 08:29:36,166:INFO:   <<< loose_type: True
+2025-08-19 08:29:36,166:INFO:   <<< lr: 0.0001
+2025-08-19 08:29:36,166:INFO:   <<< lr_decay: 0.9
+2025-08-19 08:29:36,167:INFO:   <<< margin: 0.1
+2025-08-19 08:29:36,167:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-19 08:29:36,167:INFO:   <<< max_frames: 12
+2025-08-19 08:29:36,167:INFO:   <<< max_words: 32
+2025-08-19 08:29:36,167:INFO:   <<< n_display: 5
+2025-08-19 08:29:36,167:INFO:   <<< n_gpu: 1
+2025-08-19 08:29:36,167:INFO:   <<< n_pair: 1
+2025-08-19 08:29:36,167:INFO:   <<< negative_weighting: 1
+2025-08-19 08:29:36,167:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-19 08:29:36,167:INFO:   <<< num_thread_reader: 4
+2025-08-19 08:29:36,168:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-19 08:29:36,168:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-19 08:29:36,168:INFO:   <<< rank: 0
+2025-08-19 08:29:36,168:INFO:   <<< resume_model: None
+2025-08-19 08:29:36,168:INFO:   <<< sampled_use_mil: False
+2025-08-19 08:29:36,168:INFO:   <<< seed: 42
+2025-08-19 08:29:36,168:INFO:   <<< sim_header: meanP
+2025-08-19 08:29:36,168:INFO:   <<< slice_framepos: 0
+2025-08-19 08:29:36,168:INFO:   <<< task_type: retrieval
+2025-08-19 08:29:36,168:INFO:   <<< text_num_hidden_layers: 12
+2025-08-19 08:29:36,168:INFO:   <<< train_csv: data/.train.csv
+2025-08-19 08:29:36,169:INFO:   <<< train_frame_order: 0
+2025-08-19 08:29:36,169:INFO:   <<< use_mil: False
+2025-08-19 08:29:36,169:INFO:   <<< val_csv: data/.val.csv
+2025-08-19 08:29:36,169:INFO:   <<< video_dim: 1024
+2025-08-19 08:29:36,169:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-19 08:29:36,169:INFO:   <<< warmup_proportion: 0.1
+2025-08-19 08:29:36,169:INFO:   <<< world_size: 2
+2025-08-19 08:29:36,170:INFO: device: cuda:0 n_gpu: 2
+2025-08-19 08:29:37,107:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-19 08:29:37,107:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-19 08:29:37,107:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-19 08:29:37,107:WARNING: Stage-One:True, Stage-Two:False
+2025-08-19 08:29:37,107:WARNING: Test retrieval by loose type.
+2025-08-19 08:29:37,108:WARNING: 	 embed_dim: 512
+2025-08-19 08:29:37,108:WARNING: 	 image_resolution: 224
+2025-08-19 08:29:37,108:WARNING: 	 vision_layers: 12
+2025-08-19 08:29:37,108:WARNING: 	 vision_width: 768
+2025-08-19 08:29:37,108:WARNING: 	 vision_patch_size: 32
+2025-08-19 08:29:37,108:WARNING: 	 context_length: 77
+2025-08-19 08:29:37,108:WARNING: 	 vocab_size: 49408
+2025-08-19 08:29:37,108:WARNING: 	 transformer_width: 512
+2025-08-19 08:29:37,108:WARNING: 	 transformer_heads: 8
+2025-08-19 08:29:37,108:WARNING: 	 transformer_layers: 12
+2025-08-19 08:29:37,108:WARNING: 		 linear_patch: 2d
+2025-08-19 08:29:37,108:WARNING: 	 cut_top_layer: 0
+2025-08-19 08:29:38,825:WARNING: 	 sim_header: meanP
+2025-08-19 08:29:43,431:INFO: --------------------
+2025-08-19 08:29:43,432:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-19 08:29:43,432:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-19 08:29:43,873:WARNING: GPU with CUDA Capability 6.0 is too old for torch.compile with triton backend. Required is >= 7.0. Skipping compilation.
+2025-08-19 08:29:44,391:INFO: ***** Running test *****
+2025-08-19 08:29:44,391:INFO:   Num examples = 27763
+2025-08-19 08:29:44,391:INFO:   Batch size = 32
+2025-08-19 08:29:44,391:INFO:   Num steps = 868
+2025-08-19 08:29:44,391:INFO: ***** Running val *****
+2025-08-19 08:29:44,392:INFO:   Num examples = 4290
+2025-08-19 08:29:44,872:INFO: ***** Running training *****
+2025-08-19 08:29:44,872:INFO:   Num examples = 48774
+2025-08-19 08:29:44,872:INFO:   Batch size = 96
+2025-08-19 08:29:44,872:INFO:   Num steps = 508
+2025-08-19 08:35:00,418:INFO: device: cuda:1 n_gpu: 2
+2025-08-19 08:35:00,516:INFO: Effective parameters:
+2025-08-19 08:35:00,517:INFO:   <<< batch_size: 96
+2025-08-19 08:35:00,517:INFO:   <<< batch_size_val: 32
+2025-08-19 08:35:00,517:INFO:   <<< cache_dir: 
+2025-08-19 08:35:00,517:INFO:   <<< coef_lr: 0.001
+2025-08-19 08:35:00,517:INFO:   <<< cross_model: cross-base
+2025-08-19 08:35:00,517:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-19 08:35:00,517:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-19 08:35:00,517:INFO:   <<< datatype: msvd
+2025-08-19 08:35:00,518:INFO:   <<< do_eval: False
+2025-08-19 08:35:00,518:INFO:   <<< do_lower_case: False
+2025-08-19 08:35:00,518:INFO:   <<< do_pretrain: False
+2025-08-19 08:35:00,518:INFO:   <<< do_train: True
+2025-08-19 08:35:00,518:INFO:   <<< epochs: 1
+2025-08-19 08:35:00,518:INFO:   <<< eval_frame_order: 0
+2025-08-19 08:35:00,518:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-19 08:35:00,518:INFO:   <<< feature_framerate: 1
+2025-08-19 08:35:00,518:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-19 08:35:00,518:INFO:   <<< freeze_layer_num: 9
+2025-08-19 08:35:00,519:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-19 08:35:00,519:INFO:   <<< hard_negative_rate: 0.5
+2025-08-19 08:35:00,519:INFO:   <<< init_model: None
+2025-08-19 08:35:00,519:INFO:   <<< linear_patch: 2d
+2025-08-19 08:35:00,519:INFO:   <<< local_rank: 0
+2025-08-19 08:35:00,519:INFO:   <<< loose_type: True
+2025-08-19 08:35:00,519:INFO:   <<< lr: 0.0001
+2025-08-19 08:35:00,519:INFO:   <<< lr_decay: 0.9
+2025-08-19 08:35:00,519:INFO:   <<< margin: 0.1
+2025-08-19 08:35:00,519:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-19 08:35:00,519:INFO:   <<< max_frames: 12
+2025-08-19 08:35:00,520:INFO:   <<< max_words: 32
+2025-08-19 08:35:00,520:INFO:   <<< n_display: 5
+2025-08-19 08:35:00,520:INFO:   <<< n_gpu: 1
+2025-08-19 08:35:00,520:INFO:   <<< n_pair: 1
+2025-08-19 08:35:00,520:INFO:   <<< negative_weighting: 1
+2025-08-19 08:35:00,520:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-19 08:35:00,520:INFO:   <<< num_thread_reader: 4
+2025-08-19 08:35:00,520:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-19 08:35:00,520:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-19 08:35:00,520:INFO:   <<< rank: 0
+2025-08-19 08:35:00,521:INFO:   <<< resume_model: None
+2025-08-19 08:35:00,521:INFO:   <<< sampled_use_mil: False
+2025-08-19 08:35:00,521:INFO:   <<< seed: 42
+2025-08-19 08:35:00,521:INFO:   <<< sim_header: meanP
+2025-08-19 08:35:00,521:INFO:   <<< slice_framepos: 0
+2025-08-19 08:35:00,521:INFO:   <<< task_type: retrieval
+2025-08-19 08:35:00,521:INFO:   <<< text_num_hidden_layers: 12
+2025-08-19 08:35:00,521:INFO:   <<< train_csv: data/.train.csv
+2025-08-19 08:35:00,521:INFO:   <<< train_frame_order: 0
+2025-08-19 08:35:00,521:INFO:   <<< use_mil: False
+2025-08-19 08:35:00,521:INFO:   <<< val_csv: data/.val.csv
+2025-08-19 08:35:00,522:INFO:   <<< video_dim: 1024
+2025-08-19 08:35:00,522:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-19 08:35:00,522:INFO:   <<< warmup_proportion: 0.1
+2025-08-19 08:35:00,522:INFO:   <<< world_size: 2
+2025-08-19 08:35:00,523:INFO: device: cuda:0 n_gpu: 2
+2025-08-19 08:35:01,384:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-19 08:35:01,384:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-19 08:35:01,385:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-19 08:35:01,385:WARNING: Stage-One:True, Stage-Two:False
+2025-08-19 08:35:01,385:WARNING: Test retrieval by loose type.
+2025-08-19 08:35:01,385:WARNING: 	 embed_dim: 512
+2025-08-19 08:35:01,385:WARNING: 	 image_resolution: 224
+2025-08-19 08:35:01,385:WARNING: 	 vision_layers: 12
+2025-08-19 08:35:01,385:WARNING: 	 vision_width: 768
+2025-08-19 08:35:01,385:WARNING: 	 vision_patch_size: 32
+2025-08-19 08:35:01,385:WARNING: 	 context_length: 77
+2025-08-19 08:35:01,385:WARNING: 	 vocab_size: 49408
+2025-08-19 08:35:01,385:WARNING: 	 transformer_width: 512
+2025-08-19 08:35:01,385:WARNING: 	 transformer_heads: 8
+2025-08-19 08:35:01,385:WARNING: 	 transformer_layers: 12
+2025-08-19 08:35:01,385:WARNING: 		 linear_patch: 2d
+2025-08-19 08:35:01,385:WARNING: 	 cut_top_layer: 0
+2025-08-19 08:35:03,123:WARNING: 	 sim_header: meanP
+2025-08-19 08:35:07,727:INFO: --------------------
+2025-08-19 08:35:07,727:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-19 08:35:07,727:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-19 08:35:08,169:WARNING: GPU with CUDA Capability 6.0 is too old for torch.compile with triton backend. Required is >= 7.0. Skipping compilation.
+2025-08-19 08:35:08,794:INFO: ***** Running test *****
+2025-08-19 08:35:08,795:INFO:   Num examples = 27763
+2025-08-19 08:35:08,795:INFO:   Batch size = 32
+2025-08-19 08:35:08,795:INFO:   Num steps = 868
+2025-08-19 08:35:08,795:INFO: ***** Running val *****
+2025-08-19 08:35:08,795:INFO:   Num examples = 4290
+2025-08-19 08:35:09,374:INFO: ***** Running training *****
+2025-08-19 08:35:09,375:INFO:   Num examples = 48774
+2025-08-19 08:35:09,375:INFO:   Batch size = 96
+2025-08-19 08:35:09,375:INFO:   Num steps = 508
+2025-08-19 08:42:14,389:INFO: device: cuda:1 n_gpu: 2
+2025-08-19 08:42:14,458:INFO: Effective parameters:
+2025-08-19 08:42:14,458:INFO:   <<< batch_size: 96
+2025-08-19 08:42:14,458:INFO:   <<< batch_size_val: 32
+2025-08-19 08:42:14,459:INFO:   <<< cache_dir: 
+2025-08-19 08:42:14,459:INFO:   <<< coef_lr: 0.001
+2025-08-19 08:42:14,459:INFO:   <<< cross_model: cross-base
+2025-08-19 08:42:14,459:INFO:   <<< cross_num_hidden_layers: 4
+2025-08-19 08:42:14,459:INFO:   <<< data_path: /home/wa24301158/dataset/MSVD
+2025-08-19 08:42:14,459:INFO:   <<< datatype: msvd
+2025-08-19 08:42:14,459:INFO:   <<< do_eval: False
+2025-08-19 08:42:14,459:INFO:   <<< do_lower_case: False
+2025-08-19 08:42:14,459:INFO:   <<< do_pretrain: False
+2025-08-19 08:42:14,459:INFO:   <<< do_train: True
+2025-08-19 08:42:14,459:INFO:   <<< epochs: 1
+2025-08-19 08:42:14,459:INFO:   <<< eval_frame_order: 0
+2025-08-19 08:42:14,459:INFO:   <<< expand_msrvtt_sentences: False
+2025-08-19 08:42:14,459:INFO:   <<< feature_framerate: 1
+2025-08-19 08:42:14,459:INFO:   <<< features_path: /home/wa24301158/dataset/MSVD/msvd_hevc
+2025-08-19 08:42:14,459:INFO:   <<< freeze_layer_num: 9
+2025-08-19 08:42:14,459:INFO:   <<< gradient_accumulation_steps: 1
+2025-08-19 08:42:14,460:INFO:   <<< hard_negative_rate: 0.5
+2025-08-19 08:42:14,460:INFO:   <<< init_model: None
+2025-08-19 08:42:14,460:INFO:   <<< linear_patch: 2d
+2025-08-19 08:42:14,460:INFO:   <<< local_rank: 0
+2025-08-19 08:42:14,460:INFO:   <<< loose_type: True
+2025-08-19 08:42:14,460:INFO:   <<< lr: 0.0001
+2025-08-19 08:42:14,460:INFO:   <<< lr_decay: 0.9
+2025-08-19 08:42:14,460:INFO:   <<< margin: 0.1
+2025-08-19 08:42:14,460:INFO:   <<< mask_path: /home/wa24301158/dataset/MSVD/videos_hevc_info
+2025-08-19 08:42:14,460:INFO:   <<< max_frames: 12
+2025-08-19 08:42:14,460:INFO:   <<< max_words: 32
+2025-08-19 08:42:14,460:INFO:   <<< n_display: 5
+2025-08-19 08:42:14,460:INFO:   <<< n_gpu: 1
+2025-08-19 08:42:14,460:INFO:   <<< n_pair: 1
+2025-08-19 08:42:14,460:INFO:   <<< negative_weighting: 1
+2025-08-19 08:42:14,460:INFO:   <<< new_added_modules: ['Adapter']
+2025-08-19 08:42:14,460:INFO:   <<< num_thread_reader: 4
+2025-08-19 08:42:14,460:INFO:   <<< output_dir: ckpts3/CCVTR_msvd_vit32_32_DL_0818_teacher_1
+2025-08-19 08:42:14,461:INFO:   <<< pretrained_clip_name: ViT-B/32
+2025-08-19 08:42:14,461:INFO:   <<< rank: 0
+2025-08-19 08:42:14,461:INFO:   <<< resume_model: None
+2025-08-19 08:42:14,461:INFO:   <<< sampled_use_mil: False
+2025-08-19 08:42:14,461:INFO:   <<< seed: 42
+2025-08-19 08:42:14,461:INFO:   <<< sim_header: meanP
+2025-08-19 08:42:14,461:INFO:   <<< slice_framepos: 0
+2025-08-19 08:42:14,461:INFO:   <<< task_type: retrieval
+2025-08-19 08:42:14,461:INFO:   <<< text_num_hidden_layers: 12
+2025-08-19 08:42:14,461:INFO:   <<< train_csv: data/.train.csv
+2025-08-19 08:42:14,461:INFO:   <<< train_frame_order: 0
+2025-08-19 08:42:14,461:INFO:   <<< use_mil: False
+2025-08-19 08:42:14,461:INFO:   <<< val_csv: data/.val.csv
+2025-08-19 08:42:14,461:INFO:   <<< video_dim: 1024
+2025-08-19 08:42:14,461:INFO:   <<< visual_num_hidden_layers: 12
+2025-08-19 08:42:14,461:INFO:   <<< warmup_proportion: 0.1
+2025-08-19 08:42:14,462:INFO:   <<< world_size: 2
+2025-08-19 08:42:14,462:INFO: device: cuda:0 n_gpu: 2
+2025-08-19 08:42:15,358:INFO: loading archive file /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base
+2025-08-19 08:42:15,358:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2025-08-19 08:42:15,358:INFO: Weight doesn't exsits. /home/wa24301158/mywork/newX-CLIP-main/modules/cross-base/cross_pytorch_model.bin
+2025-08-19 08:42:15,358:WARNING: Stage-One:True, Stage-Two:False
+2025-08-19 08:42:15,359:WARNING: Test retrieval by loose type.
+2025-08-19 08:42:15,359:WARNING: 	 embed_dim: 512
+2025-08-19 08:42:15,359:WARNING: 	 image_resolution: 224
+2025-08-19 08:42:15,359:WARNING: 	 vision_layers: 12
+2025-08-19 08:42:15,359:WARNING: 	 vision_width: 768
+2025-08-19 08:42:15,359:WARNING: 	 vision_patch_size: 32
+2025-08-19 08:42:15,359:WARNING: 	 context_length: 77
+2025-08-19 08:42:15,359:WARNING: 	 vocab_size: 49408
+2025-08-19 08:42:15,359:WARNING: 	 transformer_width: 512
+2025-08-19 08:42:15,359:WARNING: 	 transformer_heads: 8
+2025-08-19 08:42:15,359:WARNING: 	 transformer_layers: 12
+2025-08-19 08:42:15,359:WARNING: 		 linear_patch: 2d
+2025-08-19 08:42:15,359:WARNING: 	 cut_top_layer: 0
+2025-08-19 08:42:17,065:WARNING: 	 sim_header: meanP
+2025-08-19 08:42:21,613:INFO: --------------------
+2025-08-19 08:42:21,614:INFO: Weights of XCLIP not initialized from pretrained model: 
+   global_mat_weight
+   word_logit_weight
+   frame_logit_weight
+   local_mat_weight
+   frame_mat_weight
+   word_mat_weight
+   frame_mat_weight2
+   word_mat_weight2
+   teacher.motion_encoder.pos_embed
+   teacher.motion_encoder.cls_token
+   teacher.motion_encoder.patch_embed_i.weight
+   teacher.motion_encoder.patch_embed_m.weight
+   teacher.motion_encoder.patch_embed_r.weight
+   teacher.motion_encoder.blocks.0.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.0.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.0.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.0.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.0.norm1_i.weight
+   teacher.motion_encoder.blocks.0.norm1_m.weight
+   teacher.motion_encoder.blocks.0.norm1_r.weight
+   teacher.motion_encoder.blocks.0.norm2_i.weight
+   teacher.motion_encoder.blocks.0.norm3_i.weight
+   teacher.motion_encoder.blocks.0.ffn.w1.weight
+   teacher.motion_encoder.blocks.0.ffn.w3.weight
+   teacher.motion_encoder.blocks.0.ffn.w2.weight
+   teacher.motion_encoder.blocks.1.self_attn_i.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_i.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_m.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_m.out_proj.weight
+   teacher.motion_encoder.blocks.1.self_attn_r.in_proj_weight
+   teacher.motion_encoder.blocks.1.self_attn_r.out_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.q_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.k_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.v_proj.weight
+   teacher.motion_encoder.blocks.1.cross_attn.out_proj.weight
+   teacher.motion_encoder.blocks.1.norm1_i.weight
+   teacher.motion_encoder.blocks.1.norm1_m.weight
+   teacher.motion_encoder.blocks.1.norm1_r.weight
+   teacher.motion_encoder.blocks.1.norm2_i.weight
+   teacher.motion_encoder.blocks.1.norm3_i.weight
+   teacher.motion_encoder.blocks.1.ffn.w1.weight
+   teacher.motion_encoder.blocks.1.ffn.w3.weight
+   teacher.motion_encoder.blocks.1.ffn.w2.weight
+   teacher.motion_encoder.norm.weight
+   teacher.motion_encoder.head.weight
+   teacher.motion_encoder.head.bias
+   teacher.temporal_fusion.cross_attention_fusion.in_proj_weight
+   teacher.temporal_fusion.cross_attention_fusion.out_proj.weight
+   teacher.temporal_fusion.norm_i.weight
+   teacher.temporal_fusion.norm_m.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.0.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.0.ffn.w2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.q_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.k_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.v_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.out_proj.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.attention.rotary_emb.inv_freq
+   teacher.temporal_fusion.transformer_encoder_blocks.1.norm2.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w1.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w3.weight
+   teacher.temporal_fusion.transformer_encoder_blocks.1.ffn.w2.weight
+2025-08-19 08:42:21,614:INFO: Weights from pretrained model not used in XCLIP: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2025-08-19 08:42:21,904:WARNING: GPU with CUDA Capability 6.0 is too old for torch.compile with triton backend. Required is >= 7.0. Skipping compilation.
+2025-08-19 08:42:22,515:INFO: ***** Running test *****
+2025-08-19 08:42:22,516:INFO:   Num examples = 27763
+2025-08-19 08:42:22,516:INFO:   Batch size = 32
+2025-08-19 08:42:22,516:INFO:   Num steps = 868
+2025-08-19 08:42:22,516:INFO: ***** Running val *****
+2025-08-19 08:42:22,516:INFO:   Num examples = 4290
+2025-08-19 08:42:23,017:INFO: ***** Running training *****
+2025-08-19 08:42:23,017:INFO:   Num examples = 48774
+2025-08-19 08:42:23,017:INFO:   Batch size = 96
+2025-08-19 08:42:23,017:INFO:   Num steps = 508
+2025-08-19 08:43:36,219:INFO: Epoch: 1/1, Step: 5/508, Lr: , Loss: 3.148196, Time/step: 14.632674
+2025-08-19 08:44:07,508:INFO: Epoch: 1/1, Step: 10/508, Lr: , Loss: 3.029150, Time/step: 6.257489
+2025-08-19 08:44:51,246:INFO: Epoch: 1/1, Step: 15/508, Lr: , Loss: 2.846721, Time/step: 8.747607
+2025-08-19 08:45:24,432:INFO: Epoch: 1/1, Step: 20/508, Lr: , Loss: 2.532522, Time/step: 6.637057
+2025-08-19 08:46:18,137:INFO: Epoch: 1/1, Step: 25/508, Lr: , Loss: 2.522690, Time/step: 10.740907
+2025-08-19 08:46:57,771:INFO: Epoch: 1/1, Step: 30/508, Lr: , Loss: 2.342144, Time/step: 7.926583
+2025-08-19 08:47:30,896:INFO: Epoch: 1/1, Step: 35/508, Lr: , Loss: 2.031947, Time/step: 6.624965
+2025-08-19 08:48:07,152:INFO: Epoch: 1/1, Step: 40/508, Lr: , Loss: 1.934312, Time/step: 7.250966
+2025-08-19 08:48:57,742:INFO: Epoch: 1/1, Step: 45/508, Lr: , Loss: 1.567915, Time/step: 10.117827
+2025-08-19 08:49:31,203:INFO: Epoch: 1/1, Step: 50/508, Lr: , Loss: 1.603093, Time/step: 6.692225
+2025-08-19 08:50:23,346:INFO: Epoch: 1/1, Step: 55/508, Lr: , Loss: 1.312273, Time/step: 10.428347
+2025-08-19 08:51:07,780:INFO: Epoch: 1/1, Step: 60/508, Lr: , Loss: 1.226677, Time/step: 8.886742
+2025-08-19 08:51:51,790:INFO: Epoch: 1/1, Step: 65/508, Lr: , Loss: 0.921959, Time/step: 8.801861
+2025-08-19 08:52:23,367:INFO: Epoch: 1/1, Step: 70/508, Lr: , Loss: 0.859378, Time/step: 6.315342
+2025-08-19 08:53:34,488:INFO: Epoch: 1/1, Step: 75/508, Lr: , Loss: 0.921617, Time/step: 14.223982
+2025-08-19 08:54:08,874:INFO: Epoch: 1/1, Step: 80/508, Lr: , Loss: 0.668513, Time/step: 6.877268
+2025-08-19 08:54:41,369:INFO: Epoch: 1/1, Step: 85/508, Lr: , Loss: 0.862821, Time/step: 6.498726
+2025-08-19 08:55:14,300:INFO: Epoch: 1/1, Step: 90/508, Lr: , Loss: 0.786323, Time/step: 6.586047
+2025-08-19 08:56:12,744:INFO: Epoch: 1/1, Step: 95/508, Lr: , Loss: 0.938177, Time/step: 11.688734
+2025-08-19 08:56:44,526:INFO: Epoch: 1/1, Step: 100/508, Lr: , Loss: 0.885353, Time/step: 6.356236
+2025-08-19 08:57:28,883:INFO: Epoch: 1/1, Step: 105/508, Lr: , Loss: 0.573392, Time/step: 8.871327
+2025-08-19 08:58:00,902:INFO: Epoch: 1/1, Step: 110/508, Lr: , Loss: 0.731305, Time/step: 6.403610

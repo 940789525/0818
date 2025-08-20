@@ -19,7 +19,7 @@ from modules.optimization import BertAdam
 from util import parallel_apply, get_logger
 from dataloaders.data_dataloaders import DATALOADER_DICT
 
-torch.distributed.init_process_group(backend="nccl")
+# torch.distributed.init_process_group(backend="nccl")
 
 global logger
 
@@ -76,7 +76,7 @@ def get_args(description='X-CLIP on Retrieval Task'):
     parser.add_argument("--datatype", default="msrvtt", type=str, help="Point the dataset to finetune.")
 
     parser.add_argument("--world_size", default=0, type=int, help="distribted training")
-    parser.add_argument("--local-rank", default=0, type=int, help="distribted training")
+    # parser.add_argument("--local-rank", default=0, type=int, help="distribted training")
     parser.add_argument("--rank", default=0, type=int, help="distribted training")
     parser.add_argument('--coef_lr', type=float, default=1., help='coefficient for bert branch.')
     parser.add_argument('--use_mil', action='store_true', help="Whether use MIL as Miech et. al. (2020).")
@@ -123,7 +123,7 @@ def get_args(description='X-CLIP on Retrieval Task'):
 
 def set_seed_logger(args):
     global logger
-    # predefining random initial seeds
+    # ... (种子设置代码保持不变) ...
     random.seed(args.seed)
     os.environ['PYTHONHASHSEED'] = str(args.seed)
     np.random.seed(args.seed)
@@ -133,18 +133,24 @@ def set_seed_logger(args):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
-    world_size = torch.distributed.get_world_size()
-    torch.cuda.set_device(args.local_rank)
-    args.world_size = world_size
-    rank = torch.distributed.get_rank()
-    args.rank = rank
+    # --- 新的分布式初始化逻辑 ---
+    # torchrun 会自动设置 'RANK', 'WORLD_SIZE', 'LOCAL_RANK' 环境变量
+    args.local_rank = int(os.environ['LOCAL_RANK'])
+    args.rank = int(os.environ['RANK'])
+    args.world_size = int(os.environ['WORLD_SIZE'])
+    
+    torch.cuda.set_device(args.local_rank) # 使用从环境变量获取的 local_rank
+
+    # 初始化进程组
+    torch.distributed.init_process_group(backend="nccl")
 
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir, exist_ok=True)
 
     logger = get_logger(os.path.join(args.output_dir, "log.txt"))
 
-    if args.local_rank == 0:
+    # 使用全局 rank (args.rank) 来判断是否是主进程，这在多机多卡时是更标准做法
+    if args.rank == 0:
         logger.info("Effective parameters:")
         for key in sorted(args.__dict__):
             logger.info("  <<< {}: {}".format(key, args.__dict__[key]))
@@ -154,7 +160,8 @@ def set_seed_logger(args):
 def init_device(args, local_rank):
     global logger
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu", local_rank)
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu", local_rank)
+    device = torch.device("cuda", args.local_rank)
 
     n_gpu = torch.cuda.device_count()
     logger.info("device: {} n_gpu: {}".format(device, n_gpu))

@@ -1,4 +1,4 @@
-# file: modules/teacher_modules.py (最终修正版 - 正确分离RoPE和绝对位置编码)
+# file: modules/teacher_modules.py (最终修正版 - 增加卷积模块)
 
 import torch
 import torch.nn as nn
@@ -143,18 +143,48 @@ class MMFT_Encoder(nn.Module):
         fused_feature = self.norm(i_tokens[:, 0])
         return self.head(fused_feature)
 
-# --- 时序模块 (使用RoPE) ---
+# --- 时序模块 (使用RoPE并增加了卷积) ---
 class RoPE_TransformerEncoderBlock(nn.Module):
-    def __init__(self, feature_dim, num_heads):
+    def __init__(self, feature_dim, num_heads, kernel_size=3):
+        """
+        __init__ 方法已更新，增加了一个 Conv1d 层。
+        """
         super().__init__()
         self.norm1 = nn.RMSNorm(feature_dim)
         self.attention = RoPEAttention(feature_dim, num_heads)
         self.norm2 = nn.RMSNorm(feature_dim)
         self.ffn = SwiGLU_FFN(feature_dim)
+        
+        # --- 新增: 添加一个1D深度可分离卷积层 ---
+        # 该层用于捕捉局部的序列模式。
+        self.conv = nn.Conv1d(
+            in_channels=feature_dim,
+            out_channels=feature_dim,
+            kernel_size=kernel_size,
+            groups=feature_dim,     # 深度可分离卷积
+            padding='same',         # 保持序列长度不变
+            bias=False
+        )
+        # --- 新增代码结束 ---
+
     def forward(self, x, mask=None):
-        # RoPEAttention for self-attention
+        """
+        forward 前向传播函数已更新，以应用新增的卷积层。
+        """
+        # 1. 自注意力机制 (用于全局关系建模)
         x = x + self.attention(self.norm1(x), self.norm1(x), self.norm1(x), key_padding_mask=mask)
+        
+        # 2. 前馈网络 (用于特征变换)
         x = x + self.ffn(self.norm2(x))
+        
+        # --- 新增: 应用卷积层进行局部模式建模 ---
+        residual = x
+        x = x.permute(0, 2, 1) # (B, S, C) -> (B, C, S)
+        x = self.conv(x)
+        x = x.permute(0, 2, 1) # (B, C, S) -> (B, S, C)
+        x = residual + x
+        # --- 新增代码结束 ---
+        
         return x
 
 class TeacherTemporalFusion(nn.Module):
@@ -165,7 +195,8 @@ class TeacherTemporalFusion(nn.Module):
         self.norm_i = nn.RMSNorm(feature_dim)
         self.norm_m = nn.RMSNorm(feature_dim)
         self.transformer_encoder_blocks = nn.ModuleList(
-            [RoPE_TransformerEncoderBlock(feature_dim, num_transformer_heads) for _ in range(num_transformer_layers)]
+            # --- 注意: 这里需要传递 kernel_size 参数, 如果你想自定义的话 ---
+            [RoPE_TransformerEncoderBlock(feature_dim, num_transformer_heads, kernel_size=3) for _ in range(num_transformer_layers)]
         )
     def forward(self, i_features_sequence, motion_summary, video_mask):
         attn_mask = (video_mask == 0)
