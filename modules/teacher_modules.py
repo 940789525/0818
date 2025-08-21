@@ -1,11 +1,11 @@
-# file: modules/teacher_modules.py (最终修正版 - 增加卷积模块)
+# file: modules/teacher_modules.py (层次化结构最终修正版 - 修复attention_bias维度)
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
 
-# --- RoPE的核心实现 (仅供TeacherTemporalFusion使用) ---
+# --- RoPE的核心实现 (未修改) ---
 
 class RotaryPositionalEmbedding(nn.Module):
     def __init__(self, dim, max_seq_len=2048, base=10000):
@@ -52,8 +52,7 @@ class RoPEAttention(nn.Module):
         k = self.k_proj(key).view(B, S_kv, self.nhead, self.head_dim).transpose(1, 2)
         v = self.v_proj(value).view(B, S_kv, self.nhead, self.head_dim).transpose(1, 2)
         
-        # RoPE只对Q和K应用
-        cos, sin = self.rotary_emb(S_q) # 注意：假设Q和K有相同的序列长度进行旋转
+        cos, sin = self.rotary_emb(S_q)
         q, k = apply_rotary_pos_emb(q, k, cos, sin)
         
         attn_scores = (q @ k.transpose(-2, -1)) / math.sqrt(self.head_dim)
@@ -63,7 +62,7 @@ class RoPEAttention(nn.Module):
         attn_output = (attn_probs @ v).transpose(1, 2).reshape(B, S_q, -1)
         return self.out_proj(attn_output)
 
-# --- 空间编码器所需的非RoPE模块 (恢复) ---
+# --- 空间编码器所需的非RoPE模块 (未修改) ---
 class CustomCrossAttention(nn.Module):
     def __init__(self, embed_dim, nhead):
         super().__init__()
@@ -118,89 +117,143 @@ class MMFT_Block(nn.Module):
         i_tokens = i_tokens + self.ffn(self.norm3_i(i_tokens))
         return i_tokens, m_tokens, r_tokens
 
+class PatchMerging(nn.Module):
+    def __init__(self, dim, norm_layer=nn.LayerNorm):
+        super().__init__()
+        self.dim = dim
+        self.reduction = nn.Linear(4 * dim, 2 * dim, bias=False)
+        self.norm = norm_layer(4 * dim)
+
+    def forward(self, x, H, W):
+        B, L, C = x.shape
+        assert L == H * W, "input feature has wrong size"
+        
+        x = x.view(B, H, W, C)
+        pad_f = (0, 0, 0, W % 2, 0, H % 2)
+        x = F.pad(x, pad_f)
+        
+        x0 = x[:, 0::2, 0::2, :]
+        x1 = x[:, 1::2, 0::2, :]
+        x2 = x[:, 0::2, 1::2, :]
+        x3 = x[:, 1::2, 1::2, :]
+        x = torch.cat([x0, x1, x2, x3], -1)
+        x = x.view(B, -1, 4 * C)
+
+        x = self.norm(x)
+        x = self.reduction(x)
+        return x
+
 class MMFT_Encoder(nn.Module):
     def __init__(self, output_dim=512, img_size=224, patch_size=32, embed_dim=256, nhead=4, num_layers=2):
         super().__init__()
         self.patch_size = patch_size
-        num_patches = (img_size // patch_size) ** 2
+        self.embed_dim = embed_dim
+        self.num_layers = num_layers
+        
         self.patch_embed_i = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
-        self.patch_embed_m = nn.Conv2d(2, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
+        self.patch_embed_m = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
         self.patch_embed_r = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
+        
+        num_patches = (img_size // patch_size) ** 2
         self.pos_embed = nn.Parameter(torch.zeros(1, num_patches, embed_dim))
-        self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
-        self.blocks = nn.ModuleList([MMFT_Block(embed_dim, nhead) for _ in range(num_layers)])
-        self.norm = nn.RMSNorm(embed_dim)
-        self.head = nn.Linear(embed_dim, output_dim)
+        
+        self.stage1_block = MMFT_Block(embed_dim, nhead)
+        self.patch_merging = PatchMerging(dim=embed_dim, norm_layer=nn.RMSNorm)
+        self.stage2_block = MMFT_Block(embed_dim * 2, nhead * 2)
+
+        self.norm = nn.RMSNorm(embed_dim * 2)
+        self.head = nn.Linear(embed_dim * 2, output_dim)
+        
+        self.apply(self._init_weights)
+
+    def _init_weights(self, m):
+        if isinstance(m, nn.Linear):
+            torch.nn.init.trunc_normal_(m.weight, std=.02)
+            if isinstance(m, nn.Linear) and m.bias is not None:
+                nn.init.constant_(m.bias, 0)
+        elif isinstance(m, nn.LayerNorm):
+            nn.init.constant_(m.weight, 1.0)
+            if hasattr(m, 'bias') and m.bias is not None:
+                nn.init.constant_(m.bias, 0)
+        elif isinstance(m, nn.RMSNorm):
+            nn.init.constant_(m.weight, 1.0)
+            
     def forward(self, i_frame_image, mv, res, motion_mask):
-        i_tokens = self.patch_embed_i(i_frame_image).flatten(2).transpose(1, 2); m_tokens = self.patch_embed_m(mv).flatten(2).transpose(1, 2); r_tokens = self.patch_embed_r(res).flatten(2).transpose(1, 2)
-        i_tokens = i_tokens + self.pos_embed; m_tokens = m_tokens + self.pos_embed; r_tokens = r_tokens + self.pos_embed
-        cls_tokens = self.cls_token.expand(i_tokens.shape[0], -1, -1); i_tokens = torch.cat((cls_tokens, i_tokens), dim=1)
-        mask_patch_pool = F.avg_pool2d(motion_mask, kernel_size=self.patch_size, stride=self.patch_size); mask_tokens = mask_patch_pool.flatten(1)
+        B = i_frame_image.shape[0]
+        H_patch = i_frame_image.shape[2] // self.patch_size
+        W_patch = i_frame_image.shape[3] // self.patch_size
+
+        i_tokens = self.patch_embed_i(i_frame_image).flatten(2).transpose(1, 2)
+        m_tokens = self.patch_embed_m(mv).flatten(2).transpose(1, 2)
+        r_tokens = self.patch_embed_r(res).flatten(2).transpose(1, 2)
+        
+        i_tokens = i_tokens + self.pos_embed
+        m_tokens = m_tokens + self.pos_embed
+        r_tokens = r_tokens + self.pos_embed
+
+        # --- 修正: attention_bias 的计算不应使用填充 ---
+        # 1. 直接使用原始尺寸的 mask_patch_pool
+        mask_patch_pool = F.avg_pool2d(motion_mask, kernel_size=self.patch_size, stride=self.patch_size)
+        
+        # 2. 从无填充的 mask_patch_pool 创建 bias
+        mask_tokens = mask_patch_pool.flatten(1)
+        # 此时 mask_tokens 的长度是 49 (7x7)
+        
         attention_bias = torch.log(mask_tokens + 1e-6)
         attention_bias = torch.cat([attention_bias, attention_bias], dim=1)
-        for block in self.blocks:
-            i_tokens, m_tokens, r_tokens = block(i_tokens, m_tokens, r_tokens, attention_bias=attention_bias)
-        fused_feature = self.norm(i_tokens[:, 0])
+        # 此时 attention_bias 的长度是 98 (49+49)，与 kv_tokens 匹配
+        # --- 修正结束 ---
+        
+        i_tokens, m_tokens, r_tokens = self.stage1_block(i_tokens, m_tokens, r_tokens, attention_bias=attention_bias)
+        
+        i_tokens = self.patch_merging(i_tokens, H_patch, W_patch)
+        m_tokens = self.patch_merging(m_tokens, H_patch, W_patch)
+        r_tokens = self.patch_merging(r_tokens, H_patch, W_patch)
+        
+        i_tokens, _, _ = self.stage2_block(i_tokens, m_tokens, r_tokens, attention_bias=None)
+        
+        fused_feature = self.norm(i_tokens.mean(dim=1))
         return self.head(fused_feature)
 
-# --- 时序模块 (使用RoPE并增加了卷积) ---
+# --- 时序模块 (未修改) ---
 class RoPE_TransformerEncoderBlock(nn.Module):
     def __init__(self, feature_dim, num_heads, kernel_size=3):
-        """
-        __init__ 方法已更新，增加了一个 Conv1d 层。
-        """
         super().__init__()
         self.norm1 = nn.RMSNorm(feature_dim)
         self.attention = RoPEAttention(feature_dim, num_heads)
         self.norm2 = nn.RMSNorm(feature_dim)
         self.ffn = SwiGLU_FFN(feature_dim)
         
-        # --- 新增: 添加一个1D深度可分离卷积层 ---
-        # 该层用于捕捉局部的序列模式。
-        self.conv = nn.Conv1d(
-            in_channels=feature_dim,
-            out_channels=feature_dim,
-            kernel_size=kernel_size,
-            groups=feature_dim,     # 深度可分离卷积
-            padding='same',         # 保持序列长度不变
-            bias=False
-        )
-        # --- 新增代码结束 ---
+        # self.conv = nn.Conv1d(
+        #     in_channels=feature_dim,
+        #     out_channels=feature_dim,
+        #     kernel_size=kernel_size,
+        #     groups=feature_dim,
+        #     padding='same',
+        #     bias=False
+        # )
 
     def forward(self, x, mask=None):
-        """
-        forward 前向传播函数已更新，以应用新增的卷积层。
-        """
-        # 1. 自注意力机制 (用于全局关系建模)
         x = x + self.attention(self.norm1(x), self.norm1(x), self.norm1(x), key_padding_mask=mask)
-        
-        # 2. 前馈网络 (用于特征变换)
         x = x + self.ffn(self.norm2(x))
-        
-        # --- 新增: 应用卷积层进行局部模式建模 ---
-        residual = x
-        x = x.permute(0, 2, 1) # (B, S, C) -> (B, C, S)
-        x = self.conv(x)
-        x = x.permute(0, 2, 1) # (B, C, S) -> (B, S, C)
-        x = residual + x
-        # --- 新增代码结束 ---
-        
+        # residual = x
+        # x = x.permute(0, 2, 1)
+        # x = self.conv(x)
+        # x = x.permute(0, 2, 1)
+        # x = residual + x
         return x
 
 class TeacherTemporalFusion(nn.Module):
     def __init__(self, feature_dim, max_seq_length=20, num_transformer_layers=2, num_transformer_heads=4):
         super(TeacherTemporalFusion, self).__init__()
-        # Cross-attention does not use RoPE as Key and Query have different semantic meanings and lengths
         self.cross_attention_fusion = nn.MultiheadAttention(embed_dim=feature_dim, num_heads=num_transformer_heads, bias=False)
         self.norm_i = nn.RMSNorm(feature_dim)
         self.norm_m = nn.RMSNorm(feature_dim)
         self.transformer_encoder_blocks = nn.ModuleList(
-            # --- 注意: 这里需要传递 kernel_size 参数, 如果你想自定义的话 ---
             [RoPE_TransformerEncoderBlock(feature_dim, num_transformer_heads, kernel_size=3) for _ in range(num_transformer_layers)]
         )
     def forward(self, i_features_sequence, motion_summary, video_mask):
         attn_mask = (video_mask == 0)
-        # Standard Cross-Attention for fusion
         enriched_sequence_tensor = i_features_sequence + self.cross_attention_fusion(
             query=self.norm_i(i_features_sequence).permute(1,0,2),
             key=self.norm_m(motion_summary).permute(1,0,2),
