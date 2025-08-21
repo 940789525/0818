@@ -20,7 +20,7 @@ def preprocess_residual(res):
 #     res = np.transpose(res, (2, 0, 1)).astype(np.float32)
 #     return res
 
-def preprocess_motion_vector(mv, out_size=(224,224), mode='mag', scale=128.0, eps=1e-6):
+def preprocess_motion_vector(mv, out_size=(224,224), mode='norm2', scale=128.0, eps=1e-6):
     """
     预处理 motion vector。
 

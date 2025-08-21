@@ -1,5 +1,5 @@
 # ViT-B/32
-job_name="CCVTR_msvd_vit32_32_DL_0821_teacher_1"
+job_name="CCVTR_msvd_vit32_32_DL_0821_teacher_3"
 DATA_PATH="/home/wa24301158/dataset/MSVD"
 
 # 设置环境变量，指定使用 GPU 3

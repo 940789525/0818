@@ -151,7 +151,7 @@ class MMFT_Encoder(nn.Module):
         self.num_layers = num_layers
         
         self.patch_embed_i = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
-        self.patch_embed_m = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
+        self.patch_embed_m = nn.Conv2d(2, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
         self.patch_embed_r = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
         
         num_patches = (img_size // patch_size) ** 2

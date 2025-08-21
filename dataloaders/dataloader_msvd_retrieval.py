@@ -139,7 +139,7 @@ class MSVD_DataLoader(Dataset):
                           self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float64)
         res = np.zeros((len(choice_video_ids), self.max_frames*2, 1, 3,
                         self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float64)
-        mv = np.zeros((len(choice_video_ids), self.max_frames*2, 1, 3,
+        mv = np.zeros((len(choice_video_ids), self.max_frames*2, 1, 2,
                        self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float64)
         mask = np.zeros((len(choice_video_ids), self.max_frames*2, 1, 1,
                        self.rawVideoExtractor.size, self.rawVideoExtractor.size), dtype=np.float64)
@@ -182,7 +182,7 @@ class MSVD_DataLoader(Dataset):
             if res_len %2 == 1:
                 # 构造一个全 0 的张量，形状为 [1, 1, 3, 224, 224]
                 zeros_res = torch.zeros(1, 1, 3, 224, 224)
-                zeros_mv = torch.zeros(1, 1, 3, 224, 224)
+                zeros_mv = torch.zeros(1, 1, 2, 224, 224)
                 zeros_mask = torch.zeros(1, 1, 1, 224, 224)
                 # 在 dim=0 上拼接
                 res_slice = torch.cat((res_slice, zeros_res), dim=0)

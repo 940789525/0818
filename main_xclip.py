@@ -491,12 +491,14 @@ def eval_epoch(args, model, test_dataloader, device, n_gpu):
                         mv_mask = mv_mask.view(24,1,224,224)
                         res = res.view(24,3,224,224)
                         mv = mv.view(24,2,224,224)
+                        # mv = mv.view(24,3,224,224)
                         video = video.view(12,3,224,224)
                     else:
                         video_mask_input = video_mask.view(2,12)
                         mv_mask = mv_mask.view(48,1,224,224)
                         res = res.view(48,3,224,224)
                         mv = mv.view(48,2,224,224)
+                        # mv = mv.view(48,3,224,224)
                         video = video.view(24,3,224,224)
                     visual_output = model.teacher(visual_output,video,mv,res,mv_mask,video_mask_input)
                     Pvisual_output = visual_output
@@ -669,7 +671,7 @@ def main():
 
     elif args.do_eval:
         if args.local_rank == 0:
-            best_output_model_file = "/home/wa24301158/mywork/newX-CLIP-main/ckpts3/CCVTR_msvd_vit32_32_DL_0725_1/pytorch_model.bin.2"
+            best_output_model_file = "/home/wa24301158/mywork/newX-CLIP-main/ckpts3/CCVTR_msvd_vit32_32_DL_0821_teacher_2/pytorch_model.bin.0"
             model = load_model(-1, args, n_gpu, device, model_file=best_output_model_file)
             eval_epoch(args, model, test_dataloader, device, n_gpu)
 
