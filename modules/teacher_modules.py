@@ -1,4 +1,4 @@
-# file: modules/teacher_modules.py (层次化结构最终修正版 - 修复attention_bias维度)
+# file: modules/teacher_modules.py (最终优化版 - “精简融合”架构)
 
 import torch
 import torch.nn as nn
@@ -62,29 +62,7 @@ class RoPEAttention(nn.Module):
         attn_output = (attn_probs @ v).transpose(1, 2).reshape(B, S_q, -1)
         return self.out_proj(attn_output)
 
-# --- 空间编码器所需的非RoPE模块 (未修改) ---
-class CustomCrossAttention(nn.Module):
-    def __init__(self, embed_dim, nhead):
-        super().__init__()
-        self.nhead = nhead
-        self.head_dim = embed_dim // nhead
-        assert self.head_dim * nhead == embed_dim, "embed_dim must be divisible by nhead"
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False)
-        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False)
-
-    def forward(self, query, key, value, attention_bias=None):
-        B, S_q, _ = query.shape; B, S_kv, _ = key.shape
-        q = self.q_proj(query).view(B, S_q, self.nhead, self.head_dim).transpose(1, 2)
-        k = self.k_proj(key).view(B, S_kv, self.nhead, self.head_dim).transpose(1, 2)
-        v = self.v_proj(value).view(B, S_kv, self.nhead, self.head_dim).transpose(1, 2)
-        attn_scores = (q @ k.transpose(-2, -1)) / math.sqrt(self.head_dim)
-        if attention_bias is not None:
-            attn_scores = attn_scores + attention_bias.unsqueeze(1).unsqueeze(2)
-        attn_probs = F.softmax(attn_scores, dim=-1)
-        attn_output = (attn_probs @ v).transpose(1, 2).reshape(B, S_q, -1)
-        return self.out_proj(attn_output)
+# --- 空间编码器所需的模块 ---
 
 class SwiGLU_FFN(nn.Module):
     def __init__(self, embed_dim, hidden_dim_multiplier=4):
@@ -97,58 +75,46 @@ class SwiGLU_FFN(nn.Module):
         gate = F.silu(self.w1(x)); content = self.w3(x)
         return self.w2(gate * content)
 
-class MMFT_Block(nn.Module):
+# --- 【新改动】: 最终版 - 极致精简的高效融合模块 ---
+class LeanFusionBlock(nn.Module):
     def __init__(self, embed_dim, nhead):
         super().__init__()
-        self.self_attn_i = nn.MultiheadAttention(embed_dim, nhead, bias=False)
-        self.self_attn_m = nn.MultiheadAttention(embed_dim, nhead, bias=False)
-        self.self_attn_r = nn.MultiheadAttention(embed_dim, nhead, bias=False)
-        self.cross_attn = CustomCrossAttention(embed_dim, nhead)
-        self.norm1_i = nn.RMSNorm(embed_dim); self.norm1_m = nn.RMSNorm(embed_dim); self.norm1_r = nn.RMSNorm(embed_dim)
-        self.norm2_i = nn.RMSNorm(embed_dim); self.norm3_i = nn.RMSNorm(embed_dim)
+        self.norm_i1 = nn.RMSNorm(embed_dim)
+        self.norm_i2 = nn.RMSNorm(embed_dim)
+        self.norm_i3 = nn.RMSNorm(embed_dim)
+
+        # 只保留图像的自注意力
+        self.self_attn_i = nn.MultiheadAttention(embed_dim, nhead, bias=False, batch_first=True)
+        
+        # 保留图像查询运动的交叉注意力
+        self.cross_attn = nn.MultiheadAttention(embed_dim, nhead, bias=False, batch_first=True)
+        
         self.ffn = SwiGLU_FFN(embed_dim)
-    def forward(self, i_tokens, m_tokens, r_tokens, attention_bias=None):
-        i_qkv = self.norm1_i(i_tokens).permute(1, 0, 2); i_attn_out, _ = self.self_attn_i(i_qkv, i_qkv, i_qkv); i_tokens = i_tokens + i_attn_out.permute(1, 0, 2)
-        m_qkv = self.norm1_m(m_tokens).permute(1, 0, 2); m_attn_out, _ = self.self_attn_m(m_qkv, m_qkv, m_qkv); m_tokens = m_tokens + m_attn_out.permute(1, 0, 2)
-        r_qkv = self.norm1_r(r_tokens).permute(1, 0, 2); r_attn_out, _ = self.self_attn_r(r_qkv, r_qkv, r_qkv); r_tokens = r_tokens + r_attn_out.permute(1, 0, 2)
-        query = self.norm2_i(i_tokens); kv_tokens = torch.cat([m_tokens, r_tokens], dim=1)
-        cross_attn_out = self.cross_attn(query, kv_tokens, kv_tokens, attention_bias=attention_bias)
-        i_tokens = i_tokens + cross_attn_out
-        i_tokens = i_tokens + self.ffn(self.norm3_i(i_tokens))
+
+    def forward(self, i_tokens, m_tokens, r_tokens):
+        # 1. 图像进行自注意力
+        i_tokens = i_tokens + self.self_attn_i(self.norm_i1(i_tokens), self.norm_i1(i_tokens), self.norm_i1(i_tokens))[0]
+
+        # 2. 图像查询原始的运动和残差信息
+        motion_kv = torch.cat([m_tokens, r_tokens], dim=1)
+        i_tokens = i_tokens + self.cross_attn(self.norm_i2(i_tokens), motion_kv, motion_kv)[0]
+        
+        # 3. FFN
+        i_tokens = i_tokens + self.ffn(self.norm_i3(i_tokens))
+        
+        # m_tokens 和 r_tokens 在这个block中不被更新，直接透传
         return i_tokens, m_tokens, r_tokens
 
-class PatchMerging(nn.Module):
-    def __init__(self, dim, norm_layer=nn.LayerNorm):
-        super().__init__()
-        self.dim = dim
-        self.reduction = nn.Linear(4 * dim, 2 * dim, bias=False)
-        self.norm = norm_layer(4 * dim)
-
-    def forward(self, x, H, W):
-        B, L, C = x.shape
-        assert L == H * W, "input feature has wrong size"
-        
-        x = x.view(B, H, W, C)
-        pad_f = (0, 0, 0, W % 2, 0, H % 2)
-        x = F.pad(x, pad_f)
-        
-        x0 = x[:, 0::2, 0::2, :]
-        x1 = x[:, 1::2, 0::2, :]
-        x2 = x[:, 0::2, 1::2, :]
-        x3 = x[:, 1::2, 1::2, :]
-        x = torch.cat([x0, x1, x2, x3], -1)
-        x = x.view(B, -1, 4 * C)
-
-        x = self.norm(x)
-        x = self.reduction(x)
-        return x
-
+# --- 【新改动】: 使用最终版高效融合模块重构 MMFT_Encoder ---
 class MMFT_Encoder(nn.Module):
+    """
+    【版本11 - 精简融合架构】
+    回归初心，在原始架构基础上移除冗余的自注意力模块，实现最高效率。
+    """
     def __init__(self, output_dim=512, img_size=224, patch_size=32, embed_dim=256, nhead=4, num_layers=2):
         super().__init__()
         self.patch_size = patch_size
         self.embed_dim = embed_dim
-        self.num_layers = num_layers
         
         self.patch_embed_i = nn.Conv2d(3, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
         self.patch_embed_m = nn.Conv2d(2, embed_dim, kernel_size=patch_size, stride=patch_size, bias=False)
@@ -157,31 +123,27 @@ class MMFT_Encoder(nn.Module):
         num_patches = (img_size // patch_size) ** 2
         self.pos_embed = nn.Parameter(torch.zeros(1, num_patches, embed_dim))
         
-        self.stage1_block = MMFT_Block(embed_dim, nhead)
-        self.patch_merging = PatchMerging(dim=embed_dim, norm_layer=nn.RMSNorm)
-        self.stage2_block = MMFT_Block(embed_dim * 2, nhead * 2)
+        self.blocks = nn.ModuleList(
+            [LeanFusionBlock(embed_dim, nhead) for _ in range(num_layers)]
+        )
 
-        self.norm = nn.RMSNorm(embed_dim * 2)
-        self.head = nn.Linear(embed_dim * 2, output_dim)
+        self.norm = nn.RMSNorm(embed_dim)
+        self.head = nn.Linear(embed_dim, output_dim)
         
         self.apply(self._init_weights)
 
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
             torch.nn.init.trunc_normal_(m.weight, std=.02)
-            if isinstance(m, nn.Linear) and m.bias is not None:
+            if m.bias is not None:
                 nn.init.constant_(m.bias, 0)
-        elif isinstance(m, nn.LayerNorm):
+        elif isinstance(m, (nn.LayerNorm, nn.RMSNorm)):
             nn.init.constant_(m.weight, 1.0)
             if hasattr(m, 'bias') and m.bias is not None:
                 nn.init.constant_(m.bias, 0)
-        elif isinstance(m, nn.RMSNorm):
-            nn.init.constant_(m.weight, 1.0)
             
     def forward(self, i_frame_image, mv, res, motion_mask):
         B = i_frame_image.shape[0]
-        H_patch = i_frame_image.shape[2] // self.patch_size
-        W_patch = i_frame_image.shape[3] // self.patch_size
 
         i_tokens = self.patch_embed_i(i_frame_image).flatten(2).transpose(1, 2)
         m_tokens = self.patch_embed_m(mv).flatten(2).transpose(1, 2)
@@ -191,26 +153,8 @@ class MMFT_Encoder(nn.Module):
         m_tokens = m_tokens + self.pos_embed
         r_tokens = r_tokens + self.pos_embed
 
-        # --- 修正: attention_bias 的计算不应使用填充 ---
-        # 1. 直接使用原始尺寸的 mask_patch_pool
-        mask_patch_pool = F.avg_pool2d(motion_mask, kernel_size=self.patch_size, stride=self.patch_size)
-        
-        # 2. 从无填充的 mask_patch_pool 创建 bias
-        mask_tokens = mask_patch_pool.flatten(1)
-        # 此时 mask_tokens 的长度是 49 (7x7)
-        
-        attention_bias = torch.log(mask_tokens + 1e-6)
-        attention_bias = torch.cat([attention_bias, attention_bias], dim=1)
-        # 此时 attention_bias 的长度是 98 (49+49)，与 kv_tokens 匹配
-        # --- 修正结束 ---
-        
-        i_tokens, m_tokens, r_tokens = self.stage1_block(i_tokens, m_tokens, r_tokens, attention_bias=attention_bias)
-        
-        i_tokens = self.patch_merging(i_tokens, H_patch, W_patch)
-        m_tokens = self.patch_merging(m_tokens, H_patch, W_patch)
-        r_tokens = self.patch_merging(r_tokens, H_patch, W_patch)
-        
-        i_tokens, _, _ = self.stage2_block(i_tokens, m_tokens, r_tokens, attention_bias=None)
+        for blk in self.blocks:
+            i_tokens, m_tokens, r_tokens = blk(i_tokens, m_tokens, r_tokens)
         
         fused_feature = self.norm(i_tokens.mean(dim=1))
         return self.head(fused_feature)
@@ -223,24 +167,10 @@ class RoPE_TransformerEncoderBlock(nn.Module):
         self.attention = RoPEAttention(feature_dim, num_heads)
         self.norm2 = nn.RMSNorm(feature_dim)
         self.ffn = SwiGLU_FFN(feature_dim)
-        
-        # self.conv = nn.Conv1d(
-        #     in_channels=feature_dim,
-        #     out_channels=feature_dim,
-        #     kernel_size=kernel_size,
-        #     groups=feature_dim,
-        #     padding='same',
-        #     bias=False
-        # )
 
     def forward(self, x, mask=None):
         x = x + self.attention(self.norm1(x), self.norm1(x), self.norm1(x), key_padding_mask=mask)
         x = x + self.ffn(self.norm2(x))
-        # residual = x
-        # x = x.permute(0, 2, 1)
-        # x = self.conv(x)
-        # x = x.permute(0, 2, 1)
-        # x = residual + x
         return x
 
 class TeacherTemporalFusion(nn.Module):

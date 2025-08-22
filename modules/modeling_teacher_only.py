@@ -65,12 +65,12 @@ class TeacherOnlyModel(nn.Module):
         
         # --- 【新改动】: 使用“最大绝对值选择法”进行残差汇聚 ---
         # 这个方法保留了原始的符号信息，并且传递了更强的误差信号
-        res_agg = torch.where(torch.abs(res_p1) >= torch.abs(res_p2), res_p1, res_p2)
+        # res_agg = torch.where(torch.abs(res_p1) >= torch.abs(res_p2), res_p1, res_p2)
         
         mask_synth = torch.max(mask_p1, mask_p2)
 
         # --- 调用 MMFT_Encoder (使用新的残差融合特征 res_agg) ---
-        all_motion_inputs = self.motion_encoder(i_frames_raw, mv_synth, res_agg, mask_synth)
+        all_motion_inputs = self.motion_encoder(i_frames_raw, mv_synth, res_p1, mask_synth)
         
         motion_summary = all_motion_inputs.view(batch_size, self.num_frames, self.feature_dim)
         v_features_teacher = self.temporal_fusion(visual_output, motion_summary, video_mask)
