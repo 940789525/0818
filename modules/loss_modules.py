@@ -8,30 +8,32 @@ import torch.nn.functional as F
 # 模块一：独立的损失函数定义
 # --------------------------------------------------------------------------------
 
-def margin_infonce_loss(features_a, features_b, temperature=0.07, margin=0.1):
+# 推薦方案：對稱的InfoNCE損失函數
+def margin_infonce_loss(features_a, features_b, temperature=0.07):
     """
-    L1 (升级版): 带裕度的InfoNCE主任务损失。
+    CLIP中使用的標準對稱InfoNCE損失。
+    features_a: 影片特徵, [B, D]
+    features_b: 文本特徵, [B, D]
     """
-    # 1. 归一化特征并计算原始的相似度矩阵 (Logits)
+    # 歸一化特徵
     features_a = F.normalize(features_a, p=2, dim=-1)
     features_b = F.normalize(features_b, p=2, dim=-1)
-    # 增加epsilon防止除零
-    logits = torch.matmul(features_a, features_b.t()) / (temperature + 1e-8) 
-    
+
+    # 計算logits，注意 temperature 是一個可調超參
+    logits_a_to_b = torch.matmul(features_a, features_b.t()) / (temperature + 1e-8)
+
+    # 對稱計算
+    logits_b_to_a = logits_a_to_b.t()
+
     batch_size = features_a.shape[0]
-    # 提取对角线上的正样本logit
-    positive_logits = torch.diag(logits)
-    
-    # 2. 创建一个对角线为True的布尔掩码
-    mask = torch.eye(batch_size, dtype=torch.bool, device=logits.device)
-    
-    # 3. 复制一份logits矩阵，并使用掩码精确地将对角线上的值替换为 (正样本logit - margin)
-    logits_with_margin = logits.clone()
-    logits_with_margin[mask] = positive_logits - margin
-    
-    # 4. 使用修改后的logits计算标准的交叉熵损失
     labels = torch.arange(batch_size, device=features_a.device)
-    loss = nn.CrossEntropyLoss()(logits_with_margin, labels)
+
+    # 計算兩個方向的交叉熵損失
+    loss_a = nn.CrossEntropyLoss()(logits_a_to_b, labels)
+    loss_b = nn.CrossEntropyLoss()(logits_b_to_a, labels)
+
+    # 取平均
+    loss = (loss_a + loss_b) / 2
     return loss
 
 def ranking_distillation_loss(logits_student, logits_teacher, margin=0.1):

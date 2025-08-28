@@ -16,6 +16,7 @@ from modules.module_clip import CLIP, convert_weights
 from modules.modeling import CLIP4ClipPreTrainedModel, show_log, update_attr, check_attr
 # from modules.modeling_DL import DistillationHead
 from modules.loss_modules import DistillationLoss,margin_infonce_loss
+from modules.loss_teacher import margin_free_soft_focusing_loss
 from modules.modeling_teacher_only import TeacherOnlyModel
 
 logger = logging.getLogger(__name__)
@@ -100,6 +101,67 @@ class UpsampleUpdatingModel2(nn.Module):
         # p_features = i_features + F.adaptive_avg_pool2d(p_features, 1).flatten(1)  # (bn gop) c
 
         return p_features
+
+class MotionWeightedPooling(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # 对应建议中的高级选项：让网络学会“多大幅度相信mv派生的显著性”
+        # a是缩放因子，b是偏置。初始化为 a=1, b=0 意味着在训练开始时，
+        # 权重几乎等同于原始的运动分数，网络可以后续自己学习调整。
+        # 将它们定义为 nn.Parameter，这样它们就能被PyTorch的自动求导和优化器正确处理。
+        self.attention_scaler = nn.Parameter(torch.ones(1))
+        self.attention_bias = nn.Parameter(torch.zeros(1))
+
+# 在 modules/modeling_xclip.py 文件中，MotionWeightedPooling 类的内部
+
+    def forward(self, features, motion_mask, video_mask):
+        """
+        【最终稳定版】执行基于运动的加权池化。
+        :param features: 视觉特征序列, shape: [B, T, C]
+        :param motion_mask: 空间运动掩码, shape: [B*T*P, 1, H, W]
+        :param video_mask: 有效帧掩码, shape: [B, T]
+        :return: 池化后的视频级特征, shape: [B, C]
+        """
+        batch_size = features.shape[0]
+        num_frames = features.shape[1]
+
+        frame_motion_scores = motion_mask.sum(dim=[2, 3]).squeeze()
+
+        if frame_motion_scores.numel() % (batch_size * num_frames) != 0:
+            raise ValueError("运动分数的数量与视频帧数不匹配！")
+        num_p_frames = frame_motion_scores.numel() // (batch_size * num_frames)
+
+        p_frame_scores = frame_motion_scores.view(batch_size, num_frames, num_p_frames)
+        raw_weights = p_frame_scores.mean(dim=2)
+
+        # --- 核心修复代码从这里开始 ---
+
+        # 1. 【关键】对原始权重进行归一化/缩放，以避免数值问题
+        #    这里我们采用 L1 归一化（除以总和），将权重缩放到 [0, 1] 区间并保持其相对比例。
+        #    这可以有效地充当一个固定的“温度”参数，防止输入softmax的值过大。
+        #    加上一个极小值防止分母为零。
+        sum_of_weights = raw_weights.sum(dim=1, keepdim=True) + 1e-8
+        scaled_weights = raw_weights / sum_of_weights
+        
+        # 2. (可选) 应用可学习参数来微调已经缩放过的权重
+        #    现在，可学习的参数是在一个稳定、规范的数值区间上进行操作。
+        adjusted_weights = self.attention_scaler * scaled_weights.float() + self.attention_bias
+        
+        # 3. 应用 video_mask 来屏蔽无效帧
+        adjusted_weights[video_mask == 0] = -1e9
+
+        # 4. 使用 softmax 计算最终的归一化权重
+        #    因为输入 adjusted_weights 的数值已经被控制在了一个很小的范围内，
+        #    softmax现在可以产生一个平滑的、有意义的分布。
+        normalized_weights = F.softmax(adjusted_weights, dim=1)
+        
+        # --- 修复结束 ---
+        
+        # 5. 执行加权池化
+        weights_expanded = normalized_weights.unsqueeze(-1)
+        pooled_features = (features * weights_expanded).sum(dim=1)
+
+        return pooled_features
 
 class XCLIP(CLIP4ClipPreTrainedModel):
     def __init__(self, cross_config, clip_state_dict, task_config):
@@ -235,6 +297,7 @@ class XCLIP(CLIP4ClipPreTrainedModel):
         #     increase_proportion=0.2,
         #     l1_margin=0.1    
         # )
+        self.weighted_pooler = MotionWeightedPooling()
 
         self.apply(self.init_weights)
         dim = 512
@@ -244,6 +307,15 @@ class XCLIP(CLIP4ClipPreTrainedModel):
         # self.DL = DistillationHead(dim,num_frames,2)
 
         self.teacher = TeacherOnlyModel(512,12,2)
+
+    def pool_video_features(self, video_features, motion_mask, video_mask):
+        """
+        一个专门用于调用加权池化模块的辅助函数。
+        """
+        # 在这里您可能需要处理 motion_mask，例如从 [B, T, H, W] 聚合到 [B, T]
+        # frame_motion_scores = motion_mask.sum(dim=[2, 3]) # 示例
+        # return self.weighted_pooler(video_features, frame_motion_scores, video_mask)
+        return self.weighted_pooler(video_features, motion_mask, video_mask) # 假设motion_mask已经是帧级分数
     def forward(self, input_ids, token_type_ids, attention_mask, video, res, mv, video_mask=None,mv_mask=None,train_proportion=0.0):
         input_ids = input_ids.view(-1, input_ids.shape[-1])
         token_type_ids = token_type_ids.view(-1, token_type_ids.shape[-1])
@@ -304,19 +376,19 @@ class XCLIP(CLIP4ClipPreTrainedModel):
             # total_loss = self.loss_fct(v_features_teacher, v_features_student, squeezed_sequence_output, video_mask, train_proportion)
 
             # return total_loss['loss_total']
-            def _masked_mean(features, mask):
-                """
-                辅助函数：计算带掩码的平均池化，用于将序列特征聚合成单个向量。
-                """
-                mask_expanded = mask.unsqueeze(-1).expand_as(features)
-                # 计算有效帧的特征总和，然后除以有效帧的数量
-                return (features * mask_expanded).sum(dim=1) / (mask.sum(dim=1, keepdim=True) + 1e-8)
-            v_teacher_summary = _masked_mean(v_features_teacher, video_mask)
-            loss = margin_infonce_loss(
-            features_a=v_teacher_summary,
-            features_b=squeezed_sequence_output,
-            margin=0.0
-            )
+            # def _masked_mean(features, mask):
+            #     """
+            #     辅助函数：计算带掩码的平均池化，用于将序列特征聚合成单个向量。
+            #     """
+            #     mask_expanded = mask.unsqueeze(-1).expand_as(features)
+            #     # 计算有效帧的特征总和，然后除以有效帧的数量
+            #     return (features * mask_expanded).sum(dim=1) / (mask.sum(dim=1, keepdim=True) + 1e-8)
+            v_teacher_summary = self.pool_video_features(v_features_teacher, mv_mask, video_mask)
+            # loss = margin_infonce_loss(
+            # features_a=v_teacher_summary,
+            # features_b=squeezed_sequence_output,
+            # )
+            loss = margin_free_soft_focusing_loss(v_features_teacher,seq_features,v_teacher_summary,squeezed_sequence_output,video_mask,attention_mask)
             return loss
         else:
             return None
@@ -663,7 +735,7 @@ class XCLIP(CLIP4ClipPreTrainedModel):
         return retrieve_logits, contrastive_direction
     
 
-    def calculate_student_similarity_corrected(self, sequence_output, visual_output, video_mask):
+    def calculate_student_similarity_corrected(self, sequence_output, visual_output, video_mask,mv_mask):
         """
         【修正版】为您的学生模型定制的相似度计算函数。
         
@@ -686,7 +758,8 @@ class XCLIP(CLIP4ClipPreTrainedModel):
             mask_expanded = mask.unsqueeze(-1).expand_as(features)
             return (features * mask_expanded).sum(dim=1) / (mask.sum(dim=1, keepdim=True) + 1e-8)
 
-        video_features_pooled = masked_mean(visual_output, video_mask)
+        # video_features_pooled = masked_mean(visual_output, video_mask)
+        video_features_pooled = self.pool_video_features(visual_output,mv_mask,video_mask)
         
         # --- 3. 计算文本和视频的相似度 ---
         text_features_norm = F.normalize(text_features, p=2, dim=-1)
@@ -736,3 +809,5 @@ class XCLIP(CLIP4ClipPreTrainedModel):
     #     print(f"Trainable param percentage: {percentage:.2f}% ({trainable_size}/{orig_param_size})")
     #
     #     return percentage
+
+    

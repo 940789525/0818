@@ -405,7 +405,7 @@ def train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer, 
     total_loss = total_loss / len(train_dataloader)
     return total_loss, global_step
 
-def _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_seq_features_list, batch_visual_output_list, batch_Pvisual_output_list):
+def _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_seq_features_list, batch_visual_output_list, mv_mask_list):
     sim_matrix = []
     for idx1, b1 in enumerate(batch_list_t):
         input_mask, segment_ids, *_tmp = b1   # input_mask 是句子掩码  每次取一个批次(例如16)个句子的掩码
@@ -415,10 +415,11 @@ def _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_
         for idx2, b2 in enumerate(batch_list_v):
             video_mask, *_tmp = b2  # video_mask 是视频帧掩码 [1,1,12]
             visual_output = batch_visual_output_list[idx2]  # 单个视频(当前视频)的特征 [1,12,512]
-            Pvisual_output = batch_Pvisual_output_list[idx2]  # 单个压缩域视频特征 [1,512]  这里形状有问题！
+            # Pvisual_output = batch_Pvisual_output_list[idx2]  # 单个压缩域视频特征 [1,512]  这里形状有问题！
+            mv_mask = mv_mask_list[idx2]
             # b1b2_logits, *_tmp = model.get_similarity_logits(sequence_output, seq_features, visual_output, Pvisual_output, input_mask, video_mask,
             #                                                          loose_type=model.loose_type)
-            b1b2_logits = model.calculate_student_similarity_corrected(sequence_output, visual_output, video_mask)
+            b1b2_logits = model.calculate_student_similarity_corrected(sequence_output, visual_output, video_mask, mv_mask)
             b1b2_logits = b1b2_logits.cpu().detach().numpy()  # [16,1]  一个批次的损失函数值   出现了几次nan??
             each_row.append(b1b2_logits) # 每次拼接一个批次的 loss 最后形状为 [661,bs] 
         each_row = np.concatenate(tuple(each_row), axis=-1)  # ?? [bs,670]
@@ -457,7 +458,7 @@ def eval_epoch(args, model, test_dataloader, device, n_gpu):
     with torch.no_grad():
         batch_list_t = []
         batch_list_v = []
-        batch_sequence_output_list, batch_visual_output_list, batch_Pvisual_output_list = [], [], []
+        batch_sequence_output_list, batch_visual_output_list, batch_mv_mask_list = [], [], []
         batch_seq_features_list = []
         total_video_num = 0
 
@@ -501,9 +502,10 @@ def eval_epoch(args, model, test_dataloader, device, n_gpu):
                         # mv = mv.view(48,3,224,224)
                         video = video.view(24,3,224,224)
                     visual_output = model.teacher(visual_output,video,mv,res,mv_mask,video_mask_input)
-                    Pvisual_output = visual_output
+                    # Pvisual_output = visual_output
                     batch_visual_output_list.append(visual_output)
-                    batch_Pvisual_output_list.append(Pvisual_output)
+                    batch_mv_mask_list.append(mv_mask)
+                    # batch_Pvisual_output_list.append(Pvisual_output)
                     batch_list_v.append((video_mask,))
                 total_video_num += b
             else:
@@ -513,15 +515,17 @@ def eval_epoch(args, model, test_dataloader, device, n_gpu):
                 batch_seq_features_list.append(seq_features)
                 batch_list_t.append((input_mask, segment_ids,))
                 batch_visual_output_list.append(visual_output)
-                batch_Pvisual_output_list.append(Pvisual_output)
+                # batch_Pvisual_output_list.append(Pvisual_output)
                 batch_list_v.append((video_mask,))
-
+            
             print("{}/{}\r".format(bid, len(test_dataloader)), end="")
+            # if bid == 8:
+            #     break
 
         # ----------------------------------
         # 2. calculate the similarity
         # ----------------------------------
-        sim_matrix = _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_seq_features_list, batch_visual_output_list, batch_Pvisual_output_list)
+        sim_matrix = _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_seq_features_list, batch_visual_output_list, batch_mv_mask_list)
         sim_matrix = np.concatenate(tuple(sim_matrix), axis=0)  # [27763,670]
         #np.savetxt('big_array.csv', sim_matrix, delimiter=',', fmt='%f')  ??
     if multi_sentence_:
@@ -671,7 +675,7 @@ def main():
 
     elif args.do_eval:
         if args.local_rank == 0:
-            best_output_model_file = "/home/wa24301158/mywork/newX-CLIP-main/ckpts3/CCVTR_msvd_vit32_32_DL_0821_teacher_2/pytorch_model.bin.0"
+            best_output_model_file = "/home/wa24301158/mywork/newX-CLIP-main/ckpts3/CCVTR_msvd_vit32_32_DL_0826_teacher_2/pytorch_model.bin.0"
             model = load_model(-1, args, n_gpu, device, model_file=best_output_model_file)
             eval_epoch(args, model, test_dataloader, device, n_gpu)
 
