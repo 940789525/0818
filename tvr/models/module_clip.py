@@ -236,20 +236,26 @@ class QuickGELU(nn.Module):
 
 
 class Attention(nn.Module):
-    def __init__(self, embed_dim, num_heads, lora_dim):
+    def __init__(self, embed_dim, num_heads, lora_dim, lora_alpha=1.0, lora_dropout=0.0):
         super().__init__()
-        self.num_heads = num_heads
-        self.head_dim = embed_dim // num_heads
-        self.scaling = float(self.head_dim) ** -0.5
-        self.lora_dim = lora_dim
+        self.num_heads   = num_heads
+        self.head_dim    = embed_dim // num_heads
+        self.scaling     = float(self.head_dim) ** -0.5
+        self.lora_dim    = lora_dim
+        self.lora_alpha  = lora_alpha
+        self.lora_scale  = (lora_alpha / max(1, lora_dim))
 
         self.in_proj_weight = nn.Parameter(torch.empty(3 * embed_dim, embed_dim))
-        self.in_proj_bias = nn.Parameter(torch.empty(3 * embed_dim))
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=True)
-        
+        self.in_proj_bias   = nn.Parameter(torch.empty(3 * embed_dim))
+        self.out_proj       = nn.Linear(embed_dim, embed_dim, bias=True)
+
+        # LoRA: (r, D) and (3D, r)
         self.TVPt_LoRA_a = nn.Parameter(torch.zeros(lora_dim, embed_dim))
         nn.init.kaiming_uniform_(self.TVPt_LoRA_a, a=math.sqrt(5))
         self.TVPt_LoRA_b = nn.Parameter(torch.zeros(3 * embed_dim, lora_dim))
+        nn.init.zeros_(self.TVPt_LoRA_b)
+
+        self.lora_dropout = nn.Dropout(lora_dropout) if lora_dropout > 0 else nn.Identity()
     
         # self._reset_parameters() ### lora init
     
@@ -258,21 +264,30 @@ class Attention(nn.Module):
         constant_(self.in_proj_bias, 0.)
         constant_(self.out_proj.bias, 0.)
     
-    def forward(self, x):
+    def forward(self, x, attn_mask=None):     # attn_mask 可选；视觉侧通常为 None
         bsz, tgt_len, embed_dim = x.size()
-        q, k, v = F.linear(x, self.in_proj_weight, self.in_proj_bias).chunk(3, dim=-1)
+
+        # baseline qkv
+        qkv = F.linear(x, self.in_proj_weight, self.in_proj_bias)  # (N,L,3D)
+
+        # LoRA 增量（对输入 x 先映射到 r，再映回 3D）：保持在计算图里！
+        if self.lora_dim and self.TVPt_LoRA_a is not None:
+            delta = F.linear(self.lora_dropout(x), self.TVPt_LoRA_a)          # (N,L,r)
+            delta = F.linear(delta, self.TVPt_LoRA_b)                          # (N,L,3D)
+            # qkv = qkv + self.lora_scale * delta
+            qkv = qkv + delta
+
+        qkv = qkv.reshape(bsz, tgt_len, 3, self.num_heads, self.head_dim).permute(2,0,3,1,4)
+        q, k, v = qkv.unbind(0)
+
         q = q * self.scaling
-
-        q = q.contiguous().view(bsz, tgt_len, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
-        k = k.contiguous().view(bsz, tgt_len, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
-        v = v.contiguous().view(bsz, tgt_len, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
-
-        attn = (q @ k.transpose(-2, -1))
+        attn = q @ k.transpose(-2, -1)                                         # (N,H,L,L)
+        if attn_mask is not None:
+            attn = attn + attn_mask[:, None, :, :]                              # 广播到头维
 
         attn = attn.softmax(dim=-1)
         x = (attn @ v).transpose(1, 2).reshape(bsz, tgt_len, embed_dim)
         x = F.linear(x, self.out_proj.weight, self.out_proj.bias)
-        
         return x, None
 
 class ResidualAttentionBlock(nn.Module):
@@ -291,8 +306,8 @@ class ResidualAttentionBlock(nn.Module):
         self.attn_mask = attn_mask
         self.n_head = n_head
 
-        if frame_num > 0:
-            self.TVPt_Video_Positional_embedding = nn.Parameter(torch.zeros(1, frame_num, 1, d_model))
+        # if frame_num > 0:
+        #     self.TVPt_Video_Positional_embedding = nn.Parameter(torch.zeros(1, frame_num, 1, d_model))
 
     def attention(self, x: torch.Tensor):
         attn_mask_ = self.attn_mask

@@ -101,7 +101,7 @@ class VTRModel(nn.Module):
         
         self.merge_layer = [int(_l) for _l in config.merge_layer.split('-')]
         self.merge_frame_num = [int(_l) for _l in config.merge_frame_num.split('-')]
-        self.TVPt_Video_Positional_embedding = []
+        # self.TVPt_Video_Positional_embedding = []
         if config.base_encoder == "ViT-B/32":
             patch_num = 50
         else:
@@ -138,7 +138,7 @@ class VTRModel(nn.Module):
         self.merge_layer = [int(_l) for _l in config.merge_layer.split('-')]
         self.merge_frame_num = [int(_l) for _l in config.merge_frame_num.split('-')]
             
-        tome_patch(self.clip, trace_source=self.tome_tracesource, prop_attn=self.tome_propattn)
+        # tome_patch(self.clip, trace_source=self.tome_tracesource, prop_attn=self.tome_propattn)
         
     def forward(self, text_ids, text_mask, video, video_mask=None, idx=None, global_step=0):
         text_ids = text_ids.view(-1, text_ids.shape[-1])
@@ -228,7 +228,7 @@ class VTRModel(nn.Module):
         """
         video: (B*T, C, H, W)
         video_mask: (B, T)  1=有效帧, 0=padding
-        return: (B, D)  —— 视觉侧 LoRA 生效后的特征
+        return: (B, D) —— 视觉侧 LoRA 生效后的特征
         """
         # --- 还原 B, T ---
         B, T = video_mask.shape
@@ -236,28 +236,38 @@ class VTRModel(nn.Module):
         assert BT == B * T, f"shape mismatch: video={video.shape}, mask={video_mask.shape}"
 
         # --- patch embedding + pos + ln_pre（保持 NLD）---
-        x = self.clip.visual.conv1(video)                                 # (B*T, W, g, g)
-        x = x.reshape(BT, x.shape[1], -1).permute(0, 2, 1)                # (B*T, N, W)
+        x = self.clip.visual.conv1(video)                                      # (B*T, W, g, g)
+        x = x.reshape(BT, x.shape[1], -1).permute(0, 2, 1)                     # (B*T, N, W)
 
         cls = (self.clip.visual.class_embedding.to(x.dtype) +
             torch.zeros(BT, 1, x.shape[-1], dtype=x.dtype, device=x.device))
-        x = torch.cat([cls, x], dim=1)                                    # (B*T, 1+N, W)
+        x = torch.cat([cls, x], dim=1)                                         # (B*T, 1+N, W)
         x = x + self.clip.visual.positional_embedding.to(x.dtype)
         x = self.clip.visual.ln_pre(x)
 
         # --- 你的自定义 Transformer（NLD 输入），此处已带 LoRA ---
-        x = self.clip.visual.transformer(x)                               # (B*T, 1+N, W)
+        x = self.clip.visual.transformer(x)                                    # (B*T, 1+N, W)
 
         # --- 取 CLS → ln_post → proj ---
-        x = x[:, 0, :]                                                    # (B*T, W)
+        x = x[:, 0, :]                                                         # (B*T, W)
         x = self.clip.visual.ln_post(x)
-        x = x @ self.clip.visual.proj                                     # (B*T, D)
+        x = x @ self.clip.visual.proj                                          # (B*T, D)
 
-        # --- 折回 (B,T,D) + 掩码平均池化 + L2 归一化 ---
-        x = x.view(B, T, -1)                                              # (B, T, D)
-        m = video_mask.to(x.dtype).unsqueeze(-1)                          # (B, T, 1)
-        x = (x * m).sum(dim=1) / m.sum(dim=1).clamp_min(1e-6)            # (B, D)
-        x = x / (x.norm(dim=-1, keepdim=True) + 1e-6)
+        # --- 折回 (B,T,D) + 帧间池化 + L2 归一化 ---
+        x = x.view(B, T, -1)                                                   # (B, T, D)
+        m = video_mask.to(x.dtype).unsqueeze(-1)                               # (B, T, 1)
+        summed = (x * m).sum(dim=1)                                            # (B, D)
+
+        if self.training:
+            # 训练期：用“求和”替代“均值”，去掉 1/T 的梯度稀释
+            pooled = summed                                                    # (B, D)
+        else:
+            # 评测期：保持与原实现一致的“均值池化”
+            denom = m.sum(dim=1).clamp_min(1e-6)                               # (B, 1)
+            pooled = summed / denom                                            # (B, D)
+
+        # 单位化（L2）
+        x = F.normalize(pooled, p=2, dim=-1, eps=1e-6)                          # (B, D)
         return x
     
     def get_video_feat(self, video, video_mask):

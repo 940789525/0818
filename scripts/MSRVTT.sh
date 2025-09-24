@@ -2,7 +2,7 @@
 
 # 指定您要使用的数据、输出和预训练模型的路径
 DATA_PATH=/home/wa24301158/dataset/MSRVTT
-OUTPUT_PATH=log/MSRVTT_train_b64_2_0922_source
+OUTPUT_PATH=log/MSRVTT_train_b64_2_0924_lora_1
 PRETRAINED_PATH=/home/wa24301158/mywork/TempMe-master/tvr/models
 
 # 指定要使用的GPU（例如，使用0号和1号GPU）
