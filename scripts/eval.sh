@@ -2,7 +2,7 @@
 
 # 指定您要使用的数据、输出和预训练模型的路径
 DATA_PATH=/home/wa24301158/dataset/MSRVTT
-OUTPUT_PATH=log/MSRVTT_train_b64_2_1009_lora_pos_7
+OUTPUT_PATH=log/eval_0929_lora_pos_1
 PRETRAINED_PATH=/home/wa24301158/mywork/TempMe-master/tvr/models
 
 # 指定要使用的GPU（例如，使用0号和1号GPU）
@@ -12,17 +12,15 @@ export CUDA_VISIBLE_DEVICES=2,3
 # --nproc_per_node=2 表示使用两张显卡
 # --batch_size 和 --batch_size_val 是您指定的批次大小
 python -m torch.distributed.launch --nproc_per_node=2 main.py \
-  --do_train 1 \
+  --do_eval 1 \
   --workers 4 \
   --batch_size 64 \
   --n_display 5 \
   --batch_size_val 16 \
   --anno_path ${DATA_PATH} \
-  --epochs 5 \
+  --epochs 2 \
   --video_path ${DATA_PATH}/all_compressed \
   --datatype msrvtt \
   --output_dir ${OUTPUT_PATH} \
   --pretrained_path ${PRETRAINED_PATH}\
-  --sched cosine\
-  --max_steps 14060 \
-  --warmup_steps 1200
+  --init_model log/MSRVTT_train_b64_2_0929_lora_pos_1/best.pth

@@ -11,9 +11,6 @@ from torch import nn
 from torch.nn.utils.rnn import pad_packed_sequence, pack_padded_sequence
 import torch.nn.functional as F
 from .module_clip import CLIP, convert_weights, _PT_NAME
-from .module_cross import Transformer as TransformerClip
-from .module_tome_patch import apply_patch as tome_patch
-from .module_tome_utils import parse_r
 from .until_module import LayerNorm, AllGather, AllGather2, CrossEn, MSE, ArcCrossEn, KL
 import numpy as np
 import copy
@@ -69,76 +66,25 @@ class VTRModel(nn.Module):
         transformer_heads = transformer_width // 64
         transformer_layers = len(set(k.split(".")[2] for k in state_dict if k.startswith(f"transformer.resblocks")))
 
-        self.merge_layer = [int(_l) for _l in config.merge_layer.split('-')]
-        self.merge_frame_num = [int(_l) for _l in config.merge_frame_num.split('-')]
-        frame_num_list=[]
-        frame_num = config.max_frames
-        for _l in range(len(self.merge_layer)):
-            frame_num_list.append(frame_num)
-            frame_num = frame_num // self.merge_frame_num[_l]
-        logger.info('Position_embedding: {}'.format(frame_num_list))
-        
-        self.clip = CLIP(embed_dim, image_resolution, vision_layers, vision_width, vision_patch_size,
-                         context_length, vocab_size, transformer_width, transformer_heads, transformer_layers, self.lora_dim, 
-                        self.merge_layer, config.frame_pos, frame_num_list)
-            
-        self.loss_fct = CrossEn(config)
+        # Initialize CLIP (LoRA-only) without any token merging/TempMe-related parameters.
+        self.clip = CLIP(
+            embed_dim,
+            image_resolution,
+            vision_layers,
+            vision_width,
+            vision_patch_size,
+            context_length,
+            vocab_size,
+            transformer_width,
+            transformer_heads,
+            transformer_layers,
+            self.lora_dim,
+        )
 
+        self.loss_fct = CrossEn(config)
         self.clip.load_state_dict(state_dict, strict=False)
 
-        self.tome_r = config.tome_r
-        self.tome_tracesource = config.tome_tracesource
-        self.tome_propattn = config.tome_propattn
-        logger.info("tome: {} r | {} tracesource | {} propattn".format(self.tome_r, self.tome_tracesource, self.tome_propattn))
-        
-        logger.info("merge_layer: {}".format(config.merge_layer))
-        logger.info("merge_frame_num: {}".format(config.merge_frame_num))
-        logger.info("merge_token_proportion: {}".format(config.merge_token_proportion))
-        logger.info("frame_pos: {}".format(config.frame_pos))
-
-        self.merge_token_proportion = [int(_l) / 100 for _l in config.merge_token_proportion.split('-')]
-        self.frame_pos = config.frame_pos
-        
-        self.merge_layer = [int(_l) for _l in config.merge_layer.split('-')]
-        self.merge_frame_num = [int(_l) for _l in config.merge_frame_num.split('-')]
-        # self.TVPt_Video_Positional_embedding = []
-        if config.base_encoder == "ViT-B/32":
-            patch_num = 50
-        else:
-            patch_num = 197
-        cls_num = 1
-        frame_num = config.max_frames
-        self.patch_list = [patch_num]
-        self.frame_list = [frame_num]
-        for _l in range(12):
-            if _l not in self.merge_layer:
-                if _l < self.merge_layer[0]:
-                    patch_num = patch_num - self.tome_r
-                    self.patch_list.append(patch_num)
-                    self.frame_list.append(frame_num)
-                else:
-                    patch_num = patch_num - int(patch_num * self.merge_token_proportion[1])
-                    self.patch_list.append(patch_num)
-                    self.frame_list.append(frame_num)
-            else:
-                M_frame_num = self.merge_frame_num.pop(0)
-                M_token_num = int(patch_num * M_frame_num * self.merge_token_proportion[0])
-
-                assert frame_num % M_frame_num == 0
-                patch_num = patch_num * M_frame_num - M_token_num
-                cls_num = cls_num * M_frame_num
-                frame_num = frame_num // M_frame_num
-                self.patch_list.append(patch_num)
-                self.frame_list.append(frame_num)
-
-                patch_num = patch_num - int(patch_num * self.merge_token_proportion[1])
-                self.patch_list.append(patch_num)
-                self.frame_list.append(frame_num)
-        
-        self.merge_layer = [int(_l) for _l in config.merge_layer.split('-')]
-        self.merge_frame_num = [int(_l) for _l in config.merge_frame_num.split('-')]
-            
-        # tome_patch(self.clip, trace_source=self.tome_tracesource, prop_attn=self.tome_propattn)
+        # Note: merge-layer and TempMe/ToMe attributes removed.
         
     def forward(self, text_ids, text_mask, video, video_mask=None, idx=None, global_step=0):
         text_ids = text_ids.view(-1, text_ids.shape[-1])
@@ -228,105 +174,65 @@ class VTRModel(nn.Module):
         """
         video: (B*T, C, H, W)
         video_mask: (B, T)  1=有效帧, 0=padding
-        return: (B, D) —— 视觉侧 LoRA 生效后的特征
+        return: (B, D) —— 视觉侧特征（带CLS跨帧注意力）
         """
-        # --- 还原 B, T ---
         B, T = video_mask.shape
-        BT, C, H, W = video.shape
+        BT, C, H, Wimg = video.shape
         assert BT == B * T, f"shape mismatch: video={video.shape}, mask={video_mask.shape}"
 
         # --- patch embedding + pos + ln_pre（保持 NLD）---
-        x = self.clip.visual.conv1(video)                                      # (B*T, W, g, g)
-        x = x.reshape(BT, x.shape[1], -1).permute(0, 2, 1)                     # (B*T, N, W)
+        x = self.clip.visual.conv1(video)                       # (B*T, Wd, g, g)
+        x = x.reshape(BT, x.shape[1], -1).permute(0, 2, 1)      # (B*T, N, Wd)
 
         cls = (self.clip.visual.class_embedding.to(x.dtype) +
             torch.zeros(BT, 1, x.shape[-1], dtype=x.dtype, device=x.device))
-        x = torch.cat([cls, x], dim=1)                                         # (B*T, 1+N, W)
-        x = x + self.clip.visual.positional_embedding.to(x.dtype)
+        x = torch.cat([cls, x], dim=1)                          # (B*T, 1+N, Wd)
+
+        gate_sp = torch.relu(self.clip.visual.spatial_pos_gate)
+        x = x + gate_sp * self.clip.visual.positional_embedding.to(x.dtype)
         x = self.clip.visual.ln_pre(x)
 
-        # --- 你的自定义 Transformer（NLD 输入），此处已带 LoRA ---
-        x = self.clip.visual.transformer(x)                                    # (B*T, 1+N, W)
+        # ====== TimeRouter：筛帧 + 筛 patch（在 transformer 之前）======
+        x_bt_l_w = x.view(B, T, x.size(1), x.size(2))           # [B,T,1+N,Wd]
+        x_bt_l_w, video_mask, meta = self.clip.visual.time_router(x_bt_l_w, video_mask)
+        # 现在：x_bt_l_w->[B,K,1+N',Wd]；video_mask->[B,K]；meta 里有 K、N' 等
+
+        # 展平送入 Transformer
+        B, K, L_red, Wd = x_bt_l_w.shape
+        x = x_bt_l_w.view(B * K, L_red, Wd)                     # (B*K, 1+N', Wd)
+
+        # --- 视觉 Transformer（LoRA 在工程里注入；主干可冻结）---
+        x = self.clip.visual.transformer(x)                     # (B*K, 1+N', Wd)
 
         # --- 取 CLS → ln_post → proj ---
-        x = x[:, 0, :]                                                         # (B*T, W)
+        x = x[:, 0, :]                                          # (B*K, Wd)
         x = self.clip.visual.ln_post(x)
-        x = x @ self.clip.visual.proj                                          # (B*T, D)
+        x = x @ self.clip.visual.proj                           # (B*K, D)
 
-        # --- 折回 (B,T,D) + 帧间池化 + L2 归一化 ---
-        x = x.view(B, T, -1)                                                   # (B, T, D)
-        m = video_mask.to(x.dtype).unsqueeze(-1)                               # (B, T, 1)
-        summed = (x * m).sum(dim=1)                                            # (B, D)
+        # ===== 轻量 CLS 跨帧注意力（唯一的“时序编码”路径）=====
+        x = x.view(B, K, -1)                                    # <<< 用 K，不是 T！(B,K,D)
+        x = self.clip.visual.temporal_mix_cls(x, video_mask)    # (B,K,D)
 
+        # --- 帧间池化 + L2 ---
+        m = video_mask.to(x.dtype).unsqueeze(-1)                # (B, K, 1)
+        summed = (x * m).sum(dim=1)                             # (B, D)
         if self.training:
-            # 训练期：用“求和”替代“均值”，去掉 1/T 的梯度稀释
-            pooled = summed                                                    # (B, D)
+            pooled = summed
         else:
-            # 评测期：保持与原实现一致的“均值池化”
-            denom = m.sum(dim=1).clamp_min(1e-6)                               # (B, 1)
-            pooled = summed / denom                                            # (B, D)
+            denom = m.sum(dim=1).clamp_min(1e-6)
+            pooled = summed / denom
 
-        # 单位化（L2）
-        x = F.normalize(pooled, p=2, dim=-1, eps=1e-6)                          # (B, D)
+        x = F.normalize(pooled, p=2, dim=-1, eps=1e-6)          # (B, D)
         return x
+
+
     
     def get_video_feat(self, video, video_mask):
-        self.clip._tome_info["size"] = None
-        self.clip._tome_info["source"] = None
-        self.clip._tome_info["cls_num"] = 1
-        self.clip._tome_info["frame_num"] = self.frame_list[0]
-        self.clip._tome_info["token_num"] = self.patch_list[0]
-
-        self.merge_frame_num = [int(_l) for _l in self.config.merge_frame_num.split('-')]
-        
-        b, n_f = video_mask.size()
-        org_n_f = n_f
-        x = video
-            
-        x = self.clip.visual.conv1(x)  
-
-        x = x.reshape(x.shape[0], x.shape[1], -1) 
-        x = x.permute(0, 2, 1)  
-        x = torch.cat(
-            [self.clip.visual.class_embedding.to(x.dtype) + torch.zeros(x.shape[0], 1, x.shape[-1], dtype=x.dtype, device=x.device),
-             x], dim=1)  
-        
-        x = x + self.clip.visual.positional_embedding.to(x.dtype)
-        x = self.clip.visual.ln_pre(x)
-        
-        _, token_len, d_v = x.size()
-
-        pos_count = 0
-        for res_i, res_block in enumerate(self.clip.visual.transformer.resblocks):
-            if res_i not in self.merge_layer:
-                if res_i < self.merge_layer[0]:
-                    x = res_block(x, M_frame_num=1, M_token_num=[self.tome_r])
-                else:
-                    M_token_num = int(self.clip._tome_info["token_num"] * self.merge_token_proportion[1])
-                    M_token_num = min((self.clip._tome_info["token_num"] - self.clip._tome_info["cls_num"]) // 2, M_token_num)
-                    x = res_block(x, M_frame_num=1, M_token_num=[M_token_num])
-            else:
-                M_frame_num = self.merge_frame_num.pop(0)
-                M_token_num_0 = int(self.clip._tome_info["token_num"] * M_frame_num * self.merge_token_proportion[0])
-                M_token_num_0 = min((self.clip._tome_info["token_num"] - self.clip._tome_info["cls_num"]) * M_frame_num // 2, M_token_num_0)
-                M_token_num_1 = int((self.clip._tome_info["token_num"] * M_frame_num - M_token_num_0) * self.merge_token_proportion[1])
-                M_token_num_1 = min( ( (self.clip._tome_info["token_num"] - self.clip._tome_info["cls_num"]) * M_frame_num - M_token_num_0) // 2, M_token_num_1)
-                    
-                x = res_block(x, M_frame_num=M_frame_num, M_token_num=[M_token_num_0, M_token_num_1], frame_pos=self.frame_pos)
-        
-        n_f = self.clip._tome_info["frame_num"]
-        token_len = self.clip._tome_info["token_num"]
-        cls_num = self.clip._tome_info["cls_num"]
-        x = x.view(b, n_f, token_len, d_v)[:,:,:cls_num,:].reshape(b,org_n_f,d_v)
-        hidden = self.clip.visual.ln_post(x) @ self.clip.visual.proj
-        video_feat = hidden.float()
-        
-        video_feat = video_feat.contiguous()
-        
-        video_feat = video_feat / video_feat.norm(dim=-1, keepdim=True)
-        video_feat = self.get_video_avg_feat(video_feat, video_mask)
-        
-        return video_feat
+        """
+        This method was used by the original TempMe/ToMe implementation to merge tokens across frames.
+        For the pure LoRA version this functionality is removed. Use get_lora_video_feat instead.
+        """
+        raise NotImplementedError("get_video_feat has been removed in the pure LoRA model")
 
     def get_video_avg_feat(self, video_feat, video_mask):
         video_mask_un = video_mask.to(dtype=torch.float).unsqueeze(-1)

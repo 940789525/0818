@@ -17,6 +17,8 @@ from torch import nn
 from torch.nn.init import constant_, xavier_normal_, xavier_uniform_
 import math
 import logging
+from typing import Optional, Dict, Any
+from .module_time import TimeRouter
 
 logger = logging.getLogger(__name__)
 
@@ -324,87 +326,217 @@ class ResidualAttentionBlock(nn.Module):
         return x
 
 class Transformer(nn.Module):
-    def __init__(self, width: int, layers: int, heads: int, lora_dim: int, merge_layer: List[int], frame_pos: int, frame_num_list: List[int], attn_mask=None):
+    """
+    Simplified Transformer used in LoRA-only CLIP.
+
+    This version removes all token-merging/TempMe support. It always builds a
+    sequential stack of ResidualAttentionBlocks with `frame_num=0`. The arguments
+    related to merge layers (`merge_layer`, `frame_pos`, `frame_num_list`) have been
+    removed.
+    """
+    def __init__(self, width: int, layers: int, heads: int, lora_dim: int, attn_mask=None):
         super(Transformer, self).__init__()
         self.width = width
         self.layers = layers
+        # Always build a uniform stack of residual blocks without any merging logic.
+        self.resblocks = nn.Sequential(
+            *[ResidualAttentionBlock(width, heads, lora_dim, 0, attn_mask) for _ in range(layers)]
+        )
 
-        if frame_pos == 0:
-            self.resblocks = nn.Sequential(*[ResidualAttentionBlock(width, heads, lora_dim, 0, attn_mask) for _ in range(layers)])
-        else:
-            resblocks_list = []
-            idx_pos = 0
-            for _l in range(layers):
-                if _l in merge_layer:
-                    resblocks_list.append(ResidualAttentionBlock(width, heads, lora_dim, frame_num_list[idx_pos], attn_mask))
-                    idx_pos += 1
-                else:
-                    resblocks_list.append(ResidualAttentionBlock(width, heads, lora_dim, 0, attn_mask))
-            self.resblocks = nn.Sequential(*resblocks_list)
-        
     def forward(self, x: torch.Tensor):
         return self.resblocks(x)
 
+
 class VisualTransformer(nn.Module):
-    def __init__(self, input_resolution: int, patch_size: int, width: int, layers: int, heads: int, output_dim: int, lora_dim: int, merge_layer: List[int], frame_pos: int, frame_num_list: List[int]):
-        super(VisualTransformer, self).__init__()
+    def __init__(
+        self,
+        input_resolution: int,
+        patch_size: int,
+        width: int,
+        layers: int,
+        heads: int,
+        output_dim: int,
+        **kwargs,  # 吃掉 lora / attn 相关扩展
+    ):
+        super().__init__()
+
+        # ---- 基础属性 ----
         self.input_resolution = input_resolution
+        self.patch_size = patch_size
+        self.width = width
+        self.layers = layers
+        self.heads = heads
         self.output_dim = output_dim
 
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=width, kernel_size=patch_size, stride=patch_size, bias=False)
+        # 兼容两种命名：max_frames / max_temporal_len
+        self.max_frames = int(kwargs.pop('max_frames', kwargs.pop('max_temporal_len', 64)))
 
-        scale = width ** -0.5
-        self.class_embedding = nn.Parameter(scale * torch.randn(width))
-        self.positional_embedding = nn.Parameter(scale * torch.randn((input_resolution // patch_size) ** 2 + 1, width))
-        self.ln_pre = LayerNorm(width)
+        # 透传给 Transformer 的额外参数
+        tfm_keys = {
+            'attn_mask', 'dropout',
+            'lora_dim', 'lora_alpha', 'lora_dropout',
+            'enable_lora_v', 'enable_lora_t'
+        }
+        tfm_extras: Dict[str, Any] = {}
+        for k in list(kwargs.keys()):
+            if k in tfm_keys:
+                tfm_extras[k] = kwargs.pop(k)
+        self._extra_cfg = dict(kwargs)  # 未识别的参数，保留以便排查
 
-        self.transformer = Transformer(width, layers, heads, lora_dim, merge_layer, frame_pos, frame_num_list)
+        # ======== 原始 CLIP 视觉塔 ========
+        self.conv1 = nn.Conv2d(3, width, kernel_size=patch_size, stride=patch_size, bias=False)
+        self.class_embedding = nn.Parameter(torch.randn(width))
 
-        self.ln_post = LayerNorm(width)
-        self.proj = nn.Parameter(scale * torch.randn(width, output_dim))
+        n_patches = (input_resolution // patch_size) ** 2
+        self.positional_embedding = nn.Parameter(torch.empty(n_patches + 1, width))
+        nn.init.normal_(self.positional_embedding, std=0.01)
 
-        for param in self.conv1.parameters():
-            param.requires_grad = False  # not update by gradient
+        self.ln_pre = nn.LayerNorm(width)
 
+        self.transformer = Transformer(width, layers, heads, **tfm_extras)
+
+        self.ln_post = nn.LayerNorm(width)
+        self.proj = nn.Parameter(torch.empty(width, output_dim))
+        nn.init.normal_(self.proj, std=width ** -0.5)
+
+        # ======== 空域位置门控 ========
+        self.spatial_pos_gate = nn.Parameter(torch.tensor(1.0))  # ReLU 门控，初值=1
+
+        # ======== 轻量 CLS 跨帧 mixer（只在 D=output_dim 维处理）========
+        dim = output_dim
+
+        # pre-LN + 线性 Q/K/V/Out
+        self.tem_mix_ln  = nn.LayerNorm(dim)
+        self.tem_mix_q   = nn.Linear(dim, dim, bias=False)
+        self.tem_mix_k   = nn.Linear(dim, dim, bias=False)
+        self.tem_mix_v   = nn.Linear(dim, dim, bias=False)
+        self.tem_mix_out = nn.Linear(dim, dim, bias=False)
+
+        # 相对位置偏置（按 j-i 索引），长度 2*max_frames-1
+        self.tem_rel_bias = nn.Parameter(torch.full((2 * self.max_frames - 1,), 0.01))
+        # 残差门控：sigmoid(-4)≈0.018，初始几乎不影响原特征
+        self.tem_mix_gate = nn.Parameter(torch.tensor(-4.0))
+
+        # ☆ 平滑有界温度：scale ∈ (1, tem_mix_temp_max)
+        self.tem_mix_temp_max = 64  # 可调：32/64/80
+        def _inv_sigmoid_scale(s, smax):
+            p = (s - 1.0) / (smax - 1.0)
+            p = min(max(float(p), 1e-6), 1-1e-6)
+            return math.log(p / (1.0 - p))
+        temp_init = 4.0  
+        self.tem_mix_temp_raw = nn.Parameter(torch.tensor(_inv_sigmoid_scale(temp_init, self.tem_mix_temp_max)))
+
+        # 初始化
+        nn.init.xavier_uniform_(self.tem_mix_q.weight)
+        nn.init.xavier_uniform_(self.tem_mix_k.weight)
+        nn.init.xavier_uniform_(self.tem_mix_v.weight)
+        nn.init.xavier_uniform_(self.tem_mix_out.weight)
+        # tem_rel_bias 默认为 0 即可
+        self.time_router = TimeRouter(
+            width=width,           # 与视觉塔 W 一致
+            max_frames=self.max_frames,
+            proxy_dim=32,
+            topk_ratio=0.5,        # 先保守，后续再降
+            min_keep=4,
+            temporal_nms=0,
+            patch_keep_factors=(1.0, 0.5, 0.25),
+        )
+
+    # --- 相对位置索引 [T,T] -> [0..2*max_frames-2] ---
+    @torch.no_grad()
+    def _build_rel_index(self, T: int, device):
+        i = torch.arange(T, device=device)
+        j = torch.arange(T, device=device)
+        rel = j[None, :] - i[:, None]                         # (T,T) ∈ [-(T-1), T-1]
+        rel = rel + (self.max_frames - 1)
+        rel = rel.clamp_(0, 2 * self.max_frames - 2).long()
+        return rel
+
+    # --- 轻量跨帧 CLS-mixer（余弦注意力 + 平滑有界温度） ---
+    def temporal_mix_cls(
+        self,
+        x_bt_d: torch.Tensor,                 # (B, T, D)
+        mask_bt: Optional[torch.Tensor] = None  # (B, T), 1=有效帧, 0=padding
+    ) -> torch.Tensor:
+        B, T, D = x_bt_d.shape
+
+        # pre-LN
+        z = self.tem_mix_ln(x_bt_d)           # (B,T,D)
+
+        # 余弦注意力：先单位范数，再点乘
+        q = F.normalize(self.tem_mix_q(z), dim=-1, eps=1e-6)
+        k = F.normalize(self.tem_mix_k(z), dim=-1, eps=1e-6)
+        v = self.tem_mix_v(z)
+
+        # 平滑有界温度（无 clamp，始终有梯度）：(1, Smax)
+        scale = 1.0 + (self.tem_mix_temp_max - 1.0) * torch.sigmoid(self.tem_mix_temp_raw)
+
+        logits = torch.bmm(q, k.transpose(1, 2)) * scale     # (B,T,T)
+
+        # 相对位置偏置（广播）
+        rel_idx = self._build_rel_index(T, x_bt_d.device)    # (T,T)
+        logits = logits + self.tem_rel_bias[rel_idx]         # (B,T,T) + (T,T)->广播到(B,T,T)
+
+        # key 方向 mask
+        if mask_bt is not None:
+            key_mask = (mask_bt == 1).unsqueeze(1).expand(-1, T, -1)  # (B,T,T)
+            logits = logits.masked_fill(~key_mask, float("-inf"))
+
+        attn = torch.softmax(logits, dim=-1)                 # (B,T,T)
+        out  = torch.bmm(attn, v)                            # (B,T,D)
+        out  = self.tem_mix_out(out)                         # (B,T,D)
+
+        # 残差 + 门控
+        gate = torch.sigmoid(self.tem_mix_gate)
+        y = x_bt_d + gate * out
+        return y
+
+    # --- 原始 CLIP 前向（你的视频路径中未直接用到，但保持一致性） ---
     def forward(self, x: torch.Tensor, mask=None):
+        # patch embedding
+        x = self.conv1(x)  # [*, width, g, g]
+        x = x.reshape(x.shape[0], x.shape[1], -1).permute(0, 2, 1)  # [*, N, width]
 
-        x = self.conv1(x)  # shape = [*, width, grid, grid]
+        # 加 CLS
+        cls = self.class_embedding.to(x.dtype) + torch.zeros(
+            x.shape[0], 1, x.shape[-1], dtype=x.dtype, device=x.device
+        )
+        x = torch.cat([cls, x], dim=1)  # [*, 1+N, width]
 
-        x = x.reshape(x.shape[0], x.shape[1], -1)  # shape = [*, width, grid ** 2]
-        x = x.permute(0, 2, 1)  # shape = [*, grid ** 2, width]
-        x = torch.cat(
-            [self.class_embedding.to(x.dtype) + torch.zeros(x.shape[0], 1, x.shape[-1], dtype=x.dtype, device=x.device),
-             x], dim=1)  # shape = [*, grid ** 2 + 1, width]
-        
-        x = x + self.positional_embedding.to(x.dtype)
+        # 空域位置 + 门控（ReLU，初值1时等价于恒1）
+        gate_sp = torch.relu(self.spatial_pos_gate)
+        x = x + gate_sp * self.positional_embedding.to(x.dtype)
+
         x = self.ln_pre(x)
-        
-        x = x.permute(1, 0, 2)  # NLD -> LND
+        x = x.permute(1, 0, 2)          # NLD -> LND
         x = self.transformer(x)
-        x = x.permute(1, 0, 2)  # LND -> NLD
-
+        x = x.permute(1, 0, 2)          # LND -> NLD
         return x
 
 
 class CLIP(nn.Module):
-    def __init__(self,
-                 embed_dim: int,
-                 # vision
-                 image_resolution: int,
-                 vision_layers: Union[Tuple[int, int, int, int], int],
-                 vision_width: int,
-                 vision_patch_size: int,
-                 # text
-                 context_length: int,
-                 vocab_size: int,
-                 transformer_width: int,
-                 transformer_heads: int,
-                 transformer_layers: int,
-                 lora_dim: int,
-                 merge_layer: List[int],
-                 frame_pos: int,
-                 frame_num_list: List[int]
-                 ):
+    def __init__(
+        self,
+        embed_dim: int,
+        # vision
+        image_resolution: int,
+        vision_layers: Union[Tuple[int, int, int, int], int],
+        vision_width: int,
+        vision_patch_size: int,
+        # text
+        context_length: int,
+        vocab_size: int,
+        transformer_width: int,
+        transformer_heads: int,
+        transformer_layers: int,
+        lora_dim: int,
+    ):
+        """
+        Initialize a CLIP model with LoRA-only modifications.
+
+        The arguments related to merge-layer and token merging have been removed. If a
+        vision transformer is used, it will be constructed without token merging.
+        """
         super(CLIP, self).__init__()
 
         self.context_length = context_length
@@ -416,10 +548,11 @@ class CLIP(nn.Module):
                 output_dim=embed_dim,
                 heads=vision_heads,
                 input_resolution=image_resolution,
-                width=vision_width
+                width=vision_width,
             )
         else:
             vision_heads = vision_width // 64
+            # Construct a VisualTransformer without merge-layer parameters.
             self.visual = VisualTransformer(
                 input_resolution=image_resolution,
                 patch_size=vision_patch_size,
@@ -428,9 +561,6 @@ class CLIP(nn.Module):
                 heads=vision_heads,
                 output_dim=embed_dim,
                 lora_dim=lora_dim,
-                merge_layer=merge_layer,
-                frame_pos=frame_pos,
-                frame_num_list=frame_num_list
             )
 
         self.transformer = TransformerClip(

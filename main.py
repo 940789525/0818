@@ -14,6 +14,7 @@ from os.path import join, exists
 
 import torch
 import torch.nn.functional as F
+import torch.nn as nn
 from tvr.models.tokenization_clip import SimpleTokenizer as ClipTokenizer
 from tvr.dataloaders.data_dataloaders import DATALOADER_DICT
 from tvr.dataloaders.dataloader_msrvtt_retrieval import MSRVTTDataset
@@ -31,60 +32,79 @@ allgather = AllGather.apply
 
 global logger
 
-def get_args(description='Temporal Token Merging for Efficient Text-Video Retrieval'):
+def get_args(description='CLIP + LoRA for Text-Video Retrieval'):
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument("--do_train", type=int, default=0, help="Whether to run training.")
-    parser.add_argument("--do_eval", type=int, default=0, help="Whether to run evaluation.")
+    parser.add_argument("--do_train", type=int, default=0)
+    parser.add_argument("--do_eval", type=int, default=0)
 
-    parser.add_argument("--datatype", default="msrvtt", type=str, help="Point the dataset to finetune.")
-    parser.add_argument('--anno_path', type=str, default='data/MSR-VTT/anns', help='annotation path')
-    parser.add_argument('--video_path', type=str, default='data/MSR-VTT/videos', help='video path')
-    parser.add_argument('--pretrained_path', type=str, default="your_path", help='pretrained model path')
+    parser.add_argument("--datatype", default="msrvtt", type=str)
+    parser.add_argument('--anno_path', type=str, default='data/MSR-VTT/anns')
+    parser.add_argument('--video_path', type=str, default='data/MSR-VTT/videos')
+    parser.add_argument('--pretrained_path', type=str, default="your_path")
 
-    parser.add_argument('--seed', type=int, default=42, help='random seed')
-    parser.add_argument('--workers', default=8, type=int, help='number of data loading workers (default: 8)')
-    parser.add_argument('--clip_lr', type=float, default=6e-4, help='learning rate')
+    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--workers', default=8, type=int)
+    parser.add_argument('--clip_lr', type=float, default=6e-4, help='base LR for group 0 (LoRA)')
     parser.add_argument("--warmup_proportion", default=0.1, type=float,
-                        help="Proportion of training to perform linear learning rate warmup for. E.g., 0.1 = 10% of training.")
-    parser.add_argument('--weight_decay', type=float, default=0.2, help='weight decay')
-    parser.add_argument('--epochs', type=int, default=5, help='upper epoch limit')
-    parser.add_argument('--batch_size', type=int, default=128, help='batch size')
-    parser.add_argument('--batch_size_val', type=int, default=128, help='batch size eval')
+                        help="If warmup_steps==0, use proportion*max_steps.")
+    parser.add_argument('--weight_decay', type=float, default=0.2)
+    parser.add_argument('--epochs', type=int, default=5)
+    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--batch_size_val', type=int, default=128)
 
-    parser.add_argument('--max_words', type=int, default=32, help='max text token number')
-    parser.add_argument('--max_frames', type=int, default=12, help='max key frames')
-    parser.add_argument('--video_framerate', type=int, default=1, help='framerate to sample video frame')
+    parser.add_argument('--max_words', type=int, default=32)
+    parser.add_argument('--max_frames', type=int, default=12)
+    parser.add_argument('--video_framerate', type=int, default=1)
 
-    parser.add_argument("--device", default='cuda', type=str, help="cpu/cuda")
-    parser.add_argument("--world_size", default=1, type=int, help="distribted training")
-    parser.add_argument("--local-rank", default=0, type=int, help="distribted training")
-    parser.add_argument("--distributed", default=0, type=int, help="multi machine DDP")
+    parser.add_argument("--device", default='cuda', type=str)
+    parser.add_argument("--world_size", default=1, type=int)
+    parser.add_argument("--local-rank", default=0, type=int)
+    parser.add_argument("--distributed", default=0, type=int)
 
-    parser.add_argument('--n_display', type=int, default=50, help='Information display frequence')
-    parser.add_argument("--output_dir", default=None, type=str, required=True, help="The output directory where the model predictions and checkpoints will be written.")
+    parser.add_argument('--n_display', type=int, default=50)
+    parser.add_argument("--output_dir", default=None, type=str, required=True)
 
-    parser.add_argument("--base_encoder", default="ViT-B/32", type=str, help="Choose a CLIP version")
-
-    parser.add_argument("--init_model", default=None, type=str, required=False, help="Initial model.")
-    
+    parser.add_argument("--base_encoder", default="ViT-B/32", type=str)
+    parser.add_argument("--init_model", default=None, type=str, required=False)
     parser.add_argument('--lora_dim', type=int, default=8)
 
-    parser.add_argument('--tome_r', type=int, default=2)
-    parser.add_argument('--tome_tracesource', type=bool, default=False)
-    parser.add_argument('--tome_propattn', type=bool, default=True)
+    # ====== 新增：学习率调度相关 ======
+    parser.add_argument(
+        "--sched", type=str, default="none",
+        choices=["none", "linear", "cosine"],
+        help="LR scheduler type; 'none' keeps LR constant."
+    )
+    # 兼容别名（可不传）
+    parser.add_argument("--lr_scheduler", type=str, default=None,
+                        choices=[None, "linear", "cosine"])
 
-    ### 12--9-->6--10-->3--11-->1
-    parser.add_argument('--merge_layer', type=str, default='8-9-10') # start from 0
-    parser.add_argument('--merge_frame_num', type=str, default='2-2-3')
+    parser.add_argument(
+        "--max_steps", type=int, default=0,
+        help="Total training steps. If 0, use len(train_loader)*epochs."
+    )
+    parser.add_argument(
+        "--warmup_steps", type=int, default=0,
+        help="Warmup steps. If 0, use warmup_proportion*max_steps."
+    )
+    # ====== 新增结束 ======
 
-    ### R_c = 100% - 30% = 70%; R_I = 100% - 10% = 90%
-    parser.add_argument('--merge_token_proportion', type=str, default='30-10')
-    parser.add_argument('--frame_pos', type=int, default=1)
-    
     args = parser.parse_args()
-
     return args
 
+# ---- 放在 main.py 顶部任意位置（import 之后）----
+class DummyScheduler:
+    """始终可用的“空”调度器，接口兼容 get_last_lr/step。"""
+    def __init__(self, optimizer):
+        self.optimizer = optimizer
+    def step(self):
+        pass
+    def get_last_lr(self):
+        # 与 torch scheduler 对齐：返回所有 param_group 当前 lr
+        return [g['lr'] for g in self.optimizer.param_groups]
+    def state_dict(self):
+        return {}
+    def load_state_dict(self, state):
+        pass
 
 def set_seed_logger(args):
     global logger
@@ -180,43 +200,154 @@ def build_dataloader(args):
     return test_dataloader, val_dataloader, train_dataloader, train_sampler
 
 
-def prep_optimizer(args, model, num_train_optimization_steps, local_rank):
-    if hasattr(model, 'module'):
-        model = model.module
-    clip_lr = args.clip_lr  # 1e-7
-    weight_decay = args.weight_decay  # 0.2
-    warmup_proportion = args.warmup_proportion
-    param_optimizer = list(model.named_parameters())
 
-    for name, param in param_optimizer:
-        if "TVPt" in name:
-            param.requires_grad_(True)
-        else:
-            param.requires_grad_(False)
-    
-    optimizer_parameters_prompt = []
-    enabled_prompt = []
-    for name, param in model.named_parameters():
-        if param.requires_grad:
-            enabled_prompt.append(name)
-            optimizer_parameters_prompt.append(param)
-    logger.info(f"Tuned Parameters: {sorted(enabled_prompt)}")
 
-    optimizer_grouped_params = [
-        {'params': optimizer_parameters_prompt, 'lr': args.clip_lr}
-    ]
 
-    optimizer = AdamW(optimizer_grouped_params, weight_decay=args.weight_decay)
-    num_warmup_steps = int(warmup_proportion * num_train_optimization_steps)
-    scheduler = get_cosine_schedule_with_warmup(optimizer,
-                                                num_warmup_steps=num_warmup_steps,
-                                                num_training_steps=num_train_optimization_steps)
+def prep_optimizer(args, model, _max_steps=None, local_rank=None):
+    """
+    训练：
+      - LoRA（名字含 "TVPt"）
+      - 轻量 CLS 跨帧注意力 tem_mix_*（q/k/v/out、ln、gate、temp_raw、rel_bias）
+      - 空域位置门控 spatial_pos_gate
+      - ☆ TimeRouter（frame_proj/patch_proj/score_mlp/budget_head）
+    其余参数全部冻结。
+    """
+    # ---------- 学习率与 weight decay ----------
+    base_lr = getattr(args, "clip_lr", None) or getattr(args, "learning_rate", 6e-4)
+    wd = getattr(args, "weight_decay", 0.0)
 
+    # ---------- 名称关键字 ----------
+    lora_key = "TVPt"
+    tem_mix_linear_keys = ("tem_mix_q", "tem_mix_k", "tem_mix_v", "tem_mix_out")
+    tem_mix_ln_keys     = ("tem_mix_ln",)
+    tem_misc_keys       = ("tem_mix_gate", "tem_rel_bias")
+    tem_temp_key        = "tem_mix_temp_raw"
+    always_keys         = ("spatial_pos_gate",)
+
+    # ☆ TimeRouter 相关
+    tr_root_key         = "time_router"
+    tr_proj_keys        = (f"{tr_root_key}.frame_proj", f"{tr_root_key}.patch_proj")
+    tr_head_keys        = (f"{tr_root_key}.score_mlp", f"{tr_root_key}.budget_head")
+
+    # ---------- 统一冻结 ----------
+    for _, p in model.named_parameters():
+        p.requires_grad_(False)
+
+    # ---------- 打开需要训练的参数 ----------
+    for n, p in model.named_parameters():
+        if (
+            (lora_key in n)
+            or any(k in n for k in tem_mix_linear_keys + tem_mix_ln_keys + tem_misc_keys + (tem_temp_key,) + always_keys)
+            or any(k in n for k in (tr_root_key,))  # ☆ 放开 TimeRouter
+        ):
+            p.requires_grad_(True)
+
+    # ---------- 分组 ----------
+    lora_params, tem_linear, tem_ln, tem_misc, tem_temp, always_params = [], [], [], [], [], []
+    tr_proj_params, tr_head_params = [], []
+
+    for n, p in model.named_parameters():
+        if not p.requires_grad:
+            continue
+        if lora_key in n:
+            lora_params.append(p)
+        elif any(k in n for k in tem_mix_linear_keys):
+            tem_linear.append(p)
+        elif any(k in n for k in tem_mix_ln_keys):
+            tem_ln.append(p)
+        elif any(k in n for k in tem_misc_keys):
+            tem_misc.append(p)
+        elif tem_temp_key in n:
+            tem_temp.append(p)
+        elif any(k in n for k in always_keys):
+            always_params.append(p)
+        elif any(k in n for k in tr_proj_keys):
+            tr_proj_params.append(p)
+        elif any(k in n for k in tr_head_keys):
+            tr_head_params.append(p)
+
+    groups = []
+    if lora_params:
+        groups.append({'params': lora_params,  'lr': base_lr,        'weight_decay': wd})
+    if tem_linear:
+        groups.append({'params': tem_linear,   'lr': base_lr * 8.0,  'weight_decay': 0.0})
+    if tem_ln:
+        groups.append({'params': tem_ln,       'lr': base_lr * 4.0,  'weight_decay': 0.0})
+    if tem_temp:
+        groups.append({'params': tem_temp,     'lr': base_lr * 2.0,  'weight_decay': 0.0})
+    if tem_misc:
+        groups.append({'params': tem_misc,     'lr': base_lr * 8.0,  'weight_decay': 0.0})
+    if always_params:
+        groups.append({'params': always_params,'lr': base_lr * 4.0,  'weight_decay': 0.0})
+
+    # ☆ TimeRouter 分两组：投影/打分
+    if tr_proj_params:
+        groups.append({'params': tr_proj_params,'lr': base_lr * 1.0, 'weight_decay': 0.0})  # frame/patch proj
+    if tr_head_params:
+        groups.append({'params': tr_head_params,'lr': base_lr * 4.0, 'weight_decay': 0.0})  # score_mlp / budget_head
+
+    if not groups:
+        groups = [{'params': [], 'lr': base_lr, 'weight_decay': wd}]
+
+    optimizer = AdamW(groups, betas=(0.9, 0.98), eps=1e-8)
+
+    # ---------- 简化 scheduler：若未指定则使用 Dummy ----------
+    class DummyScheduler:
+        def __init__(self, optimizer):
+            self.optimizer = optimizer
+            self._last_lr = [g.get('lr', 0.0) for g in self.optimizer.param_groups]
+        def step(self):
+            self._last_lr = [g.get('lr', 0.0) for g in self.optimizer.param_groups]
+        def get_last_lr(self):
+            return self._last_lr
+        def state_dict(self):
+            return {'_last_lr': self._last_lr}
+        def load_state_dict(self, sd):
+            if '_last_lr' in sd:
+                self._last_lr = list(sd['_last_lr'])
+
+    scheduler = None
+    sched_name = getattr(args, "lr_scheduler", None) or getattr(args, "sched", None)
+    warmup_steps = int(getattr(args, "warmup_steps", 0))
+    try:
+        if sched_name in ("linear", "cosine"):
+            from transformers import (
+                get_linear_schedule_with_warmup, get_cosine_schedule_with_warmup
+            )
+            total_steps = _max_steps if _max_steps is not None else getattr(args, "max_steps", 0)
+            total_steps = int(total_steps) if total_steps else 0
+            if total_steps > 0:
+                scheduler = (get_linear_schedule_with_warmup if sched_name == "linear"
+                             else get_cosine_schedule_with_warmup)(optimizer, warmup_steps, total_steps)
+        if scheduler is None:
+            scheduler = DummyScheduler(optimizer)
+    except Exception:
+        scheduler = DummyScheduler(optimizer)
+
+    # ---------- DDP 包装 ----------
     if torch.cuda.is_available():
-        model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank,
-                                                          find_unused_parameters=True)
+        model = torch.nn.parallel.DistributedDataParallel(
+            model, device_ids=[local_rank], output_device=local_rank,
+            find_unused_parameters=True
+        )
+
+    # 打印参与训练的关键名
+    try:
+        named = model.module.named_parameters() if hasattr(model, "module") else model.named_parameters()
+        trainable = [n for n, p in named if p.requires_grad]
+        print("== Newly enabled trainables (count={}) ==".format(len(trainable)))
+        for n in sorted(trainable):
+            if any(k in n for k in ("TVPt", "tem_mix", "tem_rel_bias", "spatial_pos_gate", "time_router")):
+                print("  " + n)
+    except Exception:
+        pass
 
     return optimizer, scheduler, model
+
+
+
+
+
 
 
 def save_model(epoch, args, model, type_name=""):
@@ -281,8 +412,8 @@ def train_epoch(epoch, args, model, train_dataloader, device, n_gpu, optimizer,
         if n_gpu > 1:
             loss = loss.mean()  # mean() to average on multi-gpu.
 
-        with torch.autograd.detect_anomaly():
-            loss.backward()
+        # with torch.autograd.detect_anomaly():
+        loss.backward()
 
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         
@@ -469,7 +600,19 @@ def main():
         tic = time.time()
         max_steps = len(train_dataloader) * args.epochs
         _max_steps = len(train_dataloader) * args.epochs
-        optimizer, scheduler, model = prep_optimizer(args, model, _max_steps, args.local_rank)
+        inferred_steps = len(train_dataloader) * args.epochs
+        if args.max_steps <= 0:
+            args.max_steps = inferred_steps
+
+        # 若未显式给 warmup_steps，则由占比推导
+        if args.warmup_steps <= 0 and args.warmup_proportion > 0:
+            args.warmup_steps = int(args.warmup_proportion * args.max_steps)
+
+        optimizer, scheduler, model = prep_optimizer(
+            args, model, args.max_steps, args.local_rank
+        )
+
+        max_steps = args.max_steps
 
         best_score = 0.00001
         best_score_list = [0.00001 for _ in range(sim_matrix_num)]
